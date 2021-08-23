@@ -1,0 +1,25 @@
+{
+  "name": "sampleserver-node-opcua",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node server.js",
+    "debug": "tsc && node --inspect server.js",
+    "build": "tsc && pkg -t win server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreasHeine/SampleServer-node-opcua.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreasHeine/SampleServer-node-opcua/issues"
+  },
+  "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
+  "dependencies": {
+    "node-opcua": "^2.50.0",
+    "pkg": "^5.3.1"
+  }
+}
