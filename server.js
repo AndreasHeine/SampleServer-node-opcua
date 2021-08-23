@@ -65,6 +65,37 @@ const server = new node_opcua_1.OPCUAServer({
     ],
 });
 const create_addressSpace = () => {
+    const addressSpace = server.engine.addressSpace;
+    const coatingLineIdentification = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode("ns=5;i=5003");
+    coatingLineIdentification.location.setValueFromSource({
+        dataType: node_opcua_1.DataType.String,
+        value: "Location",
+    });
+    coatingLineIdentification.manufacturer.setValueFromSource({
+        dataType: node_opcua_1.DataType.LocalizedText,
+        value: node_opcua_1.coerceLocalizedText("Manufacturer"),
+    });
+    coatingLineIdentification.model.setValueFromSource({
+        dataType: node_opcua_1.DataType.LocalizedText,
+        value: node_opcua_1.coerceLocalizedText("Model"),
+    });
+    coatingLineIdentification.productInstanceUri.setValueFromSource({
+        dataType: node_opcua_1.DataType.String,
+        value: "ProductInstanceUri",
+    });
+    coatingLineIdentification.serialNumber.setValueFromSource({
+        dataType: node_opcua_1.DataType.String,
+        value: "SerialNumber",
+    });
+    coatingLineIdentification.softwareRevision.setValueFromSource({
+        dataType: node_opcua_1.DataType.String,
+        value: "SoftwareRevision",
+    });
+    coatingLineIdentification.yearOfConstruction.setValueFromSource({
+        dataType: node_opcua_1.DataType.UInt16,
+        value: new Date().getFullYear(),
+    });
+    // to do... initialize and write data from source
 };
 const init = () => {
     create_addressSpace();

@@ -6,6 +6,9 @@ import {
     coerceLocalizedText, 
     ServerCapabilities,
     OperationLimits,
+    DataType,
+    UAObject,
+    UAVariable,
 } from "node-opcua" ;
 
 const port = Number(process.env.ua_port) || 4840;
@@ -64,8 +67,51 @@ const server = new OPCUAServer({
     ],
 });
 
-const create_addressSpace = () => {
+interface MachineIdentificationType extends UAObject {
+    location: UAVariable;
+    manufacturer: UAVariable;
+    model: UAVariable;
+    productInstanceUri: UAVariable;
+    serialNumber: UAVariable;
+    softwareRevision: UAVariable;
+    yearOfConstruction: UAVariable;
+}
 
+const create_addressSpace = () => {
+    const addressSpace = server.engine.addressSpace;
+
+    const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003")! as MachineIdentificationType;
+
+    coatingLineIdentification.location.setValueFromSource({
+        dataType: DataType.String,
+        value: "Location",
+    });
+    coatingLineIdentification.manufacturer.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText("Manufacturer"),
+    });
+    coatingLineIdentification.model.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText("Model"),
+    });
+    coatingLineIdentification.productInstanceUri.setValueFromSource({
+        dataType: DataType.String,
+        value: "ProductInstanceUri",
+    });
+    coatingLineIdentification.serialNumber.setValueFromSource({
+        dataType: DataType.String,
+        value: "SerialNumber",
+    });
+    coatingLineIdentification.softwareRevision.setValueFromSource({
+        dataType: DataType.String,
+        value: "SoftwareRevision",
+    });
+    coatingLineIdentification.yearOfConstruction.setValueFromSource({
+        dataType: DataType.UInt16,
+        value: new Date().getFullYear(),
+    });
+
+    // to do... initialize and write data from source
 }
 
 const init = () => {
