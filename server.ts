@@ -62,16 +62,16 @@ const server = new OPCUAServer({
     ],
     disableDiscovery: false,
     nodeset_filename: [
-        "nodesets/Opc.Ua.NodeSet2.xml", 
-        "nodesets/Opc.Ua.Di.NodeSet2.xml", 
-        "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
-        "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
-        "nodesets/CoatingLine-example.xml",
-        "nodesets/Pretreatment.xml",
-        "nodesets/Materialsupplyroom.xml",
-        "nodesets/dosingsystem.xml",
-        "nodesets/ovenbooth.xml",
-        "nodesets/ConveyorGunsAxes.xml"
+        "deps/Opc.Ua.NodeSet2.xml", 
+        "deps/Opc.Ua.Di.NodeSet2.xml", 
+        "deps/Opc.Ua.Machinery.NodeSet2.xml",
+        "deps/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
+        "nodesets/CoatingLine/CoatingLine-example.xml",
+        "nodesets/CoatingLine/Pretreatment.xml",
+        "nodesets/CoatingLine/Materialsupplyroom.xml",
+        "nodesets/CoatingLine/dosingsystem.xml",
+        "nodesets/CoatingLine/ovenbooth.xml",
+        "nodesets/CoatingLine/ConveyorGunsAxes.xml"
     ],
 });
 
