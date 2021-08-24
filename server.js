@@ -112,12 +112,17 @@ const create_addressSpace = () => {
     const myMachineIdentification = machineryIdentificationType === null || machineryIdentificationType === void 0 ? void 0 : machineryIdentificationType.instantiate({
         browseName: "Identification",
         organizedBy: myMachine,
-        optionals: ["Model"] // array of string
+        optionals: ["Model"],
     });
-    const manufacturer = myMachineIdentification.getChildByName("Manufacturer");
+    const manufacturer = myMachineIdentification === null || myMachineIdentification === void 0 ? void 0 : myMachineIdentification.getChildByName("Manufacturer");
     manufacturer === null || manufacturer === void 0 ? void 0 : manufacturer.setValueFromSource({
         dataType: node_opcua_1.DataType.LocalizedText,
         value: node_opcua_1.coerceLocalizedText("Manufacturer"),
+    });
+    const machineComponentsType = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1006`);
+    const myMachineComponents = machineComponentsType === null || machineComponentsType === void 0 ? void 0 : machineComponentsType.instantiate({
+        browseName: "Components",
+        organizedBy: myMachine,
     });
 };
 const init = () => {

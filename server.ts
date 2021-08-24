@@ -87,7 +87,7 @@ const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
 
     // CoatinglineIdentification:
-    const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003")! as MachineIdentificationType;
+    const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003") as MachineIdentificationType;
 
     coatingLineIdentification.location.setValueFromSource({
         dataType: DataType.String,
@@ -126,18 +126,22 @@ const create_addressSpace = () => {
         browseName: "MyMachine",
         organizedBy: machinesFolder,
     })
-    const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`)! as UAObjectType;
+    const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`) as UAObjectType;
     const myMachineIdentification = machineryIdentificationType?.instantiate({
         browseName: "Identification",
         organizedBy: myMachine,
-        optionals: ["Model"] // array of string 
+        optionals: ["Model"], // array of string 
     })
-    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uaobjecttype.html#getchildbyname
-    const manufacturer =  myMachineIdentification.getChildByName("Manufacturer") as UAVariable;
+    const manufacturer = myMachineIdentification?.getChildByName("Manufacturer") as UAVariable;
     manufacturer?.setValueFromSource({
         dataType: DataType.LocalizedText,
         value: coerceLocalizedText("Manufacturer"),
     });
+    const machineComponentsType = addressSpace?.findNode(`ns=${machineryIdx};i=1006`) as UAObjectType;
+    const myMachineComponents = machineComponentsType?.instantiate({
+        browseName: "Components",
+        organizedBy: myMachine,
+    })
 }
 
 const init = () => {
@@ -167,8 +171,6 @@ const init = () => {
         process.exit(0);
         });
     });
-
-
 }
 
 (async () => {
