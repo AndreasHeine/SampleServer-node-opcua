@@ -1,4 +1,8 @@
 "use strict";
+// Copyright 2021 (c) Andreas Heine
+//
+// http://node-opcua.github.io/
+// https://node-opcua.github.io/api_doc/
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -66,6 +70,7 @@ const server = new node_opcua_1.OPCUAServer({
 });
 const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
+    // CoatinglineIdentification:
     const coatingLineIdentification = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode("ns=5;i=5003");
     coatingLineIdentification.location.setValueFromSource({
         dataType: node_opcua_1.DataType.String,
@@ -95,7 +100,25 @@ const create_addressSpace = () => {
         dataType: node_opcua_1.DataType.UInt16,
         value: new Date().getFullYear(),
     });
-    // to do... initialize and write data from source
+    // Add a machine manually:
+    const machineryIdx = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/");
+    const machinesFolder = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1001`);
+    const namespace = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.registerNamespace("http://mynewmachinenamespace/UA");
+    const myMachine = namespace === null || namespace === void 0 ? void 0 : namespace.addObject({
+        browseName: "MyMachine",
+        organizedBy: machinesFolder,
+    });
+    const machineryIdentificationType = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1012`);
+    const myMachineIdentification = machineryIdentificationType === null || machineryIdentificationType === void 0 ? void 0 : machineryIdentificationType.instantiate({
+        browseName: "Identification",
+        organizedBy: myMachine,
+        optionals: ["Model"] // array of string
+    });
+    const manufacturer = myMachineIdentification.getChildByName("Manufacturer");
+    manufacturer === null || manufacturer === void 0 ? void 0 : manufacturer.setValueFromSource({
+        dataType: node_opcua_1.DataType.LocalizedText,
+        value: node_opcua_1.coerceLocalizedText("Manufacturer"),
+    });
 };
 const init = () => {
     create_addressSpace();

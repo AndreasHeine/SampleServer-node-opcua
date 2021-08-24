@@ -1,4 +1,7 @@
 // Copyright 2021 (c) Andreas Heine
+//
+// http://node-opcua.github.io/
+// https://node-opcua.github.io/api_doc/
 
 import { 
     OPCUAServer, 
@@ -11,6 +14,8 @@ import {
     DataType,
     UAObject,
     UAVariable,
+    UAObjectType,
+    BaseNode
 } from "node-opcua" ;
 
 const port = Number(process.env.ua_port) || 4840;
@@ -82,6 +87,7 @@ interface MachineIdentificationType extends UAObject {
 const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
 
+    // CoatinglineIdentification:
     const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003")! as MachineIdentificationType;
 
     coatingLineIdentification.location.setValueFromSource({
@@ -113,7 +119,26 @@ const create_addressSpace = () => {
         value: new Date().getFullYear(),
     });
 
-    // to do... initialize and write data from source
+    // Add a machine manually:
+    const machineryIdx = addressSpace?.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/");
+    const machinesFolder = addressSpace?.findNode(`ns=${machineryIdx};i=1001`) as UAObject;
+    const namespace = addressSpace?.registerNamespace("http://mynewmachinenamespace/UA");
+    const myMachine = namespace?.addObject({
+        browseName: "MyMachine",
+        organizedBy: machinesFolder,
+    })
+    const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`)! as UAObjectType;
+    const myMachineIdentification = machineryIdentificationType?.instantiate({
+        browseName: "Identification",
+        organizedBy: myMachine,
+        optionals: ["Model"] // array of string 
+    })
+    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uaobjecttype.html#getchildbyname
+    const manufacturer =  myMachineIdentification.getChildByName("Manufacturer") as UAVariable;
+    manufacturer?.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText("Manufacturer"),
+    });
 }
 
 const init = () => {
