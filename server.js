@@ -126,6 +126,7 @@ const create_addressSpace = () => {
         browseName: "Components",
         organizedBy: myMachine,
     });
+    // instantiate components here -> organizedBy: myMachineComponents
 };
 const init = () => {
     create_addressSpace();
