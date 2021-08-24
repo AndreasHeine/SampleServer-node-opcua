@@ -15,7 +15,6 @@ import {
     UAObject,
     UAVariable,
     UAObjectType,
-    BaseNode
 } from "node-opcua" ;
 
 const port = Number(process.env.ua_port) || 4840;
@@ -168,6 +167,8 @@ const init = () => {
         process.exit(0);
         });
     });
+
+
 }
 
 (async () => {
