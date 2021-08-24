@@ -15,10 +15,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_opcua_1 = require("node-opcua");
 const port = Number(process.env.ua_port) || 4840;
-const ip = process.env.ua_ip || "127.0.0.1";
+const ip = process.env.ua_ip || "0.0.0.0";
 const server = new node_opcua_1.OPCUAServer({
     port: port,
     hostname: ip,
+    maxAllowedSessionNumber: 100,
+    maxConnectionsPerEndpoint: 100,
     resourcePath: "/UA",
     buildInfo: {
         productUri: "SampleServer-productUri",

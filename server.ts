@@ -18,11 +18,13 @@ import {
 } from "node-opcua" ;
 
 const port = Number(process.env.ua_port) || 4840;
-const ip = process.env.ua_ip || "127.0.0.1";
+const ip = process.env.ua_ip || "0.0.0.0";
 
 const server = new OPCUAServer({
     port: port,
     hostname: ip,
+    maxAllowedSessionNumber: 100,
+    maxConnectionsPerEndpoint: 100,
     resourcePath: "/UA",
     buildInfo : {
         productUri: "SampleServer-productUri",
