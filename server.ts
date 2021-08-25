@@ -84,10 +84,17 @@ const server = new OPCUAServer({
 
 const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
+    const nameSpaceArray = addressSpace?.getNamespaceArray();
+    const namespaceUris = nameSpaceArray?.map(namespace => namespace.namespaceUri);
 
-    if (addressSpace) {    
-        createCoatingLine(addressSpace);
+    if (addressSpace) {  
         createMyMachine(addressSpace);
+        // check if namespaceUri exist
+        if (namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example')) {
+            createCoatingLine(addressSpace);
+        } else {
+            console.log("NameSpace: http://opcfoundation.org/UA/SurfaceTechnology/Exampl does not exist! Model not found...")
+        }
         createMachineTool(addressSpace);
     }
 }
