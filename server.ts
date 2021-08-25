@@ -15,7 +15,7 @@ import {
     UAObject,
     UAVariable,
     UAObjectType,
-} from "node-opcua" ;
+} from "node-opcua";
 
 const port = Number(process.env.ua_port) || 4840;
 const ip = process.env.ua_ip || "0.0.0.0";
@@ -62,16 +62,23 @@ const server = new OPCUAServer({
     ],
     disableDiscovery: false,
     nodeset_filename: [
+        // deps
         "deps/Opc.Ua.NodeSet2.xml", 
         "deps/Opc.Ua.Di.NodeSet2.xml", 
         "deps/Opc.Ua.Machinery.NodeSet2.xml",
         "deps/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
+        // ia spec. xml http://opcfoundation.org/UA/IA/
+        // machinetool spec. xml http://opcfoundation.org/UA/MachineTool/
+
+        // CoatingLine Model
         "nodesets/CoatingLine/CoatingLine-example.xml",
         "nodesets/CoatingLine/Pretreatment.xml",
         "nodesets/CoatingLine/Materialsupplyroom.xml",
         "nodesets/CoatingLine/dosingsystem.xml",
         "nodesets/CoatingLine/ovenbooth.xml",
-        "nodesets/CoatingLine/ConveyorGunsAxes.xml"
+        "nodesets/CoatingLine/ConveyorGunsAxes.xml",
+
+        // MachineTool Model
     ],
 });
 
@@ -145,6 +152,11 @@ const create_addressSpace = () => {
         organizedBy: myMachine,
     })
     // instantiate components here -> organizedBy: myMachineComponents
+
+    // BasicMachineTool
+    // bind variable to a getter 
+    // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
+    // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.bindvariableoptionsvariation1.html
 }
 
 const init = () => {
