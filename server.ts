@@ -25,6 +25,7 @@ const server = new OPCUAServer({
     hostname: ip,
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
+    timeout: 10000,
     resourcePath: "/UA",
     buildInfo : {
         productUri: "SampleServer-productUri",
@@ -44,6 +45,7 @@ const server = new OPCUAServer({
     serverCapabilities: new ServerCapabilities({
         maxBrowseContinuationPoints: 10,
         maxArrayLength: 1000,
+        minSupportedSampleRate: 100,
         operationLimits: new OperationLimits({
             maxMonitoredItemsPerCall: 1000,
             maxNodesPerBrowse: 1000,
