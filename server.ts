@@ -62,7 +62,7 @@ const server = new OPCUAServer({
     ],
     disableDiscovery: false,
     nodeset_filename: [
-        // deps
+        // nodesets
         "nodesets/Opc.Ua.NodeSet2.xml", 
         "nodesets/Opc.Ua.Di.NodeSet2.xml", 
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
@@ -79,6 +79,7 @@ const server = new OPCUAServer({
         "machines/coatingline/model/ConveyorGunsAxes.xml",
 
         // MachineTool Model
+        // "machines/mymachinetool/model/mymachinetool.xml",
     ],
 });
 
@@ -90,10 +91,17 @@ const create_addressSpace = () => {
     if (addressSpace) {  
         createMyMachine(addressSpace);
         // check if namespaceUri exist
-        if (namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example')) {
+        if (
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example') &&
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/ConveyorGunsAxes/') &&
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/') &&
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/') &&
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/') &&
+            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/Pretreatment')
+            ) {
             createCoatingLine(addressSpace);
         } else {
-            console.log("NameSpace: http://opcfoundation.org/UA/SurfaceTechnology/Exampl does not exist! Model not found...")
+            console.log("CoatingLine-Model not found...")
         }
         createMachineTool(addressSpace);
     }
