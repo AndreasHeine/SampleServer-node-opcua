@@ -11,11 +11,11 @@ import {
     coerceLocalizedText, 
     ServerCapabilities,
     OperationLimits,
-    DataType,
-    UAObject,
-    UAVariable,
-    UAObjectType,
 } from "node-opcua";
+
+import { createCoatingLine } from "./machines/coatingline/coatingline";
+import { createMyMachine} from "./machines/mymachine/mymachine";
+import { createMachineTool} from "./machines/machinetool/machinetool";
 
 const port = Number(process.env.ua_port) || 4840;
 const ip = process.env.ua_ip || "0.0.0.0";
@@ -63,100 +63,33 @@ const server = new OPCUAServer({
     disableDiscovery: false,
     nodeset_filename: [
         // deps
-        "deps/Opc.Ua.NodeSet2.xml", 
-        "deps/Opc.Ua.Di.NodeSet2.xml", 
-        "deps/Opc.Ua.Machinery.NodeSet2.xml",
-        "deps/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
+        "nodesets/Opc.Ua.NodeSet2.xml", 
+        "nodesets/Opc.Ua.Di.NodeSet2.xml", 
+        "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
+        "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
         // ia spec. xml http://opcfoundation.org/UA/IA/
         // machinetool spec. xml http://opcfoundation.org/UA/MachineTool/
 
         // CoatingLine Model
-        "nodesets/CoatingLine/CoatingLine-example.xml",
-        "nodesets/CoatingLine/Pretreatment.xml",
-        "nodesets/CoatingLine/Materialsupplyroom.xml",
-        "nodesets/CoatingLine/dosingsystem.xml",
-        "nodesets/CoatingLine/ovenbooth.xml",
-        "nodesets/CoatingLine/ConveyorGunsAxes.xml",
+        "machines/coatingline/model/CoatingLine-example.xml",
+        "machines/coatingline/model/Pretreatment.xml",
+        "machines/coatingline/model/Materialsupplyroom.xml",
+        "machines/coatingline/model/dosingsystem.xml",
+        "machines/coatingline/model/ovenbooth.xml",
+        "machines/coatingline/model/ConveyorGunsAxes.xml",
 
         // MachineTool Model
     ],
 });
 
-interface MachineIdentificationType extends UAObject {
-    location: UAVariable;
-    manufacturer: UAVariable;
-    model: UAVariable;
-    productInstanceUri: UAVariable;
-    serialNumber: UAVariable;
-    softwareRevision: UAVariable;
-    yearOfConstruction: UAVariable;
-}
-
 const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
 
-    // CoatinglineIdentification:
-    const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003") as MachineIdentificationType;
-
-    coatingLineIdentification.location.setValueFromSource({
-        dataType: DataType.String,
-        value: "Location",
-    });
-    coatingLineIdentification.manufacturer.setValueFromSource({
-        dataType: DataType.LocalizedText,
-        value: coerceLocalizedText("Manufacturer"),
-    });
-    coatingLineIdentification.model.setValueFromSource({
-        dataType: DataType.LocalizedText,
-        value: coerceLocalizedText("Model"),
-    });
-    coatingLineIdentification.productInstanceUri.setValueFromSource({
-        dataType: DataType.String,
-        value: "ProductInstanceUri",
-    });
-    coatingLineIdentification.serialNumber.setValueFromSource({
-        dataType: DataType.String,
-        value: "SerialNumber",
-    });
-    coatingLineIdentification.softwareRevision.setValueFromSource({
-        dataType: DataType.String,
-        value: "SoftwareRevision",
-    });
-    coatingLineIdentification.yearOfConstruction.setValueFromSource({
-        dataType: DataType.UInt16,
-        value: new Date().getFullYear(),
-    });
-
-    // Add a machine manually:
-    const machineryIdx = addressSpace?.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/");
-    const machinesFolder = addressSpace?.findNode(`ns=${machineryIdx};i=1001`) as UAObject;
-    const namespace = addressSpace?.registerNamespace("http://mynewmachinenamespace/UA");
-    const myMachine = namespace?.addObject({
-        browseName: "MyMachine",
-        organizedBy: machinesFolder,
-    })
-    const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`) as UAObjectType;
-    const myMachineIdentification = machineryIdentificationType?.instantiate({
-        browseName: "Identification",
-        organizedBy: myMachine,
-        optionals: ["Model"], // array of string 
-    })
-    const manufacturer = myMachineIdentification?.getChildByName("Manufacturer") as UAVariable;
-    manufacturer?.setValueFromSource({
-        dataType: DataType.LocalizedText,
-        value: coerceLocalizedText("Manufacturer"),
-    });
-    const machineComponentsType = addressSpace?.findNode(`ns=${machineryIdx};i=1006`) as UAObjectType;
-    const myMachineComponents = machineComponentsType?.instantiate({
-        browseName: "Components",
-        organizedBy: myMachine,
-    })
-    // instantiate components here -> organizedBy: myMachineComponents
-
-    // BasicMachineTool
-    // bind variable to a getter 
-    // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
-    // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.bindvariableoptionsvariation1.html
+    if (addressSpace) {    
+        createCoatingLine(addressSpace);
+        createMyMachine(addressSpace);
+        createMachineTool(addressSpace);
+    }
 }
 
 const init = () => {

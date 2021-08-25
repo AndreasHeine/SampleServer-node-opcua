@@ -14,6 +14,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_opcua_1 = require("node-opcua");
+const coatingline_1 = require("./machines/coatingline/coatingline");
+const mymachine_1 = require("./machines/mymachine/mymachine");
+const machinetool_1 = require("./machines/machinetool/machinetool");
 const port = Number(process.env.ua_port) || 4840;
 const ip = process.env.ua_ip || "0.0.0.0";
 const server = new node_opcua_1.OPCUAServer({
@@ -58,75 +61,29 @@ const server = new node_opcua_1.OPCUAServer({
     ],
     disableDiscovery: false,
     nodeset_filename: [
-        "deps/Opc.Ua.NodeSet2.xml",
-        "deps/Opc.Ua.Di.NodeSet2.xml",
-        "deps/Opc.Ua.Machinery.NodeSet2.xml",
-        "deps/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
-        "nodesets/CoatingLine/CoatingLine-example.xml",
-        "nodesets/CoatingLine/Pretreatment.xml",
-        "nodesets/CoatingLine/Materialsupplyroom.xml",
-        "nodesets/CoatingLine/dosingsystem.xml",
-        "nodesets/CoatingLine/ovenbooth.xml",
-        "nodesets/CoatingLine/ConveyorGunsAxes.xml"
+        // deps
+        "nodesets/Opc.Ua.NodeSet2.xml",
+        "nodesets/Opc.Ua.Di.NodeSet2.xml",
+        "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
+        "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
+        // ia spec. xml http://opcfoundation.org/UA/IA/
+        // machinetool spec. xml http://opcfoundation.org/UA/MachineTool/
+        // CoatingLine Model
+        "machines/coatingline/model/CoatingLine-example.xml",
+        "machines/coatingline/model/Pretreatment.xml",
+        "machines/coatingline/model/Materialsupplyroom.xml",
+        "machines/coatingline/model/dosingsystem.xml",
+        "machines/coatingline/model/ovenbooth.xml",
+        "machines/coatingline/model/ConveyorGunsAxes.xml",
     ],
 });
 const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
-    // CoatinglineIdentification:
-    const coatingLineIdentification = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode("ns=5;i=5003");
-    coatingLineIdentification.location.setValueFromSource({
-        dataType: node_opcua_1.DataType.String,
-        value: "Location",
-    });
-    coatingLineIdentification.manufacturer.setValueFromSource({
-        dataType: node_opcua_1.DataType.LocalizedText,
-        value: node_opcua_1.coerceLocalizedText("Manufacturer"),
-    });
-    coatingLineIdentification.model.setValueFromSource({
-        dataType: node_opcua_1.DataType.LocalizedText,
-        value: node_opcua_1.coerceLocalizedText("Model"),
-    });
-    coatingLineIdentification.productInstanceUri.setValueFromSource({
-        dataType: node_opcua_1.DataType.String,
-        value: "ProductInstanceUri",
-    });
-    coatingLineIdentification.serialNumber.setValueFromSource({
-        dataType: node_opcua_1.DataType.String,
-        value: "SerialNumber",
-    });
-    coatingLineIdentification.softwareRevision.setValueFromSource({
-        dataType: node_opcua_1.DataType.String,
-        value: "SoftwareRevision",
-    });
-    coatingLineIdentification.yearOfConstruction.setValueFromSource({
-        dataType: node_opcua_1.DataType.UInt16,
-        value: new Date().getFullYear(),
-    });
-    // Add a machine manually:
-    const machineryIdx = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/");
-    const machinesFolder = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1001`);
-    const namespace = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.registerNamespace("http://mynewmachinenamespace/UA");
-    const myMachine = namespace === null || namespace === void 0 ? void 0 : namespace.addObject({
-        browseName: "MyMachine",
-        organizedBy: machinesFolder,
-    });
-    const machineryIdentificationType = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1012`);
-    const myMachineIdentification = machineryIdentificationType === null || machineryIdentificationType === void 0 ? void 0 : machineryIdentificationType.instantiate({
-        browseName: "Identification",
-        organizedBy: myMachine,
-        optionals: ["Model"],
-    });
-    const manufacturer = myMachineIdentification === null || myMachineIdentification === void 0 ? void 0 : myMachineIdentification.getChildByName("Manufacturer");
-    manufacturer === null || manufacturer === void 0 ? void 0 : manufacturer.setValueFromSource({
-        dataType: node_opcua_1.DataType.LocalizedText,
-        value: node_opcua_1.coerceLocalizedText("Manufacturer"),
-    });
-    const machineComponentsType = addressSpace === null || addressSpace === void 0 ? void 0 : addressSpace.findNode(`ns=${machineryIdx};i=1006`);
-    const myMachineComponents = machineComponentsType === null || machineComponentsType === void 0 ? void 0 : machineComponentsType.instantiate({
-        browseName: "Components",
-        organizedBy: myMachine,
-    });
-    // instantiate components here -> organizedBy: myMachineComponents
+    if (addressSpace) {
+        coatingline_1.createCoatingLine(addressSpace);
+        mymachine_1.createMyMachine(addressSpace);
+        machinetool_1.createMachineTool(addressSpace);
+    }
 };
 const init = () => {
     create_addressSpace();
