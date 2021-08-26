@@ -16,7 +16,7 @@ interface MachineIdentificationType extends UAObject {
     yearOfConstruction: UAVariable;
 }
 
-export const createCoatingLine = (addressSpace: AddressSpace) => {
+export const createCoatingLine = async (addressSpace: AddressSpace) => {
         // CoatinglineIdentification:
         const coatingLineIdentification = addressSpace?.findNode("ns=5;i=5003") as MachineIdentificationType;
 

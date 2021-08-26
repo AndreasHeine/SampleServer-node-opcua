@@ -7,7 +7,7 @@ import {
     UAObjectType,
 } from "node-opcua";
 
-export const createMyMachine = (addressSpace: AddressSpace) => {
+export const createMyMachine = async (addressSpace: AddressSpace) => {
     // Add a machine manually:
     const machineryIdx = addressSpace?.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/");
     const machinesFolder = addressSpace?.findNode(`ns=${machineryIdx};i=1001`) as UAObject;

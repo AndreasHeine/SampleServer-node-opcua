@@ -85,13 +85,13 @@ const server = new OPCUAServer({
     ],
 });
 
-const create_addressSpace = () => {
+const create_addressSpace = async () => {
     const addressSpace = server.engine.addressSpace;
     const nameSpaceArray = addressSpace?.getNamespaceArray();
     const namespaceUris = nameSpaceArray?.map(namespace => namespace.namespaceUri);
 
     if (addressSpace) {  
-        createMyMachine(addressSpace);
+        await createMyMachine(addressSpace);
         // check if namespaceUri exist
         if (
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example') &&
@@ -101,19 +101,19 @@ const create_addressSpace = () => {
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/') &&
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/Pretreatment')
             ) {
-            createCoatingLine(addressSpace);
+            await createCoatingLine(addressSpace);
         } else {
             console.log("CoatingLine-Model not found...")
         }
-        createMachineTool(addressSpace);
+        await createMachineTool(addressSpace);
     }
 }
 
-const init = () => {
-    create_addressSpace();
+const init = async () => {
+    await create_addressSpace();
 
     console.log(" starting... ");
-    server.start();
+    await server.start();
     
     const endpointUrl = server.endpoints[0].endpointDescriptions()[0].endpointUrl;
     console.log(" server is ready on ", endpointUrl);
