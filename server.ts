@@ -15,7 +15,7 @@ import {
 
 import { createCoatingLine } from "./machines/coatingline/coatingline";
 import { createMyMachine} from "./machines/mymachine/mymachine";
-import { createMachineTool} from "./machines/machinetool/machinetool";
+import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool";
 
 const port = Number(process.env.ua_port) || 4840;
 const ip = process.env.ua_ip || "0.0.0.0";
@@ -69,8 +69,8 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.Di.NodeSet2.xml", 
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
         "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
-        // ia spec. xml http://opcfoundation.org/UA/IA/
-        // machinetool spec. xml http://opcfoundation.org/UA/MachineTool/
+        //"nodesets/Opc.Ua.IA.NodeSet2.xml",
+        //"nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
 
         // CoatingLine Model
         "machines/coatingline/model/CoatingLine-example.xml",
@@ -81,17 +81,17 @@ const server = new OPCUAServer({
         "machines/coatingline/model/ConveyorGunsAxes.xml",
 
         // MachineTool Model
-        // "machines/mymachinetool/model/mymachinetool.xml",
+        //"machines/machinetool/model/ShowCaseMachineTool.xml",
     ],
 });
 
-const create_addressSpace = async () => {
+const create_addressSpace = () => {
     const addressSpace = server.engine.addressSpace;
     const nameSpaceArray = addressSpace?.getNamespaceArray();
     const namespaceUris = nameSpaceArray?.map(namespace => namespace.namespaceUri);
 
     if (addressSpace) {  
-        await createMyMachine(addressSpace);
+        createMyMachine(addressSpace);
         // check if namespaceUri exist
         if (
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example') &&
@@ -101,19 +101,19 @@ const create_addressSpace = async () => {
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/') &&
             namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/Pretreatment')
             ) {
-            await createCoatingLine(addressSpace);
+            createCoatingLine(addressSpace);
         } else {
             console.log("CoatingLine-Model not found...")
         }
-        await createMachineTool(addressSpace);
+        //createShowCaseMachineTool(addressSpace);
     }
 }
 
 const init = async () => {
-    await create_addressSpace();
+    create_addressSpace();
 
     console.log(" starting... ");
-    await server.start();
+    server.start();
     
     const endpointUrl = server.endpoints[0].endpointDescriptions()[0].endpointUrl;
     console.log(" server is ready on ", endpointUrl);
