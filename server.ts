@@ -1,7 +1,6 @@
 // Copyright 2021 (c) Andreas Heine
 //
 // http://node-opcua.github.io/
-// https://node-opcua.github.io/api_doc/
 
 import { 
     OPCUAServer, 
@@ -13,7 +12,6 @@ import {
     OperationLimits,
 } from "node-opcua";
 
-import { createCoatingLine } from "./machines/coatingline/coatingline";
 import { createMyMachine} from "./machines/mymachine/mymachine";
 import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool";
 
@@ -72,14 +70,6 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.IA.NodeSet2.xml",
         "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
 
-        // CoatingLine Model
-        // "machines/coatingline/model/CoatingLine-example.xml",
-        // "machines/coatingline/model/Pretreatment.xml",
-        // "machines/coatingline/model/Materialsupplyroom.xml",
-        // "machines/coatingline/model/dosingsystem.xml",
-        // "machines/coatingline/model/ovenbooth.xml",
-        // "machines/coatingline/model/ConveyorGunsAxes.xml",
-
         // MachineTool Model
         "machines/machinetool/model/ShowCaseMachineTool.xml",
     ],
@@ -87,7 +77,6 @@ const server = new OPCUAServer({
 
 const create_addressSpace = async () => {
     const addressSpace = server.engine.addressSpace;
-
     if (addressSpace) {  
         await Promise.all([
             await createMyMachine(addressSpace),
@@ -103,7 +92,6 @@ const startup = async () => {
     console.log(" server is ready on: ");
     server.endpoints.forEach(endpoint => console.log(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl));
     console.log(" CTRL+C to stop ");  
-
     process.on("SIGINT", () => {
         if (server.engine.serverStatus.state === ServerState.Shutdown) {
             console.log(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second");
