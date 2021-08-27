@@ -66,7 +66,6 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.NodeSet2.xml", 
         "nodesets/Opc.Ua.Di.NodeSet2.xml", 
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
-        "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
         "nodesets/Opc.Ua.IA.NodeSet2.xml",
         "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
 
