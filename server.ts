@@ -32,15 +32,15 @@ const server = new OPCUAServer({
         productName: "SampleServer-productName",
         manufacturerName: "SampleServer-manufacturerName",
         buildNumber: "v1.0.0",
-        buildDate: new Date()
+        buildDate: new Date(),
     },
     serverInfo: {
         applicationName: { 
             text: "SampleServer-applicationName", 
-            locale: "en" 
+            locale: "en" ,
         },
         applicationUri: "urn:SampleServer",
-        productUri: "SampleServer-productUri"
+        productUri: "SampleServer-productUri",
     },
     serverCapabilities: new ServerCapabilities({
         maxBrowseContinuationPoints: 10,
@@ -85,43 +85,28 @@ const server = new OPCUAServer({
     ],
 });
 
-const create_addressSpace = () => {
+const create_addressSpace = async () => {
     const addressSpace = server.engine.addressSpace;
-    const nameSpaceArray = addressSpace?.getNamespaceArray();
-    const namespaceUris = nameSpaceArray?.map(namespace => namespace.namespaceUri);
 
     if (addressSpace) {  
-        createMyMachine(addressSpace);
-        // check if namespaceUri exist
-        if (
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example') &&
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/ConveyorGunsAxes/') &&
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/DosingSystem/') &&
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/MaterialSupplyRoom/') &&
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/OvenBooth/') &&
-            namespaceUris?.find(uri => 'http://opcfoundation.org/UA/SurfaceTechnology/Example/Pretreatment')
-            ) {
-            createCoatingLine(addressSpace);
-        } else {
-            console.log("CoatingLine-Model not found...")
-        }
-        //createShowCaseMachineTool(addressSpace);
+        await Promise.all([
+            await createMyMachine(addressSpace),
+            await createCoatingLine(addressSpace),
+            await createShowCaseMachineTool(addressSpace),
+        ]);
     }
 }
 
-const init = async () => {
-    create_addressSpace();
-
-    console.log(" starting... ");
-    server.start();
-    
-    const endpointUrl = server.endpoints[0].endpointDescriptions()[0].endpointUrl;
-    console.log(" server is ready on ", endpointUrl);
-    console.log(" CTRL+C to stop ");
+const startup = async () => {
+    console.log(" starting server... ");
+    await server.start();
+    console.log(" server is ready on: ");
+    server.endpoints.forEach(endpoint => console.log(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl));
+    console.log(" CTRL+C to stop ");  
 
     process.on("SIGINT", () => {
         if (server.engine.serverStatus.state === ServerState.Shutdown) {
-            console.log("Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second");
+            console.log(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second");
             return;
         }
         console.log(" Received server interruption from user ");
@@ -139,12 +124,12 @@ const init = async () => {
 }
 
 (async () => {
-
     try {
-        server.initialize(init);
+        await server.initialize();
+        await create_addressSpace();
+        await startup();
     } catch (error) {
-        console.log("error", error);
+        console.log(" error ", error);
         process.exit(-1);
     }
-
 })();
