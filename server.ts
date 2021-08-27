@@ -78,9 +78,8 @@ const create_addressSpace = async () => {
     const addressSpace = server.engine.addressSpace;
     if (addressSpace) {  
         await Promise.all([
-            await createMyMachine(addressSpace),
-            //await createCoatingLine(addressSpace),
-            await createShowCaseMachineTool(addressSpace),
+            createMyMachine(addressSpace),
+            createShowCaseMachineTool(addressSpace),
         ]);
     }
 }
