@@ -69,19 +69,19 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.Di.NodeSet2.xml", 
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
         "nodesets/Opc.Ua.SurfaceTechnology.NodeSet2.xml",
-        //"nodesets/Opc.Ua.IA.NodeSet2.xml",
-        //"nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
+        "nodesets/Opc.Ua.IA.NodeSet2.xml",
+        "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
 
         // CoatingLine Model
-        "machines/coatingline/model/CoatingLine-example.xml",
-        "machines/coatingline/model/Pretreatment.xml",
-        "machines/coatingline/model/Materialsupplyroom.xml",
-        "machines/coatingline/model/dosingsystem.xml",
-        "machines/coatingline/model/ovenbooth.xml",
-        "machines/coatingline/model/ConveyorGunsAxes.xml",
+        // "machines/coatingline/model/CoatingLine-example.xml",
+        // "machines/coatingline/model/Pretreatment.xml",
+        // "machines/coatingline/model/Materialsupplyroom.xml",
+        // "machines/coatingline/model/dosingsystem.xml",
+        // "machines/coatingline/model/ovenbooth.xml",
+        // "machines/coatingline/model/ConveyorGunsAxes.xml",
 
         // MachineTool Model
-        //"machines/machinetool/model/ShowCaseMachineTool.xml",
+        "machines/machinetool/model/ShowCaseMachineTool.xml",
     ],
 });
 
@@ -91,7 +91,7 @@ const create_addressSpace = async () => {
     if (addressSpace) {  
         await Promise.all([
             await createMyMachine(addressSpace),
-            await createCoatingLine(addressSpace),
+            //await createCoatingLine(addressSpace),
             await createShowCaseMachineTool(addressSpace),
         ]);
     }
