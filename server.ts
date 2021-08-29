@@ -68,8 +68,7 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
         "nodesets/Opc.Ua.IA.NodeSet2.xml",
         "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
-
-        // MachineTool Model
+        // models
         "machines/machinetool/model/ShowCaseMachineTool.xml",
     ],
 });
@@ -98,7 +97,7 @@ const startup = async () => {
         console.log(" Received server interruption from user ");
         console.log(" shutting down ...");
         const reason = coerceLocalizedText("Shutdown by administrator");
-        if (reason != null) {
+        if (reason) {
             server.engine.serverStatus.shutdownReason = reason;
         }
         server.shutdown(10000, () => {
