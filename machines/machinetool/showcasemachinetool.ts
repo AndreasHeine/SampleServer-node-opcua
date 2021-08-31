@@ -1,3 +1,5 @@
+// Copyright 2021 (c) Andreas Heine
+
 import { 
     coerceLocalizedText, 
     DataType,

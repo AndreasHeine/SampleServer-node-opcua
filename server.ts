@@ -1,6 +1,4 @@
 // Copyright 2021 (c) Andreas Heine
-//
-// http://node-opcua.github.io/
 
 import { 
     OPCUAServer, 
