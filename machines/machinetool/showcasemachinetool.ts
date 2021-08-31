@@ -96,4 +96,11 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace) => {
         value: spindleEURange,
         dataType: DataType.ExtensionObject,
     })
+
+    // writing a enum
+    const channel1 = addressSpace?.findNode(`ns=${idx};i=55233`) as UAVariable;
+    channel1.setValueFromSource({
+        value: 1,
+        dataType: DataType.UInt32
+    })
 }
