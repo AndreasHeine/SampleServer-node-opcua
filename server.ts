@@ -14,6 +14,7 @@ import {
 
 import { createMyMachine} from "./machines/mymachine/mymachine";
 import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool";
+import { createSampleImm} from "./machines/sample_imm/sample_imm";
 
 const port = Number(process.env.ua_port) || 4840;
 const ip = process.env.ua_ip || "0.0.0.0";
@@ -68,8 +69,11 @@ const server = new OPCUAServer({
         "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
         "nodesets/Opc.Ua.IA.NodeSet2.xml",
         "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
+        "nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
+        "nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
         // models
         "machines/machinetool/model/ShowCaseMachineTool.xml",
+        "machines/sample_imm/model/sample_imm.xml",
     ],
 });
 
@@ -79,6 +83,7 @@ const create_addressSpace = async () => {
         await Promise.all([
             createMyMachine(addressSpace),
             createShowCaseMachineTool(addressSpace),
+            createSampleImm(addressSpace),
         ]);
     }
 }
