@@ -14,8 +14,8 @@ import { createMyMachine} from "./machines/mymachine/mymachine";
 import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool";
 import { createSampleImm} from "./machines/sample_imm/sample_imm";
 
-const port = Number(process.env.ua_port) || 4840;
-const ip = process.env.ua_ip || "0.0.0.0";
+const port = Number(process.env.PORT) || 4840;
+const ip = process.env.IP || "0.0.0.0";
 
 const server = new OPCUAServer({
     port: port,
