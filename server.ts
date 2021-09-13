@@ -8,14 +8,14 @@ import {
     coerceLocalizedText, 
     ServerCapabilities,
     OperationLimits,
-} from "node-opcua";
+} from "node-opcua"
 
-import { createMyMachine} from "./machines/mymachine/mymachine";
-import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool";
-import { createSampleImm} from "./machines/sample_imm/sample_imm";
+import { createMyMachine} from "./machines/mymachine/mymachine"
+import { createShowCaseMachineTool} from "./machines/machinetool/showcasemachinetool"
+import { createSampleImm} from "./machines/sample_imm/sample_imm"
 
-const port = Number(process.env.PORT) || 4840;
-const ip = process.env.IP || "0.0.0.0";
+const port = Number(process.env.PORT) || 4840
+const ip = process.env.IP || "0.0.0.0"
 
 const server = new OPCUAServer({
     port: port,
@@ -73,51 +73,51 @@ const server = new OPCUAServer({
         "machines/machinetool/model/ShowCaseMachineTool.xml",
         "machines/sample_imm/model/sample_imm.xml",
     ],
-});
+})
 
 const create_addressSpace = async () => {
-    const addressSpace = server.engine.addressSpace;
+    const addressSpace = server.engine.addressSpace
     if (addressSpace) {  
         await Promise.all([
             createMyMachine(addressSpace),
             createShowCaseMachineTool(addressSpace),
             createSampleImm(addressSpace),
-        ]);
+        ])
     }
 }
 
 const startup = async () => {
-    console.log(" starting server... ");
-    await server.start();
-    console.log(" server is ready on: ");
-    server.endpoints.forEach(endpoint => console.log(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl));
-    console.log(" CTRL+C to stop ");  
+    console.log(" starting server... ")
+    await server.start()
+    console.log(" server is ready on: ")
+    server.endpoints.forEach(endpoint => console.log(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl))
+    console.log(" CTRL+C to stop ")  
     process.on("SIGINT", () => {
         if (server.engine.serverStatus.state === ServerState.Shutdown) {
-            console.log(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second");
-            return;
+            console.log(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second")
+            return
         }
-        console.log(" Received server interruption from user ");
-        console.log(" shutting down ...");
-        const reason = coerceLocalizedText("Shutdown by administrator");
+        console.log(" Received server interruption from user ")
+        console.log(" shutting down ...")
+        const reason = coerceLocalizedText("Shutdown by administrator")
         if (reason) {
-            server.engine.serverStatus.shutdownReason = reason;
+            server.engine.serverStatus.shutdownReason = reason
         }
         server.shutdown(10000, () => {
-        console.log(" shutting down completed ");
-        console.log(" done ");
-        process.exit(0);
-        });
-    });
+        console.log(" shutting down completed ")
+        console.log(" done ")
+        process.exit(0)
+        })
+    })
 }
 
 (async () => {
     try {
-        await server.initialize();
-        await create_addressSpace();
-        await startup();
+        await server.initialize()
+        await create_addressSpace()
+        await startup()
     } catch (error) {
-        console.log(" error ", error);
-        process.exit(-1);
+        console.log(" error ", error)
+        process.exit(-1)
     }
-})();
+})()

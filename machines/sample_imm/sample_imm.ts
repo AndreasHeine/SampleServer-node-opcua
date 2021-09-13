@@ -2,7 +2,7 @@
 
 import { 
     AddressSpace,
-} from "node-opcua";
+} from "node-opcua"
 
 export const createSampleImm = async (addressSpace: AddressSpace) => {
 
