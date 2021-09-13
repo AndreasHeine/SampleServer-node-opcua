@@ -85,7 +85,7 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace) => {
         dataType: DataType.Double,
     })
 
-    // ExtensionObject beschreiben (Range)
+    // writing ExtensionObject (Range)
     const spindleEURange = addressSpace?.constructExtensionObject(
         new NodeId(NodeIdType.NUMERIC, 884, 0),
         {
