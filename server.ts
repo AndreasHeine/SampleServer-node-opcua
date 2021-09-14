@@ -24,7 +24,7 @@ const server = new OPCUAServer({
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
     resourcePath: "/UA",
-    buildInfo : {
+    buildInfo: {
         productUri: "SampleServer-productUri",
         productName: "SampleServer-productName",
         manufacturerName: "SampleServer-manufacturerName",
