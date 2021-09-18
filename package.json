@@ -20,5 +20,8 @@
   "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
   "dependencies": {
     "node-opcua": "^2.50.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.2"
   }
 }
