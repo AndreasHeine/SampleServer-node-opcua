@@ -6,10 +6,29 @@ import {
     ServerCapabilities,
     OperationLimits,
     OPCUAServerOptions,
+    OPCUACertificateManager,
 } from "node-opcua"
 
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
+
+const PKIFolder = "pki"
+const serverCertificate = "cert.pem"
+const privateKey = "key.pem"
+const userManager = {
+    isValidUser: (userName: string, password: string) => {
+        // for testing only!
+        if (userName === "user" && password === "pw") {
+            return true
+        }
+        return false
+    }
+}
+const serverCertificateManager = new OPCUACertificateManager({
+    automaticallyAcceptUnknownCertificate: true,
+    name: "pki",
+    rootFolder: PKIFolder
+})
 
 export const config: OPCUAServerOptions = {
     port: port,
@@ -47,11 +66,17 @@ export const config: OPCUAServerOptions = {
         })
     }),
     allowAnonymous: true,
+    userManager: userManager,
+    serverCertificateManager: serverCertificateManager,
+    certificateFile: serverCertificate,
+    privateKeyFile: privateKey,
     securityModes: [
         MessageSecurityMode.None, 
+        MessageSecurityMode.SignAndEncrypt
     ],
     securityPolicies: [
         SecurityPolicy.None, 
+        SecurityPolicy.Basic256Sha256
     ],
     disableDiscovery: false,
     nodeset_filename: [
