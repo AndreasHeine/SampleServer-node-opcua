@@ -4,11 +4,7 @@ import {
     coerceLocalizedText, 
     DataType,
     UAVariable,
-    UAObject,
     AddressSpace,
-    UAObjectType,
-    UAVariableType,
-    UADataType,
     NodeId,
     NodeIdType,
 } from "node-opcua"
