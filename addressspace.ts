@@ -33,8 +33,7 @@ export const createAddressSpace = async (server: OPCUAServer):Promise<void> => {
         })
         .catch((error) => {
             throw new Error(` creating addressspace failed: ${error} `)
-        }
-        )
+        })
     } else {
         throw new Error(` addressSpace not found! the server has no "addressSpace" property of type AdressSpace `)
     }
