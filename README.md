@@ -14,6 +14,13 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
 `2. open folder in VS Code (or in terminal)`  
 `3. npm install`  
 `4. npm run start`
+
+### Ephemeral Dev Environment
+
+- [Click](https://gitpod.io/#https://github.com/AndreasHeine/SampleServer-node-opcua)
+- `npm run start`
+- split terminal: `opcua-commander -e opc.tcp://localhost:4840/UA` to have a local OPC UA client
+
   
 ## Build 
 if you want to build an executable  
