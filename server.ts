@@ -19,7 +19,7 @@ import {
 } from "node-opcua"
 
 import { config } from "./config"
-import { createAddressSpace} from "./addressspace"
+import { createAddressSpace } from "./addressspace"
 
 const server = new OPCUAServer(config)
 
