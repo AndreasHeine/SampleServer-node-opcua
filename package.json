@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc && node server.js",
     "debug": "tsc && node --inspect server.js",
-    "build": "tsc && pkg -t win server.js"
+    "build": "tsc && pkg server.js"
   },
   "repository": {
     "type": "git",
