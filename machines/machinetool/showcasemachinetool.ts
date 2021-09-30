@@ -9,7 +9,7 @@ import {
     NodeIdType,
 } from "node-opcua"
 
-export const createShowCaseMachineTool = async (addressSpace: AddressSpace) => {
+export const createShowCaseMachineTool = async (addressSpace: AddressSpace):Promise<void> => {
 
     // bind variable to a getter (external api call or js variable)
     // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable

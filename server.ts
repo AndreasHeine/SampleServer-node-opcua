@@ -11,7 +11,7 @@ import { createAddressSpace} from "./addressspace"
 
 const server = new OPCUAServer(config)
 
-const startup = async () => {
+const startup = async ():Promise<void> => {
     console.log(" starting server... ")
     await server.start()
     console.log(" server is ready on: ")
