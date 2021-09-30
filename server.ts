@@ -37,9 +37,7 @@ const startup = async ():Promise<void> => {
         console.log(" Received server interruption from user ")
         console.log(" shutting down ...")
         const reason = coerceLocalizedText("Shutdown by administrator")
-        if (reason) {
-            server.engine.serverStatus.shutdownReason = reason
-        }
+        reason ? server.engine.serverStatus.shutdownReason = reason :
         server.shutdown(10000, () => {
         console.log(" shutting down completed ")
         console.log(" done ")
