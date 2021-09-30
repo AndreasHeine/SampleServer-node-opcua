@@ -23,3 +23,8 @@ if you want to build an executable
   
 ![grafik](https://user-images.githubusercontent.com/56362817/131531865-bb006b44-cdea-4582-9ffd-dcba816caee7.png)
   
+## License
+
+![GitHub](https://img.shields.io/github/license/AndreasHeine/SampleServer-node-opcua)
+
+Unless otherwise specified, source code in this repository is licensed under the [Apache 2.0 License](LICENSE).
