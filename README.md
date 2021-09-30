@@ -4,16 +4,16 @@ OPC UA Sample Server based on [node-opcua](https://github.com/node-opcua/node-op
 the book from the author of node-opcua: [node-opcuabyexample](https://leanpub.com/node-opcuabyexample)  
 API Docs: [2.32.0](https://node-opcua.github.io/api_doc/2.32.0/index.html)  
   
-## Requirments  
+## Requirements  
 node v14 (LTS) or newer  
 typescript globally installed for tsc cli (`npm install -g typescript`)  
 pkg globally installed for pkg cli (`npm install -g pkg`)  
   
 ## Usage   
-`1. download and unpack`  
-`2. open folder in VS Code (or in terminal)`  
-`3. npm install`  
-`4. npm run start`
+- `download and unpack`  
+- `open folder in VS Code (or in terminal)`  
+- `npm install`  
+- `npm run start`
 
 ### Ephemeral Dev Environment
 
