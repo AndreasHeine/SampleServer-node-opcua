@@ -24,9 +24,10 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
 ## Docker  
 
 Create the docker image:  
-`docker build . -t sampleserver`  
-Set "IP" and "PORT" in environment variable:  
-`docker run -it -p 5000:5000 -e PORT=5000 -e IP=127.0.0.1 --name test_server sampleserver`  
+- `docker build . -t sampleserver`  
+
+Set "IP" and "PORT" in env:  
+- `docker run -it -p 5000:5000 -e PORT=5000 -e IP=127.0.0.1 --name test_server sampleserver`  
   
 ## Build 
 if you want to build an executable  
