@@ -24,7 +24,7 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
   
 ## Build 
 if you want to build an executable  
-`tsc && pkg -t server.js`
+`tsc && pkg server.js`
   
 ## Implementations of OPC UA Companion Specifications
   
