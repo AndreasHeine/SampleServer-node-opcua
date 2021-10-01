@@ -20,7 +20,13 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
 - [Click](https://gitpod.io/#https://github.com/AndreasHeine/SampleServer-node-opcua)
 - `npm run start`
 - split terminal: `opcua-commander -e opc.tcp://localhost:4840/UA` to have a local OPC UA client
+  
+## Docker  
 
+Create the docker image:  
+`docker build . -t sampleserver`  
+Set "IP" and "PORT" in environment variable:  
+`docker run -it -p 5000:5000 -e PORT=5000 -e IP=127.0.0.1 --name test_server sampleserver`  
   
 ## Build 
 if you want to build an executable  
