@@ -15,7 +15,7 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
 - `npm install`  
 - `npm run start`
 
-### Ephemeral Dev Environment
+## Ephemeral Dev Environment
 
 - [Click](https://gitpod.io/#https://github.com/AndreasHeine/SampleServer-node-opcua)
 - `npm run start`
