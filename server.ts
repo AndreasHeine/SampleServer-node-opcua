@@ -20,6 +20,7 @@ import {
 
 import { config } from "./config"
 import { createAddressSpace } from "./addressspace"
+import { createServerCertificate } from "./createServerCertificate"
 
 const server = new OPCUAServer(config)
 
@@ -48,6 +49,7 @@ const startup = async ():Promise<void> => {
 
 (async () => {
     try {
+        await createServerCertificate()
         await server.initialize()
         await createAddressSpace(server)
         await startup()
