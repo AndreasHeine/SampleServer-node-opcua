@@ -23,7 +23,7 @@ import { createAddressSpace } from "./addressspace"
 
 const server = new OPCUAServer(config)
 
-const startup = async ():Promise<void> => {
+const startup = async (server:OPCUAServer):Promise<void> => {
     console.log(" starting server... ")
     await server.start()
     console.log(" server is ready on: ")
@@ -50,7 +50,7 @@ const startup = async ():Promise<void> => {
     try {
         await server.initialize()
         await createAddressSpace(server)
-        await startup()
+        await startup(server)
     } catch (error) {
         console.log(" error ", error)
         process.exit(-1)
