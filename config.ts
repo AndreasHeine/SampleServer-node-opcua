@@ -25,8 +25,6 @@ const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
 
 const PKIFolder = "pki"
-const serverCertificate = "cert.pem"
-const privateKey = "key.pem"
 const userManager = {
     isValidUser: (userName: string, password: string) => {
         // for testing only!
@@ -80,8 +78,6 @@ export const config: OPCUAServerOptions = {
     allowAnonymous: true,
     userManager: userManager,
     serverCertificateManager: serverCertificateManager,
-    certificateFile: serverCertificate,
-    privateKeyFile: privateKey,
     securityModes: [
         MessageSecurityMode.None, 
         MessageSecurityMode.SignAndEncrypt
