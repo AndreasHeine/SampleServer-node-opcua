@@ -21,7 +21,7 @@ import {
     OPCUACertificateManager,
 } from "node-opcua"
 import { readFileSync } from 'fs'
-import { hashSync, genSaltSync } from 'bcrypt'
+import { hash, hashSync, genSaltSync } from 'bcrypt'
 
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
@@ -55,14 +55,32 @@ const getUser = (username: String, users: User[]):User | null => {
 }
 
 const userManager = {
-    isValidUser: (username: string, password: string) => {
-        if (getUser(username, userList)?.password === hashSync(String(password), salt)) {
-            return true
-        }
-        return false
-    },
+    // // blocks eventloop !!!
+    // isValidUser: (username: string, password: string) => {
+    //     if (getUser(username, userList)?.password === hashSync(String(password), salt)) {
+    //         return true
+    //     }
+    //     return false
+    // },
     getUserRole: (username: string) => {
         return getUser(username, userList)?.role || "unknown"
+    },
+    isValidUserAsync: (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
+        const user = getUser(username, userList)
+        // check if username exist -> avoid hashing passwords for invalid usernames
+        if (user) {
+            hash(String(password), salt)
+            .then(hash => {
+                if (user?.password === hash) {
+                    callback(null, true)
+                }
+                callback(null, false)
+            }).catch((err) => {
+                callback(null, false)
+            })
+        } else {
+            callback(null, false)
+        }
     }
 }
 
