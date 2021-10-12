@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "username": "admin", 
+            "password": "pw1",
+            "role": "admin"
+        },
+        {
+            "username": "operator", 
+            "password": "pw2", 
+            "role": "operator"
+        },
+        {
+            "username": "guest",
+            "password": "pw3", 
+            "role": "guest"
+        }
+    ]
+}

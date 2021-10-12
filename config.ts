@@ -20,24 +20,56 @@ import {
     OPCUAServerOptions,
     OPCUACertificateManager,
 } from "node-opcua"
+import { readFileSync } from 'fs'
+import { hashSync, genSaltSync } from 'bcrypt'
 
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
+const userFile = process.env.USERFILE || "example_user.json"
+const salt = process.env.SALT || genSaltSync();
 
-const PKIFolder = "pki"
+interface User {
+    username: String,
+    password: String,
+    role: "admin" | "operator" | "guest" // basic roles defined by spec.
+}
+
+const userList: User[] = JSON.parse(
+        readFileSync(userFile, "utf-8")
+    ).users.map((user: User) => {
+        user.username = user.username,
+        user.password = hashSync(String(user.password), salt),
+        user.role = user.role
+        return user
+    })
+console.log(userList)
+
+const getUser = (username: String, users: User[]):User | null => {
+    let user:User[] = users.filter(item => {
+        if (item.username === username) {
+            return item
+        }
+        return null
+    }) 
+    return user[0]
+}
+
 const userManager = {
-    isValidUser: (userName: string, password: string) => {
-        // for testing only!
-        if (userName === "user" && password === "pw") {
+    isValidUser: (username: string, password: string) => {
+        if (getUser(username, userList)?.password === hashSync(String(password), salt)) {
             return true
         }
         return false
+    },
+    getUserRole: (username: string) => {
+        return getUser(username, userList)?.role || "unknown"
     }
 }
+
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: "pki",
-    rootFolder: PKIFolder
+    rootFolder: "pki"
 })
 
 export const config: OPCUAServerOptions = {
@@ -75,7 +107,7 @@ export const config: OPCUAServerOptions = {
             maxNodesPerWrite: 1000,
         })
     }),
-    allowAnonymous: true,
+    allowAnonymous: false,
     userManager: userManager,
     serverCertificateManager: serverCertificateManager,
     securityModes: [
