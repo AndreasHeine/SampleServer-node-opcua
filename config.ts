@@ -26,7 +26,7 @@ import { hash, hashSync, genSaltSync } from 'bcrypt'
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
 const userFile = process.env.USERFILE || "example_user.json"
-const salt = process.env.SALT || genSaltSync();
+const salt = process.env.SALT || genSaltSync()
 
 interface User {
     username: String,
@@ -34,7 +34,7 @@ interface User {
     role: "admin" | "operator" | "guest" // basic roles defined by spec.
 }
 
-const userList: User[] = JSON.parse(
+const userList:User[] = JSON.parse(
         readFileSync(userFile, "utf-8")
     ).users.map((user: User) => {
         user.username = user.username,
@@ -42,7 +42,6 @@ const userList: User[] = JSON.parse(
         user.role = user.role
         return user
     })
-console.log(userList)
 
 const getUser = (username: String, users: User[]):User | null => {
     let user:User[] = users.filter(item => {
@@ -75,7 +74,8 @@ const userManager = {
                     callback(null, true)
                 }
                 callback(null, false)
-            }).catch((err) => {
+            })
+            .catch((err) => {
                 callback(null, false)
             })
         } else {
