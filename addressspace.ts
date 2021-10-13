@@ -15,6 +15,7 @@
 import { 
     OPCUAServer, 
 } from "node-opcua"
+import chalk from 'chalk'
 
 import { createMyMachine } from "./machines/mymachine/mymachine"
 import { createShowCaseMachineTool } from "./machines/machinetool/showcasemachinetool"
@@ -28,7 +29,7 @@ export const createAddressSpace = async (server: OPCUAServer):Promise<void> => {
         createSampleImm(addressSpace),
     ])
     .then(() => {
-        console.log(" creating addressspace done! ")
+        console.log(chalk.green(" creating addressspace done! "))
     })
     .catch((error) => {
         throw new Error(` creating addressspace failed: ${error} `)

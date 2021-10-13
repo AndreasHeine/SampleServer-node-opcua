@@ -20,24 +20,23 @@ import {
     OPCUAServerOptions,
     OPCUACertificateManager,
 } from "node-opcua"
+import { 
+    isValidUserAsync,
+    getUserRole,
+} from "./user"
 
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
 
-const PKIFolder = "pki"
 const userManager = {
-    isValidUser: (userName: string, password: string) => {
-        // for testing only!
-        if (userName === "user" && password === "pw") {
-            return true
-        }
-        return false
-    }
+    isValidUserAsync: isValidUserAsync,
+    getUserRole: getUserRole
 }
+
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: "pki",
-    rootFolder: PKIFolder
+    rootFolder: "pki"
 })
 
 export const config: OPCUAServerOptions = {
