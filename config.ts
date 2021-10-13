@@ -21,7 +21,7 @@ import {
     OPCUACertificateManager,
 } from "node-opcua"
 import { 
-    validateUserAsync,
+    isValidUserAsync,
     getUserRole,
 } from "./user"
 
@@ -29,7 +29,7 @@ const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "0.0.0.0"
 
 const userManager = {
-    isValidUserAsync: validateUserAsync,
+    isValidUserAsync: isValidUserAsync,
     getUserRole: getUserRole
 }
 

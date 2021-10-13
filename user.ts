@@ -12,6 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import chalk from 'chalk'
 import { readFileSync } from 'fs'
 import { hash, hashSync, genSaltSync } from 'bcrypt'
 
@@ -43,21 +44,27 @@ const getUser = (username: String, users: User[]):User | null => {
     return user[0]
 }
 
-export const validateUserAsync = (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
+export const isValidUserAsync = (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
     const user = getUser(username, userList)
     if (user) {
         hash(String(password), salt)
         .then(hash => {
             if (user?.password === hash) {
+                console.log(chalk.green(` user:${user.username} logged in! `))
                 callback(null, true)
+            } else {
+                console.log(chalk.red(` user:${user.username} rejected! `))
+                callback(null, false)
             }
-            callback(null, false)
         })
         .catch((err) => {
+            console.log(err)
             callback(null, false)
         })
+    } else {
+        console.log(chalk.red(` user:unknown rejected! `))
+        callback(null, false)
     }
-    callback(null, false)
 }
 
 export const getUserRole = (username: string) => {

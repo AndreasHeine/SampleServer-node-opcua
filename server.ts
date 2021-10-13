@@ -17,6 +17,7 @@ import {
     ServerState,
     coerceLocalizedText, 
 } from "node-opcua"
+import chalk from 'chalk'
 
 import { config } from "./config"
 import { createAddressSpace } from "./addressspace"
@@ -24,23 +25,22 @@ import { createAddressSpace } from "./addressspace"
 const server = new OPCUAServer(config)
 
 const startup = async (server:OPCUAServer):Promise<void> => {
-    console.log(" starting server... ")
     await server.start()
-    console.log(" server is ready on: ")
-    server.endpoints.forEach(endpoint => console.log(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl))
-    console.log(" CTRL+C to stop ")  
+    console.log(chalk.green(" server started and ready on: "))
+    server.endpoints.forEach(endpoint => console.log(chalk.green(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl)))
+    console.log(chalk.yellow(" CTRL+C to stop "))  
     process.on("SIGINT", () => {
         if (server.engine.serverStatus.state === ServerState.Shutdown) {
-            console.log(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second")
+            console.log(chalk.yellow(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second"))
             return
         }
-        console.log(" Received server interruption from user ")
-        console.log(" shutting down ...")
+        console.log(chalk.yellow(" Received server interruption from user "))
+        console.log(chalk.yellow(" shutting down ..."))
         const reason = coerceLocalizedText("Shutdown by administrator")
         reason ? server.engine.serverStatus.shutdownReason = reason :
         server.shutdown(10000, () => {
-        console.log(" shutting down completed ")
-        console.log(" done ")
+        console.log(chalk.yellow(" shutting down completed "))
+        console.log(chalk.yellow(" done "))
         process.exit(0)
         })
     })
@@ -48,11 +48,12 @@ const startup = async (server:OPCUAServer):Promise<void> => {
 
 (async () => {
     try {
+        console.log(chalk.yellow(" starting server... "))
         await server.initialize()
         await createAddressSpace(server)
         await startup(server)
     } catch (error) {
-        console.log(" error ", error)
+        console.log(chalk.red(" error ", error))
         process.exit(-1)
     }
 })()
