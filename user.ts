@@ -58,7 +58,7 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
             }
         })
         .catch((err) => {
-            console.log(err)
+            console.log(chalk.red(err))
             callback(null, false)
         })
     } else {
