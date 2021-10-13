@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
     "bcrypt": "^5.0.1",
     "node-opcua": "^2.50.0"
   },
   "devDependencies": {
-    "@types/node": "^16.9.2"
+    "@types/node": "^16.9.2",
+    "@types/bcrypt": "^5.0.0"
   }
 }
