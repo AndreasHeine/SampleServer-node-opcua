@@ -74,7 +74,7 @@ export const config: OPCUAServerOptions = {
             maxNodesPerWrite: 1000,
         })
     }),
-    allowAnonymous: false,
+    allowAnonymous: true,
     userManager: userManager,
     serverCertificateManager: serverCertificateManager,
     securityModes: [
