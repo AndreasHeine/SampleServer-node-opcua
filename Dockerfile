@@ -1,8 +1,7 @@
-FROM node
+FROM node:16.11
 
 COPY . /
 
-RUN npm install -g typescript @types/node @types/bcrypt
 RUN npm install
 
 ENTRYPOINT ["npm", "run", "start"]
