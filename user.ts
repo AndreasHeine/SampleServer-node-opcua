@@ -14,28 +14,17 @@
 
 import chalk from 'chalk'
 import { readFileSync } from 'fs'
-import { hash, hashSync, genSaltSync } from 'bcrypt'
+import { compare } from 'bcrypt'
+import { User } from './utils/userFile'
 
 const userFile = process.env.USERFILE || "example_user.json"
-const salt = process.env.SALT || genSaltSync()
 
-interface User {
-    username: String,
-    password: String,
-    role: "admin" | "operator" | "guest" // basic roles defined by spec.
-}
-
-const userList:User[] = JSON.parse(
+const userList: User[] = JSON.parse(
         readFileSync(userFile, "utf-8")
-    ).users.map((user: User) => {
-        user.username = user.username,
-        user.password = hashSync(String(user.password), salt),
-        user.role = user.role
-        return user
-    })
+    ).users
 
-const getUser = (username: String, users: User[]):User | null => {
-    let user:User[] = users.filter(item => {
+const getUser = (username: String, users: User[]): User | null => {
+    let user: User[] = users.filter(item => {
         if (item.username === username) {
             return item
         }
@@ -47,9 +36,8 @@ const getUser = (username: String, users: User[]):User | null => {
 export const isValidUserAsync = (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
     const user = getUser(username, userList)
     if (user) {
-        hash(String(password), salt)
-        .then(hash => {
-            if (user?.password === hash) {
+        compare(password, String(user.password), (err, result) => {
+            if (result === true) {
                 console.log(chalk.green(` user:${user.username} logged in! `))
                 callback(null, true)
             } else {
@@ -57,16 +45,12 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
                 callback(null, false)
             }
         })
-        .catch((err) => {
-            console.log(chalk.red(err))
-            callback(null, false)
-        })
     } else {
         console.log(chalk.red(` user:unknown rejected! `))
         callback(null, false)
     }
 }
 
-export const getUserRole = (username: string) => {
+export const getUserRole = (username: String) => {
     return getUser(username, userList)?.role || "unknown"
 }

@@ -25,7 +25,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace):Pr
     
     const softwareType = addressSpace?.findNode(`ns=${diIdx};i=15106`) as UAObjectType
     const software = softwareType?.instantiate({
-        browseName: "Software",
+        browseName: "SoftwareType",
         organizedBy: addressSpace.rootFolder.objects,
     })
     const model = software?.getPropertyByName("Model")

@@ -17,7 +17,7 @@ import {
 } from "node-opcua"
 import chalk from 'chalk'
 
-import { createOwnServerAddressspace } from "./ServerAddressspace/ServerAddressspace"
+import { createOwnServerAddressspace } from "./serveraddressspace/serveraddressspace"
 import { createMyMachine } from "./machines/mymachine/mymachine"
 import { createShowCaseMachineTool } from "./machines/machinetool/showcasemachinetool"
 import { createSampleImm } from "./machines/sample_imm/sample_imm"
