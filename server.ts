@@ -40,7 +40,7 @@ const shutDown = ():void => {
     })
 }
 
-const startup = async (server:OPCUAServer):Promise<void> => {
+const startUp = async (server:OPCUAServer):Promise<void> => {
     await server.start()
     console.log(chalk.green(' server started and ready on: '))
     console.log(chalk.green(` |--> ${server.getEndpointUrl()} `))
@@ -55,7 +55,7 @@ const startup = async (server:OPCUAServer):Promise<void> => {
         console.log(chalk.yellow(' starting server... '))
         await server.initialize()
         await createAddressSpace(server)
-        await startup(server)
+        await startUp(server)
     } catch (error) {
         console.log(chalk.red(' error ', error))
         process.exit(-1)
