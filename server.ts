@@ -24,26 +24,29 @@ import { createAddressSpace } from "./addressspace"
 
 const server = new OPCUAServer(config)
 
+const shutDown = () => {
+    if (server.engine.serverStatus.state === ServerState.Shutdown) {
+        console.log(chalk.yellow(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second"))
+        return
+    }
+    console.log(chalk.yellow(" Received server interruption from user "))
+    console.log(chalk.yellow(" shutting down ..."))
+    const reason = coerceLocalizedText("Shutdown by administrator")
+    reason ? server.engine.serverStatus.shutdownReason = reason :
+    server.shutdown(10000, () => {
+        console.log(chalk.yellow(" shutting down completed "))
+        console.log(chalk.yellow(" done "))
+        process.exit(0)
+    })
+}
+
 const startup = async (server:OPCUAServer):Promise<void> => {
     await server.start()
     console.log(chalk.green(" server started and ready on: "))
     server.endpoints.forEach(endpoint => console.log(chalk.green(" |--> ",endpoint.endpointDescriptions()[0].endpointUrl)))
     console.log(chalk.yellow(" CTRL+C to stop "))  
-    process.on("SIGINT", () => {
-        if (server.engine.serverStatus.state === ServerState.Shutdown) {
-            console.log(chalk.yellow(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second"))
-            return
-        }
-        console.log(chalk.yellow(" Received server interruption from user "))
-        console.log(chalk.yellow(" shutting down ..."))
-        const reason = coerceLocalizedText("Shutdown by administrator")
-        reason ? server.engine.serverStatus.shutdownReason = reason :
-        server.shutdown(10000, () => {
-        console.log(chalk.yellow(" shutting down completed "))
-        console.log(chalk.yellow(" done "))
-        process.exit(0)
-        })
-    })
+    process.on("SIGINT", shutDown)
+    process.on('SIGTERM', shutDown)
 }
 
 (async () => {

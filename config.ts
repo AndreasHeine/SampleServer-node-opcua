@@ -27,10 +27,10 @@ import {
     getUserRole,
 } from "./user"
 
-const port = Number(process.env.PORT) || 4840
-const ip = process.env.IP || "127.0.0.1"
-const fqhn = getFullyQualifiedDomainName()
-const alternateHostnames = []
+const port: number = Number(process.env.PORT) || 4840
+const ip: string = process.env.IP || "127.0.0.1"
+const fqhn: string = getFullyQualifiedDomainName()
+const alternateHostnames: string[] = []
 alternateHostnames.push(fqhn)
 alternateHostnames.push("127.0.0.1")
 

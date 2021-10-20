@@ -17,7 +17,7 @@ import { readFileSync } from 'fs'
 import { compare } from 'bcrypt'
 import { User } from './utils/userfile'
 
-const userFile = process.env.USERFILE || "example_user.json"
+const userFile: string = process.env.USERFILE || "example_user.json"
 
 const userList: User[] = JSON.parse(
         readFileSync(userFile, "utf-8")
