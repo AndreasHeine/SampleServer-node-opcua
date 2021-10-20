@@ -15,7 +15,7 @@
 import { 
     OPCUAServer, 
     ServerState,
-    coerceLocalizedText, 
+    coerceLocalizedText,
 } from "node-opcua"
 import chalk from 'chalk'
 

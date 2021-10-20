@@ -15,7 +15,7 @@
 import chalk from 'chalk'
 import { readFileSync } from 'fs'
 import { compare } from 'bcrypt'
-import { User } from './utils/userFile'
+import { User } from './utils/userfile'
 
 const userFile = process.env.USERFILE || "example_user.json"
 

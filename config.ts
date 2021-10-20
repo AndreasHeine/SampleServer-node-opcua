@@ -19,6 +19,8 @@ import {
     OperationLimits,
     OPCUAServerOptions,
     OPCUACertificateManager,
+    RegisterServerMethod,
+    getFullyQualifiedDomainName,
 } from "node-opcua"
 import { 
     isValidUserAsync,
@@ -26,7 +28,11 @@ import {
 } from "./user"
 
 const port = Number(process.env.PORT) || 4840
-const ip = process.env.IP || "0.0.0.0"
+const ip = process.env.IP || "127.0.0.1"
+const fhqn = getFullyQualifiedDomainName()
+const alternateHostnames = []
+alternateHostnames.push(fhqn)
+alternateHostnames.push("127.0.0.1")
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
@@ -36,12 +42,18 @@ const userManager = {
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: "pki",
-    rootFolder: "pki"
+    rootFolder: "pki",
+})
+
+const userCertificateManager = new OPCUACertificateManager({
+    name: "user_pki",
+    rootFolder: "user_pki",
 })
 
 export const config: OPCUAServerOptions = {
     port: port,
     hostname: ip,
+    alternateHostname: alternateHostnames,
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
@@ -76,6 +88,7 @@ export const config: OPCUAServerOptions = {
     }),
     allowAnonymous: true,
     userManager: userManager,
+    userCertificateManager: userCertificateManager,
     serverCertificateManager: serverCertificateManager,
     securityModes: [
         MessageSecurityMode.None, 
@@ -86,6 +99,7 @@ export const config: OPCUAServerOptions = {
         SecurityPolicy.Basic256Sha256
     ],
     disableDiscovery: false,
+    // registerServerMethod: RegisterServerMethod.LDS, // port needs to be different then 4840, if LDS is running!
     nodeset_filename: [
         // nodesets
         "nodesets/Opc.Ua.NodeSet2.xml", 
