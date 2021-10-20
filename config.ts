@@ -1,13 +1,13 @@
 // Copyright 2021 (c) Andreas Heine
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
 //       http://www.apache.org/licenses/LICENSE-2.0
 //
 //   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
+//   distributed under the License is distributed on an 'AS IS' BASIS,
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
@@ -21,18 +21,18 @@ import {
     OPCUACertificateManager,
     RegisterServerMethod,
     getFullyQualifiedDomainName,
-} from "node-opcua"
+} from 'node-opcua'
 import { 
     isValidUserAsync,
     getUserRole,
-} from "./user"
+} from './user'
 
 const port: number = Number(process.env.PORT) || 4840
-const ip: string = process.env.IP || "127.0.0.1"
+const ip: string = process.env.IP || '127.0.0.1'
 const fqhn: string = getFullyQualifiedDomainName()
 const alternateHostnames: string[] = []
 alternateHostnames.push(fqhn)
-alternateHostnames.push("127.0.0.1")
+alternateHostnames.push('127.0.0.1')
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
@@ -41,13 +41,13 @@ const userManager = {
 
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
-    name: "pki",
-    rootFolder: "pki",
+    name: 'pki',
+    rootFolder: 'pki',
 })
 
 const userCertificateManager = new OPCUACertificateManager({
-    name: "user_pki",
-    rootFolder: "user_pki",
+    name: 'user_pki',
+    rootFolder: 'user_pki',
 })
 
 export const config: OPCUAServerOptions = {
@@ -57,21 +57,21 @@ export const config: OPCUAServerOptions = {
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
-    resourcePath: "/UA",
+    resourcePath: '/UA',
     buildInfo: {
-        productUri: "SampleServer-productUri",
-        productName: "SampleServer-productName",
-        manufacturerName: "SampleServer-manufacturerName",
-        buildNumber: "v1.0.0",
+        productUri: 'SampleServer-productUri',
+        productName: 'SampleServer-productName',
+        manufacturerName: 'SampleServer-manufacturerName',
+        buildNumber: 'v1.0.0',
         buildDate: new Date(),
     },
     serverInfo: {
         applicationName: { 
-            text: "SampleServer-applicationName", 
-            locale: "en" ,
+            text: 'SampleServer-applicationName', 
+            locale: 'en' ,
         },
-        applicationUri: "urn:SampleServer",
-        productUri: "SampleServer-productUri",
+        applicationUri: 'urn:SampleServer',
+        productUri: 'SampleServer-productUri',
     },
     serverCapabilities: new ServerCapabilities({
         maxBrowseContinuationPoints: 10,
@@ -102,15 +102,15 @@ export const config: OPCUAServerOptions = {
     // registerServerMethod: RegisterServerMethod.LDS, // port needs to be different then 4840, if LDS is running!
     nodeset_filename: [
         // nodesets
-        "nodesets/Opc.Ua.NodeSet2.xml", 
-        "nodesets/Opc.Ua.Di.NodeSet2.xml", 
-        "nodesets/Opc.Ua.Machinery.NodeSet2.xml",
-        "nodesets/Opc.Ua.IA.NodeSet2.xml",
-        "nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
-        "nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
-        "nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
+        'nodesets/Opc.Ua.NodeSet2.xml', 
+        'nodesets/Opc.Ua.Di.NodeSet2.xml', 
+        'nodesets/Opc.Ua.Machinery.NodeSet2.xml',
+        'nodesets/Opc.Ua.IA.NodeSet2.xml',
+        'nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
+        'nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
+        'nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
         // models
-        "machines/machinetool/model/ShowCaseMachineTool.xml",
-        "machines/sample_imm/model/sample_imm.xml",
+        'machines/machinetool/model/ShowCaseMachineTool.xml',
+        'machines/sample_imm/model/sample_imm.xml',
     ],
 }

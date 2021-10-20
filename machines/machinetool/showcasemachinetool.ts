@@ -1,13 +1,13 @@
 // Copyright 2021 (c) Andreas Heine
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
 //       http://www.apache.org/licenses/LICENSE-2.0
 //
 //   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
+//   distributed under the License is distributed on an 'AS IS' BASIS,
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
@@ -19,20 +19,20 @@ import {
     AddressSpace,
     NodeId,
     NodeIdType,
-} from "node-opcua"
+} from 'node-opcua'
 
 export const createShowCaseMachineTool = async (addressSpace: AddressSpace):Promise<void> => {
 
     // bind variable to a getter (external api call or js variable)
     // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
 
-    const idx = addressSpace?.getNamespaceIndex("http://example.com/ShowcaseMachineTool/")
-    const iaIdx = addressSpace?.getNamespaceIndex("http://opcfoundation.org/UA/IA/")
-    const mtoolIdx = addressSpace?.getNamespaceIndex("http://opcfoundation.org/UA/MachineTool/")
+    const idx = addressSpace?.getNamespaceIndex('http://example.com/ShowcaseMachineTool/')
+    const iaIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/IA/')
+    const mtoolIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/MachineTool/')
 
     const activeProgramName = addressSpace?.findNode(`ns=${idx};i=55186`) as UAVariable
     activeProgramName?.setValueFromSource({
-        value: "Program_1",
+        value: 'Program_1',
         dataType: DataType.String,
     })
 
@@ -44,7 +44,7 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace):Prom
 
     const productionActiveProgramStateCurrentState = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable
     productionActiveProgramStateCurrentState?.setValueFromSource({
-        value: coerceLocalizedText("Running"),
+        value: coerceLocalizedText('Running'),
         dataType: DataType.LocalizedText,
     })
 
@@ -52,9 +52,9 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace):Prom
     setInterval(() => {
         const state = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable
         const stateNumber = addressSpace?.findNode(`ns=${idx};i=55190`) as UAVariable
-        if (state?.readValue().value.value.text === "Running") {
+        if (state?.readValue().value.value.text === 'Running') {
             state?.setValueFromSource({
-                value: coerceLocalizedText("Stopped"),
+                value: coerceLocalizedText('Stopped'),
                 dataType: DataType.LocalizedText,
             })
             stateNumber.setValueFromSource({
@@ -63,7 +63,7 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace):Prom
             })
         } else {
             state?.setValueFromSource({
-                value: coerceLocalizedText("Running"),
+                value: coerceLocalizedText('Running'),
                 dataType: DataType.LocalizedText,
             })
             stateNumber.setValueFromSource({

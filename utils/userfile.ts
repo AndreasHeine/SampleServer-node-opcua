@@ -1,13 +1,13 @@
 // Copyright 2021 (c) Andreas Heine
 //
-//   Licensed under the Apache License, Version 2.0 (the "License");
+//   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
 //   You may obtain a copy of the License at
 //
 //       http://www.apache.org/licenses/LICENSE-2.0
 //
 //   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
+//   distributed under the License is distributed on an 'AS IS' BASIS,
 //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
@@ -18,7 +18,7 @@ import { hashSync, genSaltSync } from 'bcrypt'
 export interface User {
     username: String,
     password: String,
-    role: "admin" | "operator" | "guest" // basic roles defined by spec.
+    role: 'admin' | 'operator' | 'guest' // basic roles defined by spec.
 }
 
 export class UserFile {
@@ -38,25 +38,25 @@ export class UserFile {
 
     public createUserFile(path: string) {
         writeFileSync(path, JSON.stringify({
-            "users": this.userList
+            'users': this.userList
         }))
     }
 }
 
 // const exampleUserFile = new UserFile()
 // exampleUserFile.addUser({
-//     username: "admin",
-//     password: "pw1",
-//     role: "admin"
+//     username: 'admin',
+//     password: 'pw1',
+//     role: 'admin'
 // })
 // exampleUserFile.addUser({
-//     username: "operator",
-//     password: "pw2",
-//     role: "operator"
+//     username: 'operator',
+//     password: 'pw2',
+//     role: 'operator'
 // })
 // exampleUserFile.addUser({
-//     username: "guest",
-//     password: "pw3",
-//     role: "guest"
+//     username: 'guest',
+//     password: 'pw3',
+//     role: 'guest'
 // })
-// exampleUserFile.createUserFile("./../example_user.json")
+// exampleUserFile.createUserFile('./../example_user.json')
