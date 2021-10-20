@@ -24,7 +24,7 @@ import { createAddressSpace } from "./addressspace"
 
 const server = new OPCUAServer(config)
 
-const shutDown = () => {
+const shutDown = ():void => {
     if (server.engine.serverStatus.state === ServerState.Shutdown) {
         console.log(chalk.yellow(" Server shutdown already requested... shutdown will happen in ", server.engine.serverStatus.secondsTillShutdown, "second"))
         return
