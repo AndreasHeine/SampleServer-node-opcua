@@ -22,7 +22,7 @@ import { createMyMachine } from './machines/mymachine/mymachine'
 import { createShowCaseMachineTool } from './machines/machinetool/showcasemachinetool'
 import { createSampleImm } from './machines/sample_imm/sample_imm'
 
-export const createAddressSpace = async (server: OPCUAServer):Promise<void> => {
+export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
     const addressSpace = server.engine.addressSpace
     addressSpace ? await Promise.all([
         createOwnServerAddressspace(addressSpace),

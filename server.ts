@@ -40,7 +40,7 @@ const shutDown = ():void => {
     })
 }
 
-const startUp = async (server:OPCUAServer):Promise<void> => {
+const startUp = async (server: OPCUAServer): Promise<void> => {
     await server.start()
     console.log(chalk.green(' server started and ready on: '))
     console.log(chalk.green(` |--> ${server.getEndpointUrl()} `))

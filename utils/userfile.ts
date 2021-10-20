@@ -28,7 +28,7 @@ export class UserFile {
         this.userList = userList;
       }
 
-    public addUser(user: User) {
+    public addUser(user: User): void {
         const hash = hashSync(String(user.password), genSaltSync())
             user.username = user.username
             user.role = user.role
@@ -36,7 +36,7 @@ export class UserFile {
             this.userList.push(user)
     }
 
-    public createUserFile(path: string) {
+    public createUserFile(path: string): void {
         writeFileSync(path, JSON.stringify({
             'users': this.userList
         }))

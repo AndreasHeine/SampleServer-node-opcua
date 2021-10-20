@@ -19,7 +19,7 @@ import {
     coerceLocalizedText
 } from 'node-opcua'
 
-export const createOwnServerAddressspace = async (addressSpace: AddressSpace):Promise<void> => {
+export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
     const namespace = addressSpace?.getOwnNamespace()
     const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
     
