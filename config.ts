@@ -29,9 +29,9 @@ import {
 
 const port = Number(process.env.PORT) || 4840
 const ip = process.env.IP || "127.0.0.1"
-const fhqn = getFullyQualifiedDomainName()
+const fqhn = getFullyQualifiedDomainName()
 const alternateHostnames = []
-alternateHostnames.push(fhqn)
+alternateHostnames.push(fqhn)
 alternateHostnames.push("127.0.0.1")
 
 const userManager = {
