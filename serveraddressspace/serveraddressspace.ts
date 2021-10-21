@@ -69,7 +69,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "myEvent",
         componentOf: testEvents,
         eventSourceOf: testEvents,
-        eventNotifier: 1,
+        eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
         });
     let count: number = 100
     setInterval(() => {
