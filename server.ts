@@ -32,7 +32,7 @@ const shutDown = ():void => {
     console.log(chalk.yellow(' Received server interruption from user '))
     console.log(chalk.yellow(' shutting down ...'))
     const reason = coerceLocalizedText('Shutdown by administrator')
-    reason ? server.engine.serverStatus.shutdownReason = reason :
+    reason ? server.engine.serverStatus.shutdownReason = reason : null
     server.shutdown(10000, () => {
         console.log(chalk.yellow(' shutting down completed '))
         console.log(chalk.yellow(' done '))
