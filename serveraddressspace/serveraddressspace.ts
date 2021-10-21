@@ -88,5 +88,5 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             })
         }
         myEvent.raiseEvent(demoEvent, eventData)
-        }, 3000)
+    }, 5000)
 }
