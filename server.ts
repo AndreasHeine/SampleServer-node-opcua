@@ -55,6 +55,7 @@ const startUp = async (server: OPCUAServer): Promise<void> => {
         console.log(chalk.yellow(' starting server... '))
         await server.initialize()
         await createAddressSpace(server)
+        server.engine.addressSpace?.installAlarmsAndConditionsService()
         await startUp(server)
     } catch (error) {
         console.log(chalk.red(' error ', error))

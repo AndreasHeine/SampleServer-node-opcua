@@ -16,7 +16,11 @@ import {
     AddressSpace,
     UAObjectType,
     DataType,
-    coerceLocalizedText
+    coerceLocalizedText,
+    RaiseEventData,
+    Variant,
+    UADataType,
+    StatusCodes,
 } from 'node-opcua'
 
 export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
@@ -44,4 +48,45 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         value: 'v1.0.0',
         dataType: DataType.String,
     })
+
+    // DEV
+
+    const dev = namespace.addObject({
+        browseName: "Dev",
+        organizedBy: addressSpace.rootFolder.objects,
+        notifierOf: addressSpace.rootFolder.objects.server,
+    })
+
+    const demoEvent = namespace.addEventType({
+        browseName: "DemoEvent",
+        })
+    const testEvents = namespace.addObject({
+        browseName: "TestEvents",
+        organizedBy: dev,
+        notifierOf: addressSpace.rootFolder.objects.server,
+    })
+    const myEvent = namespace.addObject({
+        browseName: "myEvent",
+        componentOf: testEvents,
+        eventSourceOf: testEvents,
+        eventNotifier: 1,
+        });
+    let count: number = 100
+    setInterval(() => {
+        count = count + 50
+        if (count > 1000) {
+            count = 100
+        }
+        const eventData: RaiseEventData = {
+            message: new Variant({
+                value: `Severity at: ${count}`,
+                dataType: DataType.String,
+            }),
+            severity: new Variant({
+                value: count,
+                dataType: DataType.Int32,
+            })
+        }
+        myEvent.raiseEvent(demoEvent, eventData)
+        }, 3000)
 }
