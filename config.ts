@@ -19,8 +19,8 @@ import {
     OperationLimits,
     OPCUAServerOptions,
     OPCUACertificateManager,
-    RegisterServerMethod,
-    getFullyQualifiedDomainName,
+    //RegisterServerMethod,
+    //getFullyQualifiedDomainName,
 } from 'node-opcua'
 import { 
     isValidUserAsync,
@@ -29,6 +29,7 @@ import {
 
 const port: number = Number(process.env.PORT) || 4840 // port needs to be different then 4840, if LDS is running!
 const ip: string = process.env.IP || '127.0.0.1' // by default listen on localhost
+//const alternateHostnames:string[] = []
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
@@ -49,7 +50,7 @@ const userCertificateManager = new OPCUACertificateManager({
 export const config: OPCUAServerOptions = {
     port: port,
     hostname: ip,
-    alternateHostname: getFullyQualifiedDomainName(),
+    //alternateHostname: alternateHostnames,
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
