@@ -12,7 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import chalk from 'chalk'
+import yargs from 'yargs'
 import { 
     MessageSecurityMode, 
     SecurityPolicy,
@@ -21,22 +21,26 @@ import {
     OPCUAServerOptions,
     OPCUACertificateManager,
     RegisterServerMethod,
-    //getFullyQualifiedDomainName,
+    extractFullyQualifiedDomainName
 } from 'node-opcua'
 import { 
     isValidUserAsync,
     getUserRole,
 } from './user'
 
-const port: number = Number(process.env.PORT) || 4840 // port needs to be different then 4840, if LDS is running!
-const ip: string = process.env.IP || '127.0.0.1' // by default listen on localhost
-//const alternateHostnames:string[] = []
+const argv = yargs(process.argv.slice(2)).options({
+    ip: { type: 'string'},
+    port: { type: 'number'},
+}).parseSync()
+
+const port: number = Number(process.env.PORT) || argv.port || 4840 // port needs to be different then 4840, if LDS is running!
+const ip: string = process.env.IP || argv.ip || '127.0.0.1' // by default listen on localhost
+const alternateHostnames:string[] = []
 
 let registerServerMethod: RegisterServerMethod
 if (port == 4840) {
     registerServerMethod = RegisterServerMethod.HIDDEN
 } else { 
-    console.log(chalk.yellow(" ServerConfig: RegisterServerMethod.LDS "))
     registerServerMethod = RegisterServerMethod.LDS
 }
 
@@ -59,7 +63,7 @@ const userCertificateManager = new OPCUACertificateManager({
 export const config: OPCUAServerOptions = {
     port: port,
     hostname: ip,
-    //alternateHostname: alternateHostnames,
+    alternateHostname: alternateHostnames,
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
