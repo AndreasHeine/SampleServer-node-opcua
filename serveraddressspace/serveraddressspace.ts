@@ -49,28 +49,34 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         dataType: DataType.String,
     })
 
-    // DEV
-
+    // Add DevCorner Object
     const dev = namespace.addObject({
-        browseName: "Dev",
+        browseName: "DevCorner",
         organizedBy: addressSpace.rootFolder.objects,
         notifierOf: addressSpace.rootFolder.objects.server,
     })
 
+    // Add a own EventType
     const demoEvent = namespace.addEventType({
         browseName: "DemoEvent",
-        })
+    })
+
+    // Add TestEvents Object
     const testEvents = namespace.addObject({
         browseName: "TestEvents",
         organizedBy: dev,
         notifierOf: addressSpace.rootFolder.objects.server,
     })
+
+    // Add the EventSource Object
     const myEvent = namespace.addObject({
         browseName: "myEvent",
         componentOf: testEvents,
         eventSourceOf: testEvents,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
-        });
+    })
+
+    // Create caclic events with rising severity
     let count: number = 100
     setInterval(() => {
         count = count + 50
@@ -89,4 +95,27 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         }
         myEvent.raiseEvent(demoEvent, eventData)
     }, 5000)
+
+    // Test variable with getter and setter
+    const myVar = namespace.addVariable({
+        browseName: "MyVar",
+        componentOf: dev,
+        description: coerceLocalizedText("Value must be between 1000 and 100") || undefined,
+        dataType: DataType.Int32,
+        value: {
+            get: () => {
+                return new Variant({
+                    value: count,
+                    dataType: DataType.Int32
+            })},
+            set: (variant: Variant) => {
+                if (variant.value > 1000 || variant.value < 100) {
+                    return StatusCodes.BadOutOfRange
+                } else {
+                    count = variant.value
+                    return StatusCodes.Good
+                }
+            }
+        }
+    })
 }
