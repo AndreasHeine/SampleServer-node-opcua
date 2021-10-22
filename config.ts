@@ -12,6 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import chalk from 'chalk'
 import { 
     MessageSecurityMode, 
     SecurityPolicy,
@@ -19,7 +20,7 @@ import {
     OperationLimits,
     OPCUAServerOptions,
     OPCUACertificateManager,
-    //RegisterServerMethod,
+    RegisterServerMethod,
     //getFullyQualifiedDomainName,
 } from 'node-opcua'
 import { 
@@ -30,6 +31,14 @@ import {
 const port: number = Number(process.env.PORT) || 4840 // port needs to be different then 4840, if LDS is running!
 const ip: string = process.env.IP || '127.0.0.1' // by default listen on localhost
 //const alternateHostnames:string[] = []
+
+let registerServerMethod: RegisterServerMethod
+if (port == 4840) {
+    registerServerMethod = RegisterServerMethod.HIDDEN
+} else { 
+    console.log(chalk.yellow(" ServerConfig: RegisterServerMethod.LDS "))
+    registerServerMethod = RegisterServerMethod.LDS
+}
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
@@ -96,7 +105,7 @@ export const config: OPCUAServerOptions = {
         SecurityPolicy.Basic256Sha256
     ],
     disableDiscovery: false,
-    // registerServerMethod: RegisterServerMethod.LDS, // port needs to be different then 4840, if LDS is running!
+    registerServerMethod: registerServerMethod,
     nodeset_filename: [
         // nodesets
         'nodesets/Opc.Ua.NodeSet2.xml', 
