@@ -16,6 +16,7 @@ import {
     OPCUAServer, 
     ServerState,
     coerceLocalizedText,
+    OPCUAServerEndPoint,
 } from 'node-opcua'
 import chalk from 'chalk'
 
@@ -23,8 +24,31 @@ import { config } from './config'
 import { createAddressSpace } from './addressspace'
 
 const server = new OPCUAServer(config)
+.on("serverRegistered", () => {
+    console.log(chalk.green(" serverRegistered! "))
+})
+.on("serverUnregistered", () => {
+    console.log(chalk.red(" serverUnregistered! "))
+})
+.on("serverRegistrationRenewed", () => {
+    console.log(chalk.green(" serverRegistrationRenewed! "))
+})
+.on("serverRegistrationPending", () => {
+    console.log(chalk.yellow(" serverRegistrationPending! "))
+})
+.on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
+    console.log(chalk.red(` connectionRefused!`))
+    console.log(chalk.red(` |--> socketData: ${socketData}`))
+    console.log(chalk.red(` |--> endpoint: ${endpoint}`))
+})
+.on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
+    console.log(chalk.red(` openSecureChannelFailure!`))
+    console.log(chalk.red(` |--> socketData: ${socketData}`))
+    console.log(chalk.red(` |--> channelData: ${channelData}`))
+    console.log(chalk.red(` |--> endpoint: ${endpoint}`))
+})
 
-const shutDown = ():void => {
+const shutDown = (): void => {
     if (server.engine.serverStatus.state === ServerState.Shutdown) {
         console.log(chalk.yellow(` Server shutdown already requested... shutdown will happen in ${server.engine.serverStatus.secondsTillShutdown} second`))
         return
@@ -45,7 +69,7 @@ const startUp = async (server: OPCUAServer): Promise<void> => {
     console.log(chalk.green(' server started and ready on: '))
     console.log(chalk.green(` |--> ${server.getEndpointUrl()} `))
     console.log(chalk.green(` AlternateHostnames: ${config.alternateHostname} `))
-    console.log(chalk.yellow(' CTRL+C to stop '))  
+    console.log(chalk.green(' CTRL+C to stop '))  
     process.on('SIGINT', shutDown)
     process.on('SIGTERM', shutDown)
 }
