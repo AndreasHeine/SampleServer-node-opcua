@@ -5,3 +5,6 @@ user_pki/*
 server-linux
 server-macos
 server-win.exe
+local-discovery-server-linux
+local-discovery-server-macos
+local-discovery-server-win.exe
