@@ -27,15 +27,15 @@ class Logger implements LoggerInterface {
     }
 
     green(msg:String): void {
-        console.log(chalk.green(msg))
+        console.log(" LOG: ", chalk.green(msg))
     }
 
     yellow (msg:String): void {
-        console.log(chalk.yellow(msg))
+        console.log(" LOG: ", chalk.yellow(msg))
     }
 
     red (msg:String): void {
-        console.log(chalk.red(msg))
+        console.log(" LOG: ", chalk.red(msg))
     }
 }
 
