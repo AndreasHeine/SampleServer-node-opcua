@@ -127,6 +127,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
     // add ExclusiveLimitAlarm
     const alarm = namespace.instantiateExclusiveLimitAlarm("ExclusiveLimitAlarmType", {
         browseName: "MyVarCondition",
+        conditionName: "MyVarCondition",
         componentOf: dev,
         conditionSource: myVar,
         highHighLimit: 800,
