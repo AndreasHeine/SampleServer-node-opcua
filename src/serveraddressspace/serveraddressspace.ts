@@ -52,7 +52,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
     const dev = namespace.addObject({
         browseName: "DevCorner",
         organizedBy: addressSpace.rootFolder.objects,
-        notifierOf: addressSpace.rootFolder.objects.server,
+        eventSourceOf: addressSpace.rootFolder.objects.server,
     })
 
     // Add a own EventType
@@ -64,7 +64,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
     const testEvents = namespace.addObject({
         browseName: "TestEvents",
         organizedBy: dev,
-        notifierOf: addressSpace.rootFolder.objects.server,
+        notifierOf: dev,
     })
 
     // Add the EventSource Object
@@ -115,7 +115,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
                     return StatusCodes.Good
                 }
             }
-        }
+        },
+        eventSourceOf: dev
     })
 
     // Historize "myVar"
@@ -127,7 +128,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
     const alarm = namespace.instantiateExclusiveLimitAlarm("ExclusiveLimitAlarmType", {
         browseName: "MyVarCondition",
         componentOf: dev,
-        conditionSource: addressSpace.rootFolder.objects.server,
+        conditionSource: myVar,
         highHighLimit: 800,
         highLimit: 600,
         inputNode: myVar,
