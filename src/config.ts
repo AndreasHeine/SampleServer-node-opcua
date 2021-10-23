@@ -48,12 +48,12 @@ const userManager = {
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: 'pki',
-    rootFolder: 'pki',
+    rootFolder: './../pki',
 })
 
 const userCertificateManager = new OPCUACertificateManager({
     name: 'user_pki',
-    rootFolder: 'user_pki',
+    rootFolder: './../user_pki',
 })
 
 export const config: OPCUAServerOptions = {
@@ -108,15 +108,15 @@ export const config: OPCUAServerOptions = {
     registerServerMethod: registerServerMethod,
     nodeset_filename: [
         // nodesets
-        'nodesets/Opc.Ua.NodeSet2.xml', 
-        'nodesets/Opc.Ua.Di.NodeSet2.xml', 
-        'nodesets/Opc.Ua.Machinery.NodeSet2.xml',
-        'nodesets/Opc.Ua.IA.NodeSet2.xml',
-        'nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
-        'nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
-        'nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
+        './nodesets/Opc.Ua.NodeSet2.xml', 
+        './nodesets/Opc.Ua.Di.NodeSet2.xml', 
+        './nodesets/Opc.Ua.Machinery.NodeSet2.xml',
+        './nodesets/Opc.Ua.IA.NodeSet2.xml',
+        './nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
+        './nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
+        './nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
         // models
-        'machines/machinetool/model/ShowCaseMachineTool.xml',
-        'machines/sample_imm/model/sample_imm.xml',
+        './models/ShowCaseMachineTool.xml',
+        './models/sample_imm.xml',
     ],
 }
