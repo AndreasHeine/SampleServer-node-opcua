@@ -16,33 +16,33 @@ import {
     OPCUADiscoveryServer, 
     OPCUAServerEndPoint,
 } from 'node-opcua'
-import chalk from 'chalk'
+import { green, yellow, red } from './../utils/log'
 
 (async () => {
     try {
         const lds = new OPCUADiscoveryServer({ port: 4840 })
         .on("newChannel", () => {
-            console.log(chalk.yellow(` newChannel!`))
+            yellow(` newChannel!`)
         })
         .on("closeChannel", () => {
-            console.log(chalk.yellow(` closeChannel!`))
+            yellow(` closeChannel!`)
         })
         .on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
-            console.log(chalk.red(` connectionRefused!`))
-            console.log(chalk.red(` |--> socketData: ${socketData}`))
-            console.log(chalk.red(` |--> endpoint: ${endpoint}`))
+            red(` connectionRefused!`)
+            red(` |--> socketData: ${socketData}`)
+            red(` |--> endpoint: ${endpoint}`)
         })
         .on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
-            console.log(chalk.red(` openSecureChannelFailure!`))
-            console.log(chalk.red(` |--> socketData: ${socketData}`))
-            console.log(chalk.red(` |--> channelData: ${channelData}`))
-            console.log(chalk.red(` |--> endpoint: ${endpoint}`))
+            red(` openSecureChannelFailure!`)
+            red(` |--> socketData: ${socketData}`)
+            red(` |--> channelData: ${channelData}`)
+            red(` |--> endpoint: ${endpoint}`)
         })
-        console.log(chalk.yellow(' starting server... '))
+        yellow(' starting server... ')
         await lds.start()
-        console.log(chalk.green(' DiscoveryServer is running! '))
+        green(' DiscoveryServer is running! ')
     } catch (error) {
-        console.log(chalk.red(' error ', error))
+        red(` error: ${error}`)
         process.exit(-1)
     }
 })()

@@ -12,10 +12,10 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import chalk from 'chalk'
 import { readFileSync } from 'fs'
 import { compare } from 'bcrypt'
 import { User } from './utils/userfile'
+import { green, red } from './utils/log'
 
 const userFile: string = process.env.USERFILE || 'example_user.json'
 
@@ -38,15 +38,15 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
     if (user) {
         compare(password, String(user.password), (err, result) => {
             if (result === true) {
-                console.log(chalk.green(` user:${user.username} logged in! `))
+                green(` user:${user.username} logged in! `)
                 callback(null, true)
             } else {
-                console.log(chalk.red(` user:${user.username} rejected! `))
+                red(` user:${user.username} rejected! `)
                 callback(null, false)
             }
         })
     } else {
-        console.log(chalk.red(` user:unknown rejected! `))
+        red(` user:unknown rejected! `)
         callback(null, false)
     }
 }
