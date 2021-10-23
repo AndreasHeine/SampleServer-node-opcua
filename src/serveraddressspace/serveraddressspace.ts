@@ -117,7 +117,25 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             }
         }
     })
+
+    // Historize "myVar"
     addressSpace?.installHistoricalDataNode(myVar, {
-        maxOnlineValues: 10 
+        maxOnlineValues: 100 
+    })
+
+    // add ExclusiveLimitAlarm
+    const alarm = namespace.instantiateExclusiveLimitAlarm("ExclusiveLimitAlarmType", {
+        browseName: "MyVarCondition",
+        componentOf: dev,
+        conditionSource: addressSpace.rootFolder.objects.server,
+        highHighLimit: 800,
+        highLimit: 600,
+        inputNode: myVar,
+        lowLimit: 400,
+        lowLowLimit: 200,
+        optionals: [
+            "ConfirmedState", 
+            "Confirm",
+        ]
     })
 }
