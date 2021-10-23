@@ -117,4 +117,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             }
         }
     })
+    addressSpace?.installHistoricalDataNode(myVar, {
+        maxOnlineValues: 10 
+    })
 }
