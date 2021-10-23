@@ -21,12 +21,8 @@ import {
     OPCUAServerOptions,
     OPCUACertificateManager,
     RegisterServerMethod,
-    extractFullyQualifiedDomainName
 } from 'node-opcua'
-import { 
-    isValidUserAsync,
-    getUserRole,
-} from './user'
+import { isValidUserAsync, getUserRole } from './user'
 
 const argv = yargs(process.argv.slice(2)).options({
     ip: { type: 'string'},

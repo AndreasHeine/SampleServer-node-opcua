@@ -19,7 +19,6 @@ import {
     coerceLocalizedText,
     RaiseEventData,
     Variant,
-    UADataType,
     StatusCodes,
 } from 'node-opcua'
 
