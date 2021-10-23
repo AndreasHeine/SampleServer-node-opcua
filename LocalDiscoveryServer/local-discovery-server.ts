@@ -15,17 +15,18 @@
 import { 
     OPCUADiscoveryServer, 
     OPCUAServerEndPoint,
+    ServerSecureChannelLayer,
 } from 'node-opcua'
 import { green, yellow, red } from './../utils/log'
 
 (async () => {
     try {
         const lds = new OPCUADiscoveryServer({ port: 4840 })
-        .on("newChannel", () => {
-            yellow(` newChannel!`)
+        .on("newChannel", (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
+            yellow(` newChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
         })
-        .on("closeChannel", () => {
-            yellow(` closeChannel!`)
+        .on("closeChannel", (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
+            yellow(` closeChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
         })
         .on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
             red(` connectionRefused!`)
@@ -37,6 +38,12 @@ import { green, yellow, red } from './../utils/log'
             red(` |--> socketData: ${socketData}`)
             red(` |--> channelData: ${channelData}`)
             red(` |--> endpoint: ${endpoint}`)
+        })
+        .on("error", (e) => {
+            red(e)
+        })
+        .on("debug", (e) => {
+            yellow(e)
         })
         yellow(' starting server... ')
         await lds.start()
