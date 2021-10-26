@@ -14,6 +14,7 @@
 
 import { readFileSync } from 'fs'
 import { compare } from 'bcrypt'
+
 import { User } from './utils/userfile'
 import { green, red } from './utils/log'
 

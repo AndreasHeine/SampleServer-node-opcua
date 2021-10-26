@@ -22,6 +22,7 @@ import {
     OPCUACertificateManager,
     RegisterServerMethod,
 } from 'node-opcua'
+
 import { isValidUserAsync, getUserRole } from './user'
 
 const argv = yargs(process.argv.slice(2)).options({
@@ -52,6 +53,7 @@ const serverCertificateManager = new OPCUACertificateManager({
 })
 
 const userCertificateManager = new OPCUACertificateManager({
+    automaticallyAcceptUnknownCertificate: false,
     name: 'user_pki',
     rootFolder: './user_pki',
 })

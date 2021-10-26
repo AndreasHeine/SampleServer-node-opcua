@@ -38,14 +38,9 @@ const server = new OPCUAServer(config)
 })
 .on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
     red(` connectionRefused!`)
-    red(` |--> socketData: ${socketData}`)
-    red(` |--> endpoint: ${endpoint}`)
 })
 .on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
     red(` openSecureChannelFailure!`)
-    red(` |--> socketData: ${socketData}`)
-    red(` |--> channelData: ${channelData}`)
-    red(` |--> endpoint: ${endpoint}`)
 })
 
 const shutDown = (): void => {
