@@ -30,7 +30,11 @@ const getUser = (username: String, users: User[]): User | null => {
             return item
         }
         return null
-    }) 
+    })
+    if (user.length > 1) {
+        red(` Found ${user.length} Users with the Name ${username} `)
+        return null
+    }
     return user[0]
 }
 
