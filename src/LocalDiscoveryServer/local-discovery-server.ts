@@ -16,12 +16,33 @@ import {
     OPCUADiscoveryServer, 
     OPCUAServerEndPoint,
     ServerSecureChannelLayer,
+    OPCUACertificateManager,
 } from 'node-opcua'
+import { 
+    OPCUADiscoveryServerOptions 
+} from 'node-opcua-server-discovery'
+
 import { green, yellow, red } from './../utils/log'
 
 (async () => {
     try {
-        const lds = new OPCUADiscoveryServer({ port: 4840 })
+        const config: OPCUADiscoveryServerOptions = { 
+            port: 4840,
+            serverCertificateManager: new OPCUACertificateManager({
+                automaticallyAcceptUnknownCertificate: true,
+                name: 'discovery_pki',
+                rootFolder: 'discovery_pki',
+            }),
+            serverInfo: {
+                applicationName: { 
+                    text: 'SampleDiscoveryServer-applicationName', 
+                    locale: 'en' ,
+                },
+                applicationUri: 'urn:SampleDiscoveryServer',
+                productUri: 'SampleDiscoveryServer-productUri',
+            }
+        }
+        const lds = new OPCUADiscoveryServer(config)
         .on("newChannel", (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
             yellow(` newChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
         })
@@ -30,14 +51,9 @@ import { green, yellow, red } from './../utils/log'
         })
         .on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
             red(` connectionRefused!`)
-            red(` |--> socketData: ${socketData}`)
-            red(` |--> endpoint: ${endpoint}`)
         })
         .on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
             red(` openSecureChannelFailure!`)
-            red(` |--> socketData: ${socketData}`)
-            red(` |--> channelData: ${channelData}`)
-            red(` |--> endpoint: ${endpoint}`)
         })
         .on("error", (e) => {
             red(e)

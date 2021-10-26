@@ -1,7 +1,8 @@
 node_modules
 *.js
-pki/*
-user_pki/*
+pki
+user_pki
+discovery_pki
 server-linux
 server-macos
 server-win.exe
