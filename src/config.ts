@@ -48,12 +48,12 @@ const userManager = {
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: 'pki',
-    rootFolder: './../pki',
+    rootFolder: './pki',
 })
 
 const userCertificateManager = new OPCUACertificateManager({
     name: 'user_pki',
-    rootFolder: './../user_pki',
+    rootFolder: './user_pki',
 })
 
 export const config: OPCUAServerOptions = {
