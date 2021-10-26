@@ -12,7 +12,15 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import fs from 'fs'
 import chalk from 'chalk'
+
+const logToFile = (msg: string) => {
+    let date = new Date()
+    fs.appendFile("log.txt", `${date.toISOString().slice(0, 19)}: ${msg} \r\n`, (err) => {
+        if (err) return console.log(err)
+    })
+}
 
 interface LoggerInterface {
     green(msg:String): void
@@ -26,15 +34,18 @@ class Logger implements LoggerInterface {
 
     }
 
-    green(msg:String): void {
+    green(msg:string): void {
+        logToFile(msg)
         console.log(" LOG: ", chalk.green(msg))
     }
 
-    yellow (msg:String): void {
+    yellow (msg:string): void {
+        logToFile(msg)
         console.log(" LOG: ", chalk.yellow(msg))
     }
 
-    red (msg:String): void {
+    red (msg:string): void {
+        logToFile(msg)
         console.log(" LOG: ", chalk.red(msg))
     }
 }
