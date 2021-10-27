@@ -1,7 +1,13 @@
 node_modules
+package-lock.json
 *.js
-pki/*
-user_pki/*
+pki
+user_pki
+discovery_pki
 server-linux
 server-macos
 server-win.exe
+local-discovery-server-linux
+local-discovery-server-macos
+local-discovery-server-win.exe
+log.txt

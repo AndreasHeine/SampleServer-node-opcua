@@ -12,6 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import yargs from 'yargs'
 import { 
     MessageSecurityMode, 
     SecurityPolicy,
@@ -19,17 +20,26 @@ import {
     OperationLimits,
     OPCUAServerOptions,
     OPCUACertificateManager,
-    //RegisterServerMethod,
-    //getFullyQualifiedDomainName,
+    RegisterServerMethod,
 } from 'node-opcua'
-import { 
-    isValidUserAsync,
-    getUserRole,
-} from './user'
 
-const port: number = Number(process.env.PORT) || 4840 // port needs to be different then 4840, if LDS is running!
-const ip: string = process.env.IP || '127.0.0.1' // by default listen on localhost
-//const alternateHostnames:string[] = []
+import { isValidUserAsync, getUserRole } from './user'
+
+const argv = yargs(process.argv.slice(2)).options({
+    ip: { type: 'string'},
+    port: { type: 'number'},
+}).parseSync()
+
+const port: number = Number(process.env.PORT) || argv.port || 4840 // port needs to be different then 4840, if LDS is running!
+const ip: string = process.env.IP || argv.ip || '127.0.0.1' // by default listen on localhost
+const alternateHostnames:string[] = []
+
+let registerServerMethod: RegisterServerMethod
+if (port == 4840) {
+    registerServerMethod = RegisterServerMethod.HIDDEN
+} else { 
+    registerServerMethod = RegisterServerMethod.LDS
+}
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
@@ -39,18 +49,19 @@ const userManager = {
 const serverCertificateManager = new OPCUACertificateManager({
     automaticallyAcceptUnknownCertificate: true,
     name: 'pki',
-    rootFolder: 'pki',
+    rootFolder: './pki',
 })
 
 const userCertificateManager = new OPCUACertificateManager({
+    automaticallyAcceptUnknownCertificate: false,
     name: 'user_pki',
-    rootFolder: 'user_pki',
+    rootFolder: './user_pki',
 })
 
 export const config: OPCUAServerOptions = {
     port: port,
     hostname: ip,
-    //alternateHostname: alternateHostnames,
+    alternateHostname: alternateHostnames,
     maxAllowedSessionNumber: 100,
     maxConnectionsPerEndpoint: 100,
     timeout: 10000,
@@ -96,18 +107,18 @@ export const config: OPCUAServerOptions = {
         SecurityPolicy.Basic256Sha256
     ],
     disableDiscovery: false,
-    // registerServerMethod: RegisterServerMethod.LDS, // port needs to be different then 4840, if LDS is running!
+    registerServerMethod: registerServerMethod,
     nodeset_filename: [
         // nodesets
-        'nodesets/Opc.Ua.NodeSet2.xml', 
-        'nodesets/Opc.Ua.Di.NodeSet2.xml', 
-        'nodesets/Opc.Ua.Machinery.NodeSet2.xml',
-        'nodesets/Opc.Ua.IA.NodeSet2.xml',
-        'nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
-        'nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
-        'nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
+        './nodesets/Opc.Ua.NodeSet2.xml', 
+        './nodesets/Opc.Ua.Di.NodeSet2.xml', 
+        './nodesets/Opc.Ua.Machinery.NodeSet2.xml',
+        './nodesets/Opc.Ua.IA.NodeSet2.xml',
+        './nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
+        './nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
+        './nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
         // models
-        'machines/machinetool/model/ShowCaseMachineTool.xml',
-        'machines/sample_imm/model/sample_imm.xml',
+        './models/ShowCaseMachineTool.xml',
+        './models/sample_imm.xml',
     ],
 }

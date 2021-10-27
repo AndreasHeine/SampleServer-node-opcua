@@ -4,9 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "tsc && node server.js",
-    "debug": "tsc && node --inspect server.js",
-    "build": "tsc && pkg server.js"
+    "start": "tsc && node dst/server.js",
+    "start_args": "tsc && node dst/server.js --ip=127.0.0.1 --port=5000",
+    "start_lds": "tsc && node dst/LocalDiscoveryServer/local-discovery-server.js",
+    "debug": "tsc && node --inspect dst/server.js",
+    "build": "tsc && pkg dst/server.js",
+    "build_lds": "tsc && pkg dst/LocalDiscoveryServer/local-discovery-server.js"
   },
   "repository": {
     "type": "git",
@@ -21,11 +24,13 @@
   "dependencies": {
     "bcrypt": "5.0.1",
     "chalk": "4.1.2",
-    "node-opcua": "2.50.0"
+    "node-opcua": "2.50.0",
+    "yargs": "^17.2.1"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
     "@types/bcrypt": "5.0.0",
-    "typescript":"4.4.4"
+    "@types/node": "16.11.6",
+    "@types/yargs": "^17.0.4",
+    "typescript": "4.4.4"
   }
 }
