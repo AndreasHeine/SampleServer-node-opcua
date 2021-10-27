@@ -18,7 +18,7 @@ import { hashSync, genSaltSync } from 'bcrypt'
 export interface User {
     username: String,
     password: String,
-    role: 'admin' | 'operator' | 'guest' // basic roles defined by spec.
+    role: 'admin' | 'operator' | 'guest'
 }
 
 export class UserFile {
@@ -29,16 +29,16 @@ export class UserFile {
       }
 
     public addUser(user: User): void {
-        const hash = hashSync(String(user.password), genSaltSync())
-            user.username = user.username
-            user.role = user.role
-            user.password = hash
-            this.userList.push(user)
+        this.userList.push(Object.freeze({
+            username: user.username,
+            role: user.role,
+            password: hashSync(String(user.password), genSaltSync())
+        }))
     }
 
     public createUserFile(path: string): void {
         writeFileSync(path, JSON.stringify({
-            'users': this.userList
+            users: this.userList
         }))
     }
 }
