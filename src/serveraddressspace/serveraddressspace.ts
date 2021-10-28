@@ -20,6 +20,9 @@ import {
     RaiseEventData,
     Variant,
     StatusCodes,
+    AccessRestrictionsFlag,
+    WellKnownRoles,
+    makePermissionFlag,
 } from 'node-opcua'
 
 export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
@@ -48,9 +51,9 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         dataType: DataType.String,
     })
 
-    // Add DevCorner Object
+    // Add DEV Object
     const dev = namespace.addObject({
-        browseName: "DevCorner",
+        browseName: "DEV",
         organizedBy: addressSpace.rootFolder.objects,
         eventSourceOf: addressSpace.rootFolder.objects.server,
     })
@@ -93,11 +96,11 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             })
         }
         myEvent.raiseEvent(demoEvent, eventData)
-    }, 5000)
+    }, 10000)
 
     // Test variable with getter and setter
-    const myVar = namespace.addVariable({
-        browseName: "MyVar",
+    const mySeverity = namespace.addVariable({
+        browseName: "MySeverity",
         componentOf: dev,
         description: coerceLocalizedText("Value must be between 1000 and 100") || undefined,
         dataType: DataType.Int32,
@@ -120,19 +123,19 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
     })
 
     // Historize "myVar"
-    addressSpace?.installHistoricalDataNode(myVar, {
+    addressSpace?.installHistoricalDataNode(mySeverity, {
         maxOnlineValues: 100 
     })
 
     // add ExclusiveLimitAlarm
     const alarm = namespace.instantiateExclusiveLimitAlarm("ExclusiveLimitAlarmType", {
-        browseName: "MyVarCondition",
-        conditionName: "MyVarCondition",
+        browseName: "MySeverityCondition",
+        conditionName: "MySeverityCondition",
         componentOf: dev,
-        conditionSource: myVar,
+        conditionSource: mySeverity,
         highHighLimit: 800,
         highLimit: 600,
-        inputNode: myVar,
+        inputNode: mySeverity,
         lowLimit: 400,
         lowLowLimit: 200,
         optionals: [
@@ -140,4 +143,28 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             "Confirm",
         ]
     })
+
+    // Test var for RolePermissions and UserManager
+    const mySecretVar = namespace.addVariable({
+        browseName: "MySecretVar",
+        componentOf: dev,
+        description: coerceLocalizedText("Try change me!") || undefined,
+        dataType: DataType.Int32,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
+        value: {
+            value: 0,
+            dataType: DataType.Int32
+        },
+    })
+
+    mySecretVar.setRolePermissions([
+        { roleId: WellKnownRoles.Supervisor, permissions: makePermissionFlag("Read | Write") },
+        { roleId: WellKnownRoles.SecurityAdmin, permissions: makePermissionFlag("Read | Write") },
+        { roleId: WellKnownRoles.Operator, permissions: makePermissionFlag("Read | Write") },
+        { roleId: WellKnownRoles.Observer, permissions: makePermissionFlag("Read") },
+        { roleId: WellKnownRoles.Engineer, permissions: makePermissionFlag("Read | Write") },
+        { roleId: WellKnownRoles.ConfigureAdmin, permissions: makePermissionFlag("Read | Write") },
+        { roleId: WellKnownRoles.AuthenticatedUser, permissions: makePermissionFlag("Read") },
+        { roleId: WellKnownRoles.Anonymous, permissions: makePermissionFlag("Read") },
+    ])
 }
