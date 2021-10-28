@@ -25,9 +25,9 @@ import { green, red } from './utils/log'
 
 const userFile: string = process.env.USERFILE || 'example_user.json'
 
-const userList: User[] = JSON.parse(
+const userList: User[] = Object.freeze(JSON.parse(
         readFileSync(userFile, 'utf-8')
-    ).users
+    ).users)
 
 const getUser = (username: String, users: User[]): User | null => {
     let user: User[] = users.filter(item => {
