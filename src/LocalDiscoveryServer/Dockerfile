@@ -1,4 +1,4 @@
-FROM node:16.11
+FROM node:16.13
 RUN apk add openssl
 COPY . /
 RUN npm install
