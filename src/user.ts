@@ -15,6 +15,11 @@
 import { readFileSync } from 'fs'
 import { compare } from 'bcrypt'
 
+import { 
+    NodeId,
+    makeRoles
+} from 'node-opcua'
+
 import { User } from './utils/userfile'
 import { green, red } from './utils/log'
 
@@ -56,6 +61,15 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
     }
 }
 
-export const getUserRole = (username: String) => {
-    return getUser(username, userList)?.role || 'unknown'
+// this does not get called at all but its part of the docs:
+// https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.usermanageroptions.html
+// export const getUserRole = (username: string): string => {
+//     const roles = getUser(username, userList)?.role || ""
+//     return roles
+// }
+
+// this works:
+// https://github.com/node-opcua/node-opcua/blob/6ed5227ae39e37af6d0de60c7b89ae66686726b9/packages/node-opcua-address-space/source/session_context.ts#L96
+export const getUserRoles = (username: string): NodeId[] => {
+    return makeRoles(getUser(username, userList)?.roles || "")
 }

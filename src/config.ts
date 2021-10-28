@@ -23,7 +23,7 @@ import {
     RegisterServerMethod,
 } from 'node-opcua'
 
-import { isValidUserAsync, getUserRole } from './user'
+import { isValidUserAsync, getUserRoles } from './user'
 
 const argv = yargs(process.argv.slice(2)).options({
     ip: { type: 'string'},
@@ -43,7 +43,7 @@ if (port == 4840) {
 
 const userManager = {
     isValidUserAsync: isValidUserAsync,
-    getUserRole: getUserRole
+    getUserRoles: getUserRoles,
 }
 
 const serverCertificateManager = new OPCUACertificateManager({

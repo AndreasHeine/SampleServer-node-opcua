@@ -16,9 +16,9 @@ import { writeFileSync } from 'fs'
 import { hashSync, genSaltSync } from 'bcrypt'
 
 export interface User {
-    username: String,
-    password: String,
-    role: 'admin' | 'operator' | 'guest'
+    username: string,
+    password: string,
+    roles: string,
 }
 
 export class UserFile {
@@ -31,8 +31,8 @@ export class UserFile {
     public addUser(user: User): void {
         this.userList.push(Object.freeze({
             username: user.username,
-            role: user.role,
-            password: hashSync(String(user.password), genSaltSync())
+            roles: user.roles,
+            password: hashSync(user.password, genSaltSync())
         }))
     }
 
@@ -42,21 +42,3 @@ export class UserFile {
         }))
     }
 }
-
-// const exampleUserFile = new UserFile()
-// exampleUserFile.addUser({
-//     username: 'admin',
-//     password: 'pw1',
-//     role: 'admin'
-// })
-// exampleUserFile.addUser({
-//     username: 'operator',
-//     password: 'pw2',
-//     role: 'operator'
-// })
-// exampleUserFile.addUser({
-//     username: 'guest',
-//     password: 'pw3',
-//     role: 'guest'
-// })
-// exampleUserFile.createUserFile('./../example_user.json')
