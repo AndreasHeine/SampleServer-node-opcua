@@ -21,9 +21,9 @@ import {
     Variant,
     StatusCodes,
     AccessRestrictionsFlag,
-    WellKnownRoles,
-    makePermissionFlag,
 } from 'node-opcua'
+
+import { ServerRolePermissionGroup } from './../permissiongroups'
 
 export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
     const namespace = addressSpace?.getOwnNamespace()
@@ -56,6 +56,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "DEV",
         organizedBy: addressSpace.rootFolder.objects,
         eventSourceOf: addressSpace.rootFolder.objects.server,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired
     })
 
     // Add a own EventType
@@ -78,7 +80,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
     })
 
-    // Create caclic events with rising severity
+    // Create cyclic events with rising severity
     let count: number = 100
     setInterval(() => {
         count = count + 50
@@ -119,7 +121,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
                 }
             }
         },
-        eventSourceOf: dev
+        eventSourceOf: dev,
     })
 
     // Historize "myVar"
@@ -141,7 +143,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         optionals: [
             "ConfirmedState", 
             "Confirm",
-        ]
+        ],
     })
 
     // Test var for RolePermissions and UserManager
@@ -150,21 +152,11 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         componentOf: dev,
         description: coerceLocalizedText("Try change me!") || undefined,
         dataType: DataType.Int32,
-        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
         value: {
             value: 0,
             dataType: DataType.Int32
         },
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired
     })
-
-    mySecretVar.setRolePermissions([
-        { roleId: WellKnownRoles.Supervisor, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.SecurityAdmin, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.Operator, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.Observer, permissions: makePermissionFlag("Read") },
-        { roleId: WellKnownRoles.Engineer, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.ConfigureAdmin, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.AuthenticatedUser, permissions: makePermissionFlag("Read") },
-        { roleId: WellKnownRoles.Anonymous, permissions: makePermissionFlag("Read") },
-    ])
 }

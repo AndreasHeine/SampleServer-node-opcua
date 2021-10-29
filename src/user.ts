@@ -48,15 +48,15 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
     if (user) {
         compare(password, String(user.password), (err, result) => {
             if (result === true) {
-                green(` user:${user.username} logged in! `)
+                green(` User:"${user.username}" logged in as "${user.roles}"! `)
                 callback(null, true)
             } else {
-                red(` user:${user.username} rejected! `)
+                red(` User:"${user.username}" rejected! `)
                 callback(null, false)
             }
         })
     } else {
-        red(` user:unknown rejected! `)
+        red(` User:unknown rejected! `)
         callback(null, false)
     }
 }
