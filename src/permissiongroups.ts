@@ -21,35 +21,35 @@ export const ServerRolePermissionGroup = Object.freeze({
     DEFAULT: [
         { 
             roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.SecurityAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.Operator, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.Observer, 
-            permissions: PermissionType.Read | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.Engineer, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.ConfigureAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.AuthenticatedUser, 
-            permissions: PermissionType.Read | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.Anonymous, 
-            permissions: PermissionType.Read | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
         },
     ],
     // Only Supervisor
@@ -85,11 +85,11 @@ export const ServerRolePermissionGroup = Object.freeze({
     ADMIN: [
         { 
             roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         { 
             roleId: WellKnownRoles.SecurityAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         // { 
         //     roleId: WellKnownRoles.Operator, 
@@ -102,7 +102,7 @@ export const ServerRolePermissionGroup = Object.freeze({
         // },
         { 
             roleId: WellKnownRoles.ConfigureAdmin,
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         // { 
         //     roleId: WellKnownRoles.AuthenticatedUser, 

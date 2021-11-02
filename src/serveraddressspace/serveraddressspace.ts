@@ -70,6 +70,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "TestEvents",
         organizedBy: dev,
         notifierOf: dev,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
 
     // Add the EventSource Object
@@ -78,6 +80,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         componentOf: testEvents,
         eventSourceOf: testEvents,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
 
     // Create cyclic events with rising severity
@@ -157,6 +161,6 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
             dataType: DataType.Int32
         },
         rolePermissions: ServerRolePermissionGroup.RESTRICTED,
-        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
 }
