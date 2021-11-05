@@ -21,6 +21,8 @@ import {
     Variant,
     StatusCodes,
     AccessRestrictionsFlag,
+    DataValue,
+    ReadRawModifiedDetails,
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -128,9 +130,43 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         eventSourceOf: dev,
     })
 
-    // Historize "myVar"
+    // Timeout a Query if it takes to long!
+    // https://advancedweb.hu/how-to-add-timeout-to-a-promise-in-javascript/
+    const promiseWithTimeout = (prom: any, time: number) => {
+        let timer: NodeJS.Timeout
+        return Promise.race([
+            prom,
+            new Promise((_r, rej) => timer = setTimeout(rej, time))
+        ]).finally(() => clearTimeout(timer))
+    }
+
+    // Historize "mySeverity"
     addressSpace?.installHistoricalDataNode(mySeverity, {
-        maxOnlineValues: 100 
+        maxOnlineValues: 100,
+        // historian: {
+        //     push(newDataValue: DataValue): Promise<void> {
+        //         return new Promise(() => {
+        //             // add DataValue to a Queue
+        //         })
+        //     },
+        //     extractDataValues(historyReadRawModifiedDetails: ReadRawModifiedDetails, maxNumberToExtract: number, isReversed: boolean, reverseDataValue: boolean, callback: (err: Error, dataValue?: DataValue[]) => void): void {
+                
+        //         const query = new Promise((): DataValue[] => {
+        //             // db querey here
+
+        //             const data: DataValue[] = []
+        //             return data
+        //         })
+
+        //         promiseWithTimeout(query, 10000)
+        //         .then((data) => {
+
+        //         })
+        //         .catch((err) => {
+
+        //         })
+        //     },
+        // },
     })
 
     // add ExclusiveLimitAlarm
