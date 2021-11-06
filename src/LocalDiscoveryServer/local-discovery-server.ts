@@ -44,16 +44,16 @@ import { green, yellow, red } from './../utils/log'
         }
         const lds = new OPCUADiscoveryServer(config)
         .on("newChannel", (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
-            yellow(` DiscoveryServer newChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
+            green(` DiscoveryServer: newChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
         })
         .on("closeChannel", (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
-            yellow(` DiscoveryServer closeChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
+            green(` DiscoveryServer: closeChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `)
         })
         .on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
-            red(` DiscoveryServer connectionRefused!`)
+            red(` DiscoveryServer: connectionRefused!`)
         })
         .on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
-            red(` DiscoveryServer openSecureChannelFailure!`)
+            red(` DiscoveryServer: openSecureChannelFailure!`)
         })
         .on("error", (e) => {
             red(` DiscoveryServer: ${e} `)
@@ -63,7 +63,7 @@ import { green, yellow, red } from './../utils/log'
         })
         yellow(' DiscoveryServer: starting server... ')
         await lds.start()
-        green(' DiscoveryServer is running! ')
+        green(' DiscoveryServer: is running! ')
     } catch (error) {
         red(` DiscoveryServer error: ${error}`)
         process.exit(-1)
