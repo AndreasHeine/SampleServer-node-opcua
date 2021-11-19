@@ -56,7 +56,7 @@ export const ServerRolePermissionGroup = Object.freeze({
     RESTRICTED: [
         { 
             roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
+            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
         // { 
         //     roleId: WellKnownRoles.SecurityAdmin, 
