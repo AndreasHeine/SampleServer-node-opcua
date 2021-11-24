@@ -21,9 +21,11 @@ import {
     Variant,
     StatusCodes,
     AccessRestrictionsFlag,
-    WellKnownRoles,
-    makePermissionFlag,
+    DataValue,
+    ReadRawModifiedDetails,
 } from 'node-opcua'
+
+import { ServerRolePermissionGroup } from './../permissiongroups'
 
 export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
     const namespace = addressSpace?.getOwnNamespace()
@@ -56,6 +58,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "DEV",
         organizedBy: addressSpace.rootFolder.objects,
         eventSourceOf: addressSpace.rootFolder.objects.server,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired
     })
 
     // Add a own EventType
@@ -68,6 +72,8 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "TestEvents",
         organizedBy: dev,
         notifierOf: dev,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
 
     // Add the EventSource Object
@@ -76,9 +82,11 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         componentOf: testEvents,
         eventSourceOf: testEvents,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
 
-    // Create caclic events with rising severity
+    // Create cyclic events with rising severity
     let count: number = 100
     setInterval(() => {
         count = count + 50
@@ -119,12 +127,46 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
                 }
             }
         },
-        eventSourceOf: dev
+        eventSourceOf: dev,
     })
 
-    // Historize "myVar"
+    // Timeout a Query if it takes to long!
+    // https://advancedweb.hu/how-to-add-timeout-to-a-promise-in-javascript/
+    const promiseWithTimeout = (prom: any, time: number) => {
+        let timer: NodeJS.Timeout
+        return Promise.race([
+            prom,
+            new Promise((_r, rej) => timer = setTimeout(rej, time))
+        ]).finally(() => clearTimeout(timer))
+    }
+
+    // Historize "mySeverity"
     addressSpace?.installHistoricalDataNode(mySeverity, {
-        maxOnlineValues: 100 
+        maxOnlineValues: 100,
+        // historian: {
+        //     push(newDataValue: DataValue): Promise<void> {
+        //         return new Promise(() => {
+        //             // add DataValue to a Queue
+        //         })
+        //     },
+        //     extractDataValues(historyReadRawModifiedDetails: ReadRawModifiedDetails, maxNumberToExtract: number, isReversed: boolean, reverseDataValue: boolean, callback: (err: Error, dataValue?: DataValue[]) => void): void {
+                
+        //         const query = new Promise((): DataValue[] => {
+        //             // db querey here
+
+        //             const data: DataValue[] = []
+        //             return data
+        //         })
+
+        //         promiseWithTimeout(query, 10000)
+        //         .then((data) => {
+
+        //         })
+        //         .catch((err) => {
+
+        //         })
+        //     },
+        // },
     })
 
     // add ExclusiveLimitAlarm
@@ -141,7 +183,7 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         optionals: [
             "ConfirmedState", 
             "Confirm",
-        ]
+        ],
     })
 
     // Test var for RolePermissions and UserManager
@@ -150,21 +192,11 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         componentOf: dev,
         description: coerceLocalizedText("Try change me!") || undefined,
         dataType: DataType.Int32,
-        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
         value: {
             value: 0,
             dataType: DataType.Int32
         },
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        accessRestrictions: AccessRestrictionsFlag.EncryptionRequired,
     })
-
-    mySecretVar.setRolePermissions([
-        { roleId: WellKnownRoles.Supervisor, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.SecurityAdmin, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.Operator, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.Observer, permissions: makePermissionFlag("Read") },
-        { roleId: WellKnownRoles.Engineer, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.ConfigureAdmin, permissions: makePermissionFlag("Read | Write") },
-        { roleId: WellKnownRoles.AuthenticatedUser, permissions: makePermissionFlag("Read") },
-        { roleId: WellKnownRoles.Anonymous, permissions: makePermissionFlag("Read") },
-    ])
 }
