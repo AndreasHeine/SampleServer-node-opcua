@@ -15,6 +15,11 @@ pkg globally installed for pkg cli (`npm install -g pkg`)
 - `npm install`  
 - `npm run start`
 
+## Example Users   
+User: `admin` Password: `pw1` Role: Supervisor  
+User: `operator` Password: `pw2` Role: Operator  
+User: `guest` Password: `pw3` Role: AuthenticatedUser  
+
 ## Ephemeral Dev Environment
 
 - [Click](https://gitpod.io/#https://github.com/AndreasHeine/SampleServer-node-opcua)
