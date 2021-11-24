@@ -103,12 +103,12 @@ export const createOwnServerAddressspace = async (addressSpace: AddressSpace): P
         browseName: "MySeverity",
         componentOf: dev,
         description: coerceLocalizedText("Value must be between 1000 and 100") || undefined,
-        dataType: DataType.Int32,
+        dataType: DataType.Double,
         value: {
             get: () => {
                 return new Variant({
                     value: count,
-                    dataType: DataType.Int32
+                    dataType: DataType.Double
             })},
             set: (variant: Variant) => {
                 if (variant.value > 1000 || variant.value < 100) {

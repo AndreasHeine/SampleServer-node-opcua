@@ -24,7 +24,8 @@
   "dependencies": {
     "bcrypt": "5.0.1",
     "chalk": "4.1.2",
-    "node-opcua": "2.59.0",
+    "node-opcua": "2.60.2",
+    "node-opcua-server-discovery": "^2.60.0",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
