@@ -14,6 +14,7 @@
 
 import { 
     coerceLocalizedText, 
+    coerceNodeId,
     DataType,
     UAVariable,
     AddressSpace,
@@ -58,8 +59,8 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace): Pro
                 dataType: DataType.LocalizedText,
             })
             stateNumber.setValueFromSource({
-                value: 2,
-                dataType: DataType.UInt32,
+                value: coerceNodeId(2),
+                dataType: DataType.NodeId,
             })
         } else {
             state?.setValueFromSource({
@@ -67,8 +68,8 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace): Pro
                 dataType: DataType.LocalizedText,
             })
             stateNumber.setValueFromSource({
-                value: 1,
-                dataType: DataType.UInt32,
+                value: coerceNodeId(1),
+                dataType: DataType.NodeId,
             })
         }
     }, 10000)
@@ -111,6 +112,6 @@ export const createShowCaseMachineTool = async (addressSpace: AddressSpace): Pro
     const channel1 = addressSpace?.findNode(`ns=${idx};i=55233`) as UAVariable
     channel1.setValueFromSource({
         value: 1,
-        dataType: DataType.UInt32
+        dataType: DataType.Int32
     })
 }
