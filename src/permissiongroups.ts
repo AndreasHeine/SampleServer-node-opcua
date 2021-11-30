@@ -18,6 +18,7 @@ import {
 } from 'node-opcua'
 
 export const ServerRolePermissionGroup = Object.freeze({
+    // Default -> https://reference.opcfoundation.org/v104/Core/docs/Part3/4.8.2/
     DEFAULT: [
         { 
             roleId: WellKnownRoles.Supervisor, 
@@ -27,7 +28,7 @@ export const ServerRolePermissionGroup = Object.freeze({
             roleId: WellKnownRoles.SecurityAdmin, 
             permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
-        { 
+        {   // Session Required
             roleId: WellKnownRoles.Operator, 
             permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
@@ -58,28 +59,6 @@ export const ServerRolePermissionGroup = Object.freeze({
             roleId: WellKnownRoles.Supervisor, 
             permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
-        // { 
-        //     roleId: WellKnownRoles.SecurityAdmin, 
-        //     permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Operator, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Observer, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Engineer, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.ConfigureAdmin, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.AuthenticatedUser, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Anonymous, 
-        // },
     ],
     // Only Supervisor, SecurityAdmin and ConfigureAdmin
     ADMIN: [
@@ -91,24 +70,9 @@ export const ServerRolePermissionGroup = Object.freeze({
             roleId: WellKnownRoles.SecurityAdmin, 
             permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
-        // { 
-        //     roleId: WellKnownRoles.Operator, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Observer, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Engineer, 
-        // },
         { 
             roleId: WellKnownRoles.ConfigureAdmin,
             permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
         },
-        // { 
-        //     roleId: WellKnownRoles.AuthenticatedUser, 
-        // },
-        // { 
-        //     roleId: WellKnownRoles.Anonymous, 
-        // },
     ],
 })
