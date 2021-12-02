@@ -17,7 +17,7 @@ import chalk from 'chalk'
 
 const logToFile = (msg: string) => {
     let date = new Date()
-    fs.appendFile("log.txt", `${date.toISOString().slice(0, 19)}: ${msg} \r\n`, (err) => {
+    fs.appendFile('log.txt', `${date.toISOString().slice(0, 19)}: ${msg} \r\n`, (err) => {
         if (err) return console.log(err)
     })
 }
@@ -36,17 +36,17 @@ class Logger implements LoggerInterface {
 
     green(msg:string): void {
         logToFile(msg)
-        console.log(" LOG: ", chalk.green(msg))
+        console.log(' LOG: ', chalk.green(msg))
     }
 
     yellow (msg:string): void {
         logToFile(msg)
-        console.log(" LOG: ", chalk.yellow(msg))
+        console.log(' LOG: ', chalk.yellow(msg))
     }
 
     red (msg:string): void {
         logToFile(msg)
-        console.log(" LOG: ", chalk.red(msg))
+        console.log(' LOG: ', chalk.red(msg))
     }
 }
 

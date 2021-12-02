@@ -24,22 +24,22 @@ import { config } from './config'
 import { createAddressSpace } from './addressspace'
 
 const server = new OPCUAServer(config)
-.on("serverRegistered", () => {
-    green(" serverRegistered! ")
+.on('serverRegistered', () => {
+    green(' serverRegistered! ')
 })
-.on("serverUnregistered", () => {
-    red(" serverUnregistered! ")
+.on('serverUnregistered', () => {
+    red(' serverUnregistered! ')
 })
-.on("serverRegistrationRenewed", () => {
-    green(" serverRegistrationRenewed! ")
+.on('serverRegistrationRenewed', () => {
+    green(' serverRegistrationRenewed! ')
 })
-.on("serverRegistrationPending", () => {
-    yellow(" serverRegistrationPending! ")
+.on('serverRegistrationPending', () => {
+    yellow(' serverRegistrationPending! ')
 })
-.on("connectionRefused", (socketData: any, endpoint: OPCUAServerEndPoint) => {
+.on('connectionRefused', (socketData: any, endpoint: OPCUAServerEndPoint) => {
     red(` connectionRefused!`)
 })
-.on("openSecureChannelFailure", (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
+.on('openSecureChannelFailure', (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
     red(` openSecureChannelFailure!`)
 })
 

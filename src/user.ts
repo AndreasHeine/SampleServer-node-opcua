@@ -48,10 +48,10 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
     if (user) {
         compare(password, String(user.password), (err, result) => {
             if (result === true) {
-                green(` User:"${user.username}" logged in as "${user.roles}"! `)
+                green(` User:'${user.username}' logged in as '${user.roles}'! `)
                 callback(null, true)
             } else {
-                red(` User:"${user.username}" rejected! `)
+                red(` User:'${user.username}' rejected! `)
                 callback(null, false)
             }
         })
@@ -61,15 +61,6 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
     }
 }
 
-// this does not get called at all but its part of the docs:
-// https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.usermanageroptions.html
-// export const getUserRole = (username: string): string => {
-//     const roles = getUser(username, userList)?.role || ""
-//     return roles
-// }
-
-// this works:
-// https://github.com/node-opcua/node-opcua/blob/6ed5227ae39e37af6d0de60c7b89ae66686726b9/packages/node-opcua-address-space/source/session_context.ts#L96
 export const getUserRoles = (username: string): NodeId[] => {
-    return makeRoles(getUser(username, userList)?.roles || "")
+    return makeRoles(getUser(username, userList)?.roles || '')
 }
