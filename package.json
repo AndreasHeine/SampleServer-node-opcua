@@ -6,6 +6,7 @@
   "scripts": {
     "pretest": "tsc",
     "test": "mocha dst/test/test.js",
+    "update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
     "start": "tsc && node dst/server.js",
     "start_args": "tsc && node dst/server.js --ip=127.0.0.1 --port=5000",
     "start_lds": "tsc && node dst/LocalDiscoveryServer/local-discovery-server.js",
@@ -28,6 +29,7 @@
     "chai": "^4.3.4",
     "node-opcua": "2.61.0",
     "node-opcua-server-discovery": "^2.60.0",
+    "chalk": "4.1.2",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
