@@ -12,25 +12,25 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { describe, it } from "mocha"
-import { expect } from "chai"
+import { describe, it } from 'mocha'
 
 import { 
     OPCUAServer, 
 } from 'node-opcua'
 
-import { config } from "./../config"
+import { config } from './../config'
 
-describe('Tests:', () => {
+describe('Tests:', function () {
+    this.timeout(10000);
     let server: OPCUAServer
-    beforeEach((done) => {
-        server = new OPCUAServer(config)
-        server.initialize()
-        server.start(() => {
-            done()
-        });
-    });
-    afterEach((done) => {
+    // before(function (done) {
+    //     server = new OPCUAServer(config)
+    //     server.initialize()
+    //     server.start(() => {
+    //         done()
+    //     })
+    // })
+    after(function (done) {
         if (server) {
             server.shutdown(() => {
                 done()
@@ -38,9 +38,13 @@ describe('Tests:', () => {
         } else {
             done()
         }
-    });
+    })
 
-    it('should start the OPCUAServer', () => { 
-        //        
+    it('should start the OPCUAServer', (done) => { 
+        server = new OPCUAServer(config)
+        server.initialize()
+        server.start()
+
+        setTimeout(done, 5000)
     })
 })
