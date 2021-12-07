@@ -20,7 +20,7 @@ import {
 
 import { config } from './../config'
 
-describe('Tests:', function () {
+describe('following tests are for renovate dependency updates:', function () {
     this.timeout(15000);
     let server: OPCUAServer
     after(function (done) {
@@ -37,7 +37,7 @@ describe('Tests:', function () {
         server = new OPCUAServer(config)
         server.initialize()
         server.start()
-
+        console.log("  --> server is running for 10s...  ")
         setTimeout(done, 10000)
     })
 })
