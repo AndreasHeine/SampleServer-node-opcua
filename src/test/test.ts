@@ -21,15 +21,8 @@ import {
 import { config } from './../config'
 
 describe('Tests:', function () {
-    this.timeout(10000);
+    this.timeout(15000);
     let server: OPCUAServer
-    // before(function (done) {
-    //     server = new OPCUAServer(config)
-    //     server.initialize()
-    //     server.start(() => {
-    //         done()
-    //     })
-    // })
     after(function (done) {
         if (server) {
             server.shutdown(() => {
@@ -45,6 +38,6 @@ describe('Tests:', function () {
         server.initialize()
         server.start()
 
-        setTimeout(done, 5000)
+        setTimeout(done, 10000)
     })
 })
