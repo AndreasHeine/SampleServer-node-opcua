@@ -1,4 +1,4 @@
-FROM node:17.2
+FROM node:17.2.0
 
 COPY . /
 

@@ -12,55 +12,55 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync } from 'fs'
-import { compare } from 'bcrypt'
+import { readFileSync } from 'fs';
+import { compare } from 'bcrypt';
 
-import { 
-    NodeId,
-    makeRoles
-} from 'node-opcua'
+import {
+  NodeId,
+  makeRoles
+} from 'node-opcua';
 
-import { User } from './utils/userfile'
-import { green, red } from './utils/log'
+import { User } from './utils/userfile';
+import { green, red } from './utils/log';
 
-const userFile: string = process.env.USERFILE || 'example_user.json'
+const userFile: string = process.env.USERFILE || 'example_user.json';
 
 const userList: User[] = Object.freeze(JSON.parse(
-        readFileSync(userFile, 'utf-8')
-    ).users)
+  readFileSync(userFile, 'utf-8')
+).users);
 
 const getUser = (username: String, users: User[]): User | null => {
-    let user: User[] = users.filter(item => {
-        if (item.username === username) {
-            return item
-        }
-        return null
-    })
-    if (user.length > 1) {
-        red(` Found ${user.length} Users with the Name ${username} `)
-        return null
+  const user: User[] = users.filter(item => {
+    if (item.username === username) {
+      return item;
     }
-    return user[0]
-}
+    return null;
+  });
+  if (user.length > 1) {
+    red(` Found ${user.length} Users with the Name ${username} `);
+    return null;
+  }
+  return user[0];
+};
 
 export const isValidUserAsync = (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
-    const user = getUser(username, userList)
-    if (user) {
-        compare(password, String(user.password), (err, result) => {
-            if (result === true) {
-                green(` User:'${user.username}' logged in as '${user.roles}'! `)
-                callback(null, true)
-            } else {
-                red(` User:'${user.username}' rejected! `)
-                callback(null, false)
-            }
-        })
-    } else {
-        red(` User:unknown rejected! `)
-        callback(null, false)
-    }
-}
+  const user = getUser(username, userList);
+  if (user) {
+    compare(password, String(user.password), (err, result) => {
+      if (result === true) {
+        green(` User:'${user.username}' logged in as '${user.roles}'! `);
+        callback(null, true);
+      } else {
+        red(` User:'${user.username}' rejected! `);
+        callback(null, false);
+      }
+    });
+  } else {
+    red(' User:unknown rejected! ');
+    callback(null, false);
+  }
+};
 
 export const getUserRoles = (username: string): NodeId[] => {
-    return makeRoles(getUser(username, userList)?.roles || '')
-}
+  return makeRoles(getUser(username, userList)?.roles || '');
+};

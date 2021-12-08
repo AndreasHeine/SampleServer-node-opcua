@@ -12,67 +12,67 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { 
-    WellKnownRoles,
-    PermissionType,
-} from 'node-opcua'
+import {
+  WellKnownRoles,
+  PermissionType
+} from 'node-opcua';
 
 export const ServerRolePermissionGroup = Object.freeze({
-    // Default -> https://reference.opcfoundation.org/v104/Core/docs/Part3/4.8.2/
-    DEFAULT: [
-        { 
-            roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.SecurityAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        {   // Session Required
-            roleId: WellKnownRoles.Operator, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.Observer, 
-            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.Engineer, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.ConfigureAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.AuthenticatedUser, 
-            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.Anonymous, 
-            permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-    ],
-    // Only Supervisor
-    RESTRICTED: [
-        { 
-            roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-    ],
-    // Only Supervisor, SecurityAdmin and ConfigureAdmin
-    ADMIN: [
-        { 
-            roleId: WellKnownRoles.Supervisor, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.SecurityAdmin, 
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-        { 
-            roleId: WellKnownRoles.ConfigureAdmin,
-            permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-        },
-    ],
-})
+  // Default -> https://reference.opcfoundation.org/v104/Core/docs/Part3/4.8.2/
+  DEFAULT: [
+    {
+      roleId: WellKnownRoles.Supervisor,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.SecurityAdmin,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    { // Session Required
+      roleId: WellKnownRoles.Operator,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.Observer,
+      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.Engineer,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.ConfigureAdmin,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.AuthenticatedUser,
+      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.Anonymous,
+      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
+    }
+  ],
+  // Only Supervisor
+  RESTRICTED: [
+    {
+      roleId: WellKnownRoles.Supervisor,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    }
+  ],
+  // Only Supervisor, SecurityAdmin and ConfigureAdmin
+  ADMIN: [
+    {
+      roleId: WellKnownRoles.Supervisor,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.SecurityAdmin,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    },
+    {
+      roleId: WellKnownRoles.ConfigureAdmin,
+      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    }
+  ]
+});

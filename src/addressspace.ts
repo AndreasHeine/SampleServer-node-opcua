@@ -12,31 +12,33 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { 
-    OPCUAServer, 
-} from 'node-opcua'
+import {
+  OPCUAServer
+} from 'node-opcua';
 
-import { green } from './utils/log'
+import { green } from './utils/log';
 
-import { createOwnServerAddressspace } from './serveraddressspace/serveraddressspace'
-import { createMyMachine } from './machines/mymachine/mymachine'
-import { createShowCaseMachineTool } from './machines/machinetool/showcasemachinetool'
-import { createSampleImm } from './machines/sample_imm/sample_imm'
+import { createOwnServerAddressspace } from './serveraddressspace/serveraddressspace';
+import { createMyMachine } from './machines/mymachine/mymachine';
+import { createShowCaseMachineTool } from './machines/machinetool/showcasemachinetool';
+import { createSampleImm } from './machines/sample_imm/sample_imm';
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
-    const addressSpace = server.engine.addressSpace
-    addressSpace ? await Promise.all([
-        createOwnServerAddressspace(addressSpace),
-        createMyMachine(addressSpace),
-        createShowCaseMachineTool(addressSpace),
-        createSampleImm(addressSpace),
+  const addressSpace = server.engine.addressSpace;
+  addressSpace
+    ? await Promise.all([
+      createOwnServerAddressspace(addressSpace),
+      createMyMachine(addressSpace),
+      createShowCaseMachineTool(addressSpace),
+      createSampleImm(addressSpace)
     ])
-    .then(() => {
-        green(' creating addressspace done! ')
-    })
-    .catch((error) => {
-        throw new Error(` creating addressspace failed: ${error} `)
-    }) : () => {
-        throw new Error(` addressSpace not found! the server has no 'addressSpace' `)
-    }
-}
+      .then(() => {
+        green(' creating addressspace done! ');
+      })
+      .catch((error) => {
+        throw new Error(` creating addressspace failed: ${error} `);
+      })
+    : () => {
+        throw new Error(' addressSpace not found! the server has no \'addressSpace\' ');
+      };
+};
