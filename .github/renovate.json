@@ -1,0 +1,15 @@
+
+{
+  "extends": [
+    "config:base"
+  ],
+    "labels": ["dependencies"],
+    "packageRules": [
+      {
+        "matchDatasources": ["docker"],
+        "matchUpdateTypes": ["major"],
+        "enabled": true,
+        "pinDigests": true
+      }
+    ]
+}
