@@ -36,8 +36,12 @@ describe('following tests are for renovate dependency updates:', function () {
     it('should start the OPCUAServer', (done) => { 
         server = new OPCUAServer(config)
         server.initialize()
-        server.start()
+        server.start(
+            () => {
+                setTimeout(done, 10000)
+            }
+        )
         console.log("  --> server is running for 10s...  ")
-        setTimeout(done, 10000)
+        
     })
 })
