@@ -1,22 +1,27 @@
-[![Node.js CI](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml) [![CodeQL](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml)  
 # SampleServer-node-opcua
+
+[![Node.js CI](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml)
+[![CodeQL](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml)  
 
 OPC UA Sample Server based on [node-opcua](https://github.com/node-opcua/node-opcua)  
 the book from the author of node-opcua: [node-opcuabyexample](https://leanpub.com/node-opcuabyexample)  
 API Docs: [2.32.0](https://node-opcua.github.io/api_doc/2.32.0/index.html)  
   
-## Requirements  
-node v14 (LTS) or newer  
-typescript globally installed for tsc cli (`npm install -g typescript`)  
+## Requirements
+
+Node.js v14 (LTS) or newer  
+TypeScript globally installed for tsc cli (`npm install -g typescript`)  
 pkg globally installed for pkg cli (`npm install -g pkg`)  
   
-## Usage   
+## Usage
+
 - `download and unpack`  
 - `open folder in VS Code (or in terminal)`  
 - `npm install`  
 - `npm run start`
 
-## Example Users   
+## Example Users
+
 User: `admin` Password: `pw1` Role: Supervisor  
 User: `operator` Password: `pw2` Role: Operator  
 User: `guest` Password: `pw3` Role: AuthenticatedUser  
@@ -29,10 +34,12 @@ User: `guest` Password: `pw3` Role: AuthenticatedUser
   
 ## Docker  
 
-Set "IP" and "PORT" in env:  
+Set "IP" and "PORT" in env:
+
 - `docker run -it -p 5000:5000 -e PORT=5000 -e IP=127.0.0.1 --name sampleserver-node-opcua ghcr.io/andreasheine/sampleserver-node-opcua:main`  
   
-## Build 
+## Build
+
 if you want to build an executable  
 `tsc && pkg server.js`
   
