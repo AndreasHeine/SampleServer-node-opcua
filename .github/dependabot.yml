@@ -8,7 +8,7 @@ updates:
 
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
-    target-branch: "develop"
+    target-branch: "main"
     schedule:
       interval: "weekly"
     rebase-strategy: "disabled"
