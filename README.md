@@ -1,7 +1,9 @@
 # SampleServer-node-opcua
 
 [![Node.js CI](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/node.js.yml)
-[![CodeQL](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml)  
+[![CodeQL](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/codeql-analysis.yml)
+[![Lint Code Base](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/linter.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/linter.yml)
+[![Container Build](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/container_build.yml/badge.svg)](https://github.com/AndreasHeine/SampleServer-node-opcua/actions/workflows/container_build.yml)  
 
 OPC UA Sample Server based on [node-opcua](https://github.com/node-opcua/node-opcua)  
 the book from the author of node-opcua: [node-opcuabyexample](https://leanpub.com/node-opcuabyexample)  
