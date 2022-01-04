@@ -38,6 +38,10 @@ Set "IP" and "PORT" in env:
 
 - `docker run -it -p 5000:5000 -e PORT=5000 -e IP=127.0.0.1 --name sampleserver-node-opcua ghcr.io/andreasheine/sampleserver-node-opcua:main`  
   
+## Online Server Instance  
+
+- `opc.tcp://opcua2.umati.app:4840`  
+
 ## Build
 
 if you want to build an executable  
