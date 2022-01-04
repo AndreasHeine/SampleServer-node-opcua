@@ -1,0 +1,1 @@
+depcruise --include-only "^src" --output-type dot src | dot -T svg > dependencygraph.svg
