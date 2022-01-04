@@ -24,8 +24,39 @@ import {
 
 export const createShowCaseMachineTool = async (addressSpace: AddressSpace): Promise<void> => {
 
-    // bind variable to a getter (external api call or js variable)
-    // -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
+    /*
+        machinelogic here:
+        bind opc ua variables to a getter/setter functions or to an js variable
+        -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
+
+        GETTER:
+        const myVariableGetter = function(
+        this: UAVariable, 
+        callback: (err: Error | null, dataValue?: DataValue) => void): void {
+            callback(null, new DataValue({
+                value: new Variant({
+                    value: null,
+                    dataType: this.dataTypeObj.displayName[0].text?.toString()
+                }),
+                statusCode: StatusCodes.Good,
+            }))
+            return
+        }
+
+        SETTER:
+        const myVariableSetter = function(this: UAVariable, dataValue: DataValue, callback: StatusCodeCallback): void {
+            myVariable = dataValue.value.value
+            callback(null, StatusCodes.Good);
+            return
+        };
+        
+        BINDING:
+        node.setRolePermissions(ServerRolePermissionGroup.DEFAULT);
+        node.bindVariable({
+            timestamped_get: myVariableGetter,
+            timestamped_set: myVariableSetter
+        }, true);
+    */
 
     const idx = addressSpace?.getNamespaceIndex('http://example.com/ShowcaseMachineTool/')
     const iaIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/IA/')
