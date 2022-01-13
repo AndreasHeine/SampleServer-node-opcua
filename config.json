@@ -1,0 +1,52 @@
+{
+    "hostname": "127.0.0.1",
+    "port": 4840,
+    "alternateHostnames": [],
+    "maxAllowedSessionNumber": 100,
+    "maxConnectionsPerEndpoint": 100,
+    "timeout": 10,
+    "resourcePath": "/UA",
+    "buildInfo": {
+        "productUri": "SampleServer-productUri",
+        "productName": "SampleServer-productName",
+        "manufacturerName": "SampleServer-manufacturerName",
+        "buildNumber": "v1.0.0",
+        "buildDate": ""
+    },
+    "serverInfo": {
+        "applicationName": {
+            "text": "SampleServer-applicationName",
+            "locale": "en"
+        },
+        "applicationUri": "urn:SampleServer",
+        "productUri": "SampleServer-productUri"
+    },
+    "serverCapabilities": {
+        "maxBrowseContinuationPoints": 10,
+        "maxArrayLength": 1000,
+        "minSupportedSampleRate": 100,
+        "operationLimits": {
+            "maxMonitoredItemsPerCall": 1000,
+            "maxNodesPerBrowse": 1000,
+            "maxNodesPerRead": 1000,
+            "maxNodesPerRegisterNodes": 1000,
+            "maxNodesPerTranslateBrowsePathsToNodeIds": 1000,
+            "maxNodesPerWrite": 1000
+        }
+    },
+    "allowAnonymous": true,
+    "disableDiscovery": false,
+    "certificateFile": "",
+    "privateKeyFile": "",
+    "nodeset_filename": [
+        "./nodesets/Opc.Ua.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Di.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Machinery.NodeSet2.xml",
+        "./nodesets/Opc.Ua.IA.NodeSet2.xml",
+        "./nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
+        "./models/ShowCaseMachineTool.xml",
+        "./models/sample_imm.xml"
+    ]
+}
