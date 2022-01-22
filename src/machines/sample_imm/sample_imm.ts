@@ -16,7 +16,7 @@ import {
     AddressSpace,
 } from 'node-opcua'
 
-export const createSampleImm = async (addressSpace: AddressSpace): Promise<void> => {
+export const createSampleImmLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
     /*
         machinelogic here:

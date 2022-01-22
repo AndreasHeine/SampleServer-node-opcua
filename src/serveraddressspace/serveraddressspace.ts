@@ -24,7 +24,7 @@ import {
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
 
-export const createOwnServerAddressspace = async (addressSpace: AddressSpace): Promise<void> => {
+export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpace): Promise<void> => {
     const namespace = addressSpace?.getOwnNamespace()
     const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
     

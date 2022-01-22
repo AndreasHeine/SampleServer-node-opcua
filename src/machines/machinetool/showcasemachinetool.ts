@@ -22,7 +22,7 @@ import {
     NodeIdType,
 } from 'node-opcua'
 
-export const createShowCaseMachineTool = async (addressSpace: AddressSpace): Promise<void> => {
+export const createShowCaseMachineToolLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
     /*
         machinelogic here:
