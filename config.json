@@ -1,5 +1,5 @@
 {
-    "hostname": "192.168.3.102",
+    "hostname": "127.0.0.1",
     "port": 4840,
     "buildInfo": {
         "productUri": "SampleServer-productUri",
