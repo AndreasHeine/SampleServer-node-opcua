@@ -29,12 +29,16 @@ import { red } from './utils/log';
 
 const argv = yargs(process.argv.slice(2)).options({
   ip: { type: 'string' },
-  port: { type: 'number' }
+  port: { type: 'number' },
+  configpath: { type: 'string' }
 }).parseSync();
+
+const configPath: string = process.env.CONFIGPATH || argv.configpath || "";
+const configFile: string = "configuration.json";
 
 let configJsonObj: OPCUAServerOptions;
 try {
-  const configString = readFileSync("config.json", "utf-8");
+  const configString = readFileSync(configPath + configFile, "utf-8");
   configJsonObj = JSON.parse(configString) || {};
 } catch (error) {
   red(`Error while loading config-file: ${error}`);
