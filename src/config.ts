@@ -12,39 +12,105 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+import { readFileSync } from 'fs';
 import yargs from 'yargs';
 import {
   MessageSecurityMode,
   SecurityPolicy,
   ServerCapabilities,
   OperationLimits,
+  ApplicationType,
   OPCUAServerOptions,
   OPCUACertificateManager,
   RegisterServerMethod
 } from 'node-opcua';
-
 import { isValidUserAsync, getUserRoles } from './user';
+import { red } from './utils/log';
 
 const argv = yargs(process.argv.slice(2)).options({
   ip: { type: 'string' },
   port: { type: 'number' }
 }).parseSync();
 
-const port: number = Number(process.env.PORT) || argv.port || 4840; // port needs to be different then 4840, if LDS is running!
-const ip: string = process.env.IP || argv.ip || '127.0.0.1'; // by default listen on localhost
-const alternateHostnames:string[] = [];
+let configJsonObj: OPCUAServerOptions;
+try {
+  const configString = readFileSync("config.json", "utf-8");
+  configJsonObj = JSON.parse(configString) || {};
+} catch (error) {
+  red(`Error while loading config-file: ${error}`);
+  configJsonObj = {};
+};
 
-let registerServerMethod: RegisterServerMethod;
-if (port == 4840) {
-  registerServerMethod = RegisterServerMethod.HIDDEN;
+const packageString: string = readFileSync("package.json", "utf-8");
+const packageJsonObj = JSON.parse(packageString) || {};
+
+let config: OPCUAServerOptions = {};
+
+config.hostname = process.env.IP || argv.ip || configJsonObj.hostname || "127.0.0.1";
+
+if (!configJsonObj.port) {
+  config.port = Number(process.env.PORT) || argv.port || 4840;
 } else {
-  registerServerMethod = RegisterServerMethod.LDS;
-}
+  config.port = Number(process.env.PORT) || argv.port || configJsonObj.port;
+};
+
+if (config.port != 4840) {
+  config.registerServerMethod = RegisterServerMethod.LDS;
+} else {
+  config.registerServerMethod = RegisterServerMethod.HIDDEN;
+};
+
+config.alternateHostname = configJsonObj.alternateHostname || [];
+config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
+config.maxAllowedSessionNumber = configJsonObj.maxAllowedSessionNumber || 100;
+config.maxConnectionsPerEndpoint = configJsonObj.maxConnectionsPerEndpoint || 100;
+config.timeout = configJsonObj.timeout || 10000;
+config.resourcePath = configJsonObj.resourcePath || "/UA";
+config.buildInfo = {};
+config.buildInfo.productUri = configJsonObj.buildInfo?.productUri || 'SampleServer-productUri';
+config.buildInfo.productName = configJsonObj.buildInfo?.productName || 'SampleServer-productName';
+config.buildInfo.manufacturerName = configJsonObj.buildInfo?.manufacturerName || 
+'SampleServer-manufacturerName';
+config.buildInfo.buildNumber = configJsonObj.buildInfo?.buildNumber || 'v1.0.0';
+config.buildInfo.buildDate = new Date(String(configJsonObj.buildInfo?.buildDate)) || new Date();
+config.buildInfo.softwareVersion = `node-opcua: ${packageJsonObj.dependencies["node-opcua"] || "latest"}`;
+config.serverInfo = {};
+config.serverInfo.applicationName = configJsonObj.serverInfo?.applicationName || {
+  "text": "SampleServer-applicationName",
+  "locale": "en-US"
+};
+config.serverInfo.applicationUri = configJsonObj.serverInfo?.applicationUri || "urn:SampleServer";
+config.serverInfo.productUri = configJsonObj.serverInfo?.productUri || "SampleServer-productUri";
+config.serverInfo.applicationType = configJsonObj.serverInfo?.applicationType || ApplicationType.Server;
+config.serverInfo.gatewayServerUri = configJsonObj.serverInfo?.gatewayServerUri || "";
+config.serverInfo.discoveryProfileUri = configJsonObj.serverInfo?.discoveryProfileUri || "";
+config.serverInfo.discoveryUrls = configJsonObj.serverInfo?.discoveryUrls || []
+const operationLimits = configJsonObj.serverCapabilities?.operationLimits;
+config.serverCapabilities = new ServerCapabilities({
+  maxBrowseContinuationPoints: configJsonObj.serverCapabilities?.maxBrowseContinuationPoints || 10,
+  maxArrayLength: configJsonObj.serverCapabilities?.maxArrayLength || 1000,
+  minSupportedSampleRate: configJsonObj.serverCapabilities?.minSupportedSampleRate || 100,
+  operationLimits: new OperationLimits({
+    maxMonitoredItemsPerCall: operationLimits?.maxMonitoredItemsPerCall || 1000,
+    maxNodesPerBrowse: operationLimits?.maxNodesPerBrowse || 1000,
+    maxNodesPerRead: operationLimits?.maxNodesPerRead || 1000,
+    maxNodesPerRegisterNodes: operationLimits?.maxNodesPerRegisterNodes || 1000,
+    maxNodesPerTranslateBrowsePathsToNodeIds: operationLimits?.maxNodesPerTranslateBrowsePathsToNodeIds || 1000,
+    maxNodesPerWrite: operationLimits?.maxNodesPerWrite || 1000
+  })
+});
+config.allowAnonymous = configJsonObj.allowAnonymous || true;
+config.disableDiscovery = configJsonObj.disableDiscovery || true;
+config.certificateFile = configJsonObj.certificateFile || undefined
+config.privateKeyFile = configJsonObj.privateKeyFile || undefined
+config.nodeset_filename = configJsonObj.nodeset_filename || []
 
 const userManager = {
   isValidUserAsync: isValidUserAsync,
   getUserRoles: getUserRoles
 };
+
+config.userManager = userManager;
 
 const serverCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: true,
@@ -58,67 +124,17 @@ const userCertificateManager = new OPCUACertificateManager({
   rootFolder: './user_pki'
 });
 
-export const config: OPCUAServerOptions = {
-  port: port,
-  hostname: ip,
-  alternateHostname: alternateHostnames,
-  maxAllowedSessionNumber: 100,
-  maxConnectionsPerEndpoint: 100,
-  timeout: 10000,
-  resourcePath: '/UA',
-  buildInfo: {
-    productUri: 'SampleServer-productUri',
-    productName: 'SampleServer-productName',
-    manufacturerName: 'SampleServer-manufacturerName',
-    buildNumber: 'v1.0.0',
-    buildDate: new Date()
-  },
-  serverInfo: {
-    applicationName: {
-      text: 'SampleServer-applicationName',
-      locale: 'en'
-    },
-    applicationUri: 'urn:SampleServer',
-    productUri: 'SampleServer-productUri'
-  },
-  serverCapabilities: new ServerCapabilities({
-    maxBrowseContinuationPoints: 10,
-    maxArrayLength: 1000,
-    minSupportedSampleRate: 100,
-    operationLimits: new OperationLimits({
-      maxMonitoredItemsPerCall: 1000,
-      maxNodesPerBrowse: 1000,
-      maxNodesPerRead: 1000,
-      maxNodesPerRegisterNodes: 1000,
-      maxNodesPerTranslateBrowsePathsToNodeIds: 1000,
-      maxNodesPerWrite: 1000
-    })
-  }),
-  allowAnonymous: true,
-  userManager: userManager,
-  userCertificateManager: userCertificateManager,
-  serverCertificateManager: serverCertificateManager,
-  securityModes: [
-    MessageSecurityMode.None,
-    MessageSecurityMode.SignAndEncrypt
-  ],
-  securityPolicies: [
-    SecurityPolicy.None,
-    SecurityPolicy.Basic256Sha256
-  ],
-  disableDiscovery: false,
-  registerServerMethod: registerServerMethod,
-  nodeset_filename: [
-    // nodesets
-    './nodesets/Opc.Ua.NodeSet2.xml',
-    './nodesets/Opc.Ua.Di.NodeSet2.xml',
-    './nodesets/Opc.Ua.Machinery.NodeSet2.xml',
-    './nodesets/Opc.Ua.IA.NodeSet2.xml',
-    './nodesets/Opc.Ua.MachineTool.NodeSet2.xml',
-    './nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml',
-    './nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml',
-    // models
-    './models/ShowCaseMachineTool.xml',
-    './models/sample_imm.xml'
-  ]
-};
+config.userCertificateManager = userCertificateManager;
+config.serverCertificateManager = serverCertificateManager;
+
+config.securityModes = [
+  MessageSecurityMode.None,
+  MessageSecurityMode.SignAndEncrypt
+]
+
+config.securityPolicies = [
+  SecurityPolicy.None,
+  SecurityPolicy.Basic256Sha256
+]
+
+export { config };
