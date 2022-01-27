@@ -14,19 +14,25 @@
 
 import { readFileSync } from 'fs';
 import { compare } from 'bcrypt';
-
+import yargs from 'yargs';
 import {
   NodeId,
   makeRoles
 } from 'node-opcua';
-
 import { User } from './utils/userfile';
 import { green, red } from './utils/log';
 
-const userFile: string = process.env.USERFILE || 'example_user.json';
+const argv = yargs(process.argv.slice(2)).options({
+  ip: { type: 'string' },
+  port: { type: 'number' },
+  configpath: { type: 'string' },
+}).parseSync();
+
+const configPath: string = process.env.CONFIGPATH || argv.configpath || "";
+const userFile: string = "user.json";
 
 const userList: User[] = Object.freeze(JSON.parse(
-  readFileSync(userFile, 'utf-8')
+  readFileSync(configPath + userFile, 'utf-8')
 ).users);
 
 const getUser = (username: String, users: User[]): User | null => {
