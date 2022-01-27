@@ -1,0 +1,30 @@
+{
+    "hostname": "127.0.0.1",
+    "port": 4840,
+    "buildInfo": {
+        "productUri": "SampleServer-productUri",
+        "productName": "SampleServer-productName",
+        "manufacturerName": "SampleServer-manufacturerName",
+        "buildNumber": "v1.0.0",
+        "buildDate": "2022-01-27T00:00:00.0Z"
+    },
+    "serverInfo": {
+        "applicationName": {
+            "text": "SampleServer-applicationName",
+            "locale": "en"
+        },
+        "applicationUri": "urn:SampleServer",
+        "productUri": "SampleServer-productUri"
+    },
+    "nodeset_filename": [
+        "./nodesets/Opc.Ua.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Di.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Machinery.NodeSet2.xml",
+        "./nodesets/Opc.Ua.IA.NodeSet2.xml",
+        "./nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
+        "./models/ShowCaseMachineTool.xml",
+        "./models/sample_imm.xml"
+    ]
+}
