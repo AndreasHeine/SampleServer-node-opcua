@@ -43,11 +43,6 @@ Set "IP" and "PORT" in env:
 ## Online Server Instance  
 
 - `opc.tcp://opcua2.umati.app:4840`  
-
-## Build
-
-if you want to build an executable  
-`tsc && pkg server.js`
   
 ## Implementations of OPC UA Companion Specifications
   
