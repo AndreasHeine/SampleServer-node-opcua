@@ -60,6 +60,7 @@ if (!configJsonObj.port) {
 
 if (config.port != 4840) {
   config.registerServerMethod = RegisterServerMethod.LDS;
+  // config.registerServerMethod = RegisterServerMethod.MDNS;
 } else {
   config.registerServerMethod = RegisterServerMethod.HIDDEN;
 };
@@ -77,7 +78,9 @@ config.certificateFile = configJsonObj.certificateFile || undefined;
 config.privateKeyFile = configJsonObj.privateKeyFile || undefined;
 config.nodeset_filename = configJsonObj.nodeset_filename || [];
 config.isAuditing = configJsonObj.isAuditing || false;
-config.capabilitiesForMDNS = configJsonObj.capabilitiesForMDNS || [];
+// https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-service-discovery/source/server_capabilities.ts
+// http://www.opcfoundation.org/UA/schemas/1.04/ServerCapabilities.csv
+config.capabilitiesForMDNS = configJsonObj.capabilitiesForMDNS || ['NA'];
 config.defaultSecureTokenLifetime = configJsonObj.defaultSecureTokenLifetime || 300000;
 
 // BuildInfo
@@ -101,7 +104,7 @@ config.serverInfo.productUri = configJsonObj.serverInfo?.productUri || 'SampleSe
 config.serverInfo.applicationType = configJsonObj.serverInfo?.applicationType || ApplicationType.Server;
 config.serverInfo.gatewayServerUri = configJsonObj.serverInfo?.gatewayServerUri || '';
 config.serverInfo.discoveryProfileUri = configJsonObj.serverInfo?.discoveryProfileUri || '';
-config.serverInfo.discoveryUrls = configJsonObj.serverInfo?.discoveryUrls || []
+config.serverInfo.discoveryUrls = configJsonObj.serverInfo?.discoveryUrls || [];
 
 // ServerCapabilities and OperationLimits
 const operationLimits = configJsonObj.serverCapabilities?.operationLimits;
@@ -109,7 +112,7 @@ config.serverCapabilities = new ServerCapabilities({
   localeIdArray: configJsonObj.serverCapabilities?.localeIdArray || ["en-Us"],
   maxBrowseContinuationPoints: configJsonObj.serverCapabilities?.maxBrowseContinuationPoints || 10,
   maxArrayLength: configJsonObj.serverCapabilities?.maxArrayLength || 1000,
-  minSupportedSampleRate: configJsonObj.serverCapabilities?.minSupportedSampleRate || 100,
+  // minSupportedSampleRate: configJsonObj.serverCapabilities?.minSupportedSampleRate || 100,
   // maxByteStringLength: configJsonObj.serverCapabilities?.maxByteStringLength || undefined,
   // maxStringLength: configJsonObj.serverCapabilities?.maxStringLength || undefined,
   maxHistoryContinuationPoints: configJsonObj.serverCapabilities?.maxHistoryContinuationPoints || 10,
@@ -128,113 +131,10 @@ config.serverCapabilities = new ServerCapabilities({
     maxNodesPerWrite: operationLimits?.maxNodesPerWrite || 1000,
 
   }),
-  serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray || 
-  [
-    // 'http://opcfoundation.org/UA-Profile/Server/CoreFacet',
-    // 'http://opcfoundation.org/UA-Profile/Server/Core2017Facet',
-    // 'http://opcfoundation.org/UA-Profile/Server/SessionLess',
-    // 'http://opcfoundation.org/UA-Profile/Server/ReverseConnect',
-    // 'http://opcfoundation.org/UA-Profile/Server/Behaviour',
-    // 'http://opcfoundation.org/UA-Profile/Server/RequestStateChange',
-    // 'http://opcfoundation.org/UA-Profile/Server/SubnetDiscovery',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalCertificateManagement',
-    // 'http://opcfoundation.org/UA-Profile/Server/AuthorizationServiceConfiguration',
-    // 'http://opcfoundation.org/UA-Profile/Server/KeyCredentialManagement',
-    // 'http://opcfoundation.org/UA-Profile/Server/AttributeWriteMask',
-    // 'http://opcfoundation.org/UA-Profile/Server/FileAccess',
-    // 'http://opcfoundation.org/UA-Profile/Server/Documentation',
-    // 'http://opcfoundation.org/UA-Profile/Server/EmbeddedDataChangeSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/StandardDataChangeSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/StandardDataChangeSubscription2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/EnhancedDataChangeSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/EnhancedDataChangeSubscription2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/DurableSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/DataAccess',
-    // 'http://opcfoundation.org/UA-Profile/Server/ComplexTypes',
-    // 'http://opcfoundation.org/UA-Profile/Server/ComplexTypes2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/StandardEventSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/AddressSpaceNotifier',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACBaseCondition',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACRefresh2',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACAddressSpaceInstance',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACEnable',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACAlarmMetrics',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACAlarm',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACAckAlarm',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACExclusiveAlarming',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACNon-ExclusiveAlarming',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACPreviousInstances',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACDialog',
-    // 'http://opcfoundation.org/UA-Profile/Server/ACCertificateExpiration',
-    // 'http://opcfoundation.org/UA-Profile/Server/AEWrapper',
-    // 'http://opcfoundation.org/UA-Profile/Server/Methods',
-    // 'http://opcfoundation.org/UA-Profile/Server/Auditing',
-    // 'http://opcfoundation.org/UA-Profile/Server/NodeManagement',
-    // 'http://opcfoundation.org/UA-Profile/Server/UserRoleBase',
-    // 'http://opcfoundation.org/UA-Profile/Server/UserRoleManagement',
-    // 'http://opcfoundation.org/UA-Profile/Server/StateMachine',
-    // 'http://opcfoundation.org/UA-Profile/Server/ClientRedundancy',
-    // 'http://opcfoundation.org/UA-Profile/Server/TransparentRedundancy',
-    // 'http://opcfoundation.org/UA-Profile/Server/VisibleRedundancy',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalRawData',
-    // 'http://opcfoundation.org/UA-Profile/Server/AggregateHistorical',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalDataAtTime',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalModifiedData',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalAnnotation',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalDataInsert',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalDataUpdate',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalDataReplace',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalDataDelete',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalStructuredData',
-    // 'http://opcfoundation.org/UA-Profile/Server/BaseHistoricalEvent',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalEventUpdate',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalEventReplace',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalEventInsert',
-    // 'http://opcfoundation.org/UA-Profile/Server/HistoricalEventDelete',
-    // 'http://opcfoundation.org/UA-Profile/Server/AggregateSubscription',
-    // 'http://opcfoundation.org/UA-Profile/Server/NanoEmbeddedDevice',
-    // 'http://opcfoundation.org/UA-Profile/Server/NanoEmbeddedDevice2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/MicroEmbeddedDevice',
-    // 'http://opcfoundation.org/UA-Profile/Server/MicroEmbeddedDevice2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/EmbeddedUA',
-    // 'http://opcfoundation.org/UA-Profile/Server/EmbeddedUA2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/StandardUA',
-    'http://opcfoundation.org/UA-Profile/Server/StandardUA2017',
-    // 'http://opcfoundation.org/UA-Profile/Transport/uatcp-uasc-uabinary',
-    // 'http://opcfoundation.org/UA-Profile/Transport/https-uabinary',
-    // 'http://opcfoundation.org/UA-Profile/Transport/https-uasoapxml',
-    // 'http://opcfoundation.org/UA-Profile/Transport/https-uajson',
-    // 'http://opcfoundation.org/UA-Profile/Transport/wss-uasc-uabinary',
-    // 'http://opcfoundation.org/UA-Profile/Transport/wss-uajson',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserAccessFull',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserAccessBase',
-    // 'http://opcfoundation.org/UA-Profile/Security/TimeSync',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeAuditEvents',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeAlarmHandling',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeRandomNumbers',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeTimeouts',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeAdministrativeAccess',
-    // 'http://opcfoundation.org/UA-Profile/Security/BestPracticeStrictMessage',
-    // 'http://opcfoundation.org/UA-Profile/TransportSecurity/TLS-1-2',
-    // 'http://opcfoundation.org/UA-Profile/TransportSecurity/TLS-1-2-PFS',
-    'http://opcfoundation.org/UA/SecurityPolicy#None',
-    // 'http://opcfoundation.org/UA/SecurityPolicy#Aes128_Sha256_RsaOaep',
-    'http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256',
-    // 'http://opcfoundation.org/UA/SecurityPolicy#Aes256_Sha256_RsaPss',
-    'http://opcfoundation.org/UA-Profile/Security/UserToken/Anonymous',
-    'http://opcfoundation.org/UA-Profile/Security/UserToken/Server/UserNamePassword',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserToken/Server/X509Certificate',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserToken/Server/IssuedToken',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserToken/Server/IssuedTokenWindows',
-    // 'http://opcfoundation.org/UA-Profile/Security/UserToken/Server/JsonWebToken',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalDiscovery',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalDiscovery2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalDiscoveryAndCertificateManagement',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalDiscoveryAndCertificateManagement2017',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalServiceAuthorization',
-    // 'http://opcfoundation.org/UA-Profile/Server/GlobalServiceKeyCredentials'
-  ],
-  softwareCertificates: [],
+  // https://profiles.opcfoundation.org/v104/Reporting/
+  // https://reference.opcfoundation.org/v104/Core/docs/Part7/6.2/
+  // serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray, 
+  softwareCertificates: [], // To Do! create SignedSoftwareCertificate[] from string[]
 });
 
 const userManager = {
@@ -262,11 +162,11 @@ config.serverCertificateManager = serverCertificateManager;
 config.securityModes = [
   MessageSecurityMode.None,
   MessageSecurityMode.SignAndEncrypt
-]
+];
 
 config.securityPolicies = [
   SecurityPolicy.None,
   SecurityPolicy.Basic256Sha256
-]
+];
 
 export { config };
