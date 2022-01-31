@@ -65,8 +65,8 @@ if (config.port != 4840) {
   config.registerServerMethod = RegisterServerMethod.HIDDEN;
 };
 
-config.alternateHostname = configJsonObj.alternateHostname || [];
-config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
+config.alternateHostname = process.env.HOSTNAMES?.split(",") || configJsonObj.alternateHostname || [];
+// config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
 config.maxAllowedSessionNumber = configJsonObj.maxAllowedSessionNumber || 100;
 config.maxConnectionsPerEndpoint = configJsonObj.maxConnectionsPerEndpoint || 100;
 config.timeout = configJsonObj.timeout || 10000;
@@ -133,7 +133,7 @@ config.serverCapabilities = new ServerCapabilities({
   }),
   // https://profiles.opcfoundation.org/v104/Reporting/
   // https://reference.opcfoundation.org/v104/Core/docs/Part7/6.2/
-  // serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray, 
+  serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray || [], 
   softwareCertificates: [], // To Do! create SignedSoftwareCertificate[] from string[]
 });
 
@@ -161,11 +161,13 @@ config.serverCertificateManager = serverCertificateManager;
 
 config.securityModes = [
   MessageSecurityMode.None,
+  MessageSecurityMode.Sign,
   MessageSecurityMode.SignAndEncrypt
 ];
 
 config.securityPolicies = [
   SecurityPolicy.None,
+  SecurityPolicy.Basic128Rsa15,
   SecurityPolicy.Basic256Sha256
 ];
 

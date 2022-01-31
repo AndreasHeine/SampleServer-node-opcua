@@ -26,5 +26,10 @@
         "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
         "./models/sample_imm.xml"
-    ]
+    ],
+    "serverCapabilities": {
+        "serverProfileArray": [
+            "http://opcfoundation.org/UA-Profile/Server/StandardUA2017"
+        ]
+    }
 }
