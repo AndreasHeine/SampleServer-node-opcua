@@ -24,7 +24,6 @@ import {
   OPCUACertificateManager,
   RegisterServerMethod
 } from 'node-opcua';
-import { SubjectOptions } from "node-opcua-pki";
 import { isValidUserAsync, getUserRoles } from './user';
 import { red } from './utils/log';
 
@@ -42,7 +41,7 @@ try {
   const configString = readFileSync(configPath + configFile, 'utf-8');
   configJsonObj = JSON.parse(configString) || {};
 } catch (error) {
-  red(`Error while loading config-file: ${error}`);
+  red(`Error while loading file: ${configFile} -> ${error}`);
   configJsonObj = {};
 };
 
@@ -95,9 +94,10 @@ config.buildInfo.buildDate = new Date(String(configJsonObj.buildInfo?.buildDate)
 config.buildInfo.softwareVersion = `node-opcua: ${packageJsonObj.dependencies['node-opcua']}`;
 
 // ServerInfo
+const applicationName = 'SampleServer-applicationName';
 config.serverInfo = {};
 config.serverInfo.applicationName = configJsonObj.serverInfo?.applicationName || {
-  'text': 'SampleServer-applicationName',
+  'text': applicationName,
   'locale': 'en-US'
 };
 config.serverInfo.applicationUri = configJsonObj.serverInfo?.applicationUri || 'urn:SampleServer';
@@ -145,11 +145,26 @@ const userManager = {
 
 config.userManager = userManager;
 
+const certificateOptions = {
+  subject: {
+    commonName: `${applicationName}@${config.hostname}`,
+    organization: "umati",
+    organizationalUnit: "--",
+    locality: "Frankfurt",
+    state: "HE",
+    country: "DE",
+    domainComponent: "--"
+  },
+  validity: 3650
+};
+
 const serverCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: true,
   name: 'pki',
   rootFolder: './pki'
 });
+
+let ipAddresses: string[] = [config.hostname];
 
 let dns: any = [];
 if (config.alternateHostname instanceof Array) {
@@ -165,19 +180,12 @@ const serverPrivatKeyFile = './pki/own/private/private_key.pem';
 
 serverCertificateManager.createSelfSignedCertificate({
   outputFile: serverCertFile,
-  subject: {
-    commonName: "Test",
-    organization: "Heine",
-    organizationalUnit: "E1",
-    locality: "Hersfeld",
-    state: "HE",
-    country: "DE",
-    domainComponent: "",
-  },
+  subject: certificateOptions.subject,
   applicationUri: config.serverInfo.applicationUri,
   dns: dns,
   startDate: new Date(),
-  validity: 365 * 10
+  validity: certificateOptions.validity,
+  ip: ipAddresses
 });
 
 config.certificateFile = serverCertFile;
