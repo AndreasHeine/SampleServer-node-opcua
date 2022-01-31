@@ -24,6 +24,7 @@ import {
   OPCUACertificateManager,
   RegisterServerMethod
 } from 'node-opcua';
+import { SubjectOptions } from "node-opcua-pki";
 import { isValidUserAsync, getUserRoles } from './user';
 import { red } from './utils/log';
 
@@ -65,6 +66,8 @@ if (config.port != 4840) {
   config.registerServerMethod = RegisterServerMethod.HIDDEN;
 };
 
+// process.env.HOSTNAMES = "opcua3.umati.app"
+
 config.alternateHostname = process.env.HOSTNAMES?.split(",") || configJsonObj.alternateHostname || [];
 // config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
 config.maxAllowedSessionNumber = configJsonObj.maxAllowedSessionNumber || 100;
@@ -74,8 +77,6 @@ config.resourcePath = configJsonObj.resourcePath || '/UA';
 config.allowAnonymous = configJsonObj.allowAnonymous || true;
 config.disableDiscovery = configJsonObj.disableDiscovery || true;
 config.discoveryServerEndpointUrl = configJsonObj.discoveryServerEndpointUrl || 'opc.tcp://127.0.0.1:4840';
-config.certificateFile = configJsonObj.certificateFile || undefined;
-config.privateKeyFile = configJsonObj.privateKeyFile || undefined;
 config.nodeset_filename = configJsonObj.nodeset_filename || [];
 config.isAuditing = configJsonObj.isAuditing || false;
 // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-service-discovery/source/server_capabilities.ts
@@ -149,6 +150,38 @@ const serverCertificateManager = new OPCUACertificateManager({
   name: 'pki',
   rootFolder: './pki'
 });
+
+let dns: any = [];
+if (config.alternateHostname instanceof Array) {
+  config.alternateHostname.forEach((name) => {
+    dns.push(name);
+  })
+} else {
+  dns.push(config.alternateHostname);
+};
+
+const serverCertFile = './pki/own/certs/server_cert.pem';
+const serverPrivatKeyFile = './pki/own/private/private_key.pem';
+
+serverCertificateManager.createSelfSignedCertificate({
+  outputFile: serverCertFile,
+  subject: {
+    commonName: "Test",
+    organization: "Heine",
+    organizationalUnit: "E1",
+    locality: "Hersfeld",
+    state: "HE",
+    country: "DE",
+    domainComponent: "",
+  },
+  applicationUri: config.serverInfo.applicationUri,
+  dns: dns,
+  startDate: new Date(),
+  validity: 365 * 10
+});
+
+config.certificateFile = serverCertFile;
+config.privateKeyFile = serverPrivatKeyFile;
 
 const userCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: false,
