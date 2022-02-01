@@ -12,7 +12,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync } from 'fs';
+import { readFileSync, mkdir, existsSync } from 'fs';
+import { execSync } from 'child_process';
 import yargs from 'yargs';
 import {
   MessageSecurityMode,
@@ -41,7 +42,7 @@ try {
   const configString = readFileSync(configPath + configFile, 'utf-8');
   configJsonObj = JSON.parse(configString) || {};
 } catch (error) {
-  red(`Error while loading config-file: ${error}`);
+  red(`Error while loading file: ${configFile} -> ${error}`);
   configJsonObj = {};
 };
 
@@ -65,6 +66,8 @@ if (config.port != 4840) {
   config.registerServerMethod = RegisterServerMethod.HIDDEN;
 };
 
+// process.env.HOSTNAMES = "opcua3.umati.app"
+
 config.alternateHostname = process.env.HOSTNAMES?.split(",") || configJsonObj.alternateHostname || [];
 // config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
 config.maxAllowedSessionNumber = configJsonObj.maxAllowedSessionNumber || 100;
@@ -74,8 +77,6 @@ config.resourcePath = configJsonObj.resourcePath || '/UA';
 config.allowAnonymous = configJsonObj.allowAnonymous || true;
 config.disableDiscovery = configJsonObj.disableDiscovery || true;
 config.discoveryServerEndpointUrl = configJsonObj.discoveryServerEndpointUrl || 'opc.tcp://127.0.0.1:4840';
-config.certificateFile = configJsonObj.certificateFile || undefined;
-config.privateKeyFile = configJsonObj.privateKeyFile || undefined;
 config.nodeset_filename = configJsonObj.nodeset_filename || [];
 config.isAuditing = configJsonObj.isAuditing || false;
 // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-service-discovery/source/server_capabilities.ts
@@ -94,9 +95,10 @@ config.buildInfo.buildDate = new Date(String(configJsonObj.buildInfo?.buildDate)
 config.buildInfo.softwareVersion = `node-opcua: ${packageJsonObj.dependencies['node-opcua']}`;
 
 // ServerInfo
+const applicationName = 'SampleServer-applicationName';
 config.serverInfo = {};
 config.serverInfo.applicationName = configJsonObj.serverInfo?.applicationName || {
-  'text': 'SampleServer-applicationName',
+  'text': applicationName,
   'locale': 'en-US'
 };
 config.serverInfo.applicationUri = configJsonObj.serverInfo?.applicationUri || 'urn:SampleServer';
@@ -144,11 +146,68 @@ const userManager = {
 
 config.userManager = userManager;
 
+const certificateOptions = {
+  subject: {
+    commonName: `${applicationName}@${config.hostname}`,
+    organization: "umati",
+    organizationalUnit: "--",
+    locality: "Frankfurt",
+    state: "HE",
+    country: "DE",
+    domainComponent: "--"
+  },
+  validity: 3650
+};
+
 const serverCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: true,
   name: 'pki',
   rootFolder: './pki'
 });
+
+let ipAddresses: string[] = [config.hostname];
+
+let dns: any = [];
+if (config.alternateHostname instanceof Array) {
+  config.alternateHostname.forEach((name) => {
+    dns.push(name);
+  })
+} else {
+  dns.push(config.alternateHostname);
+};
+
+const serverCertFile = './pki/own/certs/server_cert.pem';
+const serverPrivatKeyFile = './pki/own/private/private_key.pem';
+
+const applicationUri = config.serverInfo.applicationUri;
+function createCertificate() {
+  serverCertificateManager.createSelfSignedCertificate({
+    outputFile: serverCertFile,
+    subject: certificateOptions.subject,
+    applicationUri: applicationUri,
+    dns: dns,
+    startDate: new Date(),
+    validity: certificateOptions.validity,
+    ip: ipAddresses
+  });
+}
+
+function createKeyAndCert() {
+  const dir = './pki/own/private/';
+  if (!existsSync(serverPrivatKeyFile)) {
+    mkdir(dir, { recursive: true }, () => {
+      execSync(`openssl genrsa -out ${serverPrivatKeyFile} 2048`);
+      createCertificate();
+    });
+  } else {
+    createCertificate();
+  }
+};
+
+createKeyAndCert();
+
+config.certificateFile = serverCertFile;
+config.privateKeyFile = serverPrivatKeyFile;
 
 const userCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: false,
