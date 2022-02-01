@@ -1,8 +1,7 @@
-FROM node:alpine
+FROM node:17.4.0
 
 COPY . /
 
 RUN npm install
-RUN apk add openssl
 
 ENTRYPOINT ["npm", "run", "start"]
