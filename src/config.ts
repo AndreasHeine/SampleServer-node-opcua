@@ -12,7 +12,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync } from 'fs';
+import { readFileSync, mkdir, existsSync } from 'fs';
+import { execSync } from 'child_process';
 import yargs from 'yargs';
 import {
   MessageSecurityMode,
@@ -178,15 +179,32 @@ if (config.alternateHostname instanceof Array) {
 const serverCertFile = './pki/own/certs/server_cert.pem';
 const serverPrivatKeyFile = './pki/own/private/private_key.pem';
 
-serverCertificateManager.createSelfSignedCertificate({
-  outputFile: serverCertFile,
-  subject: certificateOptions.subject,
-  applicationUri: config.serverInfo.applicationUri,
-  dns: dns,
-  startDate: new Date(),
-  validity: certificateOptions.validity,
-  ip: ipAddresses
-});
+const applicationUri = config.serverInfo.applicationUri;
+function createCertificate() {
+  serverCertificateManager.createSelfSignedCertificate({
+    outputFile: serverCertFile,
+    subject: certificateOptions.subject,
+    applicationUri: applicationUri,
+    dns: dns,
+    startDate: new Date(),
+    validity: certificateOptions.validity,
+    ip: ipAddresses
+  });
+}
+
+function createKeyAndCert() {
+  const dir = './pki/own/private/';
+  if (!existsSync(serverPrivatKeyFile)) {
+    mkdir(dir, { recursive: true }, () => {
+      execSync(`openssl genrsa -out ${serverPrivatKeyFile} 2048`);
+      createCertificate();
+    });
+  } else {
+    createCertificate();
+  }
+};
+
+createKeyAndCert();
 
 config.certificateFile = serverCertFile;
 config.privateKeyFile = serverPrivatKeyFile;
