@@ -12,8 +12,7 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync, mkdir, existsSync } from 'fs';
-import { execSync } from 'child_process';
+import { readFileSync } from 'fs';
 import yargs from 'yargs';
 import {
   MessageSecurityMode,
@@ -66,7 +65,7 @@ if (config.port != 4840) {
   config.registerServerMethod = RegisterServerMethod.HIDDEN;
 };
 
-// process.env.HOSTNAMES = "opcua3.umati.app"
+//process.env.HOSTNAMES = "opcua3.umati.app"
 
 config.alternateHostname = process.env.HOSTNAMES?.split(",") || configJsonObj.alternateHostname || [];
 // config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
@@ -146,73 +145,26 @@ const userManager = {
 
 config.userManager = userManager;
 
-const certificateOptions = {
-  subject: {
-    commonName: `${applicationName}@${config.hostname}`,
-    organization: "umati",
-    organizationalUnit: "--",
-    locality: "Frankfurt",
-    state: "HE",
-    country: "DE",
-    domainComponent: "--"
-  },
-  validity: 3650
-};
+OPCUACertificateManager.defaultCertificateSubject = `/CN=${applicationName}@${config.hostname}/S=HE/OU=E/DC=${config.alternateHostname}/O=Umati/L=Frankfurt/C=DE`
 
 const serverCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: true,
-  name: 'pki',
-  rootFolder: './pki'
+  name: 'PKI',
+  rootFolder: './pki',
+  keySize: 2048
 });
 
-let ipAddresses: string[] = [config.hostname];
+// const serverCertFile = './pki/own/certs/server_cert.pem';
+// const serverPrivatKeyFile = './pki/own/private/private_key.pem';
 
-let dns: any = [];
-if (config.alternateHostname instanceof Array) {
-  config.alternateHostname.forEach((name) => {
-    dns.push(name);
-  })
-} else {
-  dns.push(config.alternateHostname);
-};
-
-const serverCertFile = './pki/own/certs/server_cert.pem';
-const serverPrivatKeyFile = './pki/own/private/private_key.pem';
-
-const applicationUri = config.serverInfo.applicationUri;
-function createCertificate() {
-  serverCertificateManager.createSelfSignedCertificate({
-    outputFile: serverCertFile,
-    subject: certificateOptions.subject,
-    applicationUri: applicationUri,
-    dns: dns,
-    startDate: new Date(),
-    validity: certificateOptions.validity,
-    ip: ipAddresses
-  });
-}
-
-function createKeyAndCert() {
-  const dir = './pki/own/private/';
-  if (!existsSync(serverPrivatKeyFile)) {
-    mkdir(dir, { recursive: true }, () => {
-      execSync(`openssl genrsa -out ${serverPrivatKeyFile} 2048`);
-      createCertificate();
-    });
-  } else {
-    createCertificate();
-  }
-};
-
-createKeyAndCert();
-
-config.certificateFile = serverCertFile;
-config.privateKeyFile = serverPrivatKeyFile;
+// config.certificateFile = serverCertFile;
+// config.privateKeyFile = serverPrivatKeyFile;
 
 const userCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: false,
-  name: 'user_pki',
-  rootFolder: './user_pki'
+  name: 'UserPKI',
+  rootFolder: './user_pki',
+  keySize: 2048
 });
 
 config.userCertificateManager = userCertificateManager;
