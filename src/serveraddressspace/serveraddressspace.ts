@@ -170,9 +170,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         conditionName: 'MyCondition',
         componentOf: dev,
         conditionSource: dev,
-        optionals: [
-            "ConfirmedState", "Confirm"
-        ]
     })
 
     cond.severity.setValueFromSource({
@@ -196,7 +193,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     })
 
     setInterval(() => {
-
         if (cond.message.readValue().value.value.text == "MyCondition is Good!") {
             cond.severity.setValueFromSource({
                 value: 800,
@@ -228,15 +224,13 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                 dataType: DataType.DateTime
             })
         }
-
-        let snap: ConditionSnapshot = new ConditionSnapshot(cond, new NodeId())
+        let snap = new ConditionSnapshot(cond, new NodeId())
         cond.raiseConditionEvent(snap, true)
-
     }, 15000)
 
 
     const ownEventType = namespace.addEventType({
-        browseName: 'ownLimitAlarmType',
+        browseName: 'ownNonExclusiveLimitAlarmType',
         subtypeOf:  "NonExclusiveLimitAlarmType",
         isAbstract: false
     })
@@ -254,6 +248,69 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     })
 
     alarm.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
+    })
+
+    const alarmConfirmable = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
+        browseName: 'MyVarConfirmableNonExclusiveLimitAlarm',
+        conditionName: 'MyVarConfirmableNonExclusiveLimitAlarm',
+        componentOf: dev,
+        conditionSource: myVar,
+        highHighLimit: 50.0,
+        highLimit: 40.0,
+        inputNode: myVar,
+        lowLimit: 20.0,
+        lowLowLimit: -5.0,
+        optionals: [
+            "ConfirmedState", "Confirm"
+        ]
+    })
+
+    alarmConfirmable.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
+    })
+
+    const ownEventType2 = namespace.addEventType({
+        browseName: 'ownExclusiveLimitAlarmType',
+        subtypeOf:  "ExclusiveLimitAlarmType",
+        isAbstract: false
+    })
+    
+    const alarm2 = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
+        browseName: 'MyVarExclusiveLimitAlarm',
+        conditionName: 'MyVarExclusiveLimitAlarm',
+        componentOf: dev,
+        conditionSource: myVar,
+        highHighLimit: 50.0,
+        highLimit: 40.0,
+        inputNode: myVar,
+        lowLimit: 20.0,
+        lowLowLimit: -5.0,
+    })
+    
+    alarm2.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
+    })
+
+    const alarm2Confirmable = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
+        browseName: 'MyVarConfirmableExclusiveLimitAlarm',
+        conditionName: 'MyVarConfirmableExclusiveLimitAlarm',
+        componentOf: dev,
+        conditionSource: myVar,
+        highHighLimit: 50.0,
+        highLimit: 40.0,
+        inputNode: myVar,
+        lowLimit: 20.0,
+        lowLowLimit: -5.0,
+        optionals: [
+            "ConfirmedState", "Confirm"
+        ]
+    })
+    
+    alarm2Confirmable.retain.setValueFromSource({
         value: true,
         dataType: DataType.Boolean
     })
