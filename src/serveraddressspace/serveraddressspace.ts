@@ -20,6 +20,8 @@ import {
     RaiseEventData,
     Variant,
     StatusCodes,
+    ConditionSnapshot,
+    NodeId
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -58,22 +60,22 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     })
 
     const demoEvent = namespace.addEventType({
-        browseName: 'DemoEvent',
+        browseName: 'DemoEventType',
+        subtypeOf:  "BaseEventType",
+        isAbstract: false
     })
 
     const testEvents = namespace.addObject({
         browseName: 'TestEvents',
         organizedBy: dev,
         notifierOf: dev,
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
     })
 
     const myEvent = namespace.addObject({
-        browseName: 'myEvent',
+        browseName: 'myEventNotifier',
         componentOf: testEvents,
         eventSourceOf: testEvents,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
     })
 
     let count: number = 100
@@ -93,7 +95,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             })
         }
         myEvent.raiseEvent(demoEvent, eventData)
-    }, 10000)
+    }, 60000)
 
     const mySeverity = namespace.addVariable({
         browseName: 'MySeverity',
@@ -118,25 +120,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         eventSourceOf: dev,
     })
 
-
     addressSpace?.installHistoricalDataNode(mySeverity, {
         maxOnlineValues: 100,
-    })
-
-    const alarm = namespace.instantiateExclusiveLimitAlarm('ExclusiveLimitAlarmType', {
-        browseName: 'MySeverityCondition',
-        conditionName: 'MySeverityCondition',
-        componentOf: dev,
-        conditionSource: mySeverity,
-        highHighLimit: 800,
-        highLimit: 600,
-        inputNode: mySeverity,
-        lowLimit: 400,
-        lowLowLimit: 200,
-        optionals: [
-            'ConfirmedState', 
-            'Confirm',
-        ],
     })
 
     const mySecretVar = namespace.addVariable({
@@ -148,6 +133,128 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             value: 0,
             dataType: DataType.Int32
         },
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED
+    })
+
+    let myValue = 25
+    const myVar = namespace.addVariable({
+        browseName: 'MyVar',
+        componentOf: dev,
+        dataType: DataType.Double,
+        value: {
+            get: function (this) {
+                // myValue += 0.25
+                return new Variant({
+                    value: myValue,
+                    dataType: DataType.Double
+            })},
+        },
+        eventSourceOf: dev,
+    })
+
+    setInterval(()=>{
+        myValue+=1
+        if (myValue >= 60) {
+            myValue = -25;
+        }
+    }, 1000)
+
+    const ownConditionEventType = namespace.addEventType({
+        browseName: 'ownConditionEventType',
+        subtypeOf:  "ConditionType",
+        isAbstract: false
+    })
+
+    const cond = namespace.instantiateCondition(ownConditionEventType, {
+        browseName: 'MyCondition',
+        conditionName: 'MyCondition',
+        componentOf: dev,
+        conditionSource: dev,
+        optionals: [
+            "ConfirmedState", "Confirm"
+        ]
+    })
+
+    cond.severity.setValueFromSource({
+        value: 150,
+        dataType: DataType.UInt16
+    })
+
+    cond.message.setValueFromSource({
+        value: "MyCondition is Good!",
+        dataType: DataType.LocalizedText
+    })
+
+    cond.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
+    })
+
+    cond.time.setValueFromSource({
+        value: new Date(),
+        dataType: DataType.DateTime
+    })
+
+    setInterval(() => {
+
+        if (cond.message.readValue().value.value.text == "MyCondition is Good!") {
+            cond.severity.setValueFromSource({
+                value: 800,
+                dataType: DataType.UInt16
+            })
+    
+            cond.message.setValueFromSource({
+                value: "MyCondition is Bad!",
+                dataType: DataType.LocalizedText
+            })
+    
+            cond.time.setValueFromSource({
+                value: new Date(),
+                dataType: DataType.DateTime
+            })
+        } else {
+            cond.severity.setValueFromSource({
+                value: 150,
+                dataType: DataType.UInt16
+            })
+        
+            cond.message.setValueFromSource({
+                value: "MyCondition is Good!",
+                dataType: DataType.LocalizedText
+            })
+        
+            cond.time.setValueFromSource({
+                value: new Date(),
+                dataType: DataType.DateTime
+            })
+        }
+
+        let snap: ConditionSnapshot = new ConditionSnapshot(cond, new NodeId())
+        cond.raiseConditionEvent(snap, true)
+
+    }, 15000)
+
+
+    const ownEventType = namespace.addEventType({
+        browseName: 'ownLimitAlarmType',
+        subtypeOf:  "NonExclusiveLimitAlarmType",
+        isAbstract: false
+    })
+
+    const alarm = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
+        browseName: 'MyVarNonExclusiveLimitAlarm',
+        conditionName: 'MyVarNonExclusiveLimitAlarm',
+        componentOf: dev,
+        conditionSource: myVar,
+        highHighLimit: 50.0,
+        highLimit: 40.0,
+        inputNode: myVar,
+        lowLimit: 20.0,
+        lowLowLimit: -5.0,
+    })
+
+    alarm.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
     })
 }
