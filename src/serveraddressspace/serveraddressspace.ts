@@ -27,12 +27,17 @@ import {
 import { ServerRolePermissionGroup } from './../permissiongroups'
 
 export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpace): Promise<void> => {
+
+    /*
+        General Stuff:
+    */
+
     const namespace = addressSpace?.getOwnNamespace()
     const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
-    
+
     const softwareType = addressSpace?.findNode(`ns=${diIdx};i=15106`) as UAObjectType
     const software = softwareType?.instantiate({
-        browseName: 'SoftwareType',
+        browseName: 'Info',
         organizedBy: addressSpace.rootFolder.objects,
     })
     const model = software?.getPropertyByName('Model')
@@ -46,36 +51,42 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         value: coerceLocalizedText('Andreas Heine'),
         dataType: DataType.LocalizedText,
     })
+
     const softwareRevision = software?.getPropertyByName('SoftwareRevision')
     softwareRevision?.setValueFromSource({
         value: 'v1.0.0',
         dataType: DataType.String,
     })
 
-    const dev = namespace.addObject({
-        browseName: 'DEV',
-        organizedBy: addressSpace.rootFolder.objects,
+    /*
+        Showcase
+    */
+
+    const showcaseFolder = namespace.addFolder(addressSpace.rootFolder.objects, {
+        browseName: "Showcases",
+    })
+    
+    /*
+        Showcase: Events
+    */
+
+    const showcaseEV = namespace.addObject({
+        browseName: 'Events',
+        organizedBy: showcaseFolder,
         eventSourceOf: addressSpace.rootFolder.objects.server,
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+    })
+
+    const myEvent = namespace.addObject({
+        browseName: 'myEventNotifier',
+        componentOf: showcaseEV,
+        eventSourceOf: showcaseEV,
+        eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
     })
 
     const demoEvent = namespace.addEventType({
         browseName: 'DemoEventType',
         subtypeOf:  "BaseEventType",
         isAbstract: false
-    })
-
-    const testEvents = namespace.addObject({
-        browseName: 'TestEvents',
-        organizedBy: dev,
-        notifierOf: dev,
-    })
-
-    const myEvent = namespace.addObject({
-        browseName: 'myEventNotifier',
-        componentOf: testEvents,
-        eventSourceOf: testEvents,
-        eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
     })
 
     let count: number = 100
@@ -86,7 +97,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         }
         const eventData: RaiseEventData = {
             message: new Variant({
-                value: `Severity at: ${count}`,
+                value: `New Event with Severity: ${count}`,
                 dataType: DataType.String,
             }),
             severity: new Variant({
@@ -95,69 +106,39 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             })
         }
         myEvent.raiseEvent(demoEvent, eventData)
-    }, 60000)
+    }, 5000)
 
-    const mySeverity = namespace.addVariable({
-        browseName: 'MySeverity',
-        componentOf: dev,
-        description: coerceLocalizedText('Value must be between 1000 and 100') || undefined,
-        dataType: DataType.Double,
-        value: {
-            get: () => {
-                return new Variant({
-                    value: count,
-                    dataType: DataType.Double
-            })},
-            set: (variant: Variant) => {
-                if (variant.value > 1000 || variant.value < 100) {
-                    return StatusCodes.BadOutOfRange
-                } else {
-                    count = variant.value
-                    return StatusCodes.Good
-                }
-            }
-        },
-        eventSourceOf: dev,
-    })
+    /*
+        Showcase: Alarms and Conditions
+    */
 
-    addressSpace?.installHistoricalDataNode(mySeverity, {
-        maxOnlineValues: 100,
-    })
-
-    const mySecretVar = namespace.addVariable({
-        browseName: 'MySecretVar',
-        componentOf: dev,
-        description: coerceLocalizedText('Try change me!') || undefined,
-        dataType: DataType.Int32,
-        value: {
-            value: 0,
-            dataType: DataType.Int32
-        },
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED
+    const showcaseAC = namespace.addObject({
+        browseName: 'Alarms&Conditions',
+        organizedBy: showcaseFolder,
+        eventSourceOf: addressSpace.rootFolder.objects.server,
     })
 
     let myValue = 25
-    const myVar = namespace.addVariable({
-        browseName: 'MyVar',
-        componentOf: dev,
-        dataType: DataType.Double,
-        value: {
-            get: function (this) {
-                // myValue += 0.25
-                return new Variant({
-                    value: myValue,
-                    dataType: DataType.Double
-            })},
-        },
-        eventSourceOf: dev,
-    })
-
     setInterval(()=>{
         myValue+=1
         if (myValue >= 60) {
             myValue = -25;
         }
     }, 1000)
+
+    const myVar = namespace.addVariable({
+        browseName: 'MyVar',
+        componentOf: showcaseAC,
+        dataType: DataType.Double,
+        value: {
+            get: function (this) {
+                return new Variant({
+                    value: myValue,
+                    dataType: DataType.Double
+            })},
+        },
+        eventSourceOf: showcaseAC,
+    })
 
     const ownConditionEventType = namespace.addEventType({
         browseName: 'ownConditionEventType',
@@ -168,8 +149,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const cond = namespace.instantiateCondition(ownConditionEventType, {
         browseName: 'MyCondition',
         conditionName: 'MyCondition',
-        componentOf: dev,
-        conditionSource: dev,
+        componentOf: showcaseAC,
+        conditionSource: showcaseAC,
     })
 
     cond.severity.setValueFromSource({
@@ -238,8 +219,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarNonExclusiveLimitAlarm',
         conditionName: 'MyVarNonExclusiveLimitAlarm',
-        componentOf: dev,
-        conditionSource: myVar,
+        componentOf: showcaseAC,
+        conditionSource: showcaseAC,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -255,8 +236,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarmConfirmable = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarConfirmableNonExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableNonExclusiveLimitAlarm',
-        componentOf: dev,
-        conditionSource: myVar,
+        componentOf: showcaseAC,
+        conditionSource: showcaseAC,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -281,8 +262,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2 = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarExclusiveLimitAlarm',
         conditionName: 'MyVarExclusiveLimitAlarm',
-        componentOf: dev,
-        conditionSource: myVar,
+        componentOf: showcaseAC,
+        conditionSource: showcaseAC,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -298,8 +279,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2Confirmable = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarConfirmableExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableExclusiveLimitAlarm',
-        componentOf: dev,
-        conditionSource: myVar,
+        componentOf: showcaseAC,
+        conditionSource: showcaseAC,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -313,5 +294,77 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     alarm2Confirmable.retain.setValueFromSource({
         value: true,
         dataType: DataType.Boolean
+    })
+
+    /*
+        Showcase: Historical Access
+    */
+
+        const showcaseHA = namespace.addObject({
+            browseName: 'HistoricalAccess',
+            organizedBy: showcaseFolder,
+        })
+
+        let setpoint = 10
+        let myHistoricalValue = 0
+        let myDeg = 0
+        setInterval(()=>{
+            myDeg+=1
+            if (myDeg >= 360) {
+                myDeg = 0;
+            }
+            myHistoricalValue = Math.sin(myDeg) + setpoint
+        }, 1000)
+
+        setInterval(()=>{
+            if (setpoint === 50) {
+                setpoint = 60
+            } else {
+                setpoint = 50
+            }
+        }, 10000)
+
+        const myHistoricalVar = namespace.addVariable({
+            browseName: 'MyHistoricalVar',
+            componentOf: showcaseHA,
+            dataType: DataType.Double,
+            value: {
+                get: function (this) {
+                    return new Variant({
+                        value: myHistoricalValue,
+                        dataType: DataType.Double
+                })},
+            },
+        })
+
+        const myHistoricalSetpoint = namespace.addVariable({
+            browseName: 'MyHistoricalSetpoint',
+            componentOf: showcaseHA,
+            dataType: DataType.Double,
+            value: {
+                get: function (this) {
+                    return new Variant({
+                        value: setpoint,
+                        dataType: DataType.Double
+                })},
+            },
+        })
+
+        addressSpace?.installHistoricalDataNode(myHistoricalVar, {
+            maxOnlineValues: 250,
+        })
+
+        addressSpace?.installHistoricalDataNode(myHistoricalSetpoint, {
+            maxOnlineValues: 250,
+        })
+
+    /*
+        DEV: Testspace!!!
+    */
+
+    const dev = namespace.addObject({
+        browseName: 'DEV',
+        organizedBy: addressSpace.rootFolder.objects,
+        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
     })
 }
