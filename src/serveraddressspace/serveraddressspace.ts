@@ -305,16 +305,29 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             organizedBy: showcaseFolder,
         })
 
-        let setpoint = 10
-        let myHistoricalValue = 0
+        const myHistoricalVar = namespace.addVariable({
+            browseName: 'MyHistoricalVar',
+            componentOf: showcaseHA,
+            dataType: DataType.Double,
+        })
+
+        const myHistoricalSetpointVar = namespace.addVariable({
+            browseName: 'MyHistoricalSetpointVar',
+            componentOf: showcaseHA,
+            dataType: DataType.Double,
+        })
+
+        let setpoint = 50
         let myDeg = 0
         setInterval(()=>{
             myDeg+=1
             if (myDeg >= 360) {
                 myDeg = 0;
             }
-            myHistoricalValue = Math.sin(myDeg) + setpoint
-        }, 1000)
+            myHistoricalVar.setValueFromSource(new Variant({
+                value: Math.sin(myDeg) + setpoint,
+                dataType: DataType.Double
+            }))}, 1000)
 
         setInterval(()=>{
             if (setpoint === 50) {
@@ -322,40 +335,20 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             } else {
                 setpoint = 50
             }
-        }, 10000)
+        }, 120000)
 
-        const myHistoricalVar = namespace.addVariable({
-            browseName: 'MyHistoricalVar',
-            componentOf: showcaseHA,
-            dataType: DataType.Double,
-            value: {
-                get: function (this) {
-                    return new Variant({
-                        value: myHistoricalValue,
-                        dataType: DataType.Double
-                })},
-            },
-        })
-
-        const myHistoricalSetpoint = namespace.addVariable({
-            browseName: 'MyHistoricalSetpoint',
-            componentOf: showcaseHA,
-            dataType: DataType.Double,
-            value: {
-                get: function (this) {
-                    return new Variant({
-                        value: setpoint,
-                        dataType: DataType.Double
-                })},
-            },
-        })
+        setInterval(()=>{
+            myHistoricalSetpointVar.setValueFromSource(new Variant({
+                value: setpoint,
+                dataType: DataType.Double
+        }))}, 5000)
 
         addressSpace?.installHistoricalDataNode(myHistoricalVar, {
-            maxOnlineValues: 250,
+            maxOnlineValues: 500,
         })
 
-        addressSpace?.installHistoricalDataNode(myHistoricalSetpoint, {
-            maxOnlineValues: 250,
+        addressSpace?.installHistoricalDataNode(myHistoricalSetpointVar, {
+            maxOnlineValues: 500,
         })
 
     /*
