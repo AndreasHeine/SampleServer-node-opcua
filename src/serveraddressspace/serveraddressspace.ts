@@ -364,13 +364,13 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             },
             set: function(this: UAVariable, value: Variant): StatusCode {
                 // Check in the backend, if value is in range
-                if (value.value <= 100 && value.value > 0){
+                // if (value.value <= 100 && value.value > 0){
                     setpoint = value.value
                     return StatusCodes.Good
-                } else {
-                    // Setpoint not valid!
-                    return StatusCodes.BadOutOfRange
-                }
+                // } else {
+                //     // Setpoint not valid!
+                //     return StatusCodes.BadOutOfRange
+                // }
             }
         }
     })
