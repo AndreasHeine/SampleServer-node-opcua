@@ -29,7 +29,22 @@
     ],
     "serverCapabilities": {
         "serverProfileArray": [
-            "http://opcfoundation.org/UA-Profile/Server/StandardUA2017"
+            "http://opcfoundation.org/UA-Profile/Server/StandardUA2017",
+            "http://opcfoundation.org/UA-Profile/Server/AddressSpaceNotifier",
+            "http://opcfoundation.org/UA-Profile/Server/StandardEventSubscription",
+            "http://opcfoundation.org/UA-Profile/Server/Methods",
+            "http://opcfoundation.org/UA-Profile/Server/StateMachine",
+            "http://opcfoundation.org/UA-Profile/Server/ACBaseCondition",
+            "http://opcfoundation.org/UA-Profile/Server/ACRefresh2",
+            "http://opcfoundation.org/UA-Profile/Server/ACAddressSpaceInstance",
+            "http://opcfoundation.org/UA-Profile/Server/ACAlarm",
+            "http://opcfoundation.org/UA-Profile/Server/ACEnable",
+            "http://opcfoundation.org/UA-Profile/Server/ACAlarm",
+            "http://opcfoundation.org/UA-Profile/Server/ACAckAlarm",
+            "http://opcfoundation.org/UA-Profile/Server/ACExclusiveAlarming",
+            "http://opcfoundation.org/UA-Profile/Server/ACNon-ExclusiveAlarming",
+            "http://opcfoundation.org/UA-Profile/Server/HistoricalRawData",
+            "http://opcfoundation.org/UA-Profile/Server/HistoricalDataAtTime"
         ]
     }
 }
