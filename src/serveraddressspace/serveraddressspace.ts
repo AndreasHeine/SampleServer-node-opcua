@@ -375,6 +375,10 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         }
     })
 
+    setInterval(() => {
+        myHistoricalSetpointVar.touchValue()
+    }, 5000)
+
     setInterval(()=>{
         myDeg+=1
         if (myDeg >= 360) {
@@ -384,7 +388,9 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         myHistoricalVar.setValueFromSource(new Variant({
             value: actual,
             dataType: DataType.Double
-        }))}, 1000)
+            })
+        )
+    }, 1000)
 
     addressSpace?.installHistoricalDataNode(myHistoricalVar, {
         maxOnlineValues: 10000,
