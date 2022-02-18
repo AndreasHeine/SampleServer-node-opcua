@@ -363,20 +363,18 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                 })
             },
             set: function(this: UAVariable, value: Variant): StatusCode {
-                // Check in the backend, if value is in range
-                // if (value.value <= 100 && value.value > 0){
-                    setpoint = value.value
-                    return StatusCodes.Good
-                // } else {
-                //     // Setpoint not valid!
-                //     return StatusCodes.BadOutOfRange
-                // }
+                setpoint = value.value
+                return StatusCodes.Good
             }
         }
     })
 
     setInterval(() => {
-        myHistoricalSetpointVar.touchValue()
+        myHistoricalSetpointVar.setValueFromSource(new Variant({
+            value: setpoint,
+            dataType: DataType.Double
+            })
+        )
     }, 5000)
 
     setInterval(()=>{
