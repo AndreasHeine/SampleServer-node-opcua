@@ -21,7 +21,9 @@ import {
     Variant,
     StatusCodes,
     ConditionSnapshot,
-    NodeId
+    NodeId,
+    UAVariable,
+    StatusCode,
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -89,6 +91,30 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         isAbstract: false
     })
 
+    namespace.addVariable({
+        browseName: "CustomDemoEventPropertie1",
+        propertyOf: demoEvent,
+        dataType: DataType.UInt64,
+        modellingRule: "Mandatory",
+        value: new Variant({
+            value: 0,
+            dataType: DataType.UInt64
+        })
+    })
+
+    namespace.addVariable({
+        browseName: "CustomDemoEventPropertie2",
+        propertyOf: demoEvent,
+        dataType: DataType.DateTime,
+        modellingRule: "Mandatory",
+        value: new Variant({
+            value: null,
+            dataType: DataType.DateTime
+        })
+    })
+
+    demoEvent.install_extra_properties()
+
     let count: number = 100
     setInterval(() => {
         count = count + 50
@@ -103,6 +129,14 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             severity: new Variant({
                 value: count,
                 dataType: DataType.Int32,
+            }),
+            customDemoEventPropertie1: new Variant({
+                value: 1234,
+                dataType: DataType.UInt64,
+            }),
+            customDemoEventPropertie2: new Variant({
+                value: new Date(),
+                dataType: DataType.DateTime,
             })
         }
         myEvent.raiseEvent(demoEvent, eventData)
@@ -300,56 +334,65 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         Showcase: Historical Access
     */
 
-        const showcaseHA = namespace.addObject({
-            browseName: 'HistoricalAccess',
-            organizedBy: showcaseFolder,
-        })
+    const showcaseHA = namespace.addObject({
+        browseName: 'HistoricalAccess',
+        organizedBy: showcaseFolder,
+    })
 
-        const myHistoricalVar = namespace.addVariable({
-            browseName: 'MyHistoricalVar',
-            componentOf: showcaseHA,
-            dataType: DataType.Double,
-        })
+    const myHistoricalVar = namespace.addVariable({
+        browseName: 'MyHistoricalVar',
+        componentOf: showcaseHA,
+        dataType: DataType.Double,
+        userAccessLevel: "CurrentRead"
+    })
 
-        const myHistoricalSetpointVar = namespace.addVariable({
-            browseName: 'MyHistoricalSetpointVar',
-            componentOf: showcaseHA,
-            dataType: DataType.Double,
-        })
+    let setpoint = 50
+    let myDeg = 0
+    let actual = 0
 
-        let setpoint = 50
-        let myDeg = 0
-        setInterval(()=>{
-            myDeg+=1
-            if (myDeg >= 360) {
-                myDeg = 0;
+    const myHistoricalSetpointVar = namespace.addVariable({
+        browseName: 'MyHistoricalSetpointVar',
+        componentOf: showcaseHA,
+        dataType: DataType.Double,
+        userAccessLevel: "CurrentRead | CurrentWrite",
+        value: {
+            get: function(): Variant {
+                return new Variant({
+                    value: setpoint,
+                    dataType: DataType.Double
+                })
+            },
+            set: function(this: UAVariable, value: Variant): StatusCode {
+                // Check in the backend, if value is in range
+                if (value.value <= 100 && value.value > 0){
+                    setpoint = value.value
+                    return StatusCodes.Good
+                } else {
+                    // Setpoint not valid!
+                    return StatusCodes.BadOutOfRange
+                }
             }
-            myHistoricalVar.setValueFromSource(new Variant({
-                value: Math.sin(myDeg) + setpoint,
-                dataType: DataType.Double
-            }))}, 1000)
+        }
+    })
 
-        setInterval(()=>{
-            if (setpoint === 50) {
-                setpoint = 60
-            } else {
-                setpoint = 50
-            }
-        }, 120000)
+    setInterval(()=>{
+        myDeg+=1
+        if (myDeg >= 360) {
+            myDeg = 0;
+        }
+        actual = Math.sin(myDeg) + setpoint
+        myHistoricalVar.setValueFromSource(new Variant({
+            value: actual,
+            dataType: DataType.Double
+        }))}, 1000)
 
-        setInterval(()=>{
-            myHistoricalSetpointVar.setValueFromSource(new Variant({
-                value: setpoint,
-                dataType: DataType.Double
-        }))}, 5000)
+    addressSpace?.installHistoricalDataNode(myHistoricalVar, {
+        maxOnlineValues: 10000,
+    })
 
-        addressSpace?.installHistoricalDataNode(myHistoricalVar, {
-            maxOnlineValues: 500,
-        })
-
-        addressSpace?.installHistoricalDataNode(myHistoricalSetpointVar, {
-            maxOnlineValues: 500,
-        })
+    addressSpace?.installHistoricalDataNode(myHistoricalSetpointVar, {
+        maxOnlineValues: 2000,
+    })
 
     /*
         DEV: Testspace!!!
