@@ -24,6 +24,8 @@ import {
     NodeId,
     UAVariable,
     StatusCode,
+    promoteToStateMachine,
+    LocalizedText
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -409,16 +411,30 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     const statemachineType = addressSpace.findNode("StateMachineType") as UAObjectType
 
-    const demoStatemachine = statemachineType.instantiate({
-        displayName: "DemoStatmachine",
-        browseName: "DemoStatmachine",
-        componentOf: showcasePrg
+    const demoStatemachineInstance = statemachineType.instantiate({
+        displayName: "DemoStatmachineTypeInstance",
+        browseName: "DemoStatmachineTypeInstance",
+        componentOf: showcasePrg,
+        // optionals: [
+        //     "LastTransition"
+        // ]
     })
 
-    // demoStatemachine.
+    const demoStatemachine = promoteToStateMachine(demoStatemachineInstance)
 
+    demoStatemachine.currentState.setValueFromSource({
+        value: new LocalizedText({
+            locale: "en",
+            text: "Init"
+        }),
+        dataType: DataType.LocalizedText
+    })
 
-    
+    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
+    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
+
+    // Demo cylce + TransitionEvents
+
 
     /*
         DEV: Testspace!!!
