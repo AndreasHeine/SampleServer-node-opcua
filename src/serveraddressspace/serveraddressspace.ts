@@ -253,8 +253,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarNonExclusiveLimitAlarm',
         conditionName: 'MyVarNonExclusiveLimitAlarm',
-        componentOf: showcaseAC,
-        conditionSource: showcaseAC,
+        componentOf: myVar,
+        conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -270,8 +270,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarmConfirmable = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarConfirmableNonExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableNonExclusiveLimitAlarm',
-        componentOf: showcaseAC,
-        conditionSource: showcaseAC,
+        componentOf: myVar,
+        conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -296,8 +296,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2 = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarExclusiveLimitAlarm',
         conditionName: 'MyVarExclusiveLimitAlarm',
-        componentOf: showcaseAC,
-        conditionSource: showcaseAC,
+        componentOf: myVar,
+        conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
@@ -313,8 +313,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2Confirmable = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarConfirmableExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableExclusiveLimitAlarm',
-        componentOf: showcaseAC,
-        conditionSource: showcaseAC,
+        componentOf: myVar,
+        conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
         inputNode: myVar,
