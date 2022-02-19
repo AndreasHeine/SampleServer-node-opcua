@@ -602,16 +602,23 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     const demoStatemachine = promoteToStateMachine(demoStatemachineInstance)
 
-    demoStatemachine.currentState.setValueFromSource({
-        value: new LocalizedText({
-            locale: "en",
-            text: "Init"
-        }),
-        dataType: DataType.LocalizedText
-    })
+    const state1 = namespace.addState(demoStatemachine, "Initializing", 1, true)
+    const state2 = namespace.addState(demoStatemachine, "Idle", 2)
+    const state3 = namespace.addState(demoStatemachine, "Prepare", 3)
+    const state4 = namespace.addState(demoStatemachine, "Processing", 4)
+    const state5 = namespace.addState(demoStatemachine, "Done", 5)
+
+    const trans1 = namespace.addTransition(demoStatemachine, "Initializing", "Idle", 1)
+    const trans2 = namespace.addTransition(demoStatemachine, "Idle", "Prepare", 2)
+    const trans3 = namespace.addTransition(demoStatemachine, "Prepare", "Processing", 3)
+    const trans4 = namespace.addTransition(demoStatemachine, "Processing", "Done", 4)
+    const trans5 = namespace.addTransition(demoStatemachine, "Done", "Idle", 5)
+
+    demoStatemachine.setState(state1)
 
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
+    // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
 
     // Demo cylce + TransitionEvents
 
