@@ -75,7 +75,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const showcaseEV = namespace.addObject({
         browseName: 'Events',
         organizedBy: showcaseFolder,
-        eventSourceOf: addressSpace.rootFolder.objects.server,
+        notifierOf: addressSpace.rootFolder.objects.server
     })
 
     const myEvent = namespace.addObject({
@@ -150,6 +150,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         browseName: 'Alarms&Conditions',
         organizedBy: showcaseFolder,
         eventSourceOf: addressSpace.rootFolder.objects.server,
+        eventNotifier: 1
     })
 
     let myValue = 25
@@ -253,7 +254,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarNonExclusiveLimitAlarm',
         conditionName: 'MyVarNonExclusiveLimitAlarm',
-        componentOf: myVar,
+        componentOf: showcaseAC,
         conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
@@ -270,7 +271,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarmConfirmable = namespace.instantiateNonExclusiveLimitAlarm(ownEventType, {
         browseName: 'MyVarConfirmableNonExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableNonExclusiveLimitAlarm',
-        componentOf: myVar,
+        componentOf: showcaseAC,
         conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
@@ -296,7 +297,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2 = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarExclusiveLimitAlarm',
         conditionName: 'MyVarExclusiveLimitAlarm',
-        componentOf: myVar,
+        componentOf: showcaseAC,
         conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
@@ -313,7 +314,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const alarm2Confirmable = namespace.instantiateExclusiveLimitAlarm(ownEventType2, {
         browseName: 'MyVarConfirmableExclusiveLimitAlarm',
         conditionName: 'MyVarConfirmableExclusiveLimitAlarm',
-        componentOf: myVar,
+        componentOf: showcaseAC,
         conditionSource: myVar,
         highHighLimit: 50.0,
         highLimit: 40.0,
