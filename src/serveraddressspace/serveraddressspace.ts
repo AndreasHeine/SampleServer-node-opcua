@@ -579,6 +579,28 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     })
 
     /*
+        Showcase: Programs
+    */
+
+    const showcasePrg = namespace.addObject({
+        browseName: 'Programs',
+        organizedBy: showcaseFolder,
+    })
+
+    const statemachineType = addressSpace.findNode("StateMachineType") as UAObjectType
+
+    const demoStatemachine = statemachineType.instantiate({
+        displayName: "DemoStatmachine",
+        browseName: "DemoStatmachine",
+        componentOf: showcasePrg
+    })
+
+    // demoStatemachine.
+
+
+    
+
+    /*
         DEV: Testspace!!!
     */
 
