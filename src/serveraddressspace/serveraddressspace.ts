@@ -26,7 +26,11 @@ import {
     LocalizedText,
     UAObject,
     promoteToStateMachine,
+<<<<<<< HEAD
     UAObjectType
+=======
+    UAFiniteStateMachineType
+>>>>>>> Update serveraddressspace.ts
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -589,38 +593,42 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         organizedBy: showcaseFolder,
     })
 
-    const statemachineType = addressSpace.findNode("StateMachineType") as UAObjectType
-
-    const demoStatemachineInstance = statemachineType.instantiate({
-        displayName: "DemoStatmachineTypeInstance",
-        browseName: "DemoStatmachineTypeInstance",
+    const myFiniteStateMachine = namespace.addObjectType({
+        browseName: "MyFiniteStateMachine",
+        subtypeOf: "FiniteStateMachineType"
+    }) as UAFiniteStateMachineType
+    
+    const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
+        displayName: "DemoFiniteStateMachineTypeInstance",
+        browseName: "DemoFiniteStateMachineTypeInstance",
         componentOf: showcasePrg,
-        // optionals: [
-        //     "LastTransition"
-        // ]
+        optionals: [
+            "AvailableStates", "LastTransition", "AvailableTransitions"
+        ]
     })
 
-    const demoStatemachine = promoteToStateMachine(demoStatemachineInstance)
+    const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
 
-    const state1 = namespace.addState(demoStatemachine, "Initializing", 1, true)
-    const state2 = namespace.addState(demoStatemachine, "Idle", 2)
-    const state3 = namespace.addState(demoStatemachine, "Prepare", 3)
-    const state4 = namespace.addState(demoStatemachine, "Processing", 4)
-    const state5 = namespace.addState(demoStatemachine, "Done", 5)
+    namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
+    namespace.addState(demoFiniteStateMachine, "Idle", 200)
+    namespace.addState(demoFiniteStateMachine, "Prepare", 300)
+    namespace.addState(demoFiniteStateMachine, "Processing", 400)
+    namespace.addState(demoFiniteStateMachine, "Done", 500)
 
-    const trans1 = namespace.addTransition(demoStatemachine, "Initializing", "Idle", 1)
-    const trans2 = namespace.addTransition(demoStatemachine, "Idle", "Prepare", 2)
-    const trans3 = namespace.addTransition(demoStatemachine, "Prepare", "Processing", 3)
-    const trans4 = namespace.addTransition(demoStatemachine, "Processing", "Done", 4)
-    const trans5 = namespace.addTransition(demoStatemachine, "Done", "Idle", 5)
+    namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
+    namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
+    namespace.addTransition(demoFiniteStateMachine, "Prepare", "Processing", 3)
+    namespace.addTransition(demoFiniteStateMachine, "Processing", "Done", 4)
+    namespace.addTransition(demoFiniteStateMachine, "Done", "Idle", 5)
 
-    demoStatemachine.setState(state1)
+    // console.log("States: ", demoFiniteStateMachine.getStates())
+    // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
+
+    demoFiniteStateMachine.setState(demoFiniteStateMachine.initialState!)
 
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
     // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
-
-    // Demo cylce + TransitionEvents
 
 
     /*
