@@ -12,36 +12,50 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { describe, it } from 'mocha'
+import { describe, it } from 'mocha';
 
 import { 
     OPCUAServer, 
-} from 'node-opcua'
+} from 'node-opcua';
 
-import { config } from './../config'
+import { config } from './../config';
+import { createAddressSpace } from './../addressspace';
 
 describe('following tests are for renovate dependency updates:', function () {
-    this.timeout(15000);
-    let server: OPCUAServer
-    after(function (done) {
-        if (server) {
-            server.shutdown(() => {
-                done()
-            });
-        } else {
-            done()
-        }
-    })
+    this.timeout(35000);
+    const server = new OPCUAServer(config);
 
-    it('should start the OPCUAServer', (done) => { 
-        server = new OPCUAServer(config)
-        server.initialize()
-        server.start(
-            () => {
-                setTimeout(done, 10000)
-            }
-        )
-        console.log("  --> server is running for 10s...  ")
-        
+    const startup = async function () {
+        await server.initialize();
+        await createAddressSpace(server);
+        server.engine.addressSpace?.installAlarmsAndConditionsService();
+        await server.start();
+    }
+
+    const stutdown = function () {
+        server.shutdown(() => {
+            server.dispose();
+        })
+    }
+
+    it('should start the OPCUAServer', async function () { 
+        return new Promise((resolve) => {
+            startup().then(
+                () => {
+                    console.log('  --> server is running for 20s...  ');
+                    setTimeout(() => {
+                        resolve();
+                    }, 20000)
+                }
+            );
+        });      
+    });
+
+    it('should stop the OPCUAServer', function () {
+        stutdown();
+        console.log('  --> server is shutting down...  ');
+        setTimeout(()=>{
+            return
+        }, 5000)
     })
-})
+});
