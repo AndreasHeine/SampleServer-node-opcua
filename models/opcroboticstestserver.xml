@@ -17,7 +17,6 @@
     <Aliases>
         <Alias Alias="Boolean">i=1</Alias>
         <Alias Alias="Int32">i=6</Alias>
-        <Alias Alias="UInt32">i=7</Alias>
         <Alias Alias="Double">i=11</Alias>
         <Alias Alias="String">i=12</Alias>
         <Alias Alias="DateTime">i=13</Alias>
@@ -30,14 +29,13 @@
         <Alias Alias="NumericRange">i=291</Alias>
         <Alias Alias="EUInformation">i=887</Alias>
         <Alias Alias="HasAddIn">i=17604</Alias>
-        <Alias Alias="RationalNumber">i=18806</Alias>
         <Alias Alias="OperationalModeEnumeration">ns=3;i=3006</Alias>
         <Alias Alias="AxisMotionProfileEnumeration">ns=3;i=3008</Alias>
         <Alias Alias="MotionDeviceCategoryEnumeration">ns=3;i=18193</Alias>
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="pKfbtOB3yqvKZMV5ffOUtw==" Version="1.6.5"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="lfMvZFmC7ebafUKIQxZ58A==" Version="1.6.5"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5015" BrowseName="1:MotionDeviceSystem">
@@ -257,6 +255,7 @@
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6060</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
@@ -265,6 +264,17 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6005</Reference>
         </References>
     </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5026" NodeId="ns=1;i=6060" BrowseName="4:Location" AccessLevel="3">
+        <DisplayName>Location</DisplayName>
+        <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5026</Reference>
+        </References>
+        <Value>
+            <uax:String>N 50.0823924 E 8.6257018</uax:String>
+        </Value>
+    </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6002" BrowseName="2:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <References>
@@ -450,6 +460,7 @@
         <References>
             <Reference ReferenceType="HasProperty">ns=1;i=6048</Reference>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5015</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6056</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6045</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6044</Reference>
@@ -460,8 +471,8 @@
         <DisplayName>ComponentName</DisplayName>
         <Description Locale="en">To be used by end users to store a human-readable localized text for the MachineryItem. The minimum number of locales supported for this property shall be two. Servers shall support at least 40 Unicode characters for the clients writing the text part of each locale, this means clients can expect to be able to write texts with a length of 40 Unicode characters into that field.</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5037</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:LocalizedText>
@@ -469,12 +480,23 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5037" NodeId="ns=1;i=6056" BrowseName="4:Location" AccessLevel="3">
+        <DisplayName>Location</DisplayName>
+        <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5037</Reference>
+        </References>
+        <Value>
+            <uax:String>N 50.0823924 E 8.6257018</uax:String>
+        </Value>
+    </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5037" NodeId="ns=1;i=6045" BrowseName="2:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5037</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:LocalizedText>
@@ -486,8 +508,8 @@
         <DisplayName Locale="en">ProductInstanceUri</DisplayName>
         <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5037</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
             <uax:String>http://mds_sample_instance_piu</uax:String>
@@ -1061,6 +1083,7 @@
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5018</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6057</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6035</Reference>
@@ -1069,6 +1092,17 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6039</Reference>
         </References>
     </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5027" NodeId="ns=1;i=6057" BrowseName="4:Location" AccessLevel="3">
+        <DisplayName>Location</DisplayName>
+        <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5027</Reference>
+        </References>
+        <Value>
+            <uax:String>N 50.0823924 E 8.6257018</uax:String>
+        </Value>
+    </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6034" BrowseName="2:Manufacturer">
         <DisplayName>Manufacturer</DisplayName>
         <References>
@@ -1173,101 +1207,11 @@
     <UAObject NodeId="ns=1;i=5029" BrowseName="1:PowerTrain1">
         <DisplayName>PowerTrain1</DisplayName>
         <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=5034</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5025</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5021</Reference>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=16794</Reference>
         </References>
     </UAObject>
-    <UAObject ParentNodeId="ns=1;i=5029" NodeId="ns=1;i=5034" BrowseName="1:Gear1">
-        <DisplayName>Gear1</DisplayName>
-        <Description>The GearType describes a gear in a powertrain, e.g. a gear box or a spindle.</Description>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5029</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=6062</Reference>
-            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1022</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6074</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6075</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6076</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6077</Reference>
-        </References>
-    </UAObject>
-    <UAVariable DataType="RationalNumber" ParentNodeId="ns=1;i=5034" NodeId="ns=1;i=6062" BrowseName="3:GearRatio">
-        <DisplayName>GearRatio</DisplayName>
-        <Description>The transmission ratio of the gear expressed as a fraction as input velocity (motor side) by output velocity (load side).</Description>
-        <References>
-            <Reference ReferenceType="HasComponent">ns=1;i=6063</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5034</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=6064</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=17709</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="UInt32" ParentNodeId="ns=1;i=6062" NodeId="ns=1;i=6063" BrowseName="Denominator">
-        <DisplayName>Denominator</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6062</Reference>
-        </References>
-        <Value>
-            <uax:UInt32>42</uax:UInt32>
-        </Value>
-    </UAVariable>
-    <UAVariable DataType="Int32" ParentNodeId="ns=1;i=6062" NodeId="ns=1;i=6064" BrowseName="Numerator">
-        <DisplayName>Numerator</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=6062</Reference>
-        </References>
-        <Value>
-            <uax:Int32>15</uax:Int32>
-        </Value>
-    </UAVariable>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5034" NodeId="ns=1;i=6074" BrowseName="2:Manufacturer">
-        <DisplayName>Manufacturer</DisplayName>
-        <References>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5034</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-        </References>
-        <Value>
-            <uax:LocalizedText>
-                <uax:Locale>en-US</uax:Locale>
-                <uax:Text>TestGearManufacturer</uax:Text>
-            </uax:LocalizedText>
-        </Value>
-    </UAVariable>
-    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5034" NodeId="ns=1;i=6075" BrowseName="2:Model">
-        <DisplayName>Model</DisplayName>
-        <References>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5034</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-        </References>
-        <Value>
-            <uax:LocalizedText>
-                <uax:Locale>en-US</uax:Locale>
-                <uax:Text>TestGearModel</uax:Text>
-            </uax:LocalizedText>
-        </Value>
-    </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5034" NodeId="ns=1;i=6076" BrowseName="2:ProductCode">
-        <DisplayName>ProductCode</DisplayName>
-        <References>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5034</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-        </References>
-        <Value>
-            <uax:String>TestGearProductCode</uax:String>
-        </Value>
-    </UAVariable>
-    <UAVariable DataType="String" ParentNodeId="ns=1;i=5034" NodeId="ns=1;i=6077" BrowseName="2:SerialNumber">
-        <DisplayName>SerialNumber</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5034</Reference>
-        </References>
-        <Value>
-            <uax:String>TestGearSerialNumber</uax:String>
-        </Value>
-    </UAVariable>
     <UAObject ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=5022" BrowseName="3:SafetyStates">
         <DisplayName>SafetyStates</DisplayName>
         <Description>Contains safety-related data from motion device system.</Description>
