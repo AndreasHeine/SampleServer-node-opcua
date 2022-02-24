@@ -22,6 +22,7 @@ import { createOwnServerAddressspaceLogic } from './serveraddressspace/serveradd
 import { createMyMachineLogic } from './machines/mymachine/mymachine';
 import { createShowCaseMachineToolLogic } from './machines/machinetool/showcasemachinetool';
 import { createSampleImmLogic } from './machines/sample_imm/sample_imm';
+import { createMotionDeviceSystemLogic } from './machines/motiondevicesystem/motiondevicesystem';
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
   const addressSpace = server.engine.addressSpace;
@@ -30,7 +31,8 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createOwnServerAddressspaceLogic(addressSpace),
       createMyMachineLogic(addressSpace),
       createShowCaseMachineToolLogic(addressSpace),
-      createSampleImmLogic(addressSpace)
+      createSampleImmLogic(addressSpace),
+      createMotionDeviceSystemLogic(addressSpace)
     ])
       .then(() => {
         green(' creating addressspace done! ');
