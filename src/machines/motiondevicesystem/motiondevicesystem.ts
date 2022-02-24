@@ -1,4 +1,4 @@
-// Copyright 2021 (c) Andreas Heine
+// Copyright 2021 (c) Suprateek Banerjee
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -57,22 +57,22 @@ export const createMotionDeviceSystemLogic = async (addressSpace: AddressSpace):
     */
     const mdsidx = addressSpace?.getNamespaceIndex('http://vdma.org/OPCRoboticsTestServer/')
    
-    var generateNumber = function() {
+    let generateNumber = function() {
         
         var value = 10 + 10 * Math.random();
         return value.toFixed(2);
         
     };
 
+    const node1 = addressSpace?.findNode(`ns=${mdsidx};i=6020`) as UAVariable
+    const node2= addressSpace?.findNode(`ns=${mdsidx};i=6024`) as UAVariable
+    const node3 = addressSpace?.findNode(`ns=${mdsidx};i=6031`) as UAVariable
+    const node4 = addressSpace?.findNode(`ns=${mdsidx};i=6027`) as UAVariable
+    const node5 = addressSpace?.findNode(`ns=${mdsidx};i=6033`) as UAVariable
+    const node6 = addressSpace?.findNode(`ns=${mdsidx};i=6054`) as UAVariable
+    const node7 = addressSpace?.findNode(`ns=${mdsidx};i=6022`) as UAVariable
     // changes CurrentState each 1000 msec from Running to Stopped
     setInterval(() => {
-        const node1 = addressSpace?.findNode(`ns=${mdsidx};i=6020`) as UAVariable
-        const node2= addressSpace?.findNode(`ns=${mdsidx};i=6024`) as UAVariable
-        const node3 = addressSpace?.findNode(`ns=${mdsidx};i=6031`) as UAVariable
-        const node4 = addressSpace?.findNode(`ns=${mdsidx};i=6027`) as UAVariable
-        const node5 = addressSpace?.findNode(`ns=${mdsidx};i=6033`) as UAVariable
-        const node6 = addressSpace?.findNode(`ns=${mdsidx};i=6054`) as UAVariable
-        const node7 = addressSpace?.findNode(`ns=${mdsidx};i=6022`) as UAVariable
         
         node1?.setValueFromSource({
             value: generateNumber(),
