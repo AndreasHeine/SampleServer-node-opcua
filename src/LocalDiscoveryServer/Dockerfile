@@ -1,4 +1,4 @@
-FROM node:17.5.0-alpine3.14
+FROM node:17.6.0-alpine3.14
 RUN apk add --no-cache openssl=1.1.1l-r0
 
 COPY . /
