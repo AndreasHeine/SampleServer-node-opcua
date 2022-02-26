@@ -281,6 +281,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Alarms and Conditions
+        Part 9 Alarms & Conditions https://reference.opcfoundation.org/Core/docs/Part9/
     */
 
     const showcaseAC = namespace.addObject({
@@ -518,6 +519,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Historical Access
+        Part 11 Historical Access https://reference.opcfoundation.org/Core/docs/Part11/
     */
 
     const showcaseHA = namespace.addObject({
@@ -585,11 +587,12 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     })
 
     /*
-        Showcase: Programs
+        Showcase: State Machines
+        Part 16 State Machines https://reference.opcfoundation.org/Core/docs/Part16/
     */
 
-    const showcasePrg = namespace.addObject({
-        browseName: 'Programs',
+    const showcaseSta = namespace.addObject({
+        browseName: 'StateMachines',
         organizedBy: showcaseFolder,
     })
 
@@ -601,7 +604,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
         displayName: "DemoFiniteStateMachineTypeInstance",
         browseName: "DemoFiniteStateMachineTypeInstance",
-        componentOf: showcasePrg,
+        componentOf: showcaseSta,
         optionals: [
             "AvailableStates", "LastTransition", "AvailableTransitions"
         ]
@@ -630,6 +633,17 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
     // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
 
+
+    /*
+        Showcase: Programs
+        Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
+    */
+
+        const showcasePrg = namespace.addObject({
+            browseName: 'Programs',
+            organizedBy: showcaseFolder,
+            rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        })
 
     /*
         DEV: Testspace!!!
