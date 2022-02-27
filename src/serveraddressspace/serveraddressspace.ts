@@ -423,17 +423,19 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         browseName: "DemoFiniteStateMachineTypeInstance",
         componentOf: showcaseSta,
         optionals: [
-            "AvailableStates", "LastTransition", "AvailableTransitions"
+            "AvailableStates", 
+            "LastTransition", 
+            "AvailableTransitions"
         ]
     })
 
     const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
 
-    namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
-    namespace.addState(demoFiniteStateMachine, "Idle", 200)
-    namespace.addState(demoFiniteStateMachine, "Prepare", 300)
-    namespace.addState(demoFiniteStateMachine, "Processing", 400)
-    namespace.addState(demoFiniteStateMachine, "Done", 500)
+    const initState = namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
+    const idleState = namespace.addState(demoFiniteStateMachine, "Idle", 200)
+    const prepareState = namespace.addState(demoFiniteStateMachine, "Prepare", 300)
+    const processingState = namespace.addState(demoFiniteStateMachine, "Processing", 400)
+    const doneState = namespace.addState(demoFiniteStateMachine, "Done", 500)
 
     namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
     namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
@@ -443,8 +445,13 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     // console.log("States: ", demoFiniteStateMachine.getStates())
     // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
-
-    demoFiniteStateMachine.setState(demoFiniteStateMachine.initialState!)
+    demoFiniteStateMachine.setState(initState)
+    // demoFiniteStateMachine.setState(idleState)
+    // demoFiniteStateMachine.setState(prepareState)
+    // demoFiniteStateMachine.setState(processingState)
+    // demoFiniteStateMachine.setState(doneState)
+    // demoFiniteStateMachine.setState(idleState)
+    
 
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
     // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
@@ -461,6 +468,24 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             organizedBy: showcaseFolder,
             rolePermissions: ServerRolePermissionGroup.RESTRICTED,
         })
+
+        const prgObjectType = addressSpace?.findNode(`ns=0;i=2391`) as UAObjectType
+
+        const demoPrg = prgObjectType?.instantiate({
+            displayName: "DemoProgram",
+            browseName: "DemoProgram",
+            componentOf: showcasePrg,
+            optionals: [
+            ]
+        })
+
+        const demoPrgPromo = promoteToStateMachine(demoPrg)
+
+        demoPrgPromo.setState("Ready")
+        setTimeout(()=>{
+            demoPrgPromo.setState("Running")
+        },5000)
+
 
     /*
         DEV: Testspace!!!
