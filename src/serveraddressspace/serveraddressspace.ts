@@ -292,7 +292,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             value: randomIdx,
             dataType: DataType.UInt32
         })
-    }, 3000)
+    }, 2000)
 
     const ownEventType = namespace.addEventType({
         browseName: 'ownNonExclusiveLimitAlarmType',
