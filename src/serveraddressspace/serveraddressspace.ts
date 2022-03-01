@@ -25,7 +25,7 @@ import {
     UAVariable,
     StatusCode,
     promoteToStateMachine,
-    UAFiniteStateMachineType
+    UAFiniteStateMachineType,
     LocalizedText,
 } from 'node-opcua'
 
