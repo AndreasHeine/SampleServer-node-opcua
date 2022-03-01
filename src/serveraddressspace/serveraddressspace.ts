@@ -26,6 +26,7 @@ import {
     StatusCode,
     promoteToStateMachine,
     UAFiniteStateMachineType
+    LocalizedText,
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -246,7 +247,55 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         let snap = new ConditionSnapshot(cond, new NodeId())
         cond.raiseConditionEvent(snap, true)
     }, 15000)
+    
+    const stringStateArray = ["Uncertain", "Healthy", "OutOfService", "Maintenance"]
 
+    const multiStateDiscreteNode = namespace.addMultiStateDiscrete({
+        browseName: "offNormalInputNode",
+        enumStrings: stringStateArray,
+        value: 1
+    })
+
+    const normalStateNode = namespace.addMultiStateDiscrete({
+        browseName: "normalStateNode",
+        enumStrings: stringStateArray,
+        componentOf: showcaseAC,
+        value: 1,
+        accessLevel: 3,
+        userAccessLevel: 3
+    })
+
+    const offnormalAlarm = namespace.instantiateOffNormalAlarm({
+        browseName: "SensorOffNormalAlarm",
+        conditionSource: showcaseAC,
+        componentOf: showcaseAC,
+        inputNode: multiStateDiscreteNode,
+        normalState: normalStateNode
+    })
+
+    offnormalAlarm.retain.setValueFromSource({
+        value: true,
+        dataType: DataType.Boolean
+    })
+
+    setInterval(() => {
+        let randomIdx = Math.floor(Math.random()*stringStateArray.length)
+        if (randomIdx != 1) {
+            offnormalAlarm.severity.setValueFromSource({
+                value: 600,
+                dataType: DataType.UInt16
+            })
+        } else {
+            offnormalAlarm.severity.setValueFromSource({
+                value: 200,
+                dataType: DataType.UInt16
+            })
+        }
+        normalStateNode.setValueFromSource({
+            value: randomIdx,
+            dataType: DataType.UInt32
+        })
+    }, 60000)
 
     const ownEventType = namespace.addEventType({
         browseName: 'ownNonExclusiveLimitAlarmType',
