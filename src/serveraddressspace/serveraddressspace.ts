@@ -26,11 +26,8 @@ import {
     LocalizedText,
     UAObject,
     promoteToStateMachine,
-<<<<<<< HEAD
-    UAObjectType
-=======
+    UAObjectType,
     UAFiniteStateMachineType
->>>>>>> Update serveraddressspace.ts
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
