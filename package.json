@@ -37,7 +37,7 @@
     "@types/chai": "4.3.0",
     "@types/mocha": "9.1.0",
     "@types/node": "16.11.26",
-    "@types/yargs": "17.0.8",
+    "@types/yargs": "17.0.9",
     "chai": "4.3.6",
     "chalk": "4.1.2",
     "dependency-cruiser": "11.3.1",
