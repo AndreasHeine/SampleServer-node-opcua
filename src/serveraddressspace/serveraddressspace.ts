@@ -25,6 +25,7 @@ import {
     UAVariable,
     StatusCode,
     LocalizedText,
+    AddReferenceOpts
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -79,17 +80,25 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         notifierOf: addressSpace.rootFolder.objects.server
     })
 
+    const demoEvent = namespace.addEventType({
+        browseName: 'DemoEventType',
+        subtypeOf:  "BaseEventType",
+        isAbstract: false
+    })
+
+    const myEventRefs: AddReferenceOpts[] = [
+        {
+            nodeId: demoEvent,
+            referenceType: "GeneratesEvent"
+        }
+    ]
+
     const myEvent = namespace.addObject({
         browseName: 'myEventNotifier',
         componentOf: showcaseEV,
         eventSourceOf: showcaseEV,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
-    })
-
-    const demoEvent = namespace.addEventType({
-        browseName: 'DemoEventType',
-        subtypeOf:  "BaseEventType",
-        isAbstract: false
+        references: myEventRefs
     })
 
     namespace.addVariable({
