@@ -14,9 +14,7 @@
 
 import { 
     AddressSpace,
-    UAObjectType,
     DataType,
-    coerceLocalizedText,
     RaiseEventData,
     Variant,
     StatusCodes,
@@ -24,8 +22,9 @@ import {
     NodeId,
     UAVariable,
     StatusCode,
+    AddReferenceOpts,
     LocalizedText,
-    AddReferenceOpts
+    UAObject,
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -39,27 +38,149 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const namespace = addressSpace?.getOwnNamespace()
     const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
 
-    const softwareType = addressSpace?.findNode(`ns=${diIdx};i=15106`) as UAObjectType
-    const software = softwareType?.instantiate({
-        browseName: 'Info',
-        organizedBy: addressSpace.rootFolder.objects,
-    })
-    const model = software?.getPropertyByName('Model')
-    model?.setValueFromSource({
-        value: coerceLocalizedText('SampleServer-node-opcua'),
-        dataType: DataType.LocalizedText,
+    const contributorType = namespace.addObjectType({
+        browseName: "ContributorType",
+        subtypeOf: "BaseObjectType"
     })
 
-    const manufacturer = software?.getPropertyByName('Manufacturer')
-    manufacturer?.setValueFromSource({
-        value: coerceLocalizedText('Andreas Heine'),
-        dataType: DataType.LocalizedText,
-    })
-
-    const softwareRevision = software?.getPropertyByName('SoftwareRevision')
-    softwareRevision?.setValueFromSource({
-        value: 'v1.0.0',
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Company",
         dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Country",
+        dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Mail",
+        dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    const contributorFolder = namespace.addFolder(addressSpace.rootFolder.objects, {
+        browseName: "Contributors",
+    })
+
+    let contributor: UAObject
+    let company: UAVariable
+    let country: UAVariable
+    let mail: UAVariable
+
+    // Andreas Heine
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Andreas Heine",
+        displayName: new LocalizedText({text: "Andreas Heine"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "konzeptpark GmbH",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "info@andreas-heine.net",
+        dataType: DataType.String
+    })
+
+    // Götz Görisch
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Götz Görisch",
+        displayName: new LocalizedText({text: "Götz Görisch"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "g.goerisch@vdw.de",
+        dataType: DataType.String
+    })
+
+    // Harald Weber
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Harald Weber",
+        displayName: new LocalizedText({text: "Harald Weber"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDMA",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "harald.weber@vdma.org",
+        dataType: DataType.String
+    })
+
+    // Etienne Rossignon
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Etienne Rossignon",
+        displayName: new LocalizedText({text: "Etienne Rossignon"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "Sterfive",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "France",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "etienne.rossignon@sterfive.com",
+        dataType: DataType.String
+    })   
+
+    // Suprateek Banerjee
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Suprateek Banerjee",
+        displayName: new LocalizedText({text: "Suprateek Banerjee"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDMA",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "suprateek.banerjee@vdma.org",
+        dataType: DataType.String
     })
 
     /*
