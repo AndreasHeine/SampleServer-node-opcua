@@ -24,6 +24,7 @@
         "./nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Robotics.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
         "./models/sample_imm.xml",
         "./models/opcroboticstestserver.xml"
