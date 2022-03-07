@@ -587,4 +587,14 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         organizedBy: addressSpace.rootFolder.objects,
         rolePermissions: ServerRolePermissionGroup.RESTRICTED,
     })
+
+    const testView1 = namespace.addView({
+        browseName: "developer-view",
+        organizedBy: addressSpace?.rootFolder.views
+    })
+
+    testView1.addReference({
+        referenceType: "Organizes",
+        nodeId: dev.nodeId
+    })
 }
