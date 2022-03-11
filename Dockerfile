@@ -1,4 +1,4 @@
-FROM node:17.6.0-bullseye
+FROM node:17.7.1-bullseye
 
 COPY . /
 
