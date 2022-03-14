@@ -10,6 +10,11 @@
         "matchUpdateTypes": ["major"],
         "enabled": true,
         "pinDigests": true
+      },
+      {
+        "matchPackagePatterns": ["node-opcua"],
+        "labels": ["node-opcua"],
+        "groupName": "node-opcua"
       }
     ]
 }

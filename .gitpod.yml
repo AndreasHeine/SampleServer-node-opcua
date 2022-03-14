@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init:  npm install -g opcua-commander
+  - init:  npm install -g opcua-commander renovate
     command: npm install 
 
 github:
