@@ -278,7 +278,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Alarms and Conditions
-        Part 9 Alarms & Conditions https://reference.opcfoundation.org/Core/docs/Part9/
     */
 
     const showcaseAC = namespace.addObject({
@@ -516,7 +515,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Historical Access
-        Part 11 Historical Access https://reference.opcfoundation.org/Core/docs/Part11/
     */
 
     const showcaseHA = namespace.addObject({
@@ -588,61 +586,61 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         Part 16 State Machines https://reference.opcfoundation.org/Core/docs/Part16/
     */
 
-    const showcaseSta = namespace.addObject({
-        browseName: 'StateMachines',
-        organizedBy: showcaseFolder,
-    })
-
-    const myFiniteStateMachine = namespace.addObjectType({
-        browseName: "MyFiniteStateMachine",
-        subtypeOf: "FiniteStateMachineType"
-    }) as UAFiniteStateMachineType
+        const showcaseSta = namespace.addObject({
+            browseName: 'StateMachines',
+            organizedBy: showcaseFolder,
+        })
     
-    const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
-        displayName: "DemoFiniteStateMachineTypeInstance",
-        browseName: "DemoFiniteStateMachineTypeInstance",
-        componentOf: showcaseSta,
-        optionals: [
-            "AvailableStates", 
-            "LastTransition", 
-            "AvailableTransitions"
-        ]
-    })
-
-    const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
-
-    const initState = namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
-    const idleState = namespace.addState(demoFiniteStateMachine, "Idle", 200)
-    const prepareState = namespace.addState(demoFiniteStateMachine, "Prepare", 300)
-    const processingState = namespace.addState(demoFiniteStateMachine, "Processing", 400)
-    const doneState = namespace.addState(demoFiniteStateMachine, "Done", 500)
-
-    namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
-    namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
-    namespace.addTransition(demoFiniteStateMachine, "Prepare", "Processing", 3)
-    namespace.addTransition(demoFiniteStateMachine, "Processing", "Done", 4)
-    namespace.addTransition(demoFiniteStateMachine, "Done", "Idle", 5)
-
-    // console.log("States: ", demoFiniteStateMachine.getStates())
-    // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
-    demoFiniteStateMachine.setState(initState)
-    // demoFiniteStateMachine.setState(idleState)
-    // demoFiniteStateMachine.setState(prepareState)
-    // demoFiniteStateMachine.setState(processingState)
-    // demoFiniteStateMachine.setState(doneState)
-    // demoFiniteStateMachine.setState(idleState)
+        const myFiniteStateMachine = namespace.addObjectType({
+            browseName: "MyFiniteStateMachine",
+            subtypeOf: "FiniteStateMachineType"
+        }) as UAFiniteStateMachineType
+        
+        const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
+            displayName: "DemoFiniteStateMachineTypeInstance",
+            browseName: "DemoFiniteStateMachineTypeInstance",
+            componentOf: showcaseSta,
+            optionals: [
+                "AvailableStates", 
+                "LastTransition", 
+                "AvailableTransitions"
+            ]
+        })
     
-
-    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
-    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
-    // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
-
-
-    /*
-        Showcase: Programs
-        Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
-    */
-
+        const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
+    
+        const initState = namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
+        const idleState = namespace.addState(demoFiniteStateMachine, "Idle", 200)
+        const prepareState = namespace.addState(demoFiniteStateMachine, "Prepare", 300)
+        const processingState = namespace.addState(demoFiniteStateMachine, "Processing", 400)
+        const doneState = namespace.addState(demoFiniteStateMachine, "Done", 500)
+    
+        namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
+        namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
+        namespace.addTransition(demoFiniteStateMachine, "Prepare", "Processing", 3)
+        namespace.addTransition(demoFiniteStateMachine, "Processing", "Done", 4)
+        namespace.addTransition(demoFiniteStateMachine, "Done", "Idle", 5)
+    
+        // console.log("States: ", demoFiniteStateMachine.getStates())
+        // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
+        demoFiniteStateMachine.setState(initState)
+        // demoFiniteStateMachine.setState(idleState)
+        // demoFiniteStateMachine.setState(prepareState)
+        // demoFiniteStateMachine.setState(processingState)
+        // demoFiniteStateMachine.setState(doneState)
+        // demoFiniteStateMachine.setState(idleState)
+        
+    
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
+        // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
+    
+    
+        /*
+            Showcase: Programs
+            Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
+        */
+    
         const showcasePrg = namespace.addObject({
             browseName: 'Programs',
             organizedBy: showcaseFolder,
