@@ -14,9 +14,7 @@
 
 import { 
     AddressSpace,
-    UAObjectType,
     DataType,
-    coerceLocalizedText,
     RaiseEventData,
     Variant,
     StatusCodes,
@@ -24,9 +22,12 @@ import {
     NodeId,
     UAVariable,
     StatusCode,
+    AddReferenceOpts,
+    LocalizedText,
+    UAObject,
     promoteToStateMachine,
     UAFiniteStateMachineType,
-    LocalizedText,
+    UAObjectType
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -40,27 +41,149 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const namespace = addressSpace?.getOwnNamespace()
     const diIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/DI/')
 
-    const softwareType = addressSpace?.findNode(`ns=${diIdx};i=15106`) as UAObjectType
-    const software = softwareType?.instantiate({
-        browseName: 'Info',
-        organizedBy: addressSpace.rootFolder.objects,
-    })
-    const model = software?.getPropertyByName('Model')
-    model?.setValueFromSource({
-        value: coerceLocalizedText('SampleServer-node-opcua'),
-        dataType: DataType.LocalizedText,
+    const contributorType = namespace.addObjectType({
+        browseName: "ContributorType",
+        subtypeOf: "BaseObjectType"
     })
 
-    const manufacturer = software?.getPropertyByName('Manufacturer')
-    manufacturer?.setValueFromSource({
-        value: coerceLocalizedText('Andreas Heine'),
-        dataType: DataType.LocalizedText,
-    })
-
-    const softwareRevision = software?.getPropertyByName('SoftwareRevision')
-    softwareRevision?.setValueFromSource({
-        value: 'v1.0.0',
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Company",
         dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Country",
+        dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    namespace.addVariable({
+        propertyOf: contributorType,
+        browseName: "Mail",
+        dataType: DataType.String,
+        modellingRule: "Mandatory"
+    })
+
+    const contributorFolder = namespace.addFolder(addressSpace.rootFolder.objects, {
+        browseName: "Contributors",
+    })
+
+    let contributor: UAObject
+    let company: UAVariable
+    let country: UAVariable
+    let mail: UAVariable
+
+    // Andreas Heine
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Andreas Heine",
+        displayName: new LocalizedText({text: "Andreas Heine"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "konzeptpark GmbH",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "info@andreas-heine.net",
+        dataType: DataType.String
+    })
+
+    // Götz Görisch
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Götz Görisch",
+        displayName: new LocalizedText({text: "Götz Görisch"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDW - Verein Deutscher Werkzeugmaschinenfabriken e.V.",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "g.goerisch@vdw.de",
+        dataType: DataType.String
+    })
+
+    // Harald Weber
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Harald Weber",
+        displayName: new LocalizedText({text: "Harald Weber"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDMA",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "harald.weber@vdma.org",
+        dataType: DataType.String
+    })
+
+    // Etienne Rossignon
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Etienne Rossignon",
+        displayName: new LocalizedText({text: "Etienne Rossignon"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "Sterfive",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "France",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "etienne.rossignon@sterfive.com",
+        dataType: DataType.String
+    })   
+
+    // Suprateek Banerjee
+    contributor = contributorType.instantiate({
+        componentOf: contributorFolder,
+        browseName: "Suprateek Banerjee",
+        displayName: new LocalizedText({text: "Suprateek Banerjee"})
+    })
+    company = contributor.getChildByName("Company") as UAVariable
+    company.setValueFromSource({
+        value: "VDMA",
+        dataType: DataType.String
+    })
+    country = contributor.getChildByName("Country") as UAVariable
+    country.setValueFromSource({
+        value: "Germany",
+        dataType: DataType.String
+    })
+    mail = contributor.getChildByName("Mail") as UAVariable
+    mail.setValueFromSource({
+        value: "suprateek.banerjee@vdma.org",
+        dataType: DataType.String
     })
 
     /*
@@ -81,17 +204,25 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         notifierOf: addressSpace.rootFolder.objects.server
     })
 
+    const demoEvent = namespace.addEventType({
+        browseName: 'DemoEventType',
+        subtypeOf:  "BaseEventType",
+        isAbstract: false
+    })
+
+    const myEventRefs: AddReferenceOpts[] = [
+        {
+            nodeId: demoEvent,
+            referenceType: "GeneratesEvent"
+        }
+    ]
+
     const myEvent = namespace.addObject({
         browseName: 'myEventNotifier',
         componentOf: showcaseEV,
         eventSourceOf: showcaseEV,
         eventNotifier: 1, // 0:None, 1:SubscribeToEvents, 2:HistoryRead, 3:HistoryWrite
-    })
-
-    const demoEvent = namespace.addEventType({
-        browseName: 'DemoEventType',
-        subtypeOf:  "BaseEventType",
-        isAbstract: false
+        references: myEventRefs
     })
 
     namespace.addVariable({
@@ -147,7 +278,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Alarms and Conditions
-        Part 9 Alarms & Conditions https://reference.opcfoundation.org/Core/docs/Part9/
     */
 
     const showcaseAC = namespace.addObject({
@@ -385,7 +515,6 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
 
     /*
         Showcase: Historical Access
-        Part 11 Historical Access https://reference.opcfoundation.org/Core/docs/Part11/
     */
 
     const showcaseHA = namespace.addObject({
@@ -457,61 +586,61 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         Part 16 State Machines https://reference.opcfoundation.org/Core/docs/Part16/
     */
 
-    const showcaseSta = namespace.addObject({
-        browseName: 'StateMachines',
-        organizedBy: showcaseFolder,
-    })
-
-    const myFiniteStateMachine = namespace.addObjectType({
-        browseName: "MyFiniteStateMachine",
-        subtypeOf: "FiniteStateMachineType"
-    }) as UAFiniteStateMachineType
+        const showcaseSta = namespace.addObject({
+            browseName: 'StateMachines',
+            organizedBy: showcaseFolder,
+        })
     
-    const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
-        displayName: "DemoFiniteStateMachineTypeInstance",
-        browseName: "DemoFiniteStateMachineTypeInstance",
-        componentOf: showcaseSta,
-        optionals: [
-            "AvailableStates", 
-            "LastTransition", 
-            "AvailableTransitions"
-        ]
-    })
-
-    const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
-
-    const initState = namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
-    const idleState = namespace.addState(demoFiniteStateMachine, "Idle", 200)
-    const prepareState = namespace.addState(demoFiniteStateMachine, "Prepare", 300)
-    const processingState = namespace.addState(demoFiniteStateMachine, "Processing", 400)
-    const doneState = namespace.addState(demoFiniteStateMachine, "Done", 500)
-
-    namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
-    namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
-    namespace.addTransition(demoFiniteStateMachine, "Prepare", "Processing", 3)
-    namespace.addTransition(demoFiniteStateMachine, "Processing", "Done", 4)
-    namespace.addTransition(demoFiniteStateMachine, "Done", "Idle", 5)
-
-    // console.log("States: ", demoFiniteStateMachine.getStates())
-    // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
-    demoFiniteStateMachine.setState(initState)
-    // demoFiniteStateMachine.setState(idleState)
-    // demoFiniteStateMachine.setState(prepareState)
-    // demoFiniteStateMachine.setState(processingState)
-    // demoFiniteStateMachine.setState(doneState)
-    // demoFiniteStateMachine.setState(idleState)
+        const myFiniteStateMachine = namespace.addObjectType({
+            browseName: "MyFiniteStateMachine",
+            subtypeOf: "FiniteStateMachineType"
+        }) as UAFiniteStateMachineType
+        
+        const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
+            displayName: "DemoFiniteStateMachineTypeInstance",
+            browseName: "DemoFiniteStateMachineTypeInstance",
+            componentOf: showcaseSta,
+            optionals: [
+                "AvailableStates", 
+                "LastTransition", 
+                "AvailableTransitions"
+            ]
+        })
     
-
-    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
-    // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
-    // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
-
-
-    /*
-        Showcase: Programs
-        Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
-    */
-
+        const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
+    
+        const initState = namespace.addState(demoFiniteStateMachine, "Initializing", 100, true)
+        const idleState = namespace.addState(demoFiniteStateMachine, "Idle", 200)
+        const prepareState = namespace.addState(demoFiniteStateMachine, "Prepare", 300)
+        const processingState = namespace.addState(demoFiniteStateMachine, "Processing", 400)
+        const doneState = namespace.addState(demoFiniteStateMachine, "Done", 500)
+    
+        namespace.addTransition(demoFiniteStateMachine, "Initializing", "Idle", 1)
+        namespace.addTransition(demoFiniteStateMachine, "Idle", "Prepare", 2)
+        namespace.addTransition(demoFiniteStateMachine, "Prepare", "Processing", 3)
+        namespace.addTransition(demoFiniteStateMachine, "Processing", "Done", 4)
+        namespace.addTransition(demoFiniteStateMachine, "Done", "Idle", 5)
+    
+        // console.log("States: ", demoFiniteStateMachine.getStates())
+        // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
+        demoFiniteStateMachine.setState(initState)
+        // demoFiniteStateMachine.setState(idleState)
+        // demoFiniteStateMachine.setState(prepareState)
+        // demoFiniteStateMachine.setState(processingState)
+        // demoFiniteStateMachine.setState(doneState)
+        // demoFiniteStateMachine.setState(idleState)
+        
+    
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
+        // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
+    
+    
+        /*
+            Showcase: Programs
+            Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
+        */
+    
         const showcasePrg = namespace.addObject({
             browseName: 'Programs',
             organizedBy: showcaseFolder,
@@ -544,5 +673,15 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         browseName: 'DEV',
         organizedBy: addressSpace.rootFolder.objects,
         rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+    })
+
+    const testView1 = namespace.addView({
+        browseName: "developer-view",
+        organizedBy: addressSpace?.rootFolder.views
+    })
+
+    testView1.addReference({
+        referenceType: "Organizes",
+        nodeId: dev.nodeId
     })
 }
