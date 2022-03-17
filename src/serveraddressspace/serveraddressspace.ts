@@ -26,13 +26,8 @@ import {
     LocalizedText,
     UAObject,
     promoteToStateMachine,
-<<<<<<< HEAD
     UAObjectType,
     UAFiniteStateMachineType
-=======
-    UAFiniteStateMachineType,
-    UAObjectType
->>>>>>> c752fb1d119f60e7110720aa9d62f2b630d769bd
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
