@@ -25,6 +25,11 @@ import {
     AddReferenceOpts,
     LocalizedText,
     UAObject,
+    promoteToStateMachine,
+    UAFiniteStateMachineType,
+    UAObjectType,
+    BaseNode,
+    NodeClass
 } from 'node-opcua'
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
@@ -577,6 +582,93 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     addressSpace?.installHistoricalDataNode(myHistoricalSetpointVar, {
         maxOnlineValues: 2000,
     })
+
+    /*
+        Showcase: State Machines
+        Part 16 State Machines https://reference.opcfoundation.org/Core/docs/Part16/
+    */
+
+        const showcaseSta = namespace.addObject({
+            browseName: 'StateMachines',
+            organizedBy: showcaseFolder,
+        })
+    
+        const myFiniteStateMachine = namespace.addObjectType({
+            browseName: "MyFiniteStateMachine",
+            subtypeOf: "FiniteStateMachineType"
+        }) as UAFiniteStateMachineType
+        
+        const initState = namespace.addState(myFiniteStateMachine, "Initializing", 100, true)
+        const idleState = namespace.addState(myFiniteStateMachine, "Idle", 200)
+        const prepareState = namespace.addState(myFiniteStateMachine, "Prepare", 300)
+        const processingState = namespace.addState(myFiniteStateMachine, "Processing", 400)
+        const doneState = namespace.addState(myFiniteStateMachine, "Done", 500)
+
+        const initToIdle = namespace.addTransition(myFiniteStateMachine, "Initializing", "Idle", 1)
+        const idleToPrepare = namespace.addTransition(myFiniteStateMachine, "Idle", "Prepare", 2)
+        const prepareToProcessing = namespace.addTransition(myFiniteStateMachine, "Prepare", "Processing", 3)
+        const processingToDone = namespace.addTransition(myFiniteStateMachine, "Processing", "Done", 4)
+        const doneToIdle = namespace.addTransition(myFiniteStateMachine, "Done", "Idle", 5)
+
+        const demoFiniteStateMachineTypeInstance = myFiniteStateMachine.instantiate({
+            displayName: "DemoFiniteStateMachineTypeInstance",
+            browseName: "DemoFiniteStateMachineTypeInstance",
+            componentOf: showcaseSta,
+            optionals: [
+                "AvailableStates", 
+                "LastTransition", 
+                "AvailableTransitions"
+            ]
+        })
+        
+        const demoFiniteStateMachine = promoteToStateMachine(demoFiniteStateMachineTypeInstance)
+
+        // console.log("States: ", demoFiniteStateMachine.getStates())
+        // console.log("Transitions: ", demoFiniteStateMachine.getTransitions())
+        demoFiniteStateMachine.setState(idleState)
+
+        setTimeout(() => {
+            demoFiniteStateMachine.setState(prepareState)
+            demoFiniteStateMachine.setState(prepareState)
+            demoFiniteStateMachine.setState(processingState)
+            demoFiniteStateMachine.setState(doneState)
+            demoFiniteStateMachine.setState(idleState)
+        }, 10000)
+        
+    
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.state.html
+        // https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.statemachine.html
+        // https://github.com/node-opcua/node-opcua/blob/master/packages/node-opcua-address-space/src/namespace_impl.ts#L1427
+    
+    
+        /*
+            Showcase: Programs
+            Part 10 Programs https://reference.opcfoundation.org/Core/docs/Part10/
+        */
+    
+        const showcasePrg = namespace.addObject({
+            browseName: 'Programs',
+            organizedBy: showcaseFolder,
+            rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        })
+
+        const prgObjectType = addressSpace?.findNode(`ns=0;i=2391`) as UAObjectType
+
+        const demoPrg = prgObjectType?.instantiate({
+            displayName: "DemoProgram",
+            browseName: "DemoProgram",
+            componentOf: showcasePrg,
+            optionals: [
+            ]
+        })
+
+        const demoPrgPromo = promoteToStateMachine(demoPrg)
+
+        demoPrgPromo.setState("Ready")
+        setTimeout(()=>{
+            demoPrgPromo.setState("Running")
+        },5000)
+
 
     /*
         DEV: Testspace!!!
