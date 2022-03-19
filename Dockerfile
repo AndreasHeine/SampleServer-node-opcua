@@ -1,4 +1,4 @@
-FROM node:17.7.1-alpine3.15
+FROM node:17.7.2-alpine3.15
 
 RUN apk --no-cache add \
     openssl=1.1.1n-r0 \
