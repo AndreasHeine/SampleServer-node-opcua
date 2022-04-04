@@ -5,7 +5,7 @@
         "productUri": "SampleServer-productUri",
         "productName": "SampleServer-productName",
         "manufacturerName": "SampleServer-manufacturerName",
-        "buildNumber": "v1.0.0",
+        "buildNumber": "v1.0.1",
         "buildDate": "2022-01-27T00:00:00.0Z"
     },
     "serverInfo": {
@@ -25,8 +25,10 @@
         "./nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
         "./nodesets/Opc.Ua.Robotics.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.TCD.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
         "./models/sample_imm.xml",
+        "./models/sample_tcd.xml",
         "./models/opcroboticstestserver.xml"
     ],
     "serverCapabilities": {
