@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.0",
-    "@types/chai": "4.3.0",
+    "@types/chai": "4.3.1",
     "@types/mocha": "9.1.0",
     "@types/node": "16.11.26",
     "@types/yargs": "17.0.10",
