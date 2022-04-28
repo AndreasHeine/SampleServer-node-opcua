@@ -9,12 +9,6 @@ OPC UA Sample Server based on [node-opcua](https://github.com/node-opcua/node-op
 the book from the author of node-opcua: [node-opcuabyexample](https://leanpub.com/node-opcuabyexample)  
 API Docs: [2.32.0](https://node-opcua.github.io/api_doc/2.32.0/index.html)  
   
-## Requirements
-
-Node.js v14 (LTS) or newer  
-TypeScript globally installed for tsc cli (`npm install -g typescript`)  
-pkg globally installed for pkg cli (`npm install -g pkg`)  
-  
 ## Usage
 
 - `download and unpack`  
