@@ -36,7 +36,7 @@
     "@types/bcrypt": "5.0.0",
     "@types/chai": "4.3.1",
     "@types/mocha": "9.1.1",
-    "@types/node": "16.11.31",
+    "@types/node": "16.11.32",
     "@types/yargs": "17.0.10",
     "chai": "4.3.6",
     "chalk": "4.1.2",
