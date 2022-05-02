@@ -1,5 +1,7 @@
 FROM node:18.0.0-alpine3.15
 
+WORKDIR /home/node/opcua-server
+
 RUN apk --no-cache add \
     openssl=1.1.1n-r0 \
     python3=3.9.7-r4 \
@@ -9,13 +11,11 @@ RUN apk --no-cache add \
 
 COPY . /home/node/opcua-server
 
-RUN chown node:node /home/node/opcua-server
-
-WORKDIR /home/node/opcua-server
-
 RUN npm install
 
 EXPOSE 4840
+
+RUN chown node:node /home/node/opcua-server
 
 USER node
 
