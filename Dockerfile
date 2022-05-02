@@ -13,4 +13,6 @@ RUN npm install
 
 EXPOSE 4840
 
+USER node
+
 ENTRYPOINT ["npm", "run", "start"]
