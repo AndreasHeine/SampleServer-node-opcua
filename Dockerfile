@@ -7,10 +7,16 @@ RUN apk --no-cache add \
     gcc=10.3.1_git20211027-r0 \ 
     g++=10.3.1_git20211027-r0
 
-COPY . /
+COPY . /home/node/opcua-server
+
+RUN chown node:node /home/node/opcua-server
+
+WORKDIR /home/node/opcua-server
 
 RUN npm install
 
 EXPOSE 4840
+
+USER node
 
 ENTRYPOINT ["npm", "run", "start"]
