@@ -13,8 +13,8 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 17.x]
-        os: [ubuntu-20.04, windows-2019, windows-2022]
+        node-version: [16.x, 18.x]
+        os: [macos-11, macos-12, ubuntu-20.04, ubuntu-22.04, windows-2019, windows-2022]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
