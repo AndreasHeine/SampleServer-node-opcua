@@ -36,7 +36,7 @@ Set "IP" and "PORT" in env:
   
 ## Online Server Instance  
 
-- `opc.tcp://opcua3.umati.app:4840`  
+- `opc.tcp://opcua.umati.app:4843`  
   
 ## Implementations of OPC UA Companion Specifications
   
