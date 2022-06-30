@@ -8,8 +8,8 @@
     </NamespaceUris>
     <Models>
         <Model ModelUri="http://samplemanufacturer.com/umati_plasticsrubber_generic_sample_instance/" PublicationDate="2022-06-10T13:20:40Z" Version="1.00">
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2022-01-24T00:00:00Z" Version="1.05.01"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2021-09-07T00:00:00Z" Version="1.03.1"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2022-05-01T00:00:00Z" Version="1.02.0"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/umati/generic/" PublicationDate="2022-06-10T00:00:00Z" Version="1.00"/>
         </Model>
