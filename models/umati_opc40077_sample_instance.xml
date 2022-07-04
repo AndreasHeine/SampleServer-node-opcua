@@ -89,7 +89,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>Injection Moulidng Machine</uax:String>
+            <uax:String>Injection Moulding Machine</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5014" NodeId="ns=1;i=6077" BrowseName="4:Location" AccessLevel="3">
@@ -100,7 +100,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>K 14 F42/N 51.260407 E 6.744588</uax:String>
+            <uax:String>K 14 F42/VIRTUAL 0 0/N 51.260407 E 6.744588</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5014" NodeId="ns=1;i=6032" BrowseName="3:Manufacturer">
@@ -137,7 +137,7 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:String>http://samplemanufacturercom/IMM123</uax:String>
+            <uax:String>http://samplemanufacturer.com/IMM123</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5014" NodeId="ns=1;i=6033" BrowseName="3:SerialNumber">
