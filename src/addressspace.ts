@@ -21,7 +21,6 @@ import { green } from './utils/log';
 import { createOwnServerAddressspaceLogic } from './serveraddressspace/serveraddressspace';
 import { createMyMachineLogic } from './machines/mymachine/mymachine';
 import { createShowCaseMachineToolLogic } from './machines/machinetool/showcasemachinetool';
-import { createSampleImmLogic } from './machines/sample_imm/sample_imm';
 import { createMotionDeviceSystemLogic } from './machines/motiondevicesystem/motiondevicesystem';
 import { createGenericPRLogic } from './machines/PlasticsRubber/generic';
 
@@ -32,7 +31,6 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createOwnServerAddressspaceLogic(addressSpace),
       createMyMachineLogic(addressSpace),
       createShowCaseMachineToolLogic(addressSpace),
-      createSampleImmLogic(addressSpace),
       createMotionDeviceSystemLogic(addressSpace),
       createGenericPRLogic(addressSpace)
     ])
