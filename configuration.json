@@ -27,7 +27,6 @@
         "./nodesets/Opc.Ua.PlasticsRubber.UmatiGeneric.NodeSet2.xml",
         "./nodesets/Opc.Ua.Robotics.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
-        "./models/sample_imm.xml",
         "./models/opcroboticstestserver.xml",
         "./models/umati_plasticsrubber_generic_sample_instance.xml"
         
