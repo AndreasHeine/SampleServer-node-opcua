@@ -26,6 +26,7 @@
         "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.TCD.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.HotRunner.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.LDS.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.UmatiGeneric.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.Extrusion_v2.GeneralTypes.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.Extrusion_v2.Extruder.NodeSet2.xml",
@@ -36,7 +37,8 @@
         "./models/umati_opc40077_sample_instance.xml",
         "./models/umati_opc40084-3_sample_instance.xml",
         "./models/umati_opc40082-1_sample_instance.xml",
-        "./models/umati_opc40082-2_sample_instance.xml"
+        "./models/umati_opc40082-2_sample_instance.xml",
+        "./models/umati_opc40082-3_sample_instance.xml"
         
     ],
     "serverCapabilities": {

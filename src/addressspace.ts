@@ -27,7 +27,7 @@ import { create40077Logic } from './machines/PlasticsRubber/40077';
 import { create40084_3Logic } from './machines/PlasticsRubber/40084-3';
 import { create40082_1Logic } from './machines/PlasticsRubber/40082-1';
 import { create40082_2Logic } from './machines/PlasticsRubber/40082-2';
-
+import { create40082_3Logic } from './machines/PlasticsRubber/40082-3';
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
   const addressSpace = server.engine.addressSpace;
@@ -41,15 +41,16 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       create40077Logic(addressSpace),
       create40084_3Logic(addressSpace),
       create40082_1Logic(addressSpace),
-      create40082_2Logic(addressSpace)
+      create40082_2Logic(addressSpace),
+      create40082_3Logic(addressSpace)
     ])
       .then(() => {
-        green(' creating addressspace done! ');
+        green(' Creating AddressSpace done! ');
       })
       .catch((error) => {
-        throw new Error(` creating addressspace failed: ${error} `);
+        throw new Error(` Creating AddressSpace failed: ${error} `);
       })
     : () => {
-        throw new Error(' addressSpace not found! the server has no \'addressSpace\' ');
+        throw new Error(' AddressSpace not found! the server has no \'addressSpace\' ');
       };
 };
