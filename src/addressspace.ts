@@ -26,6 +26,7 @@ import { createGenericPRLogic } from './machines/PlasticsRubber/generic';
 import { create40077Logic } from './machines/PlasticsRubber/40077';
 import { create40084_3Logic } from './machines/PlasticsRubber/40084-3';
 import { create40082_1Logic } from './machines/PlasticsRubber/40082-1';
+import { create40082_2Logic } from './machines/PlasticsRubber/40082-2';
 
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
@@ -39,7 +40,8 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createGenericPRLogic(addressSpace),
       create40077Logic(addressSpace),
       create40084_3Logic(addressSpace),
-      create40082_1Logic(addressSpace)
+      create40082_1Logic(addressSpace),
+      create40082_2Logic(addressSpace)
     ])
       .then(() => {
         green(' creating addressspace done! ');
