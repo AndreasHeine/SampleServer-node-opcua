@@ -39,6 +39,7 @@
         "./nodesets/Opc.Ua.Woodworking.NodeSet2.xml",
         "./nodesets/Opc.Ua.LaserSystems.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
+        "./models/Machinetool-Example.xml",
         "./models/opcroboticstestserver.xml",
         "./models/umati_plasticsrubber_generic_sample_instance.xml",
         "./models/umati_opc40077_sample_instance.xml",
