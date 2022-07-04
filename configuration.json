@@ -24,6 +24,7 @@
         "./nodesets/Opc.Ua.MachineTool.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.GeneralTypes.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.IMM2MES.NodeSet2.xml",
+        "./nodesets/Opc.Ua.PlasticsRubber.TCD.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.UmatiGeneric.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.Extrusion_v2.GeneralTypes.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.Extrusion_v2.Extruder.NodeSet2.xml",
@@ -32,7 +33,8 @@
         "./models/opcroboticstestserver.xml",
         "./models/umati_plasticsrubber_generic_sample_instance.xml",
         "./models/umati_opc40077_sample_instance.xml",
-        "./models/umati_opc40084-3_sample_instance.xml"
+        "./models/umati_opc40084-3_sample_instance.xml",
+        "./models/umati_opc40082-1_sample_instance.xml"
         
     ],
     "serverCapabilities": {
