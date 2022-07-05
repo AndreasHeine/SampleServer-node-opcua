@@ -44,8 +44,8 @@
             <ua:ModelInfo Tool="UaModeler" Hash="NSCfIGhZs9grEEFwYgJl1g==" Version="1.6.6"/>
         </Extension>
     </Extensions>
-    <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_samplemanufacturer_1234">
-        <DisplayName>HRD_samplemanufacturer_1234</DisplayName>
+    <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_SampleManufacturer_1234">
+        <DisplayName>HRD_SampleManufacturer_1234</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1010</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>

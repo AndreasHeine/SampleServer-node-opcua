@@ -41,8 +41,8 @@
             <ua:ModelInfo Tool="UaModeler" Hash="dc1qkb6/Tp/vINIfI1BqlQ==" Version="1.6.6"/>
         </Extension>
     </Extensions>
-    <UAObject NodeId="ns=1;i=5003" BrowseName="1:Corrugator_samplemanufacturer_1234">
-        <DisplayName>Corrugator_samplemanufacturer_1234</DisplayName>
+    <UAObject NodeId="ns=1;i=5003" BrowseName="1:Corrugator_SampleManufacturer_1234">
+        <DisplayName>Corrugator_SampleManufacturer_1234</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1003</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
