@@ -24,6 +24,7 @@ import { createShowCaseMachineToolLogic } from './machines/machinetool/showcasem
 import { createMotionDeviceSystemLogic } from './machines/motiondevicesystem/motiondevicesystem';
 import { createGenericPRLogic } from './machines/PlasticsRubber/generic';
 import { create40077Logic } from './machines/PlasticsRubber/40077';
+import { create40079Logic } from './machines/PlasticsRubber/40079';
 import { create40084_3Logic } from './machines/PlasticsRubber/40084-3';
 import { create40082_1Logic } from './machines/PlasticsRubber/40082-1';
 import { create40082_2Logic } from './machines/PlasticsRubber/40082-2';
@@ -40,6 +41,7 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createMotionDeviceSystemLogic(addressSpace),
       createGenericPRLogic(addressSpace),
       create40077Logic(addressSpace),
+      create40079Logic(addressSpace),
       create40084_3Logic(addressSpace),
       create40082_1Logic(addressSpace),
       create40082_2Logic(addressSpace),
