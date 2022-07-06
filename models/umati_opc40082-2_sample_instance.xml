@@ -8,7 +8,7 @@
         <Uri>http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://samplemanufacturer.org/umati_opc40082-2_sample_instance/" PublicationDate="2022-07-04T00:00:00Z" Version="1.00">
+        <Model ModelUri="http://samplemanufacturer.org/umati_opc40082-2_sample_instance/" PublicationDate="2022-07-06T00:00:00Z" Version="1.01">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
@@ -41,19 +41,19 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="NSCfIGhZs9grEEFwYgJl1g==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="fZN3B3EovvYDXhvMWTSLNg==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_SampleManufacturer_1234">
         <DisplayName>HRD_SampleManufacturer_1234</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1010</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5004</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5012</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5005</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5006</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5007</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=4;i=1001</Reference>
         </References>
     </UAObject>
@@ -343,7 +343,7 @@
             <uax:UInt16>0</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6010" ValueRank="1" NodeId="ns=1;i=6011" BrowseName="EnumValues">
+    <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6010" ValueRank="1" NodeId="ns=1;i=6011" ArrayDimensions="0" BrowseName="EnumValues">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -490,6 +490,7 @@
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6026</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6043</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5010</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5007</Reference>
         </References>
@@ -558,6 +559,17 @@
             <uax:UInt16>0</uax:UInt16>
         </Value>
     </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=6043" BrowseName="2:Name" AccessLevel="3">
+        <DisplayName>Name</DisplayName>
+        <Description>A user given name of the zone</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5008</Reference>
+        </References>
+        <Value>
+            <uax:String>Zone 1</uax:String>
+        </Value>
+    </UAVariable>
     <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5010" BrowseName="2:Temperature">
         <DisplayName>Temperature</DisplayName>
         <Description>Setting and monitoring of the temperature</Description>
@@ -621,7 +633,6 @@
         <DisplayName>http://samplemanufacturer.org/umati_opc40082-2_sample_instance/</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6029</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6030</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6031</Reference>
@@ -629,6 +640,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6033</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6035</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6029" BrowseName="IsNamespaceSubset">
@@ -648,7 +660,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5011</Reference>
         </References>
         <Value>
-            <uax:DateTime>2022-07-04T00:00:00Z</uax:DateTime>
+            <uax:DateTime>2022-07-06T00:00:00Z</uax:DateTime>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6031" BrowseName="NamespaceUri">
@@ -668,7 +680,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5011</Reference>
         </References>
         <Value>
-            <uax:String>1.00</uax:String>
+            <uax:String>1.01</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5011" ValueRank="1" NodeId="ns=1;i=6033" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
