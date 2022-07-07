@@ -32,6 +32,7 @@
         <Alias Alias="IdType">i=256</Alias>
         <Alias Alias="NumericRange">i=291</Alias>
         <Alias Alias="Argument">i=296</Alias>
+        <Alias Alias="Range">i=884</Alias>
         <Alias Alias="EUInformation">i=887</Alias>
         <Alias Alias="EnumValueType">i=7594</Alias>
         <Alias Alias="TimeZoneDataType">i=8912</Alias>
@@ -41,7 +42,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="fZN3B3EovvYDXhvMWTSLNg==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="nY3LPAS+IHHhBtvEwXyuqg==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_SampleManufacturer_1234">
@@ -340,7 +341,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6012</Reference>
         </References>
         <Value>
-            <uax:UInt16>0</uax:UInt16>
+            <uax:UInt16>3</uax:UInt16>
         </Value>
     </UAVariable>
     <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6010" ValueRank="1" NodeId="ns=1;i=6011" ArrayDimensions="0" BrowseName="EnumValues">
@@ -481,7 +482,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
         </References>
         <Value>
-            <uax:String></uax:String>
+            <uax:String>1</uax:String>
         </Value>
     </UAVariable>
     <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="2:Zone_1">
@@ -547,6 +548,9 @@
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5009</Reference>
         </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
     </UAVariable>
     <UAVariable DataType="UInt16" ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=6026" BrowseName="2:HighestActiveAlarmSeverity">
         <DisplayName>HighestActiveAlarmSeverity</DisplayName>
@@ -588,7 +592,7 @@
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
         </References>
         <Value>
-            <uax:UInt16>0</uax:UInt16>
+            <uax:UInt16>3</uax:UInt16>
         </Value>
     </UAVariable>
     <UAVariable DataType="Double" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6028" BrowseName="5:ActualValue">
@@ -597,13 +601,14 @@
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6044</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6042</Reference>
         </References>
         <Value>
             <uax:Double>168.4</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6028" NodeId="ns=1;i=6042" BrowseName="EngineeringUnits">
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6028" NodeId="ns=1;i=6044" BrowseName="EngineeringUnits">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -625,6 +630,26 @@
                             <uax:Text>degree Celsius</uax:Text>
                         </uax:Description>
                     </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6028" NodeId="ns=1;i=6042" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6028</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>200</uax:High>
+                    </uax:Range>
                 </uax:Body>
             </uax:ExtensionObject>
         </Value>
