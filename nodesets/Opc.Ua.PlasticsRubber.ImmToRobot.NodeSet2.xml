@@ -5,7 +5,7 @@
         <Uri>http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="1.00.04">
+        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="1.00.04-RC">
             <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2022-01-24T00:00:00Z" Version="1.05.01"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2021-09-07T00:00:00Z" Version="1.03.1"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
