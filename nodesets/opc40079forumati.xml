@@ -12,7 +12,7 @@
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2021-09-07T00:00:00Z" Version="1.03.1"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2022-05-01T00:00:00Z" Version="1.02.0"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="1.00.04"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="1.00.04-RC"/>
         </Model>
     </Models>
     <Aliases>
