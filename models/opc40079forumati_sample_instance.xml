@@ -268,8 +268,8 @@
             <Reference ReferenceType="HasComponent">ns=1;i=7002</Reference>
         </References>
     </UAObject>
-    <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="1:MoulidInteraction_1">
-        <DisplayName>MoulidInteraction_1</DisplayName>
+    <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="1:MouldInteraction_1">
+        <DisplayName>MouldInteraction_1</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1002</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
