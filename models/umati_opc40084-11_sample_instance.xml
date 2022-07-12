@@ -38,7 +38,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="dc1qkb6/Tp/vINIfI1BqlQ==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="5HFYGDouemXmRcx1ni2UUA==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:Corrugator_SampleManufacturer_1234">
@@ -108,6 +108,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6008</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6009</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6010</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5006</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6005" BrowseName="7:ControllerName">
@@ -214,6 +215,7 @@
         <DisplayName>MachineryBuildingBlocks</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5005</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5007</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5009</Reference>
