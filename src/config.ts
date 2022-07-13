@@ -69,7 +69,6 @@ if (config.port != 4840) {
 
 config.alternateHostname = process.env.HOSTNAMES?.split(",") || configJsonObj.alternateHostname || [];
 // config.alternateEndpoints = configJsonObj.alternateEndpoints || [];
-config.maxAllowedSessionNumber = configJsonObj.maxAllowedSessionNumber || 100;
 config.maxConnectionsPerEndpoint = configJsonObj.maxConnectionsPerEndpoint || 100;
 config.timeout = configJsonObj.timeout || 10000;
 config.resourcePath = configJsonObj.resourcePath || '/UA';
@@ -110,6 +109,7 @@ config.serverInfo.discoveryUrls = configJsonObj.serverInfo?.discoveryUrls || [];
 // ServerCapabilities and OperationLimits
 const operationLimits = configJsonObj.serverCapabilities?.operationLimits;
 config.serverCapabilities = new ServerCapabilities({
+  maxSessions: configJsonObj.serverCapabilities?.maxSessions || 100,
   localeIdArray: configJsonObj.serverCapabilities?.localeIdArray || ["en-Us"],
   maxBrowseContinuationPoints: configJsonObj.serverCapabilities?.maxBrowseContinuationPoints || 10,
   maxArrayLength: configJsonObj.serverCapabilities?.maxArrayLength || 1000,
