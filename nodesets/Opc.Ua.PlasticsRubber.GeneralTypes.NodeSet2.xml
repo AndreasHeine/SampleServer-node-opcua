@@ -28,7 +28,13 @@
  * http://opcfoundation.org/License/MIT/1.00/
 -->
 
-<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+    xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd"
+    xmlns:s1="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/Types.xsd"
+    xmlns:s2="http://opcfoundation.org/UA/DI/Types.xsd"
+    xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <NamespaceUris>
         <Uri>http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/</Uri>
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
@@ -2934,8 +2940,7 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
         GhJbkJpdHM9IjMyIiBOYW1lPSJVc2VyQ2hhbmdlRW51bWVyYXRpb24iPgogIDxvcGM6RG9jd
         W1lbnRhdGlvbj5JbmZvcm1hdGlvbiBpZiBhIHVzZXIgbG9ncyBpbiBvciBvZmY8L29wYzpEb
         2N1bWVudGF0aW9uPgogIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9IkxPR19PTiIgVmFsd
-        WU9IjAiLz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBOYW1lPSJMT0dfT0ZGIiBWYWx1ZT0iM
-        SIvPgogPC9vcGM6RW51bWVyYXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pgo=</uax:ByteString>
+        WU9IjAiLz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBOYW1lPSJMT0dfT0ZGIiBWYWx1ZT0iM SIvPgogPC9vcGM6RW51bWVyYXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pgo=</uax:ByteString>
         </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=6002" NodeId="ns=1;i=6003" BrowseName="NamespaceUri">
@@ -8360,17 +8365,20 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:ExtensionObject>
-                <uax:TypeId>
-                    <uax:Identifier>ns=1;i=5025</uax:Identifier>
-                </uax:TypeId>
-                <uax:Body>
-                    <PageEntryDataType xmlns="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/Types.xsd">
-                        <Id></Id>
-                        <Title/>
-                    </PageEntryDataType>
-                </uax:Body>
-            </uax:ExtensionObject>
+            <uax:ListOfExtensionObject>
+
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>ns=1;i=5025</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <PageEntryDataType xmlns="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/Types.xsd">
+                            <Id></Id>
+                            <Title/>
+                        </PageEntryDataType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
     <UAMethod ParentNodeId="ns=1;i=1016" NodeId="ns=1;i=7019" BrowseName="1:SetMachineTime">
@@ -9459,7 +9467,8 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:ExtensionObject>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
                 <uax:TypeId>
                     <uax:Identifier>ns=1;i=5034</uax:Identifier>
                 </uax:TypeId>
@@ -9471,6 +9480,8 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
                     </PIDParametersDataType>
                 </uax:Body>
             </uax:ExtensionObject>
+        </uax:ListOfExtensionObject>
+          
         </Value>
     </UAVariable>
     <UAVariable DataType="ControlModeEnumeration" ParentNodeId="ns=1;i=5045" NodeId="ns=1;i=6462" BrowseName="1:ControlMode">
@@ -10564,7 +10575,8 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
         </References>
         <Value>
-            <uax:ExtensionObject>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
                 <uax:TypeId>
                     <uax:Identifier>ns=1;i=5034</uax:Identifier>
                 </uax:TypeId>
@@ -10576,6 +10588,7 @@ In semi-automatic mode also during waiting time (e.g. for manual loading/unloadi
                     </PIDParametersDataType>
                 </uax:Body>
             </uax:ExtensionObject>
+        </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
     <UAVariable DataType="Double" ParentNodeId="ns=1;i=1057" NodeId="ns=1;i=6365" BrowseName="1:SetRampDown" AccessLevel="3">
