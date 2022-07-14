@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- * Copyright (c) 2005-2021 The OPC Foundation, Inc. All rights reserved.
+ * Copyright (c) 2005-2022 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
  * 
@@ -34,9 +34,9 @@
         <Uri>http://opcfoundation.org/UA/DI/</Uri>
     </NamespaceUris>
     <Models>
-        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2022-07-13T00:00:00Z" Version="1.03.01">
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2022-01-24T00:00:00Z" Version="1.05.01"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2021-09-07T00:00:00Z" Version="1.03.1"/>
+        <Model ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2022-07-13T00:00:00Z" Version="1.03.01-RC">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
         </Model>
     </Models>
     <Aliases>
