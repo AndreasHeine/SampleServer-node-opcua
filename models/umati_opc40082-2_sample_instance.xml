@@ -42,7 +42,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="nY3LPAS+IHHhBtvEwXyuqg==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="wqLtTMDxXeQjTveRxNdHTg==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_SampleManufacturer_1234">
@@ -350,6 +350,74 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6010</Reference>
         </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>First</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>1</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Second</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SecondSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>2</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Standby</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetStandbyValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>3</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Boost</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as BoostSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6010" NodeId="ns=1;i=6012" BrowseName="ValueAsText">
         <DisplayName>ValueAsText</DisplayName>
@@ -357,6 +425,11 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6010</Reference>
         </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>Boost</uax:Text>
+            </uax:LocalizedText>
+        </Value>
     </UAVariable>
     <UAVariable DataType="UInt32" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6013" BrowseName="2:DeviceMappingNumber" AccessLevel="3">
         <DisplayName>DeviceMappingNumber</DisplayName>
@@ -410,6 +483,26 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6016</Reference>
         </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>NoReaction</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Continue use of value which was active before disconnection (default)</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6016" NodeId="ns=1;i=6018" BrowseName="ValueAsText">
         <DisplayName>ValueAsText</DisplayName>
@@ -417,6 +510,11 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6016</Reference>
         </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>NoReaction</uax:Text>
+            </uax:LocalizedText>
+        </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6019" BrowseName="2:SessionNameForReactionOnDisconnect">
         <DisplayName>SessionNameForReactionOnDisconnect</DisplayName>
@@ -546,10 +644,51 @@
         <Description>Set value for the controller type used by the zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6045</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5009</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6046</Reference>
         </References>
         <Value>
             <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6025" ValueRank="1" NodeId="ns=1;i=6045" ArrayDimensions="0" BrowseName="EnumValues">
+        <DisplayName>EnumValues</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6025</Reference>
+        </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>CLOSED_LOOP_CONTROL</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Closed loop control is active for the Temperature object of the zone. This is the default control behaviour in which the hot runner system is usually operated.</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6025" NodeId="ns=1;i=6046" BrowseName="ValueAsText">
+        <DisplayName>ValueAsText</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6025</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>CLOSED_LOOP_CONTROL</uax:Text>
+            </uax:LocalizedText>
         </Value>
     </UAVariable>
     <UAVariable DataType="UInt16" ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=6026" BrowseName="2:HighestActiveAlarmSeverity">
