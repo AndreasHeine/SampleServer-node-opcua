@@ -46,7 +46,6 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6048</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5016</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5037</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5037</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5017</Reference>
             <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=5001</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5022</Reference>
@@ -84,7 +83,6 @@
             <Reference ReferenceType="HasAddIn">ns=1;i=5032</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5001</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5026</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5026</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6062</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
@@ -290,7 +288,6 @@
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6061</Reference>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6060</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6062</Reference>
@@ -508,7 +505,6 @@
             <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6048</Reference>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5015</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6056</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6045</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6044</Reference>
@@ -579,7 +575,6 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6064</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5028</Reference>
             <Reference ReferenceType="HasAddIn">ns=1;i=5027</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5027</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6074</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6035</Reference>
@@ -1150,7 +1145,6 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6063</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6064</Reference>
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5018</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5018</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6057</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6074</Reference>
