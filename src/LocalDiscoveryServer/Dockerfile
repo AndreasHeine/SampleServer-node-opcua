@@ -1,5 +1,5 @@
 FROM node:18.10.0-alpine3.15
-RUN apk add --no-cache openssl=1.1.1n-r0
+RUN apk add --no-cache openssl=1.1.1q-r0
 
 COPY . /
 
