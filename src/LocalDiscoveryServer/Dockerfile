@@ -1,7 +1,9 @@
 FROM node:18.10.0-alpine3.15
 RUN apk add --no-cache openssl=1.1.1q-r0
 
-COPY . /
+WORKDIR /home/node/discovery
+
+COPY . /home/node/discovery
 
 RUN npm install
 
