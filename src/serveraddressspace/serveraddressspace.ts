@@ -18,18 +18,18 @@ import {
     RaiseEventData,
     Variant,
     StatusCodes,
-    ConditionSnapshot,
-    NodeId,
     UAVariable,
     StatusCode,
     AddReferenceOpts,
     LocalizedText,
     UAObject,
     promoteToStateMachine,
-    UAObjectType,
     UATransitionEx,
-    UAState
+    UAState,
+    ConditionInfoOptions,
+    coerceLocalizedText
 } from 'node-opcua'
+
 
 import { ServerRolePermissionGroup } from './../permissiongroups'
 import { createMyFiniteStateMachineType } from './myfinitestatemachinetype'
@@ -345,6 +345,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         })
 
         setInterval(() => {
+            let condInfo: ConditionInfoOptions
             if (cond.message.readValue().value.value.text == 'MyCondition is Good!') {
                 cond.severity.setValueFromSource({
                     value: 800,
@@ -360,6 +361,11 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                     value: new Date(),
                     dataType: DataType.DateTime
                 })
+                condInfo = {
+                    retain: true,
+                    message: coerceLocalizedText('MyCondition is Bad!'),
+                    severity: 800
+                }
             } else {
                 cond.severity.setValueFromSource({
                     value: 150,
@@ -375,9 +381,13 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                     value: new Date(),
                     dataType: DataType.DateTime
                 })
+                condInfo = {
+                    retain: true,
+                    message: coerceLocalizedText('MyCondition is Good!'),
+                    severity: 150
+                }
             }
-            let snap = new ConditionSnapshot(cond, new NodeId())
-            cond.raiseConditionEvent(snap, true)
+            cond.raiseNewCondition(condInfo)
         }, 15000)
         
         const stringStateArray = ['Uncertain', 'Healthy', 'OutOfService', 'Maintenance']
