@@ -46,7 +46,9 @@
         "./models/umati_opc40082-2_sample_instance.xml",
         "./models/umati_opc40082-3_sample_instance.xml",
         "./models/umati_opc40084-9_sample_instance.xml",
-        "./models/umati_opc40084-11_sample_instance.xml"
+        "./models/umati_opc40084-11_sample_instance.xml",
+        "./nodesets/Opc.Ua.MachineVision.AMCM.xml",
+        "./models/opcmv2sampleinstances.xml"
         
     ],
     "serverCapabilities": {
