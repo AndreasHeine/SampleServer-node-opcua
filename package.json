@@ -27,21 +27,22 @@
   "dependencies": {
     "bcrypt": "5.0.1",
     "chalk": "4.1.2",
-    "node-opcua": "2.71.0",
+    "node-opcua": "2.76.2",
     "node-opcua-pki": "2.17.0",
-    "node-opcua-server-discovery": "2.71.0",
+    "node-opcua-server-discovery": "2.76.2",
     "yargs": "17.5.1"
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.0",
-    "@types/chai": "4.3.1",
+    "@types/chai": "4.3.3",
     "@types/mocha": "9.1.1",
-    "@types/node": "16.11.43",
-    "@types/yargs": "17.0.10",
+    "@types/node": "16.11.57",
+    "@types/semver": "7.3.12",
+    "@types/yargs": "17.0.12",
     "chai": "4.3.6",
     "chalk": "4.1.2",
-    "dependency-cruiser": "11.11.0",
+    "dependency-cruiser": "11.15.0",
     "mocha": "10.0.0",
-    "typescript": "4.7.4"
+    "typescript": "4.8.2"
   }
 }

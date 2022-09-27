@@ -42,7 +42,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="nY3LPAS+IHHhBtvEwXyuqg==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="77UhVIL+a6r1ZKM3yq2qAA==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5003" BrowseName="1:HRD_SampleManufacturer_1234">
@@ -62,12 +62,12 @@
         <DisplayName>Identification</DisplayName>
         <Description>Identification of the device </Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1058</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6001</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1058</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=6001" BrowseName="3:DeviceClass">
@@ -121,14 +121,14 @@
     <UAObject NodeId="ns=1;i=5012" BrowseName="3:Identification">
         <DisplayName>Identification</DisplayName>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6039</Reference>
-            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6040</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=4;i=1012</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6037</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6041</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6036</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6038</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5003</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5012" NodeId="ns=1;i=6039" BrowseName="3:DeviceClass">
@@ -205,12 +205,12 @@
         <DisplayName>MachineConfiguration</DisplayName>
         <Description>Current configuration of the hot runner device</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1016</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6005</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1016</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=7001</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6007</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6008</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6005" BrowseName="5:LocationName" AccessLevel="3">
@@ -311,16 +311,16 @@
         <DisplayName>Operation</DisplayName>
         <Description>Contains components which are necessary to operate the HRD</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=6009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=6010</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6013</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6014</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6015</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=6016</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6019</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=7002</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="ClassifiedActiveErrorDataType" ParentNodeId="ns=1;i=5006" ValueRank="1" NodeId="ns=1;i=6009" ArrayDimensions="0" BrowseName="2:ActiveErrors">
@@ -336,9 +336,9 @@
         <Description>Central selection of the used set temperature for the temperature zones </Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6011</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6012</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
         </References>
         <Value>
             <uax:UInt16>3</uax:UInt16>
@@ -350,6 +350,74 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6010</Reference>
         </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>First</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>1</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Second</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SecondSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>2</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Standby</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetStandbyValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>3</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Boost</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as BoostSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6010" NodeId="ns=1;i=6012" BrowseName="ValueAsText">
         <DisplayName>ValueAsText</DisplayName>
@@ -357,6 +425,11 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6010</Reference>
         </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>Boost</uax:Text>
+            </uax:LocalizedText>
+        </Value>
     </UAVariable>
     <UAVariable DataType="UInt32" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6013" BrowseName="2:DeviceMappingNumber" AccessLevel="3">
         <DisplayName>DeviceMappingNumber</DisplayName>
@@ -397,8 +470,8 @@
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6017</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6018</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
         </References>
         <Value>
             <uax:UInt16>0</uax:UInt16>
@@ -410,6 +483,26 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6016</Reference>
         </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>NoReaction</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Continue use of value which was active before disconnection (default)</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6016" NodeId="ns=1;i=6018" BrowseName="ValueAsText">
         <DisplayName>ValueAsText</DisplayName>
@@ -417,6 +510,11 @@
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6016</Reference>
         </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>NoReaction</uax:Text>
+            </uax:LocalizedText>
+        </Value>
     </UAVariable>
     <UAVariable DataType="String" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6019" BrowseName="2:SessionNameForReactionOnDisconnect">
         <DisplayName>SessionNameForReactionOnDisconnect</DisplayName>
@@ -488,11 +586,11 @@
     <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="2:Zone_1">
         <DisplayName>Zone_1</DisplayName>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6026</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6043</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5010</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1006</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5007</Reference>
         </References>
     </UAObject>
@@ -500,12 +598,12 @@
         <DisplayName>Controller</DisplayName>
         <Description>Setting and monitoring of the controller</Description>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1005</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6022</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6023</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1005</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6024</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=6025</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
         </References>
     </UAObject>
     <UAVariable DataType="ControllerTypeEnumeration" ParentNodeId="ns=1;i=5009" NodeId="ns=1;i=6022" BrowseName="2:ActualType">
@@ -546,10 +644,51 @@
         <Description>Set value for the controller type used by the zone</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6045</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6046</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5009</Reference>
         </References>
         <Value>
             <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6025" ValueRank="1" NodeId="ns=1;i=6045" ArrayDimensions="0" BrowseName="EnumValues">
+        <DisplayName>EnumValues</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6025</Reference>
+        </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>CLOSED_LOOP_CONTROL</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Closed loop control is active for the Temperature object of the zone. This is the default control behaviour in which the hot runner system is usually operated.</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6025" NodeId="ns=1;i=6046" BrowseName="ValueAsText">
+        <DisplayName>ValueAsText</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6025</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>CLOSED_LOOP_CONTROL</uax:Text>
+            </uax:LocalizedText>
         </Value>
     </UAVariable>
     <UAVariable DataType="UInt16" ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=6026" BrowseName="2:HighestActiveAlarmSeverity">
@@ -589,10 +728,99 @@
         <Description>Current active set temperature for the temperature zone </Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6047</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6048</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
         </References>
         <Value>
             <uax:UInt16>3</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EnumValueType" ParentNodeId="ns=1;i=6027" ValueRank="1" NodeId="ns=1;i=6047" ArrayDimensions="0" BrowseName="EnumValues">
+        <DisplayName>EnumValues</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6027</Reference>
+        </References>
+        <Value>
+            <uax:ListOfExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>0</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>First</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>1</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Second</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SecondSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>2</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Standby</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as SetStandbyValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+                <uax:ExtensionObject>
+                    <uax:TypeId>
+                        <uax:Identifier>i=7616</uax:Identifier>
+                    </uax:TypeId>
+                    <uax:Body>
+                        <uax:EnumValueType>
+                            <uax:Value>3</uax:Value>
+                            <uax:DisplayName>
+                                <uax:Text>Boost</uax:Text>
+                            </uax:DisplayName>
+                            <uax:Description>
+                                <uax:Text>Use of value stored as BoostSetValue</uax:Text>
+                            </uax:Description>
+                        </uax:EnumValueType>
+                    </uax:Body>
+                </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=6027" NodeId="ns=1;i=6048" BrowseName="ValueAsText">
+        <DisplayName>ValueAsText</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6027</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Text>Boost</uax:Text>
+            </uax:LocalizedText>
         </Value>
     </UAVariable>
     <UAVariable DataType="Double" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6028" BrowseName="5:ActualValue">
@@ -600,9 +828,9 @@
         <Description>Actual value of the monitored parameter</Description>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6044</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6042</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
         </References>
         <Value>
             <uax:Double>168.4</uax:Double>
@@ -657,8 +885,8 @@
     <UAObject SymbolicName="http___samplemanufacturer_org_umati_opc40082_2_sample_instance_" NodeId="ns=1;i=5011" BrowseName="1:http://samplemanufacturer.org/umati_opc40082-2_sample_instance/">
         <DisplayName>http://samplemanufacturer.org/umati_opc40082-2_sample_instance/</DisplayName>
         <References>
-            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6029</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6030</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6031</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6032</Reference>

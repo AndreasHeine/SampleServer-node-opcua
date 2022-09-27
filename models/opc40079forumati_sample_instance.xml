@@ -13,7 +13,7 @@
             <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2021-09-07T00:00:00Z" Version="1.03.1"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2022-05-01T00:00:00Z" Version="1.02.0"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/GeneralTypes/" PublicationDate="2021-05-10T12:00:00Z" Version="1.03"/>
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="1.00.04-RC"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/ImmToRobot/" PublicationDate="2022-07-01T00:00:00Z" Version="RC 1.00.04"/>
             <RequiredModel ModelUri="http://opcfoundation.org/UA/PlasticsRubber/umati/OPC40079ForUmati/" PublicationDate="2022-07-05T00:00:00Z" Version="1.00"/>
         </Model>
     </Models>
@@ -35,7 +35,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Tool="UaModeler" Hash="R9bydkEYU0O20AI/9XS7lg==" Version="1.6.6"/>
+            <ua:ModelInfo Tool="UaModeler" Hash="/SUY6/cUrTvGIEv9L/u1nA==" Version="1.6.6"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5004" BrowseName="1:SampleImmRobotCell">
@@ -159,11 +159,71 @@
         <DisplayName>Mould_1</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1009</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5010</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5011</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5003</Reference>
             <Reference ReferenceType="HasProperty">ns=1;i=6028</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
         </References>
     </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5010" BrowseName="1:Core_1">
+        <DisplayName>Core_1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1008</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6036</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6037</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6036" BrowseName="5:InPosition1">
+        <DisplayName>InPosition1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=6037" BrowseName="5:InPosition2">
+        <DisplayName>InPosition2</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5011" BrowseName="1:Ejector_1">
+        <DisplayName>Ejector_1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1008</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6038</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6039</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6038" BrowseName="5:InPosition1">
+        <DisplayName>InPosition1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5011</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6039" BrowseName="5:InPosition2">
+        <DisplayName>InPosition2</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5011</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
     <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5003" BrowseName="5:MovablePlaten">
         <DisplayName>MovablePlaten</DisplayName>
         <References>
@@ -268,15 +328,97 @@
             <Reference ReferenceType="HasComponent">ns=1;i=7002</Reference>
         </References>
     </UAObject>
-    <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="1:MoulidInteraction_1">
-        <DisplayName>MoulidInteraction_1</DisplayName>
+    <UAObject ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=5008" BrowseName="1:MouldInteraction_1">
+        <DisplayName>MouldInteraction_1</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=1002</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5013</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5012</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=6032</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5007</Reference>
         </References>
     </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5013" BrowseName="1:EnableCore_1">
+        <DisplayName>EnableCore_1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1003</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6042</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6043</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6041</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5013" NodeId="ns=1;i=6042" BrowseName="5:EnableToPosition1">
+        <DisplayName>EnableToPosition1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5013</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5013" NodeId="ns=1;i=6043" BrowseName="5:EnableToPosition2">
+        <DisplayName>EnableToPosition2</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5013</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5013" NodeId="ns=1;i=6041" BrowseName="5:RelevantForInteraction" AccessLevel="3">
+        <DisplayName>RelevantForInteraction</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5013</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5012" BrowseName="1:EnableEjector_1">
+        <DisplayName>EnableEjector_1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1003</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6044</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6045</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6040</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5012" NodeId="ns=1;i=6044" BrowseName="5:EnableToPosition1">
+        <DisplayName>EnableToPosition1</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5012</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5012" NodeId="ns=1;i=6045" BrowseName="5:EnableToPosition2">
+        <DisplayName>EnableToPosition2</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5012</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5012" NodeId="ns=1;i=6040" BrowseName="5:RelevantForInteraction" AccessLevel="3">
+        <DisplayName>RelevantForInteraction</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5012</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
     <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5009" BrowseName="5:EnableMovablePlaten">
         <DisplayName>EnableMovablePlaten</DisplayName>
         <References>
