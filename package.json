@@ -30,7 +30,7 @@
     "node-opcua": "2.78.0",
     "node-opcua-pki": "2.17.0",
     "node-opcua-server-discovery": "2.78.0",
-    "yargs": "17.5.1"
+    "yargs": "17.6.0"
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.0",
