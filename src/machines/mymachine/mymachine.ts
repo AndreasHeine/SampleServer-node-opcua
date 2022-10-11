@@ -28,11 +28,13 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     const namespace = addressSpace?.registerNamespace('http://mynewmachinenamespace/UA')
     const myMachine = namespace?.addObject({
         browseName: 'MyMachine',
+        nodeId: `ns=${namespace.index};s=MyMachine`,
         organizedBy: machinesFolder,
     })
     const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`) as UAObjectType
     const myMachineIdentification = machineryIdentificationType?.instantiate({
-        browseName: 'Identification',
+        browseName: {name: 'Identification', namespaceIndex: machineryIdx},
+        namespace: namespace,
         optionals: ['Model'], // array of string 
     })
     myMachineIdentification.addReference({
@@ -47,8 +49,13 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     })
     const machineComponentsType = addressSpace?.findNode(`ns=${machineryIdx};i=1006`) as UAObjectType
     const myMachineComponents = machineComponentsType?.instantiate({
-        browseName: 'Components',
-        organizedBy: myMachine,
+        browseName: {name: 'Components', namespaceIndex: machineryIdx},
+        namespace: namespace,
+    })
+    myMachineComponents.addReference({
+        referenceType: 'HasAddIn',
+        nodeId: myMachine,
+        isForward: false,
     })
     // instantiate components here -> organizedBy: myMachineComponents
 }
