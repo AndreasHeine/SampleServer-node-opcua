@@ -33,8 +33,12 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`) as UAObjectType
     const myMachineIdentification = machineryIdentificationType?.instantiate({
         browseName: 'Identification',
-        organizedBy: myMachine,
         optionals: ['Model'], // array of string 
+    })
+    myMachineIdentification.addReference({
+            referenceType: 'HasAddIn',
+            nodeId: myMachine,
+            isForward: false,
     })
     const manufacturer = myMachineIdentification?.getChildByName('Manufacturer') as UAVariable
     manufacturer?.setValueFromSource({
