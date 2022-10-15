@@ -1,4 +1,4 @@
-FROM node:18.10.0-alpine3.16
+FROM node:18.11.0-alpine3.16
 RUN apk add --no-cache openssl=1.1.1q-r0
 
 WORKDIR /home/node/discovery
