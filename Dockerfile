@@ -3,7 +3,7 @@ FROM node:19.0.0-alpine3.16
 WORKDIR /home/node/opcua-server
 
 RUN apk --no-cache add \
-    openssl=1.1.1q-r0 \
+    openssl=1.1.1s-r0 \
     python3=3.10.5-r0 \
     make=4.3-r0 \
     gcc=11.2.1_git20220219-r2 \ 
