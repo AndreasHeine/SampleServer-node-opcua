@@ -3,12 +3,12 @@
         {
             "username":"admin",
             "password":"$2b$10$FJiv97xU3a7xIKQvW/VFNemJ6npESrv2iIrmltO62N5ItQTvFVu.W",
-            "roles":"Supervisor"
+            "roles":"Supervisor;ConfigureAdmin;SecurityAdmin"
         },
         {
             "username":"operator",
             "password":"$2b$10$BUbEWHRR5HU2g0Wmqu690.q.LgqNYfa./yOv25dubZxQX0Tj6mG7O",
-            "roles":"Operator"
+            "roles":"Operator;ConfigureAdmin"
         },
         {
             "username":"guest",

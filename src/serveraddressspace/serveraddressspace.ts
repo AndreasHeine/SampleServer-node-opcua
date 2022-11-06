@@ -601,7 +601,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
         const showcaseSta = namespace.addObject({
             browseName: 'StateMachines',
             organizedBy: showcaseFolder,
-            rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+            rolePermissions: ServerRolePermissionGroup.DEFAULT,
         })
 
         await createMyFiniteStateMachineType(addressSpace)
@@ -692,7 +692,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
     const dev = namespace.addObject({
         browseName: 'DEV',
         organizedBy: addressSpace.rootFolder.objects,
-        rolePermissions: ServerRolePermissionGroup.RESTRICTED,
+        rolePermissions: ServerRolePermissionGroup.DEFAULT,
     })
 
     const testView1 = namespace.addView({
