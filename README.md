@@ -18,9 +18,9 @@ API Docs: [2.32.0](https://node-opcua.github.io/api_doc/2.32.0/index.html)
 
 ## Example Users
 
-User: `admin` Password: `pw1` Role: Supervisor  
-User: `operator` Password: `pw2` Role: Operator  
-User: `guest` Password: `pw3` Role: AuthenticatedUser  
+User: `admin` Password: `pw1`  
+User: `operator` Password: `pw2`  
+User: `guest` Password: `pw3`  
 
 ## Ephemeral Dev Environment
 
