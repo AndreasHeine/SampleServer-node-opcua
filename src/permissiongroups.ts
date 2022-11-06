@@ -20,59 +20,98 @@ import {
 export const ServerRolePermissionGroup = Object.freeze({
   // Default -> https://reference.opcfoundation.org/v104/Core/docs/Part3/4.8.2/
   DEFAULT: [
-    {
-      roleId: WellKnownRoles.Supervisor,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.Supervisor, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.WriteAttribute | 
+            PermissionType.WriteRolePermissions | 
+            PermissionType.WriteHistorizing | 
+            PermissionType.Read | 
+            PermissionType.Write | 
+            PermissionType.ReadHistory | 
+            PermissionType.InsertHistory | 
+            PermissionType.ModifyHistory | 
+            PermissionType.DeleteHistory | 
+            PermissionType.ReceiveEvents | 
+            PermissionType.Call 
+            // PermissionType.AddReference | 
+            // PermissionType.DeleteNode | 
+            // PermissionType.AddNode
     },
-    {
-      roleId: WellKnownRoles.SecurityAdmin,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.SecurityAdmin, 
+        permissions:
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.WriteRolePermissions | 
+            PermissionType.Read | 
+            PermissionType.Write | 
+            PermissionType.ReadHistory | 
+            PermissionType.ReceiveEvents | 
+            PermissionType.Call
     },
-    { // Session Required
-      roleId: WellKnownRoles.Operator,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.Operator, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.Read | 
+            PermissionType.Write | 
+            PermissionType.ReadHistory | 
+            PermissionType.ReceiveEvents | 
+            PermissionType.Call
     },
-    {
-      roleId: WellKnownRoles.Observer,
-      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.Observer, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.Read | 
+            PermissionType.ReadHistory | 
+            PermissionType.ReceiveEvents
     },
-    {
-      roleId: WellKnownRoles.Engineer,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.Engineer, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.Read | 
+            PermissionType.Write | 
+            PermissionType.ReadHistory | 
+            PermissionType.ReceiveEvents | 
+            PermissionType.Call
     },
-    {
-      roleId: WellKnownRoles.ConfigureAdmin,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.ConfigureAdmin, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.WriteAttribute | 
+            PermissionType.WriteHistorizing | 
+            PermissionType.Read | 
+            PermissionType.Write | 
+            PermissionType.ReadHistory | 
+            PermissionType.InsertHistory | 
+            PermissionType.ModifyHistory | 
+            PermissionType.ReceiveEvents | 
+            PermissionType.Call
     },
-    {
-      roleId: WellKnownRoles.AuthenticatedUser,
-      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.AuthenticatedUser, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.ReadRolePermissions | 
+            PermissionType.Read | 
+            PermissionType.ReadHistory | 
+            PermissionType.ReceiveEvents
     },
-    {
-      roleId: WellKnownRoles.Anonymous,
-      permissions: PermissionType.Read | PermissionType.Browse | PermissionType.ReceiveEvents
-    }
-  ],
-  // Only Supervisor
-  RESTRICTED: [
-    {
-      roleId: WellKnownRoles.Supervisor,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-    }
-  ],
-  // Only Supervisor, SecurityAdmin and ConfigureAdmin
-  ADMIN: [
-    {
-      roleId: WellKnownRoles.Supervisor,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-    },
-    {
-      roleId: WellKnownRoles.SecurityAdmin,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
-    },
-    {
-      roleId: WellKnownRoles.ConfigureAdmin,
-      permissions: PermissionType.Read | PermissionType.Write | PermissionType.Browse | PermissionType.ReceiveEvents
+    { 
+        roleId: WellKnownRoles.Anonymous, 
+        permissions: 
+            PermissionType.Browse | 
+            PermissionType.Read
     }
   ]
 });
