@@ -1,4 +1,4 @@
-FROM node:19.0.0-alpine3.16
+FROM node:19.0.1-alpine3.16
 
 WORKDIR /home/node/opcua-server
 
