@@ -101,7 +101,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5014</Reference>
         </References>
         <Value>
-            <uax:String>K 14 F42/VIRTUAL 0 0/N 51.260407 E 6.744588</uax:String>
+            <uax:String>formnext 11 D69/K 14 F42/VIRTUAL 0 0/N 51.260407 E 6.744588</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5014" NodeId="ns=1;i=6032" BrowseName="3:Manufacturer">

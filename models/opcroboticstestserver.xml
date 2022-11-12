@@ -305,7 +305,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5026</Reference>
         </References>
         <Value>
-            <uax:String>N 50.0823924 E 8.6257018</uax:String>
+            <uax:String>formnext 11 D69/N 50.0823924 E 8.6257018</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=6002" BrowseName="3:Manufacturer">
