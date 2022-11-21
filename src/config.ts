@@ -145,7 +145,7 @@ const userManager = {
 
 config.userManager = userManager;
 
-OPCUACertificateManager.defaultCertificateSubject = `/CN=${applicationName}@${config.hostname}/S=HE/OU=E/DC=${config.alternateHostname}/O=Umati/L=Frankfurt/C=DE`
+OPCUACertificateManager.defaultCertificateSubject = `/CN=${applicationName}@${config.hostname}/OU=E/DC=${config.alternateHostname}/O=Umati/L=Frankfurt/C=DE`
 
 const serverCertificateManager = new OPCUACertificateManager({
   automaticallyAcceptUnknownCertificate: true,
