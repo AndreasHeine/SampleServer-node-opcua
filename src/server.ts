@@ -79,7 +79,7 @@ const startUp = async (server: OPCUAServer): Promise<void> => {
     await createAddressSpace(server);
     server.engine.addressSpace?.installAlarmsAndConditionsService();
     installPubSub( server, {
-      configuration: constructMqttJsonPubSubConfiguration("mqtt://127.0.0.1:1883"),
+      configuration: constructMqttJsonPubSubConfiguration("mqtt://broker.hivemq.com:1883"),
     })
     await startUp(server);
   } catch (error) {
