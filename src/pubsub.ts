@@ -1,7 +1,7 @@
 import { 
     DataType,
     resolveNodeId,
-    AttributeIds 
+    AttributeIds
 } from "node-opcua";
 import { 
     DataSetFieldContentMask,
@@ -11,56 +11,86 @@ import {
     MyMqttJsonPubSubConnectionDataType,
     Transport,
     PublishedDataItemsDataType,
-    MyMqttJsonPubSubConnectionDataTypeOptions
+    MyMqttJsonPubSubConnectionDataTypeOptions,
+    MyMqttJsonWriterGroupDataTypeOptions,
+    MyJsonDataSetWriterDataTypeOptions,
+    PubSubConfigurationDataTypeOptions
 } from "node-opcua-pubsub-expander";
-import { PubSubConfigurationDataType } from "node-opcua-types";
+import { 
+    PubSubConfigurationDataType,
+    PubSubConnectionDataTypeOptions,
+    PublishedDataSetDataTypeOptions,
+    FieldMetaDataOptions
+} from "node-opcua-types";
 
 
-const createWriterGroup = (dataSetWriter: any) => {
-    // todo add params for creating group as factory
-    return {
+const prefix = "umati"
+const dataPrefix = `${prefix}/json/data/urn:SampleServer-node-opcua`
+const metaPrefix = `${prefix}/json/metadata/urn:SampleServer-node-opcua`
+
+
+const createWriterGroup = (name: string, dataSetWriter: MyJsonDataSetWriterDataTypeOptions): MyMqttJsonWriterGroupDataTypeOptions => {
+    const writerGroup: MyMqttJsonWriterGroupDataTypeOptions = {
         dataSetWriters: [dataSetWriter],
         enabled: true,
         publishingInterval: 1000,
-        name: "WriterGroup1",
+        name: name,
         messageSettings: {
             networkMessageContentMask: JsonNetworkMessageContentMask.PublisherId,
         },
         transportSettings: {
-            requestedDeliveryGuarantee: BrokerTransportQualityOfService.AtMostOnce,
+            requestedDeliveryGuarantee: BrokerTransportQualityOfService.AtMostOnce
         },
     }
+    return writerGroup
 }
 
 
-const createConnection = (broker: string) => {
-    // add params
-    const mqttBroker = broker;
-    const dataSetWriter = {
+const createConnection = (name: string, dataSetName: string, writerGroupName: string, broker: string, id: number): PubSubConnectionDataTypeOptions => {
+    const dataSetWriter: MyJsonDataSetWriterDataTypeOptions = {
         dataSetFieldContentMask: DataSetFieldContentMask.None,
-        dataSetName: "PublishedDataSet1",
-        dataSetWriterId: 1,
+            // DataSetFieldContentMask.SourceTimestamp |
+            // DataSetFieldContentMask.StatusCode,
+        dataSetName: dataSetName,
+        dataSetWriterId: id,
         enabled: true,
-        name: "dataSetWriter1",
+        name: name,
         messageSettings: {
-            dataSetMessageContentMask:
-                JsonDataSetMessageContentMask.DataSetWriterId |
-                JsonDataSetMessageContentMask.MetaDataVersion
+            // dataSetMessageContentMask?: JsonDataSetMessageContentMask;
+            dataSetMessageContentMask: JsonDataSetMessageContentMask.None
+                // JsonDataSetMessageContentMask.DataSetWriterId | 
+                // JsonDataSetMessageContentMask.MetaDataVersion |
+                // JsonDataSetMessageContentMask.DataSetWriterName |
+                // JsonDataSetMessageContentMask.MessageType |
+                // JsonDataSetMessageContentMask.SequenceNumber |
+                // JsonDataSetMessageContentMask.Status |
+                // JsonDataSetMessageContentMask.Timestamp
         },
         transportSettings: {
-            queueName: "umati/json/data/urn:SampleServer-node-opcua/WriterGroup1/VariableDataSetWriter",
+            // queueName?: UAString;
+            // resourceUri?: UAString;
+            // authenticationProfileUri?: UAString;
+            // requestedDeliveryGuarantee?: BrokerTransportQualityOfService;
+            // metaDataQueueName?: UAString;
+            // metaDataUpdateTime?: Double;
+            queueName: `${dataPrefix}/${writerGroupName}/VariableDataSetWriter`,
+            metaDataQueueName: `${metaPrefix}/${writerGroupName}/VariableDataSetWriter`,
+            metaDataUpdateTime: 5000
         },
     };
 
-    const writerGroup = createWriterGroup(dataSetWriter)
+    const writerGroup: MyMqttJsonWriterGroupDataTypeOptions = createWriterGroup(writerGroupName, dataSetWriter)
 
     const opts: MyMqttJsonPubSubConnectionDataTypeOptions = {
         enabled: true,
-        name: "Connection1",
+        name: `Connection_${id}_${broker}`,
         transportProfileUri: Transport.MQTT_JSON,
-        transportSettings: {},
+        transportSettings: {
+            // resourceUri?: UAString;
+            // authenticationProfileUri?: UAString;
+        },
         address: {
-            url: mqttBroker,
+            url: broker,
         },
         writerGroups: [writerGroup],
         readerGroups: []
@@ -69,37 +99,126 @@ const createConnection = (broker: string) => {
 }
 
 
-const createPublishedDataSet = () => {
-    // todo list as parameter
-    const publishedDataSet = {
+const createPublishedDataSet1 = (): PublishedDataSetDataTypeOptions => {
+
+    const fields: FieldMetaDataOptions[] = [
+        // {
+        //     name?: UAString;
+        //     description?: (LocalizedTextLike | null);
+        //     fieldFlags?: DataSetFieldFlags;
+        //     builtInType?: Byte;
+        //     dataType?: (NodeIdLike | null);
+        //     valueRank?: Int32;
+        //     arrayDimensions?: UInt32[] | null;
+        //     maxStringLength?: UInt32;
+        //     dataSetFieldId?: Guid;
+        //     properties?: KeyValuePairOptions[] | null;
+        // }
+        {
+            name: "MyHistoricalSetpointVar",
+            builtInType: DataType.Double,
+            dataType: resolveNodeId("Double"),
+        },
+        {
+            name: "MyHistoricalVar",
+            builtInType: DataType.Double,
+            dataType: resolveNodeId("Double"),
+        },
+    ]
+
+    const publishedData = [
+        // {
+        //     publishedVariable?: (NodeIdLike | null);
+        //     attributeId?: UInt32;
+        //     samplingIntervalHint?: Double;
+        //     deadbandType?: UInt32;
+        //     deadbandValue?: Double;
+        //     indexRange?: NumericRange;
+        //     substituteValue?: (VariantLike | null);
+        //     metaDataProperties?: (QualifiedNameLike | null)[] | null;
+        // }
+        {
+            attributeId: AttributeIds.Value,
+            samplingIntervalHint: 1000,
+            publishedVariable: `ns=1;i=1321`,
+        },
+        {
+            attributeId: AttributeIds.Value,
+            samplingIntervalHint: 1000,
+            publishedVariable: `ns=1;i=1320`,
+        },
+    ]
+
+    const publishedDataSet: PublishedDataSetDataTypeOptions = {
         name: "PublishedDataSet1",
         dataSetMetaData: {
-            fields: [
-                {
-                    name: "MyHistoricalSetpointVar",
-                    builtInType: DataType.Double,
-                    dataType: resolveNodeId("Double"),
-                },
-                {
-                    name: "MyHistoricalVar",
-                    builtInType: DataType.Double,
-                    dataType: resolveNodeId("Double"),
-                },
-            ],
+            fields: fields,
         },
         dataSetSource: new PublishedDataItemsDataType({
-            publishedData: [
-                {
-                    attributeId: AttributeIds.Value,
-                    samplingIntervalHint: 1000,
-                    publishedVariable: `ns=1;i=1321`,
-                },
-                {
-                    attributeId: AttributeIds.Value,
-                    samplingIntervalHint: 1000,
-                    publishedVariable: `ns=1;i=1320`,
-                },
-            ],
+            publishedData: publishedData,
+        }),
+    };
+    return publishedDataSet;
+}
+
+
+const createPublishedDataSet2 = (): PublishedDataSetDataTypeOptions => {
+
+    const fields: FieldMetaDataOptions[] = [
+        // {
+        //     name?: UAString;
+        //     description?: (LocalizedTextLike | null);
+        //     fieldFlags?: DataSetFieldFlags;
+        //     builtInType?: Byte;
+        //     dataType?: (NodeIdLike | null);
+        //     valueRank?: Int32;
+        //     arrayDimensions?: UInt32[] | null;
+        //     maxStringLength?: UInt32;
+        //     dataSetFieldId?: Guid;
+        //     properties?: KeyValuePairOptions[] | null;
+        // }
+        {
+            name: "MyVar",
+            builtInType: DataType.Double,
+            dataType: resolveNodeId("Double"),
+        },
+        {
+            name: "normalStateNode",
+            builtInType: DataType.Double,
+            dataType: resolveNodeId("Number"),
+        },
+    ]
+
+    const publishedData = [
+        // {
+        //     publishedVariable?: (NodeIdLike | null);
+        //     attributeId?: UInt32;
+        //     samplingIntervalHint?: Double;
+        //     deadbandType?: UInt32;
+        //     deadbandValue?: Double;
+        //     indexRange?: NumericRange;
+        //     substituteValue?: (VariantLike | null);
+        //     metaDataProperties?: (QualifiedNameLike | null)[] | null;
+        // }
+        {
+            attributeId: AttributeIds.Value,
+            samplingIntervalHint: 1000,
+            publishedVariable: `ns=1;i=1032`,
+        },
+        {
+            attributeId: AttributeIds.Value,
+            samplingIntervalHint: 1000,
+            publishedVariable: `ns=1;i=1068`,
+        },
+    ]
+
+    const publishedDataSet: PublishedDataSetDataTypeOptions = {
+        name: "PublishedDataSet2",
+        dataSetMetaData: {
+            fields: fields,
+        },
+        dataSetSource: new PublishedDataItemsDataType({
+            publishedData: publishedData,
         }),
     };
     return publishedDataSet;
@@ -107,9 +226,15 @@ const createPublishedDataSet = () => {
 
 
 export const constructMqttJsonPubSubConfiguration = (broker: string) => {
-  const connection = createConnection(broker);
-  const publishedDataSet = createPublishedDataSet();
-  return new PubSubConfigurationDataType({
-    connections: [connection],
-    publishedDataSets: [publishedDataSet] });
+    const opts: PubSubConfigurationDataTypeOptions = {
+        connections: [
+            createConnection("dataSetWriter1", "PublishedDataSet1", "WriterGroup1", broker, 1),
+            createConnection("dataSetWriter2", "PublishedDataSet2", "WriterGroup2", broker, 2)
+        ],
+        publishedDataSets: [
+            createPublishedDataSet1(),
+            createPublishedDataSet2()
+        ]
+    }
+    return new PubSubConfigurationDataType(opts);
 }
