@@ -26,7 +26,7 @@
   "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
   "dependencies": {
     "bcrypt": "5.1.0",
-    "chalk": "4.1.2",
+    "chalk": "5.2.0",
     "node-opcua": "2.86.1",
     "node-opcua-file-transfer": "^2.86.1",
     "node-opcua-pki": "3.0.1",
@@ -43,7 +43,7 @@
     "@types/semver": "7.3.13",
     "@types/yargs": "17.0.18",
     "chai": "4.3.7",
-    "chalk": "4.1.2",
+    "chalk": "5.2.0",
     "dependency-cruiser": "12.3.0",
     "mocha": "10.2.0",
     "typescript": "4.9.4"
