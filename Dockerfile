@@ -1,12 +1,13 @@
-FROM node:19.5.0-alpine3.16
+FROM node:19.5.0-alpine3.17
 
 WORKDIR /home/node/opcua-server
 
-RUN apk --no-cache add openssl=1.1.1s-r0 
-RUN apk --no-cache add python3=3.10.9-r0
-RUN apk --no-cache add make=4.3-r0
-RUN apk --no-cache add g++=11.2.1_git20220219-r2
-RUN apk --no-cache add gcc=11.2.1_git20220219-r2
+RUN apk --no-cache add \
+     openssl=3.0.7-r2 \
+     python3=3.10.9-r1 \
+     make=4.3-r1 \
+     g++=12.2.1_git20220924-r4\
+     gcc=12.2.1_git20220924-r4
 
 COPY . /home/node/opcua-server
 
