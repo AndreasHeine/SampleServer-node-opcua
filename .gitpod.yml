@@ -1,8 +1,8 @@
-image:
-  file: .gitpod.Dockerfile
+# hadolint ignore=DL3007
+image: gitpod/workspace-full:2023-01-16-03-31-28
 
 tasks:
-  - init:  npm install -g opcua-commander renovate
+  - init:  npm install -g opcua-commander renovate npm@9.3.1
     command: npm install 
 
 github:
