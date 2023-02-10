@@ -36,6 +36,7 @@
         "./nodesets/Opc.Ua.PlasticsRubber.Extrusion_v2.Extruder.NodeSet2.xml",
         "./nodesets/Opc.Ua.PlasticsRubber.UmatiGeneric.NodeSet2.xml",
         "./nodesets/Opc.Ua.Robotics.NodeSet2.xml",
+        "./nodesets/Opc.Ua.Woodworking.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
         "./models/opcroboticstestserver.xml",
         "./models/umati_plasticsrubber_generic_sample_instance.xml",
@@ -48,7 +49,8 @@
         "./models/umati_opc40084-9_sample_instance.xml",
         "./models/umati_opc40084-11_sample_instance.xml",
         "./nodesets/Opc.Ua.MachineVision.AMCM.xml",
-        "./models/opcmv2sampleinstances.xml"
+        "./models/opcmv2sampleinstances.xml",
+        "./models/basyskom_woodworking_instance.xml"
         
     ],
     "serverCapabilities": {
