@@ -1,5 +1,5 @@
 FROM node:19.6.0-alpine3.17
-RUN apk add --no-cache openssl=3.0.7-r2
+RUN apk add --no-cache openssl=3.0.8-r0
 
 WORKDIR /home/node/discovery
 
