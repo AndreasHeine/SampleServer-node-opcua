@@ -40,7 +40,7 @@ Set "IP" and "PORT" in env:
   
 ## Implementations of OPC UA Companion Specifications
   
-![image](https://user-images.githubusercontent.com/56362817/155572699-848e0deb-5ae4-4197-987c-4b602b309f54.png)
+![image](./img/addressspace.PNG)
 
 ## OPC UA Pub/Sub over MQTT  
   

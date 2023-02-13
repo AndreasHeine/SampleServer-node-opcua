@@ -6,13 +6,14 @@
   "scripts": {
     "pretest": "tsc",
     "test": "mocha dst/test/test.js",
-    "update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
     "start": "tsc && node dst/server.js",
     "start_args": "tsc && node dst/server.js --ip=127.0.0.1 --port=5000",
     "start_lds": "tsc && node dst/LocalDiscoveryServer/local-discovery-server.js",
     "debug": "tsc && node --inspect dst/server.js",
     "build": "tsc && pkg dst/server.js",
-    "build_lds": "tsc && pkg dst/LocalDiscoveryServer/local-discovery-server.js"
+    "build_lds": "tsc && pkg dst/LocalDiscoveryServer/local-discovery-server.js",
+    "update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
+    "update:dependencygraph": "depcruise --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg"
   },
   "repository": {
     "type": "git",
