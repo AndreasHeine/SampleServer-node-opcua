@@ -31,6 +31,8 @@ import { create40082_2Logic } from './machines/PlasticsRubber/40082-2';
 import { create40082_3Logic } from './machines/PlasticsRubber/40082-3';
 import { create40084_9Logic } from './machines/PlasticsRubber/40084-9';
 import { create40084_11Logic } from './machines/PlasticsRubber/40084-11';
+import { createWoodWorkingBasicLogic } from './machines/WoodWorking/ww_basic';
+import { createWoodWorkingFullLogic } from './machines/WoodWorking/ww_full';
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
   const addressSpace = server.engine.addressSpace;
@@ -48,7 +50,9 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       create40082_2Logic(addressSpace),
       create40082_3Logic(addressSpace),
       create40084_9Logic(addressSpace),
-      create40084_11Logic(addressSpace)
+      create40084_11Logic(addressSpace),
+      createWoodWorkingBasicLogic(addressSpace),
+      createWoodWorkingFullLogic(addressSpace)
     ])
       .then(() => {
         green(' Creating AddressSpace done! ');

@@ -1,0 +1,2574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="http://yourorganisation.org/woodworking_demo/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/Woodworking/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>http://basyskom.com/woodworking_demo/</Uri>
+        <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
+        <Uri>http://opcfoundation.org/UA/Woodworking/</Uri>
+        <Uri>http://opcfoundation.org/UA/DI/</Uri>
+    </NamespaceUris>
+    <Models>
+        <Model ModelUri="http://basyskom.com/woodworking_demo/" PublicationDate="2023-01-06T14:16:35Z" Version="1.0.0">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2020-07-15T00:00:00Z" Version="1.04.7"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2020-06-02T00:00:00Z" Version="1.02.2"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2022-05-01T00:00:00Z" Version="1.02.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Woodworking/" PublicationDate="2021-10-03T01:00:00Z" Version="1.00"/>
+        </Model>
+    </Models>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="Byte">i=3</Alias>
+        <Alias Alias="UInt16">i=5</Alias>
+        <Alias Alias="UInt32">i=7</Alias>
+        <Alias Alias="UInt64">i=9</Alias>
+        <Alias Alias="Double">i=11</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
+        <Alias Alias="Range">i=884</Alias>
+        <Alias Alias="EUInformation">i=887</Alias>
+        <Alias Alias="HasInterface">i=17603</Alias>
+        <Alias Alias="HasAddIn">i=17604</Alias>
+        <Alias Alias="WwUnitModeEnumeration">ns=3;i=20</Alias>
+        <Alias Alias="WwUnitStateEnumeration">ns=3;i=21</Alias>
+    </Aliases>
+    <Extensions>
+        <Extension>
+            <ua:ModelInfo Tool="UaModeler" Hash="v+yhrHhz/E4tm2PYOobN4Q==" Version="1.6.5"/>
+        </Extension>
+    </Extensions>
+    <UAObject NodeId="ns=1;i=5002" BrowseName="1:BasicWoodworking">
+        <DisplayName>BasicWoodworking</DisplayName>
+        <References>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=1001</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5003</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=2</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5001" BrowseName="4:Identification">
+        <DisplayName>Identification</DisplayName>
+        <Description Locale="en">The Identification Object provides identification information of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1012</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5002</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6002</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6003</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6004</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6005</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6006</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6001" BrowseName="4:DeviceClass">
+        <DisplayName>DeviceClass</DisplayName>
+        <Description Locale="en">Indicates in which domain or for what purpose the MachineryItem is used.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6002" BrowseName="4:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6003" BrowseName="4:Model">
+        <DisplayName>Model</DisplayName>
+        <Description Locale="en">A human-readable, localized name of the model of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6004" BrowseName="4:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6005" BrowseName="4:SerialNumber">
+        <DisplayName>SerialNumber</DisplayName>
+        <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6006" BrowseName="2:YearOfConstruction">
+        <DisplayName>YearOfConstruction</DisplayName>
+        <Description Locale="en">The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5002" NodeId="ns=1;i=5003" BrowseName="3:State">
+        <DisplayName>State</DisplayName>
+        <Description Locale="en">The State Object provides information about the states of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=8</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5002</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5003" NodeId="ns=1;i=5004" BrowseName="3:Machine">
+        <DisplayName>Machine</DisplayName>
+        <Description Locale="en">State of the whole machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5006</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=6</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5003</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5005</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=5006" BrowseName="3:Flags">
+        <DisplayName>Flags</DisplayName>
+        <Description Locale="en">The Flags Object provides the flags of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent">ns=1;i=6009</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6010</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6011</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6012</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=4</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6013</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6014</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6015</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6016</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6017</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6009" BrowseName="3:Alarm">
+        <DisplayName>Alarm</DisplayName>
+        <Description Locale="en">The Alarm Variable is true if at least one alarm exists.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6010" BrowseName="3:Calibrated">
+        <DisplayName>Calibrated</DisplayName>
+        <Description Locale="en">The Calibrated Variable is true if all devices are calibrated.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6011" BrowseName="3:Emergency">
+        <DisplayName>Emergency</DisplayName>
+        <Description Locale="en">The Emergency Variable is true if at least one emergency button is pressed.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6012" BrowseName="3:Error">
+        <DisplayName>Error</DisplayName>
+        <Description Locale="en">The Error Variable is true if at least one reason exists which prevents the machine from working.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6013" BrowseName="3:MachineInitialized">
+        <DisplayName>MachineInitialized</DisplayName>
+        <Description Locale="en">The MachineInitialized Variable is true if the MachineOn is true, the PLC and the control processes are running. The machine is ready for usage for the operator.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6014" BrowseName="3:MachineOn">
+        <DisplayName>MachineOn</DisplayName>
+        <Description Locale="en">The MachineOn Variable is true if the machine is switched on. If the OPC UA Server runs on the machine this value is always true.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6015" BrowseName="3:PowerPresent">
+        <DisplayName>PowerPresent</DisplayName>
+        <Description Locale="en">The PowerPresent Variable is true if the power supply is present (the drives are ready to move).</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6016" BrowseName="3:RecipeInRun">
+        <DisplayName>RecipeInRun</DisplayName>
+        <Description Locale="en">The RecipeInRun Variable is true if the machine runs its program. However, if the machine is paused by the program, the machine is considered to still be running its program, i.e. while the RecipeInHold Variable is true, the RecipeInRun cannot be false.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5006" NodeId="ns=1;i=6017" BrowseName="3:Warning">
+        <DisplayName>Warning</DisplayName>
+        <Description Locale="en">The Warning Variable is true if at least one warning exists.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5006</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=5005" BrowseName="3:Overview">
+        <DisplayName>Overview</DisplayName>
+        <Description Locale="en">The Overview Object provides a general overview of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6007</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6008</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=5</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5004</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="WwUnitModeEnumeration" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6007" BrowseName="3:CurrentMode">
+        <DisplayName>CurrentMode</DisplayName>
+        <Description Locale="en">The CurrentMode Variable provides the generalized mode of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5005</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="WwUnitStateEnumeration" ParentNodeId="ns=1;i=5005" NodeId="ns=1;i=6008" BrowseName="3:CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <Description Locale="en">The CurrentState Variable provides the generalized state of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5005</Reference>
+        </References>
+    </UAVariable>
+    <UAObject NodeId="ns=1;i=5008" BrowseName="1:FullWoodworking">
+        <DisplayName>FullWoodworking</DisplayName>
+        <References>
+            <Reference ReferenceType="HasComponent">ns=1;i=5012</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5013</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5009</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=2</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=1001</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5008" EventNotifier="1" NodeId="ns=1;i=5012" BrowseName="3:Events">
+        <DisplayName>Events</DisplayName>
+        <Description Locale="en">The Event Object provides events.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=15</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5007" BrowseName="4:Identification">
+        <DisplayName>Identification</DisplayName>
+        <Description Locale="en">The Identification Object provides identification information of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6026</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6027</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6028</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6018</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6029</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6030</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6031</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6032</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6033</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1012</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5008</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6019</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6034</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6020</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6035</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6036</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6021</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6022</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6037</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6038</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6023</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6026" BrowseName="4:AssetId" AccessLevel="3">
+        <DisplayName>AssetId</DisplayName>
+        <Description Locale="en">To be used by end users to store a unique identification in the context of their overall application. Servers shall support at least 40 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 40 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String></uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6027" BrowseName="4:ComponentName" AccessLevel="3">
+        <DisplayName>ComponentName</DisplayName>
+        <Description Locale="en">To be used by end users to store a human-readable localized text for the MachineryItem. The minimum number of locales supported for this property shall be two. Servers shall support at least 40 Unicode characters for the clients writing the text part of each locale, this means clients can expect to be able to write texts with a length of 40 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText/>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6028" BrowseName="3:CustomerCompanyName">
+        <DisplayName>CustomerCompanyName</DisplayName>
+        <Description Locale="en">The CustomerCompanyName provides the customer name of the Woodworking manufacturer.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6018" BrowseName="4:DeviceClass">
+        <DisplayName>DeviceClass</DisplayName>
+        <Description Locale="en">Indicates in which domain or for what purpose the MachineryItem is used.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6029" BrowseName="4:HardwareRevision">
+        <DisplayName>HardwareRevision</DisplayName>
+        <Description Locale="en">A string representation of the revision level of the hardware of a MachineryItem. Hardware is physical equipment, as opposed to programs, procedures, rules and associated documentation. Many machines will not provide such information due to the modular and configurable nature of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6030" BrowseName="2:InitialOperationDate">
+        <DisplayName>InitialOperationDate</DisplayName>
+        <Description Locale="en">The date, when the MachineryItem was switched on the first time after it has left the manufacturer plant.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6031" BrowseName="2:Location" AccessLevel="3">
+        <DisplayName>Location</DisplayName>
+        <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6032" BrowseName="3:LocationGPS">
+        <DisplayName>LocationGPS</DisplayName>
+        <Description Locale="en">The LocationGPS provides the location of the plant in GPS coordinates. The format is decimal degrees with north and east coordinates. For example, Hannover Messe has "52.3235858255059, 9.804918108600956".
+Southern latitudes have a negative value, western longitudes as well. For example, Quito has the coordinates “-0.21975073282167099, -78.51255572531042”.
+</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6033" BrowseName="3:LocationPlant">
+        <DisplayName>LocationPlant</DisplayName>
+        <Description Locale="en">The LocationPlant provides the location of the plant.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6019" BrowseName="4:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <Description Locale="en">A human-readable, localized name of the manufacturer of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6034" BrowseName="4:ManufacturerUri">
+        <DisplayName>ManufacturerUri</DisplayName>
+        <Description Locale="en">A globally unique identifier of the manufacturer of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6020" BrowseName="4:Model">
+        <DisplayName>Model</DisplayName>
+        <Description Locale="en">A human-readable, localized name of the model of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Byte" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6035" BrowseName="2:MonthOfConstruction">
+        <DisplayName>MonthOfConstruction</DisplayName>
+        <Description Locale="en">The month in which the manufacturing process of the MachineryItem has been completed. It shall be a number between 1 and 12, representing the month from January to December.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6036" BrowseName="4:ProductCode">
+        <DisplayName>ProductCode</DisplayName>
+        <Description Locale="en">A machine-readable string of the model of the MachineryItem, that might include options like the hardware configuration of the model. This information might be provided by the ERP system of the vendor. For example, it can be used as order information.</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6021" BrowseName="4:ProductInstanceUri">
+        <DisplayName Locale="en">ProductInstanceUri</DisplayName>
+        <Description Locale="en">A globally unique resource identifier provided by the manufacturer of the machine</Description>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6022" BrowseName="4:SerialNumber">
+        <DisplayName>SerialNumber</DisplayName>
+        <Description Locale="en">A string containing a unique production number of the manufacturer of the MachineryItem. The global uniqueness of the serial number is only given in the context of the manufacturer, and potentially the model. The value shall not change during the life-cycle of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6037" BrowseName="4:SoftwareRevision">
+        <DisplayName>SoftwareRevision</DisplayName>
+        <Description Locale="en">A string representation of the revision level of a MachineryItem. In most cases, MachineryItems consist of several software components. In that case, information about the software components might be provided as additional information in the address space, including individual revision information. In that case, this property is either not provided or provides an overall software revision level. The value might change during the life-cycle of a MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6038" BrowseName="4:UIElement">
+        <DisplayName>UIElement</DisplayName>
+        <Description>A user interface element assigned to this group.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5007</Reference>
+            <Reference ReferenceType="HasTypeDefinition">ns=4;i=6246</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;i=5007" NodeId="ns=1;i=6023" BrowseName="2:YearOfConstruction">
+        <DisplayName>YearOfConstruction</DisplayName>
+        <Description Locale="en">The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5007</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5013" BrowseName="3:ManufacturerSpecific">
+        <DisplayName>ManufacturerSpecific</DisplayName>
+        <Description Locale="en">The ManufacturerSpecific Object provides manufacturer specific functionality.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5008" NodeId="ns=1;i=5009" BrowseName="3:State">
+        <DisplayName>State</DisplayName>
+        <Description Locale="en">The State Object provides information about the states of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=8</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5010</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5008</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5014</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5009" NodeId="ns=1;i=5010" BrowseName="3:Machine">
+        <DisplayName>Machine</DisplayName>
+        <Description Locale="en">State of the whole machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5015</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=6</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5009</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5011</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5016</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=5015" BrowseName="3:Flags">
+        <DisplayName>Flags</DisplayName>
+        <Description Locale="en">The Flags Object provides the flags of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent">ns=1;i=6048</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6039</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6040</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6049</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6041</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6050</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6042</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6051</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6052</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6053</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=4</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6054</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6043</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6044</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6055</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6056</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6057</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6045</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6058</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6046</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6059</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6060</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6061</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6062</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6063</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6047</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6064</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6048" BrowseName="3:AirPresent">
+        <DisplayName>AirPresent</DisplayName>
+        <Description Locale="en">The AirPresent Variable is true if the air pressure is present in the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6039" BrowseName="3:Alarm">
+        <DisplayName>Alarm</DisplayName>
+        <Description Locale="en">The Alarm Variable is true if at least one alarm exists.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6040" BrowseName="3:Calibrated">
+        <DisplayName>Calibrated</DisplayName>
+        <Description Locale="en">The Calibrated Variable is true if all devices are calibrated.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6049" BrowseName="3:DustChipSuction">
+        <DisplayName>DustChipSuction</DisplayName>
+        <Description Locale="en">The DustChipSuction Variable is true if the dust and chip suction is ready.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6041" BrowseName="3:Emergency">
+        <DisplayName>Emergency</DisplayName>
+        <Description Locale="en">The Emergency Variable is true if at least one emergency button is pressed.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6050" BrowseName="3:EnergySaving">
+        <DisplayName>EnergySaving</DisplayName>
+        <Description Locale="en">The EnergySaving Variable is true if energy saving is activated on the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6042" BrowseName="3:Error">
+        <DisplayName>Error</DisplayName>
+        <Description Locale="en">The Error Variable is true if at least one reason exists which prevents the machine from working.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6051" BrowseName="3:ExternalEmergency">
+        <DisplayName>ExternalEmergency</DisplayName>
+        <Description Locale="en">The ExternalEmergency Variable is true if there is an emergency from the line controller.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6052" BrowseName="3:FeedRuns">
+        <DisplayName>FeedRuns</DisplayName>
+        <Description Locale="en">The FeedRuns Variable is true if the feed is running on a throughfeed machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6053" BrowseName="3:Hold">
+        <DisplayName>Hold</DisplayName>
+        <Description Locale="en">The Hold Variable is true if the movements are paused by the operator.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6054" BrowseName="3:LoadingEnabled">
+        <DisplayName>LoadingEnabled</DisplayName>
+        <Description Locale="en">The LoadingEnabled Variable is true if the unit is ready to get the next new part. If this is false no part can get into the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6043" BrowseName="3:MachineInitialized">
+        <DisplayName>MachineInitialized</DisplayName>
+        <Description Locale="en">The MachineInitialized Variable is true if the MachineOn is true, the PLC and the control processes are running. The machine is ready for usage for the operator.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6044" BrowseName="3:MachineOn">
+        <DisplayName>MachineOn</DisplayName>
+        <Description Locale="en">The MachineOn Variable is true if the machine is switched on. If the OPC UA Server runs on the machine this value is always true.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6055" BrowseName="3:MaintenanceRequired">
+        <DisplayName>MaintenanceRequired</DisplayName>
+        <Description Locale="en">The MaintenanceRequired Variable is true if maintenance is required.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6056" BrowseName="3:ManualActivityRequired">
+        <DisplayName>ManualActivityRequired</DisplayName>
+        <Description Locale="en">The ManualActivityRequired Variable is true if a manual activity by the operator is required. The RecipeInRun is not affected.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6057" BrowseName="3:Moving">
+        <DisplayName>Moving</DisplayName>
+        <Description Locale="en">The Moving Variable is true if at least one axis is moving.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6045" BrowseName="3:PowerPresent">
+        <DisplayName>PowerPresent</DisplayName>
+        <Description Locale="en">The PowerPresent Variable is true if the power supply is present (the drives are ready to move).</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6058" BrowseName="3:RecipeInHold">
+        <DisplayName>RecipeInHold</DisplayName>
+        <Description Locale="en">The RecipeInHold Variable is true if the machine is paused by the program. This is only possible if the RecipeInRun Variable is also true.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6046" BrowseName="3:RecipeInRun">
+        <DisplayName>RecipeInRun</DisplayName>
+        <Description Locale="en">The RecipeInRun Variable is true if the machine runs its program. However, if the machine is paused by the program, the machine is considered to still be running its program, i.e. while the RecipeInHold Variable is true, the RecipeInRun cannot be false.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6059" BrowseName="3:RecipeInSetup">
+        <DisplayName>RecipeInSetup</DisplayName>
+        <Description Locale="en">The RecipeInSetup Variable is true if the RecipeInRun is true and the machine is in the setup phase (example: automatic tool change).</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6060" BrowseName="3:Remote">
+        <DisplayName>Remote</DisplayName>
+        <Description Locale="en">The Remote Variable is true if the machine is working with programs sent by the supervisor or other external application.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6061" BrowseName="3:Safety">
+        <DisplayName>Safety</DisplayName>
+        <Description Locale="en">The Safety Variable is true if at least one safety device (light curtain, safety mat, …) has intervened.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6062" BrowseName="3:WaitLoad">
+        <DisplayName>WaitLoad</DisplayName>
+        <Description Locale="en">The WaitLoad Variable is true if the machine is waiting for pieces.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6063" BrowseName="3:WaitUnload">
+        <DisplayName>WaitUnload</DisplayName>
+        <Description Locale="en">The WaitUnload Variable is true if the machine is waiting to unload pieces.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6047" BrowseName="3:Warning">
+        <DisplayName>Warning</DisplayName>
+        <Description Locale="en">The Warning Variable is true if at least one warning exists.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5015" NodeId="ns=1;i=6064" BrowseName="3:WorkpiecePresent">
+        <DisplayName>WorkpiecePresent</DisplayName>
+        <Description Locale="en">The WorkpiecePresent Variable is true if at least one piece is inside the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5015</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=5011" BrowseName="3:Overview">
+        <DisplayName>Overview</DisplayName>
+        <Description Locale="en">The Overview Object provides a general overview of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6024</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6025</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=5</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="WwUnitModeEnumeration" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6024" BrowseName="3:CurrentMode">
+        <DisplayName>CurrentMode</DisplayName>
+        <Description Locale="en">The CurrentMode Variable provides the generalized mode of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5011</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="WwUnitStateEnumeration" ParentNodeId="ns=1;i=5011" NodeId="ns=1;i=6025" BrowseName="3:CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <Description Locale="en">The CurrentState Variable provides the generalized state of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5011</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5010" NodeId="ns=1;i=5016" BrowseName="3:Values">
+        <DisplayName>Values</DisplayName>
+        <Description Locale="en">The Values Object provides the counters of the unit.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent">ns=1;i=6065</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6066</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6067</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6068</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6069</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6070</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6071</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6072</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6073</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6074</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6075</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6076</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6077</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6078</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6079</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6080</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6081</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6082</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6083</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=1006</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6085</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6086</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6087</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6088</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6089</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6090</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6091</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6092</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6093</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6094</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5010</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6065" BrowseName="3:AbsoluteErrorTime">
+        <DisplayName>AbsoluteErrorTime</DisplayName>
+        <Description Locale="en">The AbsoluteErrorTime Variable provides the absolute time of the ERROR_4 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6100</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6102</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6101</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6103</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6104</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6065" NodeId="ns=1;i=6100" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6065</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6065" NodeId="ns=1;i=6102" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6065</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6065" NodeId="ns=1;i=6101" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6065</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6065" NodeId="ns=1;i=6103" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6065</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6065" NodeId="ns=1;i=6104" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6065</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6066" BrowseName="3:AbsoluteLength">
+        <DisplayName>AbsoluteLength</DisplayName>
+        <Description Locale="en">The AbsoluteLength Variable provides the absolute produced length in mm.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6105</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6107</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6106</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6108</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6109</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6066" NodeId="ns=1;i=6105" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6066</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6066" NodeId="ns=1;i=6107" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6066</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6066" NodeId="ns=1;i=6106" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6066</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6066" NodeId="ns=1;i=6108" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6066</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6066" NodeId="ns=1;i=6109" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6066</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6067" BrowseName="3:AbsoluteMachineOffTime">
+        <DisplayName>AbsoluteMachineOffTime</DisplayName>
+        <Description Locale="en">The AbsoluteOfflineTime can be calculated by the machine. The shutdown time and the starting time have to be stored on the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6110</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6112</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6111</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6113</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6114</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6067" NodeId="ns=1;i=6110" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6067</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6067" NodeId="ns=1;i=6112" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6067</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6067" NodeId="ns=1;i=6111" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6067</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6067" NodeId="ns=1;i=6113" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6067</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6067" NodeId="ns=1;i=6114" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6067</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6068" BrowseName="3:AbsoluteMachineOnTime">
+        <DisplayName>AbsoluteMachineOnTime</DisplayName>
+        <Description Locale="en">The AbsoluteMachineOnTime Variable provides the absolute time in msec the machine is turned on based on the MachineOn state.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6115</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6117</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6116</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6118</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6119</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6068" NodeId="ns=1;i=6115" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6068</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6068" NodeId="ns=1;i=6117" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6068</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6068" NodeId="ns=1;i=6116" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6068</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6068" NodeId="ns=1;i=6118" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6068</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6068" NodeId="ns=1;i=6119" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6068</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6069" BrowseName="3:AbsolutePiecesIn">
+        <DisplayName>AbsolutePiecesIn</DisplayName>
+        <Description Locale="en">The AbsolutePiecesIn Variable provides the absolute count of pieces which came into the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6120</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6122</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6121</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6123</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6124</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6069" NodeId="ns=1;i=6120" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6069</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6069" NodeId="ns=1;i=6122" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6069</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6069" NodeId="ns=1;i=6121" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6069</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6069" NodeId="ns=1;i=6123" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6069</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6069" NodeId="ns=1;i=6124" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6069</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6070" BrowseName="3:AbsolutePiecesOut">
+        <DisplayName>AbsolutePiecesOut</DisplayName>
+        <Description Locale="en">The AbsolutePiecesOut Variable provides the absolute count of pieces which came out of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6125</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6127</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6126</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6128</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6129</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6070" NodeId="ns=1;i=6125" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6070</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6070" NodeId="ns=1;i=6127" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6070</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6070" NodeId="ns=1;i=6126" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6070</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6070" NodeId="ns=1;i=6128" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6070</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6070" NodeId="ns=1;i=6129" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6070</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6071" BrowseName="3:AbsolutePowerPresentTime">
+        <DisplayName>AbsolutePowerPresentTime</DisplayName>
+        <Description Locale="en">The AbsolutePowerPresentTime Variable provides the absolute time in msec the machine has power on based on the PowerPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6130</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6132</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6131</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6133</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6134</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6071" NodeId="ns=1;i=6130" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6071</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6071" NodeId="ns=1;i=6132" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6071</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6071" NodeId="ns=1;i=6131" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6071</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6071" NodeId="ns=1;i=6133" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6071</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6071" NodeId="ns=1;i=6134" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6071</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6072" BrowseName="3:AbsoluteProductionTime">
+        <DisplayName>AbsoluteProductionTime</DisplayName>
+        <Description Locale="en">The AbsoluteProductionTime Variable provides the absolute time in msec of the machine is working at least with one workpiece based on the RecipeInRun and PiecesPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6135</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6137</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6136</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6138</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6139</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6072" NodeId="ns=1;i=6135" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6072</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6072" NodeId="ns=1;i=6137" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6072</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6072" NodeId="ns=1;i=6136" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6072</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6072" NodeId="ns=1;i=6138" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6072</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6072" NodeId="ns=1;i=6139" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6072</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6073" BrowseName="3:AbsoluteProductionWaitWorkpieceTime">
+        <DisplayName>AbsoluteProductionWaitWorkpieceTime</DisplayName>
+        <Description Locale="en">The AbsoluteProductionWaitWorkpieceTime Variable provides the absolute time in msec of the machine is in working mode, bring the consent out to insert workpiece but no workpiece incoming from the previous machine based on the ReceipeInRun and WaitLoad state.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6140</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6142</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6141</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6143</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6144</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6073" NodeId="ns=1;i=6140" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6073</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6073" NodeId="ns=1;i=6142" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6073</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6073" NodeId="ns=1;i=6141" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6073</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6073" NodeId="ns=1;i=6143" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6073</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6073" NodeId="ns=1;i=6144" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6073</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6074" BrowseName="3:AbsoluteProductionWithoutWorkpieceTime">
+        <DisplayName>AbsoluteProductionWithoutWorkpieceTime</DisplayName>
+        <Description Locale="en">The AbsoluteProductionWithoutWorkpieceTime Variable provides the absolute time in msec of the machine is working but without workpieces inside based on the RecipeInRun and !PiecesPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6145</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6147</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6146</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6148</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6149</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6074" NodeId="ns=1;i=6145" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6074</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6074" NodeId="ns=1;i=6147" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6074</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6074" NodeId="ns=1;i=6146" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6074</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6074" NodeId="ns=1;i=6148" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6074</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6074" NodeId="ns=1;i=6149" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6074</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6075" BrowseName="3:AbsoluteReadyTime">
+        <DisplayName>AbsoluteReadyTime</DisplayName>
+        <Description Locale="en">The AbsoluteReadyTime Variable provides the absolute time of the READY_2 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6150</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6152</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6151</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6153</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6154</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6075" NodeId="ns=1;i=6150" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6075</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6075" NodeId="ns=1;i=6152" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6075</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6075" NodeId="ns=1;i=6151" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6075</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6075" NodeId="ns=1;i=6153" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6075</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6075" NodeId="ns=1;i=6154" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6075</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6076" BrowseName="3:AbsoluteRunsAborted">
+        <DisplayName>AbsoluteRunsAborted</DisplayName>
+        <Description Locale="en">The AbsoluteRunsAborted Variable provides the absolute count of aborted runs.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6155</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6157</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6156</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6158</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6159</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6076" NodeId="ns=1;i=6155" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6076</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6076" NodeId="ns=1;i=6157" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6076</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6076" NodeId="ns=1;i=6156" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6076</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6076" NodeId="ns=1;i=6158" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6076</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6076" NodeId="ns=1;i=6159" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6076</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6077" BrowseName="3:AbsoluteRunsGood">
+        <DisplayName>AbsoluteRunsGood</DisplayName>
+        <Description Locale="en">The AbsoluteRunsGood Variable provides the absolute count of finished runs.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6160</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6162</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6161</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6163</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6164</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6077" NodeId="ns=1;i=6160" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6077</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6077" NodeId="ns=1;i=6162" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6077</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6077" NodeId="ns=1;i=6161" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6077</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6077" NodeId="ns=1;i=6163" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6077</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6077" NodeId="ns=1;i=6164" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6077</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6078" BrowseName="3:AbsoluteRunsTotal">
+        <DisplayName>AbsoluteRunsTotal</DisplayName>
+        <Description Locale="en">The AbsoluteRunsTotal Variable provides the absolute count of total runs.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6165</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6167</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6166</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6168</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6169</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6078" NodeId="ns=1;i=6165" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6078</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6078" NodeId="ns=1;i=6167" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6078</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6078" NodeId="ns=1;i=6166" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6078</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6078" NodeId="ns=1;i=6168" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6078</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6078" NodeId="ns=1;i=6169" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6078</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6079" BrowseName="3:AbsoluteStandbyTime">
+        <DisplayName>AbsoluteStandbyTime</DisplayName>
+        <Description Locale="en">The AbsoluteStandbyTime Variable provides the absolute time of the STANDBY_1 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6170</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6172</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6171</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6173</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6174</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6079" NodeId="ns=1;i=6170" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6079</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6079" NodeId="ns=1;i=6172" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6079</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6079" NodeId="ns=1;i=6171" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6079</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6079" NodeId="ns=1;i=6173" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6079</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6079" NodeId="ns=1;i=6174" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6079</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6080" BrowseName="3:AbsoluteWorkingTime">
+        <DisplayName>AbsoluteWorkingTime</DisplayName>
+        <Description Locale="en">The AbsoluteWorkingTime Variable provides the absolute time of the WORKING_3 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6175</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6177</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6176</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6178</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6179</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6080" NodeId="ns=1;i=6175" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6080</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6080" NodeId="ns=1;i=6177" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6080</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6080" NodeId="ns=1;i=6176" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6080</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6080" NodeId="ns=1;i=6178" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6080</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6080" NodeId="ns=1;i=6179" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6080</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6081" BrowseName="3:ActualCycle">
+        <DisplayName>ActualCycle</DisplayName>
+        <Description Locale="en">The ActualCycle Variable provides the parts per minutes.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6180</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6182</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6181</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6183</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6184</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6081" NodeId="ns=1;i=6180" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6081</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6081" NodeId="ns=1;i=6182" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6081</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6081" NodeId="ns=1;i=6181" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6081</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6081" NodeId="ns=1;i=6183" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6081</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6081" NodeId="ns=1;i=6184" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6081</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6082" BrowseName="3:AxisOverride">
+        <DisplayName>AxisOverride</DisplayName>
+        <Description Locale="en">The AxisOverride Variable provides the override for the axis in percent.</Description>
+        <References>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6185</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6187</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6186</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6188</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6189</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6185" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6187" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6186" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6188" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6082" NodeId="ns=1;i=6189" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6082</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6083" BrowseName="3:FeedSpeed">
+        <DisplayName>FeedSpeed</DisplayName>
+        <Description Locale="en">The FeedSpeed Variable provides the feed speed in m/min for throughfeed machines.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6190</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6192</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6191</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6193</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6194</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6083" NodeId="ns=1;i=6190" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6083</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6083" NodeId="ns=1;i=6192" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6083</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6083" NodeId="ns=1;i=6191" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6083</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6083" NodeId="ns=1;i=6193" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6083</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6083" NodeId="ns=1;i=6194" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6083</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6084" BrowseName="3:RelativeErrorTime">
+        <DisplayName>RelativeErrorTime</DisplayName>
+        <Description Locale="en">The RelativeErrorTime Variable provides the relative time since startup of the ERROR_4 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6195</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6197</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6196</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6198</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6199</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6084" NodeId="ns=1;i=6195" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6084" NodeId="ns=1;i=6197" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6084" NodeId="ns=1;i=6196" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6084" NodeId="ns=1;i=6198" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6084</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6084" NodeId="ns=1;i=6199" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6084</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6085" BrowseName="3:RelativeLength">
+        <DisplayName>RelativeLength</DisplayName>
+        <Description Locale="en">The RelativeLength Variable provides the relative produced length in mm since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6200</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6202</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6201</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6203</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6204</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6085" NodeId="ns=1;i=6200" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6085</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6085" NodeId="ns=1;i=6202" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6085</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6085" NodeId="ns=1;i=6201" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6085</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6085" NodeId="ns=1;i=6203" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6085</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6085" NodeId="ns=1;i=6204" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6085</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6086" BrowseName="3:RelativeMachineOnTime">
+        <DisplayName>RelativeMachineOnTime</DisplayName>
+        <Description Locale="en">The RelativeMachineOnTime Variable provides the relative time in msec since startup the machine is turned on based on the MachineOn state.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6205</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6207</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6206</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6208</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6209</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6086" NodeId="ns=1;i=6205" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6086</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6086" NodeId="ns=1;i=6207" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6086</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6086" NodeId="ns=1;i=6206" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6086</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6086" NodeId="ns=1;i=6208" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6086</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6086" NodeId="ns=1;i=6209" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6086</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6087" BrowseName="3:RelativePiecesIn">
+        <DisplayName>RelativePiecesIn</DisplayName>
+        <Description Locale="en">The RelativePiecesIn Variable provides the relative count of pieces which came into the machine since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6210</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6212</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6211</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6213</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6214</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6087" NodeId="ns=1;i=6210" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6087</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6087" NodeId="ns=1;i=6212" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6087</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6087" NodeId="ns=1;i=6211" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6087</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6087" NodeId="ns=1;i=6213" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6087</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6087" NodeId="ns=1;i=6214" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6087</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6088" BrowseName="3:RelativePiecesOut">
+        <DisplayName>RelativePiecesOut</DisplayName>
+        <Description Locale="en">The RelativePiecesOut Variable provides the relative count of pieces which came out of the machine since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6215</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6217</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6216</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6218</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6219</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6215" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6217" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6216" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6218" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6088" NodeId="ns=1;i=6219" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6088</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6089" BrowseName="3:RelativePowerPresentTime">
+        <DisplayName>RelativePowerPresentTime</DisplayName>
+        <Description Locale="en">The RelativePowerPresentTime Variable provides the relative time in msec since startup the machine has power on based on the PowerPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6220</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6222</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6221</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6223</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6224</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6089" NodeId="ns=1;i=6220" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6089</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6089" NodeId="ns=1;i=6222" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6089</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6089" NodeId="ns=1;i=6221" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6089</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6089" NodeId="ns=1;i=6223" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6089</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6089" NodeId="ns=1;i=6224" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6089</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6090" BrowseName="3:RelativeProductionTime">
+        <DisplayName>RelativeProductionTime</DisplayName>
+        <Description Locale="en">The RelativeProductionTime Variable provides the relative time in msec since startup of the machine is working at least with one workpiece based on the RecipeInRun and PiecesPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6225</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6227</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6226</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6228</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6229</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6090" NodeId="ns=1;i=6225" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6090</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6090" NodeId="ns=1;i=6227" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6090</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6090" NodeId="ns=1;i=6226" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6090</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6090" NodeId="ns=1;i=6228" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6090</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6090" NodeId="ns=1;i=6229" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6090</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6091" BrowseName="3:RelativeProductionWaitWorkpieceTime">
+        <DisplayName>RelativeProductionWaitWorkpieceTime</DisplayName>
+        <Description Locale="en">The RelativeProductionWaitWorkpieceTime Variable provides the relative time in msec waiting for workpieces since startup of the machine is in working mode, bring the consent out to insert workpiece but no workpiece incoming from the previous machine based on the ReceipeInRun and WaitLoad state.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6230</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6232</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6231</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6233</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6234</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6091" NodeId="ns=1;i=6230" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6091</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6091" NodeId="ns=1;i=6232" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6091</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6091" NodeId="ns=1;i=6231" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6091</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6091" NodeId="ns=1;i=6233" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6091</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6091" NodeId="ns=1;i=6234" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6091</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6092" BrowseName="3:RelativeProductionWithoutWorkpieceTime">
+        <DisplayName>RelativeProductionWithoutWorkpieceTime</DisplayName>
+        <Description Locale="en">The RelativeProductionWithoutWorkpieceTime Variable provides the relative time in msec since startup of the machine is working but without workpieces inside based on the RecipeInRun and !PiecesPresent state.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6235</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6237</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6236</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6238</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6239</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6092" NodeId="ns=1;i=6235" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6092</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6092" NodeId="ns=1;i=6237" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6092</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6092" NodeId="ns=1;i=6236" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6092</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6092" NodeId="ns=1;i=6238" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6092</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6092" NodeId="ns=1;i=6239" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6092</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6093" BrowseName="3:RelativeReadyTime">
+        <DisplayName>RelativeReadyTime</DisplayName>
+        <Description Locale="en">The RelativeReadyTime Variable provides the relative time since startup of the READY_2 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6240</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6242</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6241</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6243</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6244</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6093" NodeId="ns=1;i=6240" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6093</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6093" NodeId="ns=1;i=6242" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6093</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6093" NodeId="ns=1;i=6241" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6093</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6093" NodeId="ns=1;i=6243" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6093</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6093" NodeId="ns=1;i=6244" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6093</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6094" BrowseName="3:RelativeRunsAborted">
+        <DisplayName>RelativeRunsAborted</DisplayName>
+        <Description Locale="en">The RelativeRunsAborted Variable provides the relative count of aborted runs since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6245</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6247</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6246</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6248</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6249</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6094" NodeId="ns=1;i=6245" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6094</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6094" NodeId="ns=1;i=6247" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6094</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6094" NodeId="ns=1;i=6246" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6094</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6094" NodeId="ns=1;i=6248" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6094</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6094" NodeId="ns=1;i=6249" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6094</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6095" BrowseName="3:RelativeRunsGood">
+        <DisplayName>RelativeRunsGood</DisplayName>
+        <Description Locale="en">The RelativeRunsGood Variable provides the relative count of finished runs since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6250</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6252</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6251</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6253</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6254</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6095" NodeId="ns=1;i=6250" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6095" NodeId="ns=1;i=6252" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6095" NodeId="ns=1;i=6251" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6095" NodeId="ns=1;i=6253" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6095</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6095" NodeId="ns=1;i=6254" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6095</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6096" BrowseName="3:RelativeRunsTotal">
+        <DisplayName>RelativeRunsTotal</DisplayName>
+        <Description Locale="en">The RelativeRunsTotal Variable provides the relative count of total runs since the machine has started.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6255</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6257</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6256</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6258</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6259</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6096" NodeId="ns=1;i=6255" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6096" NodeId="ns=1;i=6257" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6096" NodeId="ns=1;i=6256" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6096" NodeId="ns=1;i=6258" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6096</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6096" NodeId="ns=1;i=6259" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6096</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6097" BrowseName="3:RelativeStandbyTime">
+        <DisplayName>RelativeStandbyTime</DisplayName>
+        <Description Locale="en">The RelativeStandbyTime Variable provides the relative time since startup of the STANDBY_1 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6260</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6262</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6261</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6263</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6264</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6097" NodeId="ns=1;i=6260" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6097" NodeId="ns=1;i=6262" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6097" NodeId="ns=1;i=6261" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6097" NodeId="ns=1;i=6263" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6097</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6097" NodeId="ns=1;i=6264" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6097</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt64" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6098" BrowseName="3:RelativeWorkingTime">
+        <DisplayName>RelativeWorkingTime</DisplayName>
+        <Description Locale="en">The RelativeWorkingTime Variable provides the relative time since startup of the WORKING_3 state in msec.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6265</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6267</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6266</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6268</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6269</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6098" NodeId="ns=1;i=6265" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6098" NodeId="ns=1;i=6267" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6098" NodeId="ns=1;i=6266" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6098" NodeId="ns=1;i=6268" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6098</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6098" NodeId="ns=1;i=6269" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6098</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;i=5016" NodeId="ns=1;i=6099" BrowseName="3:SpindleOverride">
+        <DisplayName>SpindleOverride</DisplayName>
+        <Description Locale="en">The SpindleOverride Variable provides the override for the spindle in percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=15318</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6270</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6272</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6271</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6273</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5016</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6274</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=6099" NodeId="ns=1;i=6270" BrowseName="Definition">
+        <DisplayName>Definition</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;i=6099" NodeId="ns=1;i=6272" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6099" NodeId="ns=1;i=6271" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;i=6099" NodeId="ns=1;i=6273" BrowseName="InstrumentRange">
+        <DisplayName>InstrumentRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6099</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;i=6099" NodeId="ns=1;i=6274" BrowseName="ValuePrecision">
+        <DisplayName>ValuePrecision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6099</Reference>
+        </References>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;i=5009" NodeId="ns=1;i=5014" BrowseName="3:SubUnits">
+        <DisplayName>SubUnits</DisplayName>
+        <Description Locale="en">The SubUnits Object is used when a machine has multiple states. For example, a CNC machine can have several places where independent jobs are produced.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasInterface">ns=3;i=7</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5009</Reference>
+        </References>
+    </UAObject>
+    <UAObject SymbolicName="http___yourorganisation_org_woodworking_demo_" NodeId="ns=1;i=5017" BrowseName="1:http://yourorganisation.org/woodworking_demo/">
+        <DisplayName>http://yourorganisation.org/woodworking_demo/</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty">ns=1;i=6275</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6276</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6277</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6278</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6279</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6280</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6281</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5017" NodeId="ns=1;i=6275" BrowseName="IsNamespaceSubset">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5017" NodeId="ns=1;i=6276" BrowseName="NamespacePublicationDate">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2023-01-06T14:16:35Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5017" NodeId="ns=1;i=6277" BrowseName="NamespaceUri">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>http://yourorganisation.org/woodworking_demo/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5017" NodeId="ns=1;i=6278" BrowseName="NamespaceVersion">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+        </References>
+        <Value>
+            <uax:String>1.0.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5017" ValueRank="1" NodeId="ns=1;i=6279" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+        </References>
+        <Value>
+            <uax:ListOfInt32>
+                <uax:Int32>0</uax:Int32>
+            </uax:ListOfInt32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ParentNodeId="ns=1;i=5017" ValueRank="1" NodeId="ns=1;i=6280" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5017" NodeId="ns=1;i=6281" BrowseName="StaticStringNodeIdPattern">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5017</Reference>
+        </References>
+    </UAVariable>
+</UANodeSet>
