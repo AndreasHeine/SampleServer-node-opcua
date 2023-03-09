@@ -40,7 +40,7 @@
     "@types/bcrypt": "5.0.0",
     "@types/chai": "4.3.4",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.14.6",
+    "@types/node": "18.15.0",
     "@types/semver": "7.3.13",
     "@types/yargs": "17.0.22",
     "chai": "4.3.7",
