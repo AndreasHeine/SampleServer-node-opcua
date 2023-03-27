@@ -20,6 +20,7 @@ on:
     # Remove the line above to run when pushing to master
   pull_request:
     branches: [main, develop]
+  merge_group:
 
 ###############
 # Set the Job #
