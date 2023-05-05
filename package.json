@@ -28,19 +28,19 @@
   "dependencies": {
     "bcrypt": "5.1.0",
     "chalk": "4.1.2",
-    "node-opcua": "2.100.0",
-    "node-opcua-file-transfer": "2.100.0",
+    "node-opcua": "2.103.0",
+    "node-opcua-file-transfer": "2.103.0",
     "node-opcua-pki": "3.0.2",
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
-    "node-opcua-server-discovery": "2.100.0",
+    "node-opcua-server-discovery": "2.103.0",
     "yargs": "17.7.2"
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.0",
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.3",
+    "@types/node": "18.16.4",
     "@types/semver": "7.3.13",
     "@types/yargs": "17.0.24",
     "chai": "4.3.7",
