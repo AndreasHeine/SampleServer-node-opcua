@@ -33,7 +33,10 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     })
     const machineryIdentificationType = addressSpace?.findNode(`ns=${machineryIdx};i=1012`) as UAObjectType
     const myMachineIdentification = machineryIdentificationType?.instantiate({
-        browseName: {name: 'Identification', namespaceIndex: machineryIdx},
+        browseName: {
+            name: 'Identification',
+            namespaceIndex: machineryIdx
+        },
         namespace: namespace,
         optionals: ['Model'], // array of string 
     })
@@ -45,11 +48,14 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     const manufacturer = myMachineIdentification?.getChildByName('Manufacturer') as UAVariable
     manufacturer?.setValueFromSource({
         dataType: DataType.LocalizedText,
-        value: coerceLocalizedText('Manufacturer'),
+        value: coerceLocalizedText('Andreas Heine'),
     })
     const machineComponentsType = addressSpace?.findNode(`ns=${machineryIdx};i=1006`) as UAObjectType
     const myMachineComponents = machineComponentsType?.instantiate({
-        browseName: {name: 'Components', namespaceIndex: machineryIdx},
+        browseName: {
+            name: 'Components',
+            namespaceIndex: machineryIdx
+        },
         namespace: namespace,
     })
     myMachineComponents.addReference({
@@ -57,5 +63,41 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         nodeId: myMachine,
         isForward: false,
     })
+
+    const processValuesIdx = addressSpace!.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/ProcessValues/")
+    const processValuesType = addressSpace!.findNode(`ns=${processValuesIdx};i=1003`) as UAObjectType
+    const monitoringObject = namespace!.addObject({
+        browseName: 'Monitoring',
+        nodeId: `ns=${namespace.index};s=Monitoring`,
+        componentOf: myMachine,
+    })
+    
+    const temperature = processValuesType.instantiate({
+        browseName: {
+            name: 'Temperature',
+            namespaceIndex: processValuesIdx
+        },
+        namespace: namespace,
+    })
+    temperature.addReference({
+        referenceType: 'Organizes',
+        nodeId: monitoringObject,
+        isForward: false,
+    })
+
+    const pressure = processValuesType.instantiate({
+        browseName: {
+            name: 'Pressure',
+            namespaceIndex: processValuesIdx
+        },
+        namespace: namespace,
+    })
+    pressure.addReference({
+        referenceType: "Organizes",
+        nodeId: monitoringObject,
+        isForward: false,
+    })
+
+
     // instantiate components here -> organizedBy: myMachineComponents
 }
