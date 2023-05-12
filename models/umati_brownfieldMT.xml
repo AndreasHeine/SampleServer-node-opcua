@@ -364,7 +364,7 @@
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5018</Reference>
         </References>
         <Value>
-            <uax:Int32>0</uax:Int32>
+            <uax:Int32>1</uax:Int32>
         </Value>
     </UAVariable>
     <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;i=5018" NodeId="ns=1;i=6036" BrowseName="5:SignalMode" AccessLevel="3">
