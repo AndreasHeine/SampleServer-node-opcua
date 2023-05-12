@@ -15,7 +15,7 @@ RUN npm install
 
 EXPOSE 4840
 
-RUN chown node:node /home/node/opcua-server
+RUN chown -R node:node /home/node/opcua-server
 
 USER node
 
