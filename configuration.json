@@ -54,7 +54,8 @@
         "./nodesets/Opc.Ua.IRDI.NodeSet2.xml",
         "./nodesets/Opc.Ua.PADIM.NodeSet2.xml",
         "./nodesets/opc.ua.machinery.processvalues.xml",
-        "./models/paefs.xml"
+        "./models/paefs.xml",
+        "./models/umati_brownfieldMT.xml"
         
     ],
     "serverCapabilities": {
