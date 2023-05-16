@@ -64,6 +64,42 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         isForward: false,
     })
 
+    // ItemState + OperationMode
+
+    const machineryBuildingBlocks = namespace.addObject({
+        browseName: {name : "MachineryBuildingBlocks", namespaceIndex: machineryIdx},
+        typeDefinition: "FolderType",
+        componentOf: myMachine
+    });
+
+    const myItemState = (addressSpace!.findNode(`ns=${machineryIdx};i=1002`) as UAObjectType).instantiate({
+        browseName: {
+            name: 'MachineryItemState',
+            namespaceIndex: machineryIdx
+        },
+        namespace: namespace,
+    })
+    myItemState.addReference({
+        referenceType: 'HasAddIn',
+        nodeId: machineryBuildingBlocks,
+        isForward: false,
+    })
+
+    const myOperationMode = (addressSpace!.findNode(`ns=${machineryIdx};i=1008`) as UAObjectType).instantiate({
+        browseName: {
+            name: 'MachineryOperationMode',
+            namespaceIndex: machineryIdx
+        },
+        namespace: namespace,
+    })
+    myOperationMode.addReference({
+        referenceType: 'HasAddIn',
+        nodeId: machineryBuildingBlocks,
+        isForward: false,
+    })
+
+    // ProcessValues
+
     const processValuesIdx = addressSpace!.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/ProcessValues/")
     const processValuesType = addressSpace!.findNode(`ns=${processValuesIdx};i=1003`) as UAObjectType
     const monitoringObject = namespace!.addObject({
