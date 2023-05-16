@@ -33,6 +33,7 @@ import { create40084_9Logic } from './machines/PlasticsRubber/40084-9';
 import { create40084_11Logic } from './machines/PlasticsRubber/40084-11';
 import { createWoodWorkingBasicLogic } from './machines/WoodWorking/ww_basic';
 import { createWoodWorkingFullLogic } from './machines/WoodWorking/ww_full';
+import { createbrownfieldMTLogic } from './machines/machinetool/brownfieldmachinetool';
 
 export const createAddressSpace = async (server: OPCUAServer): Promise<void> => {
   const addressSpace = server.engine.addressSpace;
