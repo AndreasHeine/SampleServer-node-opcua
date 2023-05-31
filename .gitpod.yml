@@ -1,5 +1,5 @@
 # hadolint ignore=DL3007
-image: gitpod/workspace-full:2023-03-24-22-45-37
+image: gitpod/workspace-full:latest
 
 tasks:
   - init:  npm install -g opcua-commander renovate npm@9.3.1
