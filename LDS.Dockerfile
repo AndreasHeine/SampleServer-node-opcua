@@ -1,6 +1,6 @@
 FROM node:20.2.0-alpine3.17
 RUN apk --no-cache add \
-    openssl=3.0.8-r4
+    openssl=3.0.9-r1
 
 WORKDIR /home/node/discovery
 
