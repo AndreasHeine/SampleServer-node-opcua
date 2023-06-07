@@ -30,7 +30,7 @@
     "chalk": "4.1.2",
     "node-opcua": "2.103.0",
     "node-opcua-file-transfer": "2.103.0",
-    "node-opcua-pki": "3.1.2",
+    "node-opcua-pki": "4.2.0",
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
     "node-opcua-server-discovery": "2.103.0",
