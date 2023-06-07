@@ -1,7 +1,7 @@
 FROM node:20.2.0-alpine3.17
 
 WORKDIR /home/node/opcua-server
-
+# hadolint ignore=DL3018
 RUN apk --no-cache add \
      openssl~3 \
      python3=3.10.11-r0 \
