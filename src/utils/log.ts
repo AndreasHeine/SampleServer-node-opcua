@@ -13,7 +13,11 @@
 //   limitations under the License.
 
 import fs from 'fs'
-import chalk from 'chalk'
+import { 
+    green as g, 
+    yellow as y, 
+    red as r
+} from 'chalk'
 
 const logToFile = (msg: string) => {
     let date = new Date()
@@ -36,17 +40,17 @@ class Logger implements LoggerInterface {
 
     green(msg:string): void {
         logToFile(msg)
-        console.log(' LOG: ', chalk.green(msg))
+        console.log(' LOG: ', g(msg))
     }
 
     yellow (msg:string): void {
         logToFile(msg)
-        console.log(' LOG: ', chalk.yellow(msg))
+        console.log(' LOG: ', y(msg))
     }
 
     red (msg:string): void {
         logToFile(msg)
-        console.log(' LOG: ', chalk.red(msg))
+        console.log(' LOG: ', r(msg))
     }
 }
 
