@@ -48,6 +48,6 @@
     "dependency-cruiser": "13.0.4",
     "mocha": "10.2.0",
     "pkg": "^5.8.0",
-    "typescript": "5.1.3"
+    "typescript": "5.1.5"
   }
 }
