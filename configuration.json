@@ -49,8 +49,6 @@
         "./models/umati_opc40082-3_sample_instance.xml",
         "./models/umati_opc40084-9_sample_instance.xml",
         "./models/umati_opc40084-11_sample_instance.xml",
-        "./nodesets/Opc.Ua.MachineVision.AMCM.xml",
-        "./models/opcmv2sampleinstances.xml",
         "./models/basyskom_woodworking_instance.xml",
         "./nodesets/Opc.Ua.IRDI.NodeSet2.xml",
         "./nodesets/Opc.Ua.PADIM.NodeSet2.xml",
