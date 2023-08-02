@@ -37,6 +37,7 @@
         "./nodesets/Opc.Ua.PlasticsRubber.UmatiGeneric.NodeSet2.xml",
         "./nodesets/Opc.Ua.Robotics.NodeSet2.xml",
         "./nodesets/Opc.Ua.Woodworking.NodeSet2.xml",
+        "./nodesets/Opc.Ua.LaserSystems.NodeSet2.xml",
         "./models/ShowCaseMachineTool.xml",
         "./models/opcroboticstestserver.xml",
         "./models/umati_plasticsrubber_generic_sample_instance.xml",
@@ -48,14 +49,13 @@
         "./models/umati_opc40082-3_sample_instance.xml",
         "./models/umati_opc40084-9_sample_instance.xml",
         "./models/umati_opc40084-11_sample_instance.xml",
-        "./nodesets/Opc.Ua.MachineVision.AMCM.xml",
-        "./models/opcmv2sampleinstances.xml",
         "./models/basyskom_woodworking_instance.xml",
         "./nodesets/Opc.Ua.IRDI.NodeSet2.xml",
         "./nodesets/Opc.Ua.PADIM.NodeSet2.xml",
         "./nodesets/opc.ua.machinery.processvalues.xml",
         "./models/paefs.xml",
-        "./models/umati_brownfieldMT.xml"
+        "./models/umati_brownfieldMT.xml",
+        "./models/LaserSystem-Example.xml"
         
     ],
     "serverCapabilities": {
