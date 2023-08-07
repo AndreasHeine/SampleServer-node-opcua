@@ -2,7 +2,7 @@
 image: gitpod/workspace-full:latest
 
 tasks:
-  - init:  npm install -g opcua-commander renovate npm@9.3.1
+  - init:  npm install -g opcua-commander renovate npm@9.8.1
     command: npm install 
 
 github:
