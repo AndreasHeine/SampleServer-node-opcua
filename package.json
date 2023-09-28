@@ -43,7 +43,7 @@
     "@types/node": "20.6.1",
     "@types/semver": "7.5.2",
     "@types/yargs": "17.0.24",
-    "chai": "4.3.8",
+    "chai": "4.3.9",
     "chalk": "4.1.2",
     "dependency-cruiser": "13.1.5",
     "mocha": "10.2.0",
