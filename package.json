@@ -42,7 +42,7 @@
     "@types/mocha": "10.0.2",
     "@types/node": "20.8.2",
     "@types/semver": "7.5.3",
-    "@types/yargs": "17.0.25",
+    "@types/yargs": "17.0.28",
     "chai": "4.3.10",
     "chalk": "4.1.2",
     "dependency-cruiser": "14.0.0",
