@@ -37,7 +37,7 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@types/bcrypt": "5.0.0",
+    "@types/bcrypt": "5.0.1",
     "@types/chai": "4.3.9",
     "@types/mocha": "10.0.3",
     "@types/node": "20.8.6",
