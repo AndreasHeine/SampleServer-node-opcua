@@ -4,7 +4,7 @@ WORKDIR /home/node/opcua-server
 
 # hadolint ignore=DL3018
 RUN apk --no-cache add \
-     openssl=3.0.12-r0 \
+     openssl=3.0.12-r1 \
      python3=3.10.13-r0 \
      make=4.3-r1 \
      g++=12.2.1_git20220924-r4 \
