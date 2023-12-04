@@ -1,4 +1,4 @@
-FROM node:21.2.0-alpine3.17
+FROM node:21.3.0-alpine3.17
 # hadolint ignore=DL3018
 RUN apk --no-cache add \
     openssl=3.0.12-r1
