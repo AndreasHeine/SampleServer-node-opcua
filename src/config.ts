@@ -117,7 +117,7 @@ config.serverCapabilities = new ServerCapabilities({
   // maxByteStringLength: configJsonObj.serverCapabilities?.maxByteStringLength || undefined,
   // maxStringLength: configJsonObj.serverCapabilities?.maxStringLength || undefined,
   maxHistoryContinuationPoints: configJsonObj.serverCapabilities?.maxHistoryContinuationPoints || 10,
-  operationLimits: new OperationLimits({
+  operationLimits: ({
     maxMonitoredItemsPerCall: operationLimits?.maxMonitoredItemsPerCall || 1000,
     maxNodesPerBrowse: operationLimits?.maxNodesPerBrowse || 1000,
     maxNodesPerHistoryReadData: operationLimits?.maxNodesPerHistoryReadData || 1000,
@@ -131,7 +131,7 @@ config.serverCapabilities = new ServerCapabilities({
     maxNodesPerTranslateBrowsePathsToNodeIds: operationLimits?.maxNodesPerTranslateBrowsePathsToNodeIds || 1000,
     maxNodesPerWrite: operationLimits?.maxNodesPerWrite || 1000,
 
-  }),
+  } as OperationLimits),
   // https://profiles.opcfoundation.org/v104/Reporting/
   // https://reference.opcfoundation.org/v104/Core/docs/Part7/6.2/
   serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray || [], 
