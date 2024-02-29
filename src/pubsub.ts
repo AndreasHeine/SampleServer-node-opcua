@@ -15,7 +15,8 @@
 import { 
     DataType,
     resolveNodeId,
-    AttributeIds
+    AttributeIds,
+    getHostname
 } from "node-opcua";
 import { 
     DataSetFieldContentMask,
@@ -39,8 +40,8 @@ import {
 
 
 const prefix = "umati"
-const dataPrefix = `${prefix}/json/data/urn:SampleServer-node-opcua`
-const metaPrefix = `${prefix}/json/metadata/urn:SampleServer-node-opcua`
+const dataPrefix = `${prefix}/json/data/urn:SampleServer-node-opcua-${getHostname()}`
+const metaPrefix = `${prefix}/json/metadata/urn:SampleServer-node-opcua-${getHostname()}`
 
 
 const createWriterGroup = (name: string, dataSetWriter: MyJsonDataSetWriterDataTypeOptions): MyMqttJsonWriterGroupDataTypeOptions => {
