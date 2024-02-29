@@ -76,7 +76,14 @@
             "http://opcfoundation.org/UA-Profile/Server/ACExclusiveAlarming",
             "http://opcfoundation.org/UA-Profile/Server/ACNon-ExclusiveAlarming",
             "http://opcfoundation.org/UA-Profile/Server/HistoricalRawData",
-            "http://opcfoundation.org/UA-Profile/Server/HistoricalDataAtTime"
+            "http://opcfoundation.org/UA-Profile/Server/HistoricalDataAtTime",
+            "http://opcfoundation.org/UA-Profile/Machinery/Server/MachineIdentification",
+            "http://opcfoundation.org/UA-Profile/Machinery/Server/State",
+            "http://opcfoundation.org/UA-Profile/IA/Server/Stacklight",
+            "http://opcfoundation.org/UA-Profile/MachineTool/Server/Basic",
+            "http://opcfoundation.org/UA-Profile/MachineTool/Server/Tools"
+
+
         ]
     }
 }
