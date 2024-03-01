@@ -1,4 +1,4 @@
-// Copyright 2023 (c) Andreas Krämer, basyskom GmbH - Germany
+// Copyright 2023 (c) Andreas Kraemer, basyskom GmbH - Germany
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ export const createWoodWorkingFullLogic = async (addressSpace: AddressSpace): Pr
     flHardwareRevNode?.setValueFromSource({ dataType: DataType.String, value: "V. 4.6" });
     //initOperDataNode?.setValueFromSource(    {dataType: DataType.DateTime, value: Date.now});
     flLocationNode?.setValueFromSource({ dataType: DataType.String, value: "Darmstadt" });
-    flLocationGpsNode?.setValueFromSource({ dataType: DataType.String, value: "S33°51'25.07\", E151°12'54.57\"" });
+    flLocationGpsNode?.setValueFromSource({ dataType: DataType.String, value: "S33ï¿½51'25.07\", E151ï¿½12'54.57\"" });
     flLocationPlantNode?.setValueFromSource({ dataType: DataType.String, value: "Darmstadt" });
     flLocationPlantNode?.setValueFromSource({ dataType: DataType.String, value: "Darmstadt" });
     flManufacturerUriNode?.setValueFromSource({ dataType: DataType.String, value: "https://www.basyskom.com" });
