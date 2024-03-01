@@ -46,7 +46,7 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createOwnServerAddressspaceLogic(addressSpace),
       createMyMachineLogic(addressSpace),
       createShowCaseMachineToolLogic(addressSpace),
-      createMachineToolExampleLogic(addressSpace),
+      // createMachineToolExampleLogic(addressSpace),
       createMotionDeviceSystemLogic(addressSpace),
       createGenericPRLogic(addressSpace),
       create40077Logic(addressSpace),
