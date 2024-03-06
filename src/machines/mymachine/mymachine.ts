@@ -22,6 +22,7 @@ import {
     setNamespaceMetaData,
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
+import { variableGetter } from './datasource'
 
 export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<void> => {
     // Add a machine manually:
@@ -102,6 +103,8 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         isForward: false,
     })
 
+
+
     // ProcessValues
 
     const processValuesIdx = addressSpace!.getNamespaceIndex("http://opcfoundation.org/UA/Machinery/ProcessValues/")
@@ -124,6 +127,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         nodeId: monitoringObject,
         isForward: false,
     })
+    const temperatureAnalogSignal = temperature.getChildByName("AnalogSignal") as UAVariable
+    temperatureAnalogSignal.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
 
     const pressure = processValuesType.instantiate({
         browseName: {
@@ -137,6 +145,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         nodeId: monitoringObject,
         isForward: false,
     })
+    const pressureAnalogSignal = pressure.getChildByName("AnalogSignal") as UAVariable
+    pressureAnalogSignal.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
 
 
     // instantiate components here -> organizedBy: myMachineComponents
