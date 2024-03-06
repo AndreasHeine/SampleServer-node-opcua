@@ -19,13 +19,17 @@ import {
     UAObject,
     AddressSpace,
     UAObjectType,
+    setNamespaceMetaData,
 } from 'node-opcua'
+import { ServerRolePermissionGroup } from '../../permissiongroups'
 
 export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<void> => {
     // Add a machine manually:
     const machineryIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/')
     const machinesFolder = addressSpace?.findNode(`ns=${machineryIdx};i=1001`) as UAObject
     const namespace = addressSpace?.registerNamespace('http://mynewmachinenamespace/UA')
+    namespace.setDefaultRolePermissions(ServerRolePermissionGroup.DEFAULT)
+    setNamespaceMetaData(namespace)
     const myMachine = namespace?.addObject({
         browseName: 'MyMachine',
         nodeId: `ns=${namespace.index};s=MyMachine`,
