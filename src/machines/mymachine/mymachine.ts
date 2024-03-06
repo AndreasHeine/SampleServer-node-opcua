@@ -22,7 +22,7 @@ import {
     setNamespaceMetaData,
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
-import { variableGetter } from './datasource'
+import { initializeFakeDataSource, variableGetter } from './datasource'
 
 export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<void> => {
     // Add a machine manually:
@@ -104,6 +104,7 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     })
 
 
+    initializeFakeDataSource(addressSpace)
 
     // ProcessValues
 
@@ -132,6 +133,16 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         timestamped_get: variableGetter,
         // timestamped_set: variableSetter
     }, true)
+    const temperatureAnalogSignalEURange = temperatureAnalogSignal.getChildByName("EURange") as UAVariable
+    temperatureAnalogSignalEURange.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
+    const temperatureAnalogSignalEngineeringUnits = temperatureAnalogSignal.getChildByName("EngineeringUnits") as UAVariable
+    temperatureAnalogSignalEngineeringUnits.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
 
     const pressure = processValuesType.instantiate({
         browseName: {
@@ -147,6 +158,16 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
     })
     const pressureAnalogSignal = pressure.getChildByName("AnalogSignal") as UAVariable
     pressureAnalogSignal.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
+    const pressureAnalogSignalEURange = pressureAnalogSignal.getChildByName("EURange") as UAVariable
+    pressureAnalogSignalEURange.bindVariable({
+        timestamped_get: variableGetter,
+        // timestamped_set: variableSetter
+    }, true)
+    const pressureAnalogSignalEngineeringUnits = pressureAnalogSignal.getChildByName("EngineeringUnits") as UAVariable
+    pressureAnalogSignalEngineeringUnits.bindVariable({
         timestamped_get: variableGetter,
         // timestamped_set: variableSetter
     }, true)
