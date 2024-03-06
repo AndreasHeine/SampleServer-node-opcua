@@ -113,5 +113,5 @@ export const ServerRolePermissionGroup = Object.freeze({
             PermissionType.Browse | 
             PermissionType.Read
     }
-  ]
+]
 });
