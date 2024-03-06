@@ -13,7 +13,7 @@
     "build": "tsc && pkg dst/server.js",
     "build_lds": "tsc && pkg dst/LocalDiscoveryServer/local-discovery-server.js",
     "update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
-    "update:dependencygraph": "depcruise --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg"
+    "update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg"
   },
   "repository": {
     "type": "git",
