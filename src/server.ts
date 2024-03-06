@@ -19,7 +19,7 @@ import {
   OPCUAServerEndPoint
 } from 'node-opcua';
 
-import { installPubSub } from "node-opcua-pubsub-server";
+import { InstallPubSubOptions, installPubSub } from "node-opcua-pubsub-server";
 import { constructMqttJsonPubSubConfiguration } from "./pubsub"
 
 import { green, yellow, red } from './utils/log';
@@ -79,8 +79,10 @@ const startUp = async (server: OPCUAServer): Promise<void> => {
     await createAddressSpace(server);
     server.engine.addressSpace?.installAlarmsAndConditionsService();
     installPubSub( server, {
+      // configuration: PubSubConfigurationDataTypeOptions;
+      // configurationFile?: string;
       configuration: constructMqttJsonPubSubConfiguration("mqtt://broker.hivemq.com:1883"),
-    })
+    } as InstallPubSubOptions)
     await startUp(server);
   } catch (error) {
     red(` error: ${error}`);
