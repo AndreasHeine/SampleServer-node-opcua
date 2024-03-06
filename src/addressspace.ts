@@ -59,6 +59,7 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       create40084_11Logic(addressSpace),
       createWoodWorkingBasicLogic(addressSpace),
       createWoodWorkingFullLogic(addressSpace),
+      createbrownfieldMTLogic(addressSpace),
       createLaserSystemLogic(addressSpace)
     ])
       .then(() => {
