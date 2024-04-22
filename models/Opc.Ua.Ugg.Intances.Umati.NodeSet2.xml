@@ -1,0 +1,2135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (c) 2024 United Grinding Group AG, All rights reserved.
+ *
+ * MIT License 1.00
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+-->
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s1="https://www.grinding.ch/UA/instances/umati/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/MachineTool/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/IA/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <NamespaceUris>
+        <Uri>https://www.grinding.ch/UA/instances/umati/</Uri>
+        <Uri>http://opcfoundation.org/UA/Machinery/</Uri>
+        <Uri>http://opcfoundation.org/UA/MachineTool/</Uri>
+        <Uri>http://opcfoundation.org/UA/DI/</Uri>
+        <Uri>http://opcfoundation.org/UA/IA/</Uri>
+    </NamespaceUris>
+    <Models>
+        <Model ModelUri="https://www.grinding.ch/UA/instances/umati/" PublicationDate="2024-04-22T12:00:00Z" Version="1.0.0">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2022-11-01T00:00:00Z" Version="1.05.02"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" PublicationDate="2022-11-03T00:00:00Z" Version="1.04.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" PublicationDate="2023-08-01T00:00:00Z" Version="1.03.0"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/IA/" PublicationDate="2022-06-15T00:00:00Z" Version="1.01.2"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/MachineTool/" PublicationDate="2022-07-04T12:00:00Z" Version="1.01.1"/>
+        </Model>
+    </Models>
+    <Aliases>
+        <Alias Alias="Boolean">i=1</Alias>
+        <Alias Alias="Byte">i=3</Alias>
+        <Alias Alias="UInt16">i=5</Alias>
+        <Alias Alias="UInt32">i=7</Alias>
+        <Alias Alias="Float">i=10</Alias>
+        <Alias Alias="Double">i=11</Alias>
+        <Alias Alias="String">i=12</Alias>
+        <Alias Alias="DateTime">i=13</Alias>
+        <Alias Alias="NodeId">i=17</Alias>
+        <Alias Alias="LocalizedText">i=21</Alias>
+        <Alias Alias="Organizes">i=35</Alias>
+        <Alias Alias="HasTypeDefinition">i=40</Alias>
+        <Alias Alias="HasProperty">i=46</Alias>
+        <Alias Alias="HasComponent">i=47</Alias>
+        <Alias Alias="HasNotifier">i=48</Alias>
+        <Alias Alias="HasOrderedComponent">i=49</Alias>
+        <Alias Alias="IdType">i=256</Alias>
+        <Alias Alias="NumericRange">i=291</Alias>
+        <Alias Alias="Range">i=884</Alias>
+        <Alias Alias="EUInformation">i=887</Alias>
+        <Alias Alias="HasAddIn">i=17604</Alias>
+        <Alias Alias="StacklightOperationMode">ns=5;i=3002</Alias>
+        <Alias Alias="SignalColor">ns=5;i=3004</Alias>
+        <Alias Alias="SignalModeLight">ns=5;i=3005</Alias>
+        <Alias Alias="ProcessIrregularity">ns=3;i=62</Alias>
+        <Alias Alias="PartQuality">ns=3;i=63</Alias>
+        <Alias Alias="ChannelState">ns=3;i=64</Alias>
+        <Alias Alias="MachineOperationMode">ns=3;i=65</Alias>
+        <Alias Alias="ChannelMode">ns=3;i=67</Alias>
+    </Aliases>
+    <Extensions>
+        <Extension>
+            <si:Generator xmlns:si="http://www.siemens.com/OPCUA/2017/SimaticNodeSetExtensions" Product="SiOME" Edition="Standard" Version="2.8.1"/>
+        </Extension>
+        <Extension>
+            <si:GeneratorExtension xmlns:si="http://www.siemens.com/OPCUA/2017/SimaticNodeSetExtensions" Hash="767370389798657da6e360f6c9fb8746"/>
+        </Extension>
+        <Extension>
+            <ua:ModelInfo Tool="UaModeler" Hash="hGyZCjr/oFID6FrmY74xww==" Version="1.6.11"/>
+        </Extension>
+    </Extensions>
+    <UAObject SymbolicName="M_GERLE_0200018447_UGG0001" ParentNodeId="ns=2;i=1001" EventNotifier="1" NodeId="ns=1;s=MyMachine" BrowseName="1:MÄGERLE 0200018447 UGG0001">
+        <DisplayName>MÄGERLE 0200018447 UGG0001</DisplayName>
+        <Description>Main entry point of 'umati' model.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=13</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Equipment</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;s=MyMachine.Identification</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.MachineryBuildingBlocks</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=1001</Reference>
+            <Reference ReferenceType="HasNotifier" IsForward="false">ns=2;i=1001</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Notification</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.Equipment" BrowseName="3:Equipment">
+        <DisplayName>Equipment</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=12</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.Identification" BrowseName="4:Identification">
+        <DisplayName>Identification</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=11</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.AssetId</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.ComponentName</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.DeviceClass</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.HardwareRevision</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;s=MyMachine</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.InitialOperationDate</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.Location</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.Manufacturer</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.ManufacturerUri</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.Model</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.MonthOfConstruction</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.ProductCode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.ProductInstanceUri</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SerialNumber</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Identification.SoftwareIdentification</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareRevision</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.YearOfConstruction</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.AssetId" BrowseName="4:AssetId" AccessLevel="3">
+        <DisplayName>AssetId</DisplayName>
+        <Description Locale="en">To be used by end users to store a unique identification in the context of their overall application. Servers shall support at least 40 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 40 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>9900-0001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.ComponentName" BrowseName="4:ComponentName">
+        <DisplayName>ComponentName</DisplayName>
+        <Description Locale="en">To be used by end users to store a human-readable localized text for the MachineryItem. The minimum number of locales supported for this property shall be two. Servers shall support at least 40 Unicode characters for the clients writing the text part of each locale, this means clients can expect to be able to write texts with a length of 40 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>Test machine</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.DeviceClass" BrowseName="4:DeviceClass">
+        <DisplayName>DeviceClass</DisplayName>
+        <Description Locale="en">Indicates in which domain or for what purpose the MachineryItem is used.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>Grinding machine</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.HardwareRevision" BrowseName="4:HardwareRevision">
+        <DisplayName>HardwareRevision</DisplayName>
+        <Description Locale="en">A string representation of the revision level of the hardware of a MachineryItem. Hardware is physical equipment, as opposed to programs, procedures, rules and associated documentation. Many machines will not provide such information due to the modular and configurable nature of the machine.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>Release</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.InitialOperationDate" BrowseName="2:InitialOperationDate">
+        <DisplayName>InitialOperationDate</DisplayName>
+        <Description Locale="en">The date, when the MachineryItem was switched on the first time after it has left the manufacturer plant.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2022-11-25T09:22:09Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.Location" BrowseName="2:Location" AccessLevel="3">
+        <DisplayName>Location</DisplayName>
+        <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>GRIND 9 C51/UGG Digital Lab Bern, CH/N46.56528, E26.506400</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.Manufacturer" BrowseName="4:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>de-de</uax:Locale>
+                <uax:Text>MÄGERLE</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.ManufacturerUri" BrowseName="4:ManufacturerUri">
+        <DisplayName>ManufacturerUri</DisplayName>
+        <Description Locale="en">A globally unique identifier of the manufacturer of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>https://www.maegerle.com/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.Model" BrowseName="4:Model">
+        <DisplayName>Model</DisplayName>
+        <Description Locale="en">A human-readable, localized name of the model of the MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>MFP-30</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Byte" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.MonthOfConstruction" BrowseName="2:MonthOfConstruction">
+        <DisplayName>MonthOfConstruction</DisplayName>
+        <Description Locale="en">The month in which the manufacturing process of the MachineryItem has been completed. It shall be a number between 1 and 12, representing the month from January to December.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:Byte>11</uax:Byte>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.ProductCode" BrowseName="4:ProductCode">
+        <DisplayName>ProductCode</DisplayName>
+        <Description Locale="en">A machine-readable string of the model of the MachineryItem, that might include options like the hardware configuration of the model. This information might be provided by the ERP system of the vendor. For example, it can be used as order information.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>0200018447</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.ProductInstanceUri" BrowseName="4:ProductInstanceUri">
+        <DisplayName>ProductInstanceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>https://www.maegerle.com/en/grinding-machines/detailed-view/product/mfp-30/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.SerialNumber" BrowseName="4:SerialNumber">
+        <DisplayName>SerialNumber</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>UGG0001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification" BrowseName="3:SoftwareIdentification">
+        <DisplayName>SoftwareIdentification</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core" BrowseName="3:Core">
+        <DisplayName>Core</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=43</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.Identifier</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.Manufacturer</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.SoftwareRevision</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.Identifier" BrowseName="3:Identifier">
+        <DisplayName>Identifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core</Reference>
+        </References>
+        <Value>
+            <uax:String>Core</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.Manufacturer" BrowseName="4:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core</Reference>
+        </References>
+        <Value>
+            <uax:String>United Grinding Group</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.Core.SoftwareRevision" BrowseName="4:SoftwareRevision">
+        <DisplayName>SoftwareRevision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification.Core</Reference>
+        </References>
+        <Value>
+            <uax:String>3.7.118.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati" BrowseName="1:umati">
+        <DisplayName>umati</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=43</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.Identifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.Manufacturer</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.SoftwareRevision</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.Identifier" BrowseName="3:Identifier">
+        <DisplayName>Identifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati</Reference>
+        </References>
+        <Value>
+            <uax:String>umati</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.Manufacturer" BrowseName="4:Manufacturer">
+        <DisplayName>Manufacturer</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati</Reference>
+        </References>
+        <Value>
+            <uax:String>United Grinding Group</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati" NodeId="ns=1;s=MyMachine.Identification.SoftwareIdentification.umati.SoftwareRevision" BrowseName="4:SoftwareRevision">
+        <DisplayName>SoftwareRevision</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification.SoftwareIdentification1.umati</Reference>
+        </References>
+        <Value>
+            <uax:String>umati_BASIC_V1.01</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.SoftwareRevision" BrowseName="4:SoftwareRevision">
+        <DisplayName>SoftwareRevision</DisplayName>
+        <Description Locale="en">A string representation of the revision level of a MachineryItem. In most cases, MachineryItems consist of several software components. In that case, information about the software components might be provided as additional information in the address space, including individual revision information. In that case, this property is either not provided or provides an overall software revision level. The value might change during the life-cycle of a MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:String>3.17.80</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Identification" NodeId="ns=1;s=MyMachine.Identification.YearOfConstruction" BrowseName="2:YearOfConstruction">
+        <DisplayName>YearOfConstruction</DisplayName>
+        <Description Locale="en">The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Identification</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>2022</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.MachineryBuildingBlocks" BrowseName="2:MachineryBuildingBlocks">
+        <DisplayName>MachineryBuildingBlocks</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState" BrowseName="2:MachineryItemState">
+        <DisplayName>MachineryItemState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=1002</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;s=MyMachine.MachineryBuildingBlocks</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState" BrowseName="CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState.Id</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>Executing</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NodeId" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState.Id" BrowseName="Id">
+        <DisplayName>Id</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=2;i=5006</uax:Identifier>
+            </uax:NodeId>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode" BrowseName="2:MachineryOperationMode">
+        <DisplayName>MachineryOperationMode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1003</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;s=MyMachine.MachineryBuildingBlocks</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState" BrowseName="CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState.Id</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>Processing</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NodeId" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState.Id" BrowseName="Id">
+        <DisplayName>Id</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=2;i=5026</uax:Identifier>
+            </uax:NodeId>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.Monitoring" BrowseName="3:Monitoring">
+        <DisplayName>Monitoring</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=14</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.SP1</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.SP2</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring" NodeId="ns=1;s=MyMachine.Monitoring.Ch1" BrowseName="1:Ch1">
+        <DisplayName>Ch1</DisplayName>
+        <Description>Provides information about a machine channel</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=16</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelMode</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelState</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.Name</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="ChannelMode" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelMode" BrowseName="3:ChannelMode">
+        <DisplayName>ChannelMode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" BrowseName="1:ChannelModifiers">
+        <DisplayName>ChannelModifiers</DisplayName>
+        <Description>Provides information about channel modifiers</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=33</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.BlockSkip</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.DryRun</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.OptionalStop</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.SingleStep</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.TestMode</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.BlockSkip" BrowseName="3:BlockSkip">
+        <DisplayName>BlockSkip</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.DryRun" BrowseName="3:DryRun" AccessLevel="3">
+        <DisplayName>DryRun</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.OptionalStop" BrowseName="3:OptionalStop" AccessLevel="3">
+        <DisplayName>OptionalStop</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.SingleStep" BrowseName="3:SingleStep" AccessLevel="3">
+        <DisplayName>SingleStep</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers.TestMode" BrowseName="3:TestMode">
+        <DisplayName>TestMode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.ChannelModifiers</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="ChannelState" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.ChannelState" BrowseName="3:ChannelState">
+        <DisplayName>ChannelState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride" BrowseName="3:FeedOverride">
+        <DisplayName>FeedOverride</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride.EngineeringUnits</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride.EURange</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+        </References>
+        <Value>
+            <uax:Double>125</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride.EngineeringUnits" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.FeedOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>125</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+        </References>
+        <Value>
+            <uax:String>Ch1</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride" BrowseName="3:RapidOverride">
+        <DisplayName>RapidOverride</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride.EngineeringUnits</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1</Reference>
+        </References>
+        <Value>
+            <uax:Double>100</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride.EngineeringUnits" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride" NodeId="ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Ch1.RapidOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>125</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool" BrowseName="3:MachineTool">
+        <DisplayName>MachineTool</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=26</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.IsWarmUp</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.IsWarmUp</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryItemState</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;s=MyMachine.Monitoring.MachineTool.MachineryOperationMode</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.OperationMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.PowerOnDuration</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.MachineTool.PowerOnDuration</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride" BrowseName="3:FeedOverride">
+        <DisplayName>FeedOverride</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride.EngineeringUnits</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+        </References>
+        <Value>
+            <uax:Double>125</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride.EngineeringUnits" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool.FeedOverride</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>125</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.IsWarmUp" BrowseName="3:IsWarmUp">
+        <DisplayName>IsWarmUp</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="MachineOperationMode" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.OperationMode" BrowseName="3:OperationMode">
+        <DisplayName>OperationMode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+        </References>
+        <Value>
+            <uax:Int32>1</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Monitoring.MachineTool" NodeId="ns=1;s=MyMachine.Monitoring.MachineTool.PowerOnDuration" BrowseName="3:PowerOnDuration">
+        <DisplayName>PowerOnDuration</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.MachineTool</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>725</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring" NodeId="ns=1;s=MyMachine.Monitoring.SP1" BrowseName="1:SP1">
+        <DisplayName>SP1</DisplayName>
+        <Description>Provides information about a spindle</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=22</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.SP1.IsRotating</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP1.IsUsedAsAxis</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP1.Name</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP1.Override</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1" NodeId="ns=1;s=MyMachine.Monitoring.SP1.IsRotating" BrowseName="3:IsRotating">
+        <DisplayName>IsRotating</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1" NodeId="ns=1;s=MyMachine.Monitoring.SP1.IsUsedAsAxis" BrowseName="3:IsUsedAsAxis">
+        <DisplayName>IsUsedAsAxis</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1" NodeId="ns=1;s=MyMachine.Monitoring.SP1.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1</Reference>
+        </References>
+        <Value>
+            <uax:String>SP1</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1" NodeId="ns=1;s=MyMachine.Monitoring.SP1.Override" BrowseName="3:Override">
+        <DisplayName>Override</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP1.Override.EngineeringUnits</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP1.Override.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1</Reference>
+        </References>
+        <Value>
+            <uax:Double>0</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1.Override" NodeId="ns=1;s=MyMachine.Monitoring.SP1.Override.EngineeringUnits" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1.Override</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP1.Override" NodeId="ns=1;s=MyMachine.Monitoring.SP1.Override.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP1.Override</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring" NodeId="ns=1;s=MyMachine.Monitoring.SP2" BrowseName="1:SP2">
+        <DisplayName>SP2</DisplayName>
+        <Description>Provides information about a spindle</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=22</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Monitoring.SP2.IsRotating</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP2.IsUsedAsAxis</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP2.Name</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP2.Override</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2" NodeId="ns=1;s=MyMachine.Monitoring.SP2.IsRotating" BrowseName="3:IsRotating">
+        <DisplayName>IsRotating</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2" NodeId="ns=1;s=MyMachine.Monitoring.SP2.IsUsedAsAxis" BrowseName="3:IsUsedAsAxis">
+        <DisplayName>IsUsedAsAxis</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2" NodeId="ns=1;s=MyMachine.Monitoring.SP2.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2</Reference>
+        </References>
+        <Value>
+            <uax:String>SP2</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Double" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2" NodeId="ns=1;s=MyMachine.Monitoring.SP2.Override" BrowseName="3:Override">
+        <DisplayName>Override</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP2.Override.EngineeringUnits</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.SP2.Override.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2</Reference>
+        </References>
+        <Value>
+            <uax:Double>100</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="EUInformation" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2.Override" NodeId="ns=1;s=MyMachine.Monitoring.SP2.Override.EngineeringUnits" BrowseName="EngineeringUnits">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2.Override</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.SP2.Override" NodeId="ns=1;s=MyMachine.Monitoring.SP2.Override.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.SP2.Override</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight" BrowseName="3:Stacklight">
+        <DisplayName>Stacklight</DisplayName>
+        <Description>Contains the information about a stacklight’s composition and status.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1002</Reference>
+            <Reference ReferenceType="HasOrderedComponent">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+            <Reference ReferenceType="HasOrderedComponent">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+            <Reference ReferenceType="HasOrderedComponent">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+            <Reference ReferenceType="HasOrderedComponent">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+            <Reference ReferenceType="HasOrderedComponent">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Monitoring</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.StacklightMode</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" BrowseName="1:Lamp1">
+        <DisplayName>Lamp1</DisplayName>
+        <Description>Represents a lamp element in a stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1006</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.IsPartOfBase</Reference>
+            <Reference ReferenceType="HasOrderedComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalColor</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalOn</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Float" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity" BrowseName="5:Intensity">
+        <DisplayName>Intensity</DisplayName>
+        <Description>Intensity of the lamp, thus its brightness. The mandatory EURange Property of the Variable indicates the lowest and highest value and thereby allows to calculate the percentage represented by the value. The lowest value is interpreted as 0 percent, the highest is interpreted as 100 percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:Float>99</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.Intensity</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.IsPartOfBase" BrowseName="5:IsPartOfBase">
+        <DisplayName>IsPartOfBase</DisplayName>
+        <Description>Indicates, if the element is contained in the mounting base of the stacklight. All elements contained in the mounting base shall be at the beginning of the list of stack elements.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.NumberInList" BrowseName="NumberInList">
+        <DisplayName>NumberInList</DisplayName>
+        <Description>Enumerate the stacklight elements counting upwards beginning from the base of the stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalColor" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalColor" BrowseName="5:SignalColor">
+        <DisplayName>SignalColor</DisplayName>
+        <Description>Indicates the colour the lamp element has when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>1</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalMode" BrowseName="5:SignalMode">
+        <DisplayName>SignalMode</DisplayName>
+        <Description>Shows in what way the lamp is used (continuous light, flashing, blinking) when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1.SignalOn" BrowseName="5:SignalOn">
+        <DisplayName>SignalOn</DisplayName>
+        <Description>Indicates if the signal emitted by the stack element is currently switched on or not.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp1</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" BrowseName="1:Lamp2">
+        <DisplayName>Lamp2</DisplayName>
+        <Description>Represents a lamp element in a stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1006</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.IsPartOfBase</Reference>
+            <Reference ReferenceType="HasOrderedComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalColor</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalOn</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Float" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity" BrowseName="5:Intensity">
+        <DisplayName>Intensity</DisplayName>
+        <Description>Intensity of the lamp, thus its brightness. The mandatory EURange Property of the Variable indicates the lowest and highest value and thereby allows to calculate the percentage represented by the value. The lowest value is interpreted as 0 percent, the highest is interpreted as 100 percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:Float>80</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.Intensity</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.IsPartOfBase" BrowseName="5:IsPartOfBase">
+        <DisplayName>IsPartOfBase</DisplayName>
+        <Description>Indicates, if the element is contained in the mounting base of the stacklight. All elements contained in the mounting base shall be at the beginning of the list of stack elements.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.NumberInList" BrowseName="NumberInList" AccessLevel="3">
+        <DisplayName>NumberInList</DisplayName>
+        <Description>Enumerate the stacklight elements counting upwards beginning from the base of the stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>1</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalColor" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalColor" BrowseName="5:SignalColor">
+        <DisplayName>SignalColor</DisplayName>
+        <Description>Indicates the colour the lamp element has when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:Int32>4</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalMode" BrowseName="5:SignalMode">
+        <DisplayName>SignalMode</DisplayName>
+        <Description>Shows in what way the lamp is used (continuous light, flashing, blinking) when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2.SignalOn" BrowseName="5:SignalOn">
+        <DisplayName>SignalOn</DisplayName>
+        <Description>Indicates if the signal emitted by the stack element is currently switched on or not.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp2</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" BrowseName="1:Lamp3">
+        <DisplayName>Lamp3</DisplayName>
+        <Description>Represents a lamp element in a stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1006</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.IsPartOfBase</Reference>
+            <Reference ReferenceType="HasOrderedComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalColor</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalOn</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Float" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity" BrowseName="5:Intensity">
+        <DisplayName>Intensity</DisplayName>
+        <Description>Intensity of the lamp, thus its brightness. The mandatory EURange Property of the Variable indicates the lowest and highest value and thereby allows to calculate the percentage represented by the value. The lowest value is interpreted as 0 percent, the highest is interpreted as 100 percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:Float>70</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.Intensity</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.IsPartOfBase" BrowseName="5:IsPartOfBase">
+        <DisplayName>IsPartOfBase</DisplayName>
+        <Description>Indicates, if the element is contained in the mounting base of the stacklight. All elements contained in the mounting base shall be at the beginning of the list of stack elements.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.NumberInList" BrowseName="NumberInList" AccessLevel="3">
+        <DisplayName>NumberInList</DisplayName>
+        <Description>Enumerate the stacklight elements counting upwards beginning from the base of the stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>2</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalColor" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalColor" BrowseName="5:SignalColor">
+        <DisplayName>SignalColor</DisplayName>
+        <Description>Indicates the colour the lamp element has when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:Int32>2</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalMode" BrowseName="5:SignalMode">
+        <DisplayName>SignalMode</DisplayName>
+        <Description>Shows in what way the lamp is used (continuous light, flashing, blinking) when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3.SignalOn" BrowseName="5:SignalOn">
+        <DisplayName>SignalOn</DisplayName>
+        <Description>Indicates if the signal emitted by the stack element is currently switched on or not.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp3</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" BrowseName="1:Lamp4">
+        <DisplayName>Lamp4</DisplayName>
+        <Description>Represents a lamp element in a stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1006</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.IsPartOfBase</Reference>
+            <Reference ReferenceType="HasOrderedComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalColor</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalOn</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Float" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity" BrowseName="5:Intensity">
+        <DisplayName>Intensity</DisplayName>
+        <Description>Intensity of the lamp, thus its brightness. The mandatory EURange Property of the Variable indicates the lowest and highest value and thereby allows to calculate the percentage represented by the value. The lowest value is interpreted as 0 percent, the highest is interpreted as 100 percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:Float>60</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.Intensity</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.IsPartOfBase" BrowseName="5:IsPartOfBase">
+        <DisplayName>IsPartOfBase</DisplayName>
+        <Description>Indicates, if the element is contained in the mounting base of the stacklight. All elements contained in the mounting base shall be at the beginning of the list of stack elements.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.NumberInList" BrowseName="NumberInList" AccessLevel="3">
+        <DisplayName>NumberInList</DisplayName>
+        <Description>Enumerate the stacklight elements counting upwards beginning from the base of the stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>3</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalColor" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalColor" BrowseName="5:SignalColor">
+        <DisplayName>SignalColor</DisplayName>
+        <Description>Indicates the colour the lamp element has when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:Int32>3</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalMode" BrowseName="5:SignalMode">
+        <DisplayName>SignalMode</DisplayName>
+        <Description>Shows in what way the lamp is used (continuous light, flashing, blinking) when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4.SignalOn" BrowseName="5:SignalOn">
+        <DisplayName>SignalOn</DisplayName>
+        <Description>Indicates if the signal emitted by the stack element is currently switched on or not.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp4</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" BrowseName="1:Lamp5">
+        <DisplayName>Lamp5</DisplayName>
+        <Description>Represents a lamp element in a stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=5;i=1006</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.IsPartOfBase</Reference>
+            <Reference ReferenceType="HasOrderedComponent" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalColor</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalMode</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalOn</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Float" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity" BrowseName="5:Intensity">
+        <DisplayName>Intensity</DisplayName>
+        <Description>Intensity of the lamp, thus its brightness. The mandatory EURange Property of the Variable indicates the lowest and highest value and thereby allows to calculate the percentage represented by the value. The lowest value is interpreted as 0 percent, the highest is interpreted as 100 percent.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2368</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity.EURange</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:Float>55</uax:Float>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Range" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity.EURange" BrowseName="EURange">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.Intensity</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>100</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.IsPartOfBase" BrowseName="5:IsPartOfBase">
+        <DisplayName>IsPartOfBase</DisplayName>
+        <Description>Indicates, if the element is contained in the mounting base of the stacklight. All elements contained in the mounting base shall be at the beginning of the list of stack elements.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.NumberInList" BrowseName="NumberInList" AccessLevel="3">
+        <DisplayName>NumberInList</DisplayName>
+        <Description>Enumerate the stacklight elements counting upwards beginning from the base of the stacklight.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>4</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalColor" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalColor" BrowseName="5:SignalColor">
+        <DisplayName>SignalColor</DisplayName>
+        <Description>Indicates the colour the lamp element has when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:Int32>7</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="SignalModeLight" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalMode" BrowseName="5:SignalMode">
+        <DisplayName>SignalMode</DisplayName>
+        <Description>Shows in what way the lamp is used (continuous light, flashing, blinking) when switched on.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5.SignalOn" BrowseName="5:SignalOn">
+        <DisplayName>SignalOn</DisplayName>
+        <Description>Indicates if the signal emitted by the stack element is currently switched on or not.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight.Lamp5</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="StacklightOperationMode" ParentNodeId="ns=1;s=MyMachine.Monitoring.Stacklight" NodeId="ns=1;s=MyMachine.Monitoring.Stacklight.StacklightMode" BrowseName="5:StacklightMode" AccessLevel="3">
+        <DisplayName>StacklightMode</DisplayName>
+        <Description>Shows in what way (stack of individual lights, level meter, running light) the stacklight unit is used.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Monitoring.Stacklight</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.Notification" BrowseName="3:Notification">
+        <DisplayName>Notification</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=7</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Notification.Messages</Reference>
+            <Reference ReferenceType="HasNotifier">ns=1;s=MyMachine.Notification.Messages</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Notification" EventNotifier="1" NodeId="ns=1;s=MyMachine.Notification.Messages" BrowseName="1:Messages">
+        <DisplayName>Messages</DisplayName>
+        <Description>Messages is the node sending events, which are used for errors, warnings and messages.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Notification</Reference>
+            <Reference ReferenceType="HasNotifier" IsForward="false">ns=1;s=MyMachine.Notification</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine" NodeId="ns=1;s=MyMachine.Production" BrowseName="3:Production">
+        <DisplayName>Production</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=21</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.Statistics</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production" NodeId="ns=1;s=MyMachine.Production.ActiveProgram" BrowseName="3:ActiveProgram">
+        <DisplayName>ActiveProgram</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=32</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.JobIdentifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.JobNodeId</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.Name</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.NumberInList</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ActiveProgram.State</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.JobIdentifier" BrowseName="3:JobIdentifier">
+        <DisplayName>JobIdentifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+        </References>
+        <Value>
+            <uax:String>Job0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NodeId" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.JobNodeId" BrowseName="3:JobNodeId">
+        <DisplayName>JobNodeId</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=1;i=0</uax:Identifier>
+            </uax:NodeId>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+        </References>
+        <Value>
+            <uax:String>Job0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.NumberInList" BrowseName="NumberInList">
+        <DisplayName>NumberInList</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.State" BrowseName="3:State">
+        <DisplayName>State</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=15</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram.State" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState" BrowseName="CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram.State</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState.Id</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState.Number</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>Running</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NodeId" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState.Id" BrowseName="Id">
+        <DisplayName>Id</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=3;i=5041</uax:Identifier>
+            </uax:NodeId>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState" NodeId="ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState.Number" BrowseName="Number">
+        <DisplayName>Number</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ActiveProgram.State.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>1</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production" NodeId="ns=1;s=MyMachine.Production.ProductionPlan" BrowseName="1:ProductionPlan">
+        <DisplayName>ProductionPlan</DisplayName>
+        <Description>Used for structuring objects of ProductionJobType in an ordered list structure.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=30</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.NodeVersion</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" BrowseName="1:Job0">
+        <DisplayName>Job0</DisplayName>
+        <Description>Provides aggregated production data for running a sequence to produce several parts after one preparation mounting.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=29</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.CustomerOrderIdentifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.Identifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.NumberInList</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.OrderIdentifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartsCompleted</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartsCompleted</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsCompleted</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.CustomerOrderIdentifier" BrowseName="3:CustomerOrderIdentifier">
+        <DisplayName>CustomerOrderIdentifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:String>0815-4711</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.Identifier" BrowseName="3:Identifier">
+        <DisplayName>Identifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:String>Job0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.NumberInList" BrowseName="NumberInList">
+        <DisplayName>NumberInList</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.OrderIdentifier" BrowseName="3:OrderIdentifier">
+        <DisplayName>OrderIdentifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:String>UGG0815-4711</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartsCompleted" BrowseName="3:PartsCompleted">
+        <DisplayName>PartsCompleted</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>102</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets" BrowseName="1:PartSets">
+        <DisplayName>PartSets</DisplayName>
+        <Description>PartSets contains a list of ProductionPartSetType nodes related to the job. It is a list of the part sets, which contain the parts produced in the current run of the job.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.NodeVersion</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.NodeVersion" BrowseName="NodeVersion">
+        <DisplayName>NodeVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets</Reference>
+        </References>
+        <Value>
+            <uax:String>202404220001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" BrowseName="1:PartSet0">
+        <DisplayName>PartSet0</DisplayName>
+        <Description>Is used to group parts within a production job. It also contains information about the parts in the group.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=34</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.ContainsMixedParts</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.Name</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsCompletedPerRun</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPlannedPerRun</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.ContainsMixedParts" BrowseName="3:ContainsMixedParts">
+        <DisplayName>ContainsMixedParts</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+        </References>
+        <Value>
+            <uax:String>PartSet0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsCompletedPerRun" BrowseName="3:PartsCompletedPerRun">
+        <DisplayName>PartsCompletedPerRun</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>1</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun" BrowseName="1:PartsPerRun">
+        <DisplayName>PartsPerRun</DisplayName>
+        <Description>Contains a list of the parts in the current run of the job.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.NodeVersion</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+        </References>
+    </UAObject>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" BrowseName="1:Part0">
+        <DisplayName>Part0</DisplayName>
+        <Description>Represents a part. A part is the workpiece of the machine tool which is treated in the purpose of the machine tool.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=56</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.CustomerOrderIdentifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.Identifier</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.Name</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.PartQuality</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.ProcessIrregularity</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.CustomerOrderIdentifier" BrowseName="3:CustomerOrderIdentifier">
+        <DisplayName>CustomerOrderIdentifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+        </References>
+        <Value>
+            <uax:String>0815-4711</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.Identifier" BrowseName="3:Identifier">
+        <DisplayName>Identifier</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+        </References>
+        <Value>
+            <uax:String>Part0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+        </References>
+        <Value>
+            <uax:String>Part0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="PartQuality" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.PartQuality" BrowseName="3:PartQuality">
+        <DisplayName>PartQuality</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="ProcessIrregularity" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0.ProcessIrregularity" BrowseName="3:ProcessIrregularity">
+        <DisplayName>ProcessIrregularity</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.Part0</Reference>
+        </References>
+        <Value>
+            <uax:Int32>0</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun.NodeVersion" BrowseName="NodeVersion">
+        <DisplayName>NodeVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPerRun</Reference>
+        </References>
+        <Value>
+            <uax:String>202404220001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0.PartsPlannedPerRun" BrowseName="3:PartsPlannedPerRun">
+        <DisplayName>PartsPlannedPerRun</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.PartSets.PartSet0</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>1</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms" BrowseName="3:ProductionPrograms">
+        <DisplayName>ProductionPrograms</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=23518</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.NodeVersion</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.NodeVersion" BrowseName="NodeVersion">
+        <DisplayName>NodeVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms</Reference>
+        </References>
+        <Value>
+            <uax:String>202404220001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0" BrowseName="1:Program0">
+        <DisplayName>Program0</DisplayName>
+        <Description>The representation of a program.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=59</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0.Name</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0.NumberInList</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0.Name" BrowseName="3:Name">
+        <DisplayName>Name</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0</Reference>
+        </References>
+        <Value>
+            <uax:String>Test-Program</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt16" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0.NumberInList" BrowseName="NumberInList">
+        <DisplayName>NumberInList</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.ProductionPrograms.Program0</Reference>
+        </References>
+        <Value>
+            <uax:UInt16>0</uax:UInt16>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsCompleted" BrowseName="3:RunsCompleted">
+        <DisplayName>RunsCompleted</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>102</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned" BrowseName="3:RunsPlanned">
+        <DisplayName>RunsPlanned</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned.IsValid</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>200</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned.IsValid" BrowseName="3:IsValid">
+        <DisplayName>IsValid</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.RunsPlanned</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>true</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State" BrowseName="3:State">
+        <DisplayName>State</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=28</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState" BrowseName="CurrentState">
+        <DisplayName>CurrentState</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState.Id</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState.Number</Reference>
+        </References>
+        <Value>
+            <uax:LocalizedText>
+                <uax:Locale>en-en</uax:Locale>
+                <uax:Text>Running</uax:Text>
+            </uax:LocalizedText>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="NodeId" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState.Id" BrowseName="Id">
+        <DisplayName>Id</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:NodeId>
+                <uax:Identifier>ns=3;i=5017</uax:Identifier>
+            </uax:NodeId>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState.Number" BrowseName="Number">
+        <DisplayName>Number</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan.Job0.State.CurrentState</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>1</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;s=MyMachine.Production.ProductionPlan" NodeId="ns=1;s=MyMachine.Production.ProductionPlan.NodeVersion" BrowseName="NodeVersion">
+        <DisplayName>NodeVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.ProductionPlan</Reference>
+        </References>
+        <Value>
+            <uax:String>202404220001</uax:String>
+        </Value>
+    </UAVariable>
+    <UAObject ParentNodeId="ns=1;s=MyMachine.Production" NodeId="ns=1;s=MyMachine.Production.Statistics" BrowseName="1:Statistics">
+        <DisplayName>Statistics</DisplayName>
+        <Description>Contains statistics information related to the production.</Description>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=20</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;s=MyMachine.Production.Statistics.PartsProducedInLifetime</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=MyMachine.Production</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="UInt32" ParentNodeId="ns=1;s=MyMachine.Production.Statistics" NodeId="ns=1;s=MyMachine.Production.Statistics.PartsProducedInLifetime" BrowseName="3:PartsProducedInLifetime">
+        <DisplayName>PartsProducedInLifetime</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=MyMachine.Production.Statistics</Reference>
+        </References>
+        <Value>
+            <uax:UInt32>21583</uax:UInt32>
+        </Value>
+    </UAVariable>
+    <UAObject SymbolicName="https___www_grinding_ch_UA_instances_umati_" NodeId="ns=1;i=5001" BrowseName="1:https://www.grinding.ch/UA/instances/umati/">
+        <DisplayName>https://www.grinding.ch/UA/instances/umati/</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">i=11715</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6010</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6011</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6012</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6013</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6014</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6015</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6016</Reference>
+        </References>
+    </UAObject>
+    <UAVariable DataType="Boolean" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6010" BrowseName="IsNamespaceSubset">
+        <DisplayName>IsNamespaceSubset</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+        <Value>
+            <uax:Boolean>false</uax:Boolean>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="DateTime" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6011" BrowseName="NamespacePublicationDate">
+        <DisplayName>NamespacePublicationDate</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+        <Value>
+            <uax:DateTime>2024-04-22T12:00:00Z</uax:DateTime>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6012" BrowseName="NamespaceUri">
+        <DisplayName>NamespaceUri</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+        <Value>
+            <uax:String>https://www.grinding.ch/UA/instances/umati/</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6013" BrowseName="NamespaceVersion">
+        <DisplayName>NamespaceVersion</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+        <Value>
+            <uax:String>1.0.0</uax:String>
+        </Value>
+    </UAVariable>
+    <UAVariable DataType="IdType" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6014" ArrayDimensions="0" BrowseName="StaticNodeIdTypes">
+        <DisplayName>StaticNodeIdTypes</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="NumericRange" ParentNodeId="ns=1;i=5001" ValueRank="1" NodeId="ns=1;i=6015" ArrayDimensions="0" BrowseName="StaticNumericNodeIdRange">
+        <DisplayName>StaticNumericNodeIdRange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+    <UAVariable DataType="String" ParentNodeId="ns=1;i=5001" NodeId="ns=1;i=6016" BrowseName="StaticStringNodeIdPattern">
+        <DisplayName>StaticStringNodeIdPattern</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
+        </References>
+    </UAVariable>
+</UANodeSet>

@@ -36,6 +36,7 @@ import { createWoodWorkingBasicLogic } from './machines/WoodWorking/ww_basic';
 import { createWoodWorkingFullLogic } from './machines/WoodWorking/ww_full';
 import { createbrownfieldMTLogic } from './machines/machinetool/brownfieldmachinetool';
 import { createLaserSystemLogic } from './machines/LaserSystem/LaserSystem';
+import { createUGGgrindingMachineLogic } from './machines/machinetool/UGGgrindingmachine';
 
 
 
@@ -60,7 +61,8 @@ export const createAddressSpace = async (server: OPCUAServer): Promise<void> => 
       createWoodWorkingBasicLogic(addressSpace),
       createWoodWorkingFullLogic(addressSpace),
       createbrownfieldMTLogic(addressSpace),
-      createLaserSystemLogic(addressSpace)
+      createLaserSystemLogic(addressSpace),
+      createUGGgrindingMachineLogic(addressSpace),
     ])
       .then(() => {
         green(' Creating AddressSpace done! ');

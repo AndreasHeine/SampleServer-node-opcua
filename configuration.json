@@ -5,8 +5,8 @@
         "productUri": "SampleServer-productUri",
         "productName": "SampleServer-productName",
         "manufacturerName": "SampleServer-manufacturerName",
-        "buildNumber": "v1.0.0",
-        "buildDate": "2022-01-27T00:00:00.0Z"
+        "buildNumber": "v1.1.0",
+        "buildDate": "2024-04-22T00:00:00.0Z"
     },
     "serverInfo": {
         "applicationName": {
@@ -56,7 +56,8 @@
         "./nodesets/opc.ua.machinery.processvalues.xml",
         "./models/paefs.xml",
         "./models/umati_brownfieldMT.xml",
-        "./models/LaserSystem-Example.xml"
+        "./models/LaserSystem-Example.xml",
+        "./models/Opc.Ua.Ugg.Intances.Umati.NodeSet2.xml"
         
     ],
     "serverCapabilities": {
