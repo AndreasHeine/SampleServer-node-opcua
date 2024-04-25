@@ -21,144 +21,111 @@ import {
     NodeId,
     NodeIdType,
 } from 'node-opcua'
-// import { red } from '../../utils/log'
+import { red } from '../../utils/log'
 
 export const createMachineToolExampleLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
-    /*
-        machinelogic here:
-        bind opc ua variables to a getter/setter functions or to an js variable
-        -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
 
-        GETTER:
-        const myVariableGetter = function(
-        this: UAVariable, 
-        callback: (err: Error | null, dataValue?: DataValue) => void): void {
-            callback(null, new DataValue({
-                value: new Variant({
-                    value: null,
-                    dataType: this.dataTypeObj.displayName[0].text?.toString()
-                }),
-                statusCode: StatusCodes.Good,
-            }))
-            return
-        }
+const idx = addressSpace?.getNamespaceIndex('http://yourorganisation.org/MachineTool-Example/')
+const iaIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/IA/')
+const mtoolIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/MachineTool/')
 
-        SETTER:
-        const myVariableSetter = function(this: UAVariable, dataValue: DataValue, callback: StatusCodeCallback): void {
-            myVariable = dataValue.value.value
-            callback(null, StatusCodes.Good);
-            return
-        };
-        
-        BINDING:
-        node.setRolePermissions(ServerRolePermissionGroup.DEFAULT);
-        node.bindVariable({
-            timestamped_get: myVariableGetter,
-            timestamped_set: myVariableSetter
-        }, true);
-    */
-
-    // const idx = addressSpace?.getNamespaceIndex('http://yourorganisation.org/MachineTool-Example/')
-    // const iaIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/IA/')
-    // const mtoolIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/MachineTool/')
-
-//     const activeProgramName = addressSpace?.findNode(`ns=${idx};i=55186`) as UAVariable
-//     if (activeProgramName !== null) {
-//         activeProgramName?.setValueFromSource({
-//             value: 'Program_1',
-//             dataType: DataType.String,
-//         })
-//     } else {
-//         red("activeProgramName does not exist!")
-//     }
+     const activeProgramName = addressSpace?.findNode(`ns=${idx};i=6026`) as UAVariable
+    if (activeProgramName !== null) {
+        activeProgramName?.setValueFromSource({
+            value: 'Program_2',
+            dataType: DataType.String,
+        })
+    } else {
+        red("activeProgramName does not exist!")
+    }
 
 
-//     const activeProgramNumberInList = addressSpace?.findNode(`ns=${idx};i=55185`) as UAVariable
-//     if (activeProgramNumberInList !== null) {
-//         activeProgramNumberInList?.setValueFromSource({
-//             value: 1,
-//             dataType: DataType.UInt16,
-//         })
-//     } else {
-//         red("activeProgramNumberInList does not exist!")
-//     }
+    const activeProgramNumberInList = addressSpace?.findNode(`ns=${idx};i=6027`) as UAVariable
+    if (activeProgramNumberInList !== null) {
+        activeProgramNumberInList?.setValueFromSource({
+            value: 1,
+            dataType: DataType.UInt16,
+        })
+    } else {
+        red("activeProgramNumberInList does not exist!")
+    }
 
 
-//     const productionActiveProgramStateCurrentState = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable
-//     if (productionActiveProgramStateCurrentState !== null) {
-//         productionActiveProgramStateCurrentState?.setValueFromSource({
-//             value: coerceLocalizedText('Running'),
-//             dataType: DataType.LocalizedText,
-//         })
-//     } else {
-//         red("productionActiveProgramStateCurrentState does not exist!")
-//     }
+    const productionActiveProgramStateCurrentState = addressSpace?.findNode(`ns=${idx};i=6028`) as UAVariable
+    if (productionActiveProgramStateCurrentState !== null) {
+        productionActiveProgramStateCurrentState?.setValueFromSource({
+            value: coerceLocalizedText('Running'),
+            dataType: DataType.LocalizedText,
+        })
+    } else {
+        red("productionActiveProgramStateCurrentState does not exist!")
+    }
     
 
-//     // changes CurrentState each 10000 msec from Running to Stopped
-//     setInterval(() => {
-//         const state = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable
-//         const stateNumber = addressSpace?.findNode(`ns=${idx};i=55190`) as UAVariable
-//         if (state?.readValue().value.value.text === 'Running') {
-//             state?.setValueFromSource({
-//                 value: coerceLocalizedText('Stopped'),
-//                 dataType: DataType.LocalizedText,
-//             })
-//             stateNumber.setValueFromSource({
-//                 value: coerceNodeId(2),
-//                 dataType: DataType.NodeId,
-//             })
-//         } else {
-//             state?.setValueFromSource({
-//                 value: coerceLocalizedText('Running'),
-//                 dataType: DataType.LocalizedText,
-//             })
-//             stateNumber.setValueFromSource({
-//                 value: coerceNodeId(1),
-//                 dataType: DataType.NodeId,
-//             })
-//         }
-//     }, 10000)
+    // changes CurrentState each 10000 msec from Running to Ended
+    setInterval(() => {
+        const state = addressSpace?.findNode(`ns=${idx};i=6028`) as UAVariable
+        const stateNumber = addressSpace?.findNode(`ns=${idx};i=6029`) as UAVariable
+        if (state?.readValue().value.value.text === 'Running') {
+            state?.setValueFromSource({
+                value: coerceLocalizedText('Ended'),
+                dataType: DataType.LocalizedText,
+            })
+            stateNumber.setValueFromSource({
+                value: coerceNodeId(2),
+                dataType: DataType.NodeId,
+            })
+        } else {
+            state?.setValueFromSource({
+                value: coerceLocalizedText('Running'),
+                dataType: DataType.LocalizedText,
+            })
+            stateNumber.setValueFromSource({
+                value: coerceNodeId(1),
+                dataType: DataType.NodeId,
+            })
+        }
+    }, 10000)
 
-//     // increments the value of freeoverride by 5 each sec
-//     let override = 50
-//     setInterval(() => {
-//         override += 5
-//         if (override > 120) {
-//             override = 50
-//         }
-//         const feedOverride = addressSpace?.findNode(`ns=${idx};i=55229`) as UAVariable
-//         feedOverride.setValueFromSource({
-//             value: override,
-//             dataType: DataType.Double,
-//         })
-//     }, 1000)
+    // increments the value of FeedOverride by 5 each sec
+    let override = 50
+    setInterval(() => {
+        override += 5
+        if (override > 120) {
+            override = 50
+        }
+        const feedOverride = addressSpace?.findNode(`ns=${idx};i=6017`) as UAVariable
+        feedOverride.setValueFromSource({
+            value: override,
+            dataType: DataType.Double,
+        })
+    }, 1000)
 
-//     const spindleOverride = addressSpace?.findNode(`ns=${idx};i=55238`) as UAVariable
-//     spindleOverride?.setValueFromSource({
-//         value: 100,
-//         dataType: DataType.Double,
-//     })
+    const spindleOverride = addressSpace?.findNode(`ns=${idx};i=6070`) as UAVariable
+    spindleOverride?.setValueFromSource({
+        value: 100,
+        dataType: DataType.Double,
+    })
 
-//     // writing ExtensionObject (Range)
-//     const spindleEURange = addressSpace?.constructExtensionObject(
-//         new NodeId(NodeIdType.NUMERIC, 884, 0),
-//         {
-//             low: 60.0,
-//             high: 100.0,
-//         }
-//     )
-//     const spindleOverrideRange = addressSpace?.findNode(`ns=${idx};i=55240`) as UAVariable
-//     spindleOverrideRange?.setValueFromSource({
-//         value: spindleEURange,
-//         dataType: DataType.ExtensionObject,
-//     })
+    // writing ExtensionObject (Range)
+    const spindleEURange = addressSpace?.constructExtensionObject(
+        new NodeId(NodeIdType.NUMERIC, 884, 0),
+        {
+            low: 60.0,
+            high: 100.0,
+        }
+    )
+    const spindleOverrideRange = addressSpace?.findNode(`ns=${idx};i=6072`) as UAVariable
+    spindleOverrideRange?.setValueFromSource({
+        value: spindleEURange,
+        dataType: DataType.ExtensionObject,
+    })
 
-//     // writing a enum
-//     const channel1 = addressSpace?.findNode(`ns=${idx};i=55233`) as UAVariable
-//     channel1.setValueFromSource({
-//         value: 1,
-//         dataType: DataType.Int32
-//     })
+    // writing a enum
+    const channel1 = addressSpace?.findNode(`ns=${idx};i=6061`) as UAVariable
+    channel1.setValueFromSource({
+        value: 1,
+        dataType: DataType.Int32
+    })
 }

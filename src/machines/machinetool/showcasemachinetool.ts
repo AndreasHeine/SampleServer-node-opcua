@@ -24,40 +24,6 @@ import {
 
 export const createShowCaseMachineToolLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
-    /*
-        machinelogic here:
-        bind opc ua variables to a getter/setter functions or to an js variable
-        -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
-
-        GETTER:
-        const myVariableGetter = function(
-        this: UAVariable, 
-        callback: (err: Error | null, dataValue?: DataValue) => void): void {
-            callback(null, new DataValue({
-                value: new Variant({
-                    value: null,
-                    dataType: this.dataTypeObj.displayName[0].text?.toString()
-                }),
-                statusCode: StatusCodes.Good,
-            }))
-            return
-        }
-
-        SETTER:
-        const myVariableSetter = function(this: UAVariable, dataValue: DataValue, callback: StatusCodeCallback): void {
-            myVariable = dataValue.value.value
-            callback(null, StatusCodes.Good);
-            return
-        };
-        
-        BINDING:
-        node.setRolePermissions(ServerRolePermissionGroup.DEFAULT);
-        node.bindVariable({
-            timestamped_get: myVariableGetter,
-            timestamped_set: myVariableSetter
-        }, true);
-    */
-
     const idx = addressSpace?.getNamespaceIndex('http://example.com/ShowcaseMachineTool/')
     const iaIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/IA/')
     const mtoolIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/MachineTool/')
@@ -80,13 +46,13 @@ export const createShowCaseMachineToolLogic = async (addressSpace: AddressSpace)
         dataType: DataType.LocalizedText,
     })
 
-    // changes CurrentState each 10000 msec from Running to Stopped
+    // changes CurrentState each 10000 msec from Running to Ended
     setInterval(() => {
         const state = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable
         const stateNumber = addressSpace?.findNode(`ns=${idx};i=55190`) as UAVariable
         if (state?.readValue().value.value.text === 'Running') {
             state?.setValueFromSource({
-                value: coerceLocalizedText('Stopped'),
+                value: coerceLocalizedText('Ended'),
                 dataType: DataType.LocalizedText,
             })
             stateNumber.setValueFromSource({
@@ -105,7 +71,32 @@ export const createShowCaseMachineToolLogic = async (addressSpace: AddressSpace)
         }
     }, 10000)
 
-    // increments the value of freeoverride by 5 each sec
+    // changes MachineryItemState each 10000 msec from Executing to NotExecuting
+    setInterval(() => {
+       const state = addressSpace?.findNode(`ns=${idx};i=6011`) as UAVariable
+       const stateNumber = addressSpace?.findNode(`ns=${idx};i=6012`) as UAVariable
+       if (state?.readValue().value.value.text === 'Executing') {
+            state?.setValueFromSource({
+                value: coerceLocalizedText('NotExecuting'),
+                dataType: DataType.LocalizedText,
+            })
+            stateNumber.setValueFromSource({
+                value: coerceNodeId(2),
+                dataType: DataType.NodeId,
+            })
+        } else {
+            state?.setValueFromSource({
+                value: coerceLocalizedText('Executing'),
+                dataType: DataType.LocalizedText,
+            })
+            stateNumber.setValueFromSource({
+                value: coerceNodeId(1),
+                dataType: DataType.NodeId,
+            })
+            }
+        }, 10000)
+
+    // increments the value of FeedOverride by 5 each sec
     let override = 50
     setInterval(() => {
         override += 5
