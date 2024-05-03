@@ -7,15 +7,25 @@ function delay(time: number) {
 const Data = new Map<string, DataValue>()
 
 export function initializeFakeDataSource(addressSpace: AddressSpace) {
+    const idx = addressSpace.getNamespaceIndex("http://mynewmachinenamespace/UA")
     // Pressure
-    Data.set("ns=41;i=1018", new DataValue({
+    Data.set(`ns=${idx};i=1018`, new DataValue({
         value: new Variant({
             value: 1013,
             dataType: DataType.Double
         }),
         statusCode: StatusCodes.Good
     }))
-    Data.set("ns=41;i=1020", new DataValue({
+    setInterval(() => {
+        Data.set(`ns=${idx};i=1018`, new DataValue({
+            value: new Variant({
+                value: (Math.random() * 1000),
+                dataType: DataType.Double
+            }),
+            statusCode: StatusCodes.Good
+        })) 
+    }, 2000)
+    Data.set(`ns=${idx};i=1020`, new DataValue({
         value: new Variant({
             value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 884, 0), {
                 high: 2000,
@@ -25,7 +35,7 @@ export function initializeFakeDataSource(addressSpace: AddressSpace) {
         }),
         statusCode: StatusCodes.Good
     }))
-    Data.set("ns=41;i=1019", new DataValue({
+    Data.set(`ns=${idx};i=1019`, new DataValue({
         value: new Variant({
             value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 887, 0), {
                 namespaceUri: "http://www.opcfoundation.org/UA/units/un/cefact",
@@ -39,14 +49,23 @@ export function initializeFakeDataSource(addressSpace: AddressSpace) {
     }))
 
     // Temperature
-    Data.set("ns=41;i=1013", new DataValue({
+    Data.set(`ns=${idx};i=1013`, new DataValue({
         value: new Variant({
             value: 21,
             dataType: DataType.Double
         }),
         statusCode: StatusCodes.Good
     }))
-    Data.set("ns=41;i=1015", new DataValue({
+    setInterval(() => {
+        Data.set(`ns=${idx};i=1013`, new DataValue({
+            value: new Variant({
+                value: (Math.random() * 100) + 50,
+                dataType: DataType.Double
+            }),
+            statusCode: StatusCodes.Good
+        })) 
+    }, 5000)
+    Data.set(`ns=${idx};i=1015`, new DataValue({
         value: new Variant({
             value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 884, 0), {
                 high: 60,
@@ -56,7 +75,7 @@ export function initializeFakeDataSource(addressSpace: AddressSpace) {
         }),
         statusCode: StatusCodes.Good
     }))
-    Data.set("ns=41;i=1014", new DataValue({
+    Data.set(`ns=${idx};i=1014`, new DataValue({
         value: new Variant({
             value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 887, 0), {
                 namespaceUri: "http://www.opcfoundation.org/UA/units/un/cefact",

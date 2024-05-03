@@ -55,6 +55,21 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         dataType: DataType.LocalizedText,
         value: coerceLocalizedText('Andreas Heine'),
     })
+    const model = myMachineIdentification?.getChildByName('Model') as UAVariable
+    model?.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText('Model-123'),
+    })
+    const uri = myMachineIdentification?.getChildByName('ProductInstanceUri') as UAVariable
+    uri?.setValueFromSource({
+        dataType: DataType.String,
+        value: 'ProductInstanceUri-123',
+    })
+    const serial = myMachineIdentification?.getChildByName('SerialNumber') as UAVariable
+    serial?.setValueFromSource({
+        dataType: DataType.String,
+        value: 'SerialNumber-123',
+    })
     const machineComponentsType = addressSpace?.findNode(`ns=${machineryIdx};i=1006`) as UAObjectType
     const myMachineComponents = machineComponentsType?.instantiate({
         browseName: {
@@ -89,6 +104,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         nodeId: machineryBuildingBlocks,
         isForward: false,
     })
+    const myItemStateCurrentState = myItemState.getChildByName("CurrentState") as UAVariable
+    myItemStateCurrentState?.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText('Executing'),
+    })
 
     const myOperationMode = (addressSpace!.findNode(`ns=${machineryIdx};i=1008`) as UAObjectType).instantiate({
         browseName: {
@@ -101,6 +121,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         referenceType: 'HasAddIn',
         nodeId: machineryBuildingBlocks,
         isForward: false,
+    })
+    const myOperationModeCurrentState = myOperationMode.getChildByName("CurrentState") as UAVariable
+    myOperationModeCurrentState?.setValueFromSource({
+        dataType: DataType.LocalizedText,
+        value: coerceLocalizedText('Setup'),
     })
 
 
@@ -127,6 +152,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         referenceType: 'Organizes',
         nodeId: monitoringObject,
         isForward: false,
+    })
+    const temperaturTag = temperature.getChildByName("Tag") as UAVariable
+    temperaturTag?.setValueFromSource({
+        dataType: DataType.String,
+        value: 'Temperature-Tag-123',
     })
     const temperatureAnalogSignal = temperature.getChildByName("AnalogSignal") as UAVariable
     temperatureAnalogSignal.bindVariable({
@@ -155,6 +185,11 @@ export const createMyMachineLogic = async (addressSpace: AddressSpace): Promise<
         referenceType: "Organizes",
         nodeId: monitoringObject,
         isForward: false,
+    })
+    const pressureTag = pressure.getChildByName("Tag") as UAVariable
+    pressureTag?.setValueFromSource({
+        dataType: DataType.String,
+        value: 'Pressure-Tag-123',
     })
     const pressureAnalogSignal = pressure.getChildByName("AnalogSignal") as UAVariable
     pressureAnalogSignal.bindVariable({
