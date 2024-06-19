@@ -302,11 +302,16 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             componentOf: showcaseAC,
             dataType: DataType.Double,
             value: {
-                get: function (this) {
+                get: function (this: UAVariable): Variant {
                     return new Variant({
                         value: myValue,
                         dataType: DataType.Double
                 })},
+                set: function(this: UAVariable, value: Variant): StatusCode {
+                    myValue = value.value
+                    return StatusCodes.Good
+                }
+
             },
             eventSourceOf: showcaseAC,
         })
@@ -551,7 +556,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
             dataType: DataType.Double,
             userAccessLevel: 'CurrentRead | CurrentWrite',
             value: {
-                get: function(): Variant {
+                get: function(this: UAVariable): Variant {
                     return new Variant({
                         value: setpoint,
                         dataType: DataType.Double
