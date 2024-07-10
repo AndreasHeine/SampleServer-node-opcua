@@ -18,7 +18,7 @@ import {
   MessageSecurityMode,
   SecurityPolicy,
   ServerCapabilities,
-  OperationLimits,
+  IOperationLimits2,
   ApplicationType,
   OPCUAServerOptions,
   OPCUACertificateManager,
@@ -131,7 +131,7 @@ config.serverCapabilities = new ServerCapabilities({
     maxNodesPerTranslateBrowsePathsToNodeIds: operationLimits?.maxNodesPerTranslateBrowsePathsToNodeIds || 1000,
     maxNodesPerWrite: operationLimits?.maxNodesPerWrite || 1000,
 
-  } as OperationLimits),
+  } as IOperationLimits2),
   // https://profiles.opcfoundation.org/v104/Reporting/
   // https://reference.opcfoundation.org/v104/Core/docs/Part7/6.2/
   serverProfileArray: configJsonObj.serverCapabilities?.serverProfileArray || [], 
