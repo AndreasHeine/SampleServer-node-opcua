@@ -180,7 +180,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5003</Reference>
         </References>
         <Value>
-            <uax:String>N 50.082694 E 8.626230</uax:String>
+            <uax:String>IMTS E3 135256/AMB 9 C45/N 50.082694 E 8.626230</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5003" NodeId="ns=1;i=6001" BrowseName="4:Manufacturer">
