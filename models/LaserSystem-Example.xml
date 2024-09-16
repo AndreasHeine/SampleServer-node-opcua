@@ -81,7 +81,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5004</Reference>
         </References>
         <Value>
-            <uax:String>EMO 9 F24</uax:String>
+            <uax:String>IMTS E3 135256/AMB 9 C45/Virtual 1 1</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" ParentNodeId="ns=1;i=5004" NodeId="ns=1;i=6001" BrowseName="4:Manufacturer">
