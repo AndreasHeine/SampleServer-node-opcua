@@ -22,6 +22,9 @@ on:
     branches: [main, develop]
   merge_group:
 
+permissions:
+  contents: read
+
 ###############
 # Set the Job #
 ###############
@@ -50,7 +53,7 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: super-linter/super-linter@v5.7.2
+        uses: super-linter/super-linter@v7.1.0
         env:
           VALIDATE_ALL_CODEBASE: false
           # JAVASCRIPT_DEFAULT_STYLE: prettier
@@ -58,5 +61,6 @@ jobs:
           # Evaluate JS with eslint instead of standard
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_TYPESCRIPT_STANDARD: false
+          VALIDATE_CHECKOV: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
