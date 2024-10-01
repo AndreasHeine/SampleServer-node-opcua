@@ -58,7 +58,7 @@ export const isValidUserAsync = (
 ) => {
   const user = getUser(username, userList);
   if (user) {
-    const hash = createHash("md5").update(password).digest("hex")
+    const hash = createHash("sha512").update(password).digest("hex")
     if (hash === user.password) {
       green(` User:'${user.username}' logged in as '${user.roles}'! `);
       callback(null, true);

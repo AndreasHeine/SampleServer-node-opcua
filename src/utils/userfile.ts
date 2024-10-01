@@ -32,7 +32,7 @@ export class UserFile {
         this.userList.push(Object.freeze({
             username: user.username,
             roles: user.roles,
-            password: createHash("md5").update(user.password).digest("hex")
+            password: createHash("sha512").update(user.password).digest("hex")
         }))
     }
 
