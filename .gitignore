@@ -11,3 +11,4 @@ local-discovery-server-linux
 local-discovery-server-macos
 local-discovery-server-win.exe
 log.txt
+!healthcheck.js
