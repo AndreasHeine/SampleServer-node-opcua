@@ -9,11 +9,11 @@ on:
   #schedule:
   #  - cron: '21 18 * * *'
   push:
-    branches: [ main , develop ]
+    branches: [main, develop]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: ["v*.*.*"]
   pull_request:
-    branches: [ main , develop ]
+    branches: [main, develop]
   merge_group:
 
 env:
@@ -21,7 +21,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-
 
 jobs:
   build:
