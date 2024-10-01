@@ -13,7 +13,7 @@
 //   limitations under the License.
 
 import { writeFileSync } from 'fs'
-import { hashSync, genSaltSync } from 'bcrypt'
+import { createHash } from 'crypto';
 
 export interface User {
     username: string,
@@ -32,7 +32,7 @@ export class UserFile {
         this.userList.push(Object.freeze({
             username: user.username,
             roles: user.roles,
-            password: hashSync(user.password, genSaltSync())
+            password: createHash("md5").update(user.password).digest("hex")
         }))
     }
 
