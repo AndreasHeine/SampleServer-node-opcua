@@ -30,6 +30,9 @@ COPY ./configuration.json /home/node
 COPY ./nodesets /home/node/nodesets
 COPY ./models /home/node/models
 
+COPY ./healthcheck.js /home/node/healthcheck.js
+
+HEALTHCHECK --interval=30s CMD node /home/node/healthcheck.js
 
 EXPOSE 4840
 
