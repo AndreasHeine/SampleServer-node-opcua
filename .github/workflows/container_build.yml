@@ -9,11 +9,11 @@ on:
   #schedule:
   #  - cron: '21 18 * * *'
   push:
-    branches: [ main , develop ]
+    branches: [main, develop]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: ["v*.*.*"]
   pull_request:
-    branches: [ main , develop ]
+    branches: [main, develop]
   merge_group:
 
 env:
@@ -22,11 +22,10 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
-
 jobs:
   build:
     timeout-minutes: 20
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
