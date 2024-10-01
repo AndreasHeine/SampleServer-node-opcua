@@ -26,12 +26,12 @@
   "dependencies": {
     "bcrypt": "5.1.1",
     "chalk": "4.1.2",
-    "node-opcua": "2.132.0",
-    "node-opcua-file-transfer": "2.132.0",
-    "node-opcua-pki": "4.13.1",
+    "node-opcua": "2.133.0",
+    "node-opcua-file-transfer": "2.133.0",
+    "node-opcua-pki": "4.14.0",
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
-    "node-opcua-server-discovery": "2.132.0",
+    "node-opcua-server-discovery": "2.133.0",
     "yargs": "17.7.2"
   },
   "devDependencies": {
