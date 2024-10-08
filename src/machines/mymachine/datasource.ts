@@ -1,4 +1,28 @@
-import { AddressSpace, DataType, DataValue, LocalizedText, NodeId, NodeIdType, StatusCodes, UAVariable, Variant } from "node-opcua";
+import { 
+    AddressSpace,
+    DataType, 
+    DataValue,
+    EUInformation,
+    LocalizedText, 
+    makeEUInformation, 
+    NodeId, 
+    NodeIdType, 
+    standardUnits, 
+    StatusCodes, 
+    UAVariable, 
+    Variant 
+} from "node-opcua";
+
+const engineeringUnitMap = new Map<string, EUInformation>()
+Object.entries(standardUnits).forEach((value: [string, EUInformation], index: number, array: [string, EUInformation][]) => {
+    const k = value[0]
+    const v = value[1]
+    engineeringUnitMap.set(k, v) // "percent", EUInformation
+    engineeringUnitMap.set(`${v.displayName.text}`, v) // "%", EUInformation
+})
+
+const degC = engineeringUnitMap.get("°C")!
+const pressure = engineeringUnitMap.get("mbar")!
 
 function delay(time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -37,11 +61,11 @@ export function initializeFakeDataSource(addressSpace: AddressSpace) {
     }))
     Data.set(`ns=${idx};i=1019`, new DataValue({
         value: new Variant({
-            value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 887, 0), {
-                namespaceUri: "http://www.opcfoundation.org/UA/units/un/cefact",
-                unitId: -1,
-                displayName: new LocalizedText({text: "mbar"}),
-                description: new LocalizedText({text: "millibar"})
+            value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 887, 0),                 {
+                namespaceUri: pressure.namespaceUri,
+                unitId: pressure.unitId,
+                displayName: pressure.displayName,
+                description: pressure.description
             }),
             dataType: DataType.ExtensionObject
         }),
@@ -77,12 +101,15 @@ export function initializeFakeDataSource(addressSpace: AddressSpace) {
     }))
     Data.set(`ns=${idx};i=1014`, new DataValue({
         value: new Variant({
-            value: addressSpace.constructExtensionObject(new NodeId(NodeIdType.NUMERIC, 887, 0), {
-                namespaceUri: "http://www.opcfoundation.org/UA/units/un/cefact",
-                unitId: -1,
-                displayName: new LocalizedText({text: "°C"}),
-                description: new LocalizedText({text: "degree Celsius"})
-            }),
+            value: addressSpace.constructExtensionObject(
+                new NodeId(NodeIdType.NUMERIC, 887, 0), 
+                {
+                    namespaceUri: degC.namespaceUri,
+                    unitId: degC.unitId,
+                    displayName: degC.displayName,
+                    description: degC.description
+                }
+            ),
             dataType: DataType.ExtensionObject
         }),
         statusCode: StatusCodes.Good
