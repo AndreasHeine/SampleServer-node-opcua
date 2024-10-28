@@ -5,8 +5,8 @@
     "productUri": "SampleServer-productUri",
     "productName": "SampleServer-productName",
     "manufacturerName": "SampleServer-manufacturerName",
-    "buildNumber": "v1.1.0",
-    "buildDate": "2024-04-22T00:00:00.0Z"
+    "buildNumber": "v1.2.0",
+    "buildDate": "2024-10-28T00:00:00.0Z"
   },
   "serverInfo": {
     "applicationName": {
