@@ -13,39 +13,37 @@
 //   limitations under the License.
 
 import {
-    coerceLocalizedText,
-    coerceNodeId,
     DataType,
     UAVariable,
-    AddressSpace,
-    NodeId,
-    NodeIdType,
+    AddressSpace
 } from 'node-opcua'
 
 export const createWoodWorkingBasicLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
+    const nsIdx = addressSpace?.getNamespaceIndex('http://basyskom.com/woodworking_demo/')
+
     // Define basic "bs..." woodworking IDENTIFICATION nodes
-    const bsDeviceClassNode = addressSpace?.findNode('ns=34;i=6001') as UAVariable;
-    const bsManufacturerNode = addressSpace?.findNode('ns=34;i=6002') as UAVariable;
-    const bsModelNode = addressSpace?.findNode('ns=34;i=6003') as UAVariable;
-    const bsProductInstanceUriNode = addressSpace?.findNode('ns=34;i=6004') as UAVariable;
-    const bsSerialNumberNode = addressSpace?.findNode('ns=34;i=6005') as UAVariable;
-    const bsYearOfConstructionNode = addressSpace?.findNode('ns=34;i=6006') as UAVariable;
+    const bsDeviceClassNode = addressSpace?.findNode(`ns=${nsIdx};i=6001`) as UAVariable;
+    const bsManufacturerNode = addressSpace?.findNode(`ns=${nsIdx};i=6002`) as UAVariable;
+    const bsModelNode = addressSpace?.findNode(`ns=${nsIdx};i=6003`) as UAVariable;
+    const bsProductInstanceUriNode = addressSpace?.findNode(`ns=${nsIdx};i=6004`) as UAVariable;
+    const bsSerialNumberNode = addressSpace?.findNode(`ns=${nsIdx};i=6005`) as UAVariable;
+    const bsYearOfConstructionNode = addressSpace?.findNode(`ns=${nsIdx};i=6006`) as UAVariable;
 
     // Define basic "bs..." woodworking STATE - MACHINE -FLAGS nodes
-    const bsAlarmNode = addressSpace?.findNode('ns=34;i=6009') as UAVariable;
-    const bsCalibratedNode = addressSpace?.findNode('ns=34;i=6010') as UAVariable;
-    const bsEmergencyNode = addressSpace?.findNode('ns=34;i=6011') as UAVariable;
-    const bsErrorNode = addressSpace?.findNode('ns=34;i=6012') as UAVariable;
-    const bsMachineInitNode = addressSpace?.findNode('ns=34;i=6013') as UAVariable;
-    const bsMachineOnNode = addressSpace?.findNode('ns=34;i=6014') as UAVariable;
-    const bsPowerPresentNode = addressSpace?.findNode('ns=34;i=6015') as UAVariable;
-    const bsRecipeInRunNode = addressSpace?.findNode('ns=34;i=6016') as UAVariable;
-    const bsWarningNode = addressSpace?.findNode('ns=34;i=6017') as UAVariable;
+    const bsAlarmNode = addressSpace?.findNode(`ns=${nsIdx};i=6009`) as UAVariable;
+    const bsCalibratedNode = addressSpace?.findNode(`ns=${nsIdx};i=6010`) as UAVariable;
+    const bsEmergencyNode = addressSpace?.findNode(`ns=${nsIdx};i=6011`) as UAVariable;
+    const bsErrorNode = addressSpace?.findNode(`ns=${nsIdx};i=6012`) as UAVariable;
+    const bsMachineInitNode = addressSpace?.findNode(`ns=${nsIdx};i=6013`) as UAVariable;
+    const bsMachineOnNode = addressSpace?.findNode(`ns=${nsIdx};i=6014`) as UAVariable;
+    const bsPowerPresentNode = addressSpace?.findNode(`ns=${nsIdx};i=6015`) as UAVariable;
+    const bsRecipeInRunNode = addressSpace?.findNode(`ns=${nsIdx};i=6016`) as UAVariable;
+    const bsWarningNode = addressSpace?.findNode(`ns=${nsIdx};i=6017`) as UAVariable;
 
     // Define basic "bs..." woodworking STATE - MACHINE - OVERVIEW nodes
-    const bsCurrentModeNode = addressSpace.findNode('ns=34;i=6007') as UAVariable;
-    const bsCurrentStateNode = addressSpace.findNode('ns=34;i=6008') as UAVariable;
+    const bsCurrentModeNode = addressSpace.findNode(`ns=${nsIdx};i=6007`) as UAVariable;
+    const bsCurrentStateNode = addressSpace.findNode(`ns=${nsIdx};i=6008`) as UAVariable;
 
     // Set basic woodworking IDENTIFICATION nodes
     bsDeviceClassNode?.setValueFromSource({ dataType: DataType.String, value: "Class A12" });

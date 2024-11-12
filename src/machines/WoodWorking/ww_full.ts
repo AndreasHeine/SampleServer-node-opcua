@@ -13,104 +13,102 @@
 //   limitations under the License.
 
 import {
-    coerceLocalizedText,
-    coerceNodeId,
     DataType,
     UAVariable,
-    AddressSpace,
-    NodeId,
-    NodeIdType,
+    AddressSpace
 } from 'node-opcua'
 
 export const createWoodWorkingFullLogic = async (addressSpace: AddressSpace): Promise<void> => {
 
+    const nsIdx = addressSpace?.getNamespaceIndex('http://basyskom.com/woodworking_demo/')
+
     // Define full "fl..." woodworking IDENTIFICATION nodes
-    const flAssetIdNode = addressSpace?.findNode('ns=34;i=6026') as UAVariable;
-    const flComponentNameNode = addressSpace?.findNode('ns=34;i=6027') as UAVariable;
-    const flCustomerCompNameNode = addressSpace?.findNode('ns=34;i=6028') as UAVariable;
-    const flDeviceClassNode = addressSpace?.findNode('ns=34;i=6018') as UAVariable;
-    const flHardwareRevNode = addressSpace?.findNode('ns=34;i=6029') as UAVariable;
-    const flInitOperDataNode = addressSpace?.findNode('ns=34;i=6030') as UAVariable;
-    const flLocationNode = addressSpace?.findNode('ns=34;i=6031') as UAVariable;
-    const flLocationGpsNode = addressSpace?.findNode('ns=34;i=6032') as UAVariable;
-    const flLocationPlantNode = addressSpace?.findNode('ns=34;i=6033') as UAVariable;
-    const flManufacturerNode = addressSpace?.findNode('ns=34;i=6019') as UAVariable;
-    const flManufacturerUriNode = addressSpace?.findNode('ns=34;i=6034') as UAVariable;
-    const flModelNode = addressSpace?.findNode('ns=34;i=6020') as UAVariable;
-    const flProductCodeNode = addressSpace?.findNode('ns=34;i=6036') as UAVariable;
-    const flProductInstanceUriNode = addressSpace?.findNode('ns=34;i=6021') as UAVariable;
-    const flSerialNumberNode = addressSpace?.findNode('ns=34;i=6022') as UAVariable;
-    const flSoftwareRevisionNode = addressSpace?.findNode('ns=34;i=6037') as UAVariable;
-    const flYearOfConstructionNode = addressSpace?.findNode('ns=34;i=6023') as UAVariable;
+    const flAssetIdNode = addressSpace?.findNode(`ns=${nsIdx};i=6026`) as UAVariable;
+    const flComponentNameNode = addressSpace?.findNode(`ns=${nsIdx};i=6027`) as UAVariable;
+    const flCustomerCompNameNode = addressSpace?.findNode(`ns=${nsIdx};i=6028`) as UAVariable;
+    const flDeviceClassNode = addressSpace?.findNode(`ns=${nsIdx};i=6018`) as UAVariable;
+    const flHardwareRevNode = addressSpace?.findNode(`ns=${nsIdx};i=6029`) as UAVariable;
+    const flInitOperDataNode = addressSpace?.findNode(`ns=${nsIdx};i=6030`) as UAVariable;
+    const flLocationNode = addressSpace?.findNode(`ns=${nsIdx};i=6031`) as UAVariable;
+    const flLocationGpsNode = addressSpace?.findNode(`ns=${nsIdx};i=6032`) as UAVariable;
+    const flLocationPlantNode = addressSpace?.findNode(`ns=${nsIdx};i=6033`) as UAVariable;
+    const flManufacturerNode = addressSpace?.findNode(`ns=${nsIdx};i=6019`) as UAVariable;
+    const flManufacturerUriNode = addressSpace?.findNode(`ns=${nsIdx};i=6034`) as UAVariable;
+    const flModelNode = addressSpace?.findNode(`ns=${nsIdx};i=6020`) as UAVariable;
+    const flProductCodeNode = addressSpace?.findNode(`ns=${nsIdx};i=6036`) as UAVariable;
+    const flProductInstanceUriNode = addressSpace?.findNode(`ns=${nsIdx};i=6021`) as UAVariable;
+    const flSerialNumberNode = addressSpace?.findNode(`ns=${nsIdx};i=6022`) as UAVariable;
+    const flSoftwareRevisionNode = addressSpace?.findNode(`ns=${nsIdx};i=6037`) as UAVariable;
+    const flYearOfConstructionNode = addressSpace?.findNode(`ns=${nsIdx};i=6023`) as UAVariable;
 
     // Define full "fl..." woodworking STATE - MACHINE -FLAGS nodes
-    const flAairPresentNode = addressSpace?.findNode('ns=34;i=6048') as UAVariable;
-    const flAlarmNode = addressSpace?.findNode('ns=34;i=6039') as UAVariable;
-    const flCalibratedNode = addressSpace?.findNode('ns=34;i=6040') as UAVariable;
-    const flDustChipSuctionNode = addressSpace?.findNode('ns=34;i=6049') as UAVariable;
-    const flEmergencyNode = addressSpace?.findNode('ns=34;i=6041') as UAVariable;
-    const flEnergySafingNode = addressSpace?.findNode('ns=34;i=60340') as UAVariable;
-    const flErrorNode = addressSpace?.findNode('ns=34;i=6042') as UAVariable;
-    const flExternalEmergencyNode = addressSpace?.findNode('ns=34;i=6051') as UAVariable;
-    const flFeedRunsNode = addressSpace?.findNode('ns=34;i=6052') as UAVariable;
-    const flHoldNode = addressSpace?.findNode('ns=34;i=6053') as UAVariable;
-    const flLoadingEnabledNode = addressSpace?.findNode('ns=34;i=6054') as UAVariable;
-    const flMachineInitNode = addressSpace?.findNode('ns=34;i=6043') as UAVariable;
-    const flMachineOnNode = addressSpace?.findNode('ns=34;i=6044') as UAVariable;
-    const flMaintananceReqiredNode = addressSpace?.findNode('ns=34;i=6055') as UAVariable;
-    const flManualActivityReqNode = addressSpace?.findNode('ns=34;i=6056') as UAVariable;
-    const flMovingNode = addressSpace?.findNode('ns=34;i=6057') as UAVariable;
-    const flPowerPresentNode = addressSpace?.findNode('ns=34;i=6045') as UAVariable;
-    const flRecipeInHoldNode = addressSpace?.findNode('ns=34;i=6058') as UAVariable;
-    const flRecipeInRunNode = addressSpace?.findNode('ns=34;i=6046') as UAVariable;
-    const flRecipeInSetupNode = addressSpace?.findNode('ns=34;i=6059') as UAVariable;
-    const flRemoteNode = addressSpace?.findNode('ns=34;i=6060') as UAVariable;
-    const flSafetyNode = addressSpace?.findNode('ns=34;i=6061') as UAVariable;
-    const flWaitLoadNode = addressSpace?.findNode('ns=34;i=6062') as UAVariable;
-    const flWaitUnloadNode = addressSpace?.findNode('ns=34;i=6063') as UAVariable;
-    const flWarningNode = addressSpace?.findNode('ns=34;i=6047') as UAVariable;
-    const flWorkPiecePresentNode = addressSpace?.findNode('ns=34;i=6064') as UAVariable;
+    const flAairPresentNode = addressSpace?.findNode(`ns=${nsIdx};i=6048`) as UAVariable;
+    const flAlarmNode = addressSpace?.findNode(`ns=${nsIdx};i=6039`) as UAVariable;
+    const flCalibratedNode = addressSpace?.findNode(`ns=${nsIdx};i=6040`) as UAVariable;
+    const flDustChipSuctionNode = addressSpace?.findNode(`ns=${nsIdx};i=6049`) as UAVariable;
+    const flEmergencyNode = addressSpace?.findNode(`ns=${nsIdx};i=6041`) as UAVariable;
+    const flEnergySafingNode = addressSpace?.findNode(`ns=${nsIdx};i=60340`) as UAVariable;
+    const flErrorNode = addressSpace?.findNode(`ns=${nsIdx};i=6042`) as UAVariable;
+    const flExternalEmergencyNode = addressSpace?.findNode(`ns=${nsIdx};i=6051`) as UAVariable;
+    const flFeedRunsNode = addressSpace?.findNode(`ns=${nsIdx};i=6052`) as UAVariable;
+    const flHoldNode = addressSpace?.findNode(`ns=${nsIdx};i=6053`) as UAVariable;
+    const flLoadingEnabledNode = addressSpace?.findNode(`ns=${nsIdx};i=6054`) as UAVariable;
+    const flMachineInitNode = addressSpace?.findNode(`ns=${nsIdx};i=6043`) as UAVariable;
+    const flMachineOnNode = addressSpace?.findNode(`ns=${nsIdx};i=6044`) as UAVariable;
+    const flMaintananceReqiredNode = addressSpace?.findNode(`ns=${nsIdx};i=6055`) as UAVariable;
+    const flManualActivityReqNode = addressSpace?.findNode(`ns=${nsIdx};i=6056`) as UAVariable;
+    const flMovingNode = addressSpace?.findNode(`ns=${nsIdx};i=6057`) as UAVariable;
+    const flPowerPresentNode = addressSpace?.findNode(`ns=${nsIdx};i=6045`) as UAVariable;
+    const flRecipeInHoldNode = addressSpace?.findNode(`ns=${nsIdx};i=6058`) as UAVariable;
+    const flRecipeInRunNode = addressSpace?.findNode(`ns=${nsIdx};i=6046`) as UAVariable;
+    const flRecipeInSetupNode = addressSpace?.findNode(`ns=${nsIdx};i=6059`) as UAVariable;
+    const flRemoteNode = addressSpace?.findNode(`ns=${nsIdx};i=6060`) as UAVariable;
+    const flSafetyNode = addressSpace?.findNode(`ns=${nsIdx};i=6061`) as UAVariable;
+    const flWaitLoadNode = addressSpace?.findNode(`ns=${nsIdx};i=6062`) as UAVariable;
+    const flWaitUnloadNode = addressSpace?.findNode(`ns=${nsIdx};i=6063`) as UAVariable;
+    const flWarningNode = addressSpace?.findNode(`ns=${nsIdx};i=6047`) as UAVariable;
+    const flWorkPiecePresentNode = addressSpace?.findNode(`ns=${nsIdx};i=6064`) as UAVariable;
 
     // Define full "fl..." woodworking STATE - MACHINE -OVERVIEW nodes
-    const flCurrentModeNode = addressSpace?.findNode('ns=34;i=6024') as UAVariable;
-    const flCurrentStateNode = addressSpace?.findNode('ns=34;i=6025') as UAVariable;
+    const flCurrentModeNode = addressSpace?.findNode(`ns=${nsIdx};i=6024`) as UAVariable;
+    const flCurrentStateNode = addressSpace?.findNode(`ns=${nsIdx};i=6025`) as UAVariable;
 
     // Define full "fl..." woodworking STATE - MACHINE -VALUES nodes
-    const flAbsErrorTime = addressSpace?.findNode('ns=34;i=6065') as UAVariable;
-    const flAbsLength = addressSpace?.findNode('ns=34;i=6066') as UAVariable;
-    const flAbsMachOffTimeNode = addressSpace?.findNode('ns=34;i=6067') as UAVariable;
-    const flAbsMachOnTimeNode = addressSpace?.findNode('ns=34;i=6068') as UAVariable;
-    const flAbsPiecesInNode = addressSpace?.findNode('ns=34;i=6069') as UAVariable;
-    const flAbsPiecesOutNode = addressSpace?.findNode('ns=34;i=6070') as UAVariable;
-    const flAbsPowerPrsntTimeNode = addressSpace?.findNode('ns=34;i=6071') as UAVariable;
-    const flAbsProdTimeNode = addressSpace?.findNode('ns=34;i=6072') as UAVariable;
-    const flAbsProdWaitWorkpTimeNode = addressSpace?.findNode('ns=34;i=6073') as UAVariable;
-    const flAbsProdWoutWorkpTimeNode = addressSpace?.findNode('ns=34;i=6074') as UAVariable;
-    const flAbsReadyTimeNode = addressSpace?.findNode('ns=34;i=6075') as UAVariable;
-    const flAbsRunsAbortedNode = addressSpace?.findNode('ns=34;i=6076') as UAVariable;
-    const flAbsRunsGoodNode = addressSpace?.findNode('ns=34;i=6077') as UAVariable;
-    const flAbsRunsTotalNode = addressSpace?.findNode('ns=34;i=6078') as UAVariable;
-    const flAbsStandbyTimeNode = addressSpace?.findNode('ns=34;i=6079') as UAVariable;
-    const flAbsWorkingTimeNode = addressSpace?.findNode('ns=34;i=6080') as UAVariable;
-    const flActCycleNode = addressSpace?.findNode('ns=34;i=6081') as UAVariable;
-    const flAxisOverrideNode = addressSpace?.findNode('ns=34;i=6082') as UAVariable;
-    const flFeedSpeedNode = addressSpace?.findNode('ns=34;i=6083') as UAVariable;
-    const flRelErrorTimeNode = addressSpace?.findNode('ns=34;i=6084') as UAVariable;
-    const flRelLengthNode = addressSpace?.findNode('ns=34;i=6085') as UAVariable;
-    const flRelMachOnTimeNode = addressSpace?.findNode('ns=34;i=6086') as UAVariable;
-    const flRelPiecesInNode = addressSpace?.findNode('ns=34;i=6087') as UAVariable;
-    const flRelPiecesOutNode = addressSpace?.findNode('ns=34;i=6088') as UAVariable;
-    const flRelPowerPrsntTimeNode = addressSpace?.findNode('ns=34;i=6089') as UAVariable;
-    const flRelProdTimeNode = addressSpace?.findNode('ns=34;i=6090') as UAVariable;
-    const flRelProdWaitWorkpTimeNode = addressSpace?.findNode('ns=34;i=6091') as UAVariable;
-    const flRelProdWoutWorkpTimeNode = addressSpace?.findNode('ns=34;i=6092') as UAVariable;
-    const flRelReadyTimeNode = addressSpace?.findNode('ns=34;i=6093') as UAVariable;
-    const flRelRunsAbortedNode = addressSpace?.findNode('ns=34;i=6094') as UAVariable;
-    const flRelRunsGoodNode = addressSpace?.findNode('ns=34;i=6095') as UAVariable;
-    const flRelRunsTotalNode = addressSpace?.findNode('ns=34;i=6096') as UAVariable;
-    const flRelStandbyTimeNode = addressSpace?.findNode('ns=34;i=6097') as UAVariable;
-    const flRelWorkingTimeNode = addressSpace?.findNode('ns=34;i=6098') as UAVariable;
-    const flSpindleOverrideNode = addressSpace?.findNode('ns=34;i=6099') as UAVariable;
+    const flAbsErrorTime = addressSpace?.findNode(`ns=${nsIdx};i=6065`) as UAVariable;
+    const flAbsLength = addressSpace?.findNode(`ns=${nsIdx};i=6066`) as UAVariable;
+    const flAbsMachOffTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6067`) as UAVariable;
+    const flAbsMachOnTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6068`) as UAVariable;
+    const flAbsPiecesInNode = addressSpace?.findNode(`ns=${nsIdx};i=6069`) as UAVariable;
+    const flAbsPiecesOutNode = addressSpace?.findNode(`ns=${nsIdx};i=6070`) as UAVariable;
+    const flAbsPowerPrsntTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6071`) as UAVariable;
+    const flAbsProdTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6072`) as UAVariable;
+    const flAbsProdWaitWorkpTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6073`) as UAVariable;
+    const flAbsProdWoutWorkpTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6074`) as UAVariable;
+    const flAbsReadyTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6075`) as UAVariable;
+    const flAbsRunsAbortedNode = addressSpace?.findNode(`ns=${nsIdx};i=6076`) as UAVariable;
+    const flAbsRunsGoodNode = addressSpace?.findNode(`ns=${nsIdx};i=6077`) as UAVariable;
+    const flAbsRunsTotalNode = addressSpace?.findNode(`ns=${nsIdx};i=6078`) as UAVariable;
+    const flAbsStandbyTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6079`) as UAVariable;
+    const flAbsWorkingTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6080`) as UAVariable;
+    const flActCycleNode = addressSpace?.findNode(`ns=${nsIdx};i=6081`) as UAVariable;
+    const flAxisOverrideNode = addressSpace?.findNode(`ns=${nsIdx};i=6082`) as UAVariable;
+    const flFeedSpeedNode = addressSpace?.findNode(`ns=${nsIdx};i=6083`) as UAVariable;
+    const flRelErrorTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6084`) as UAVariable;
+    const flRelLengthNode = addressSpace?.findNode(`ns=${nsIdx};i=6085`) as UAVariable;
+    const flRelMachOnTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6086`) as UAVariable;
+    const flRelPiecesInNode = addressSpace?.findNode(`ns=${nsIdx};i=6087`) as UAVariable;
+    const flRelPiecesOutNode = addressSpace?.findNode(`ns=${nsIdx};i=6088`) as UAVariable;
+    const flRelPowerPrsntTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6089`) as UAVariable;
+    const flRelProdTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6090`) as UAVariable;
+    const flRelProdWaitWorkpTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6091`) as UAVariable;
+    const flRelProdWoutWorkpTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6092`) as UAVariable;
+    const flRelReadyTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6093`) as UAVariable;
+    const flRelRunsAbortedNode = addressSpace?.findNode(`ns=${nsIdx};i=6094`) as UAVariable;
+    const flRelRunsGoodNode = addressSpace?.findNode(`ns=${nsIdx};i=6095`) as UAVariable;
+    const flRelRunsTotalNode = addressSpace?.findNode(`ns=${nsIdx};i=6096`) as UAVariable;
+    const flRelStandbyTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6097`) as UAVariable;
+    const flRelWorkingTimeNode = addressSpace?.findNode(`ns=${nsIdx};i=6098`) as UAVariable;
+    const flSpindleOverrideNode = addressSpace?.findNode(`ns=${nsIdx};i=6099`) as UAVariable;
 
 
     // Set full woodworking IDENTIFICATION nodes
