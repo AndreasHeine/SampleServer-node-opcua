@@ -1,32 +1,30 @@
-
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "enabled": true,
+      "pinDigests": true
+    },
+    {
+      "labels": ["node-opcua"],
+      "groupName": "node-opcua",
+      "matchPackageNames": ["/node-opcua/"]
+    }
   ],
-    "labels": ["dependencies"],
-    "packageRules": [
-      {
-        "matchDatasources": ["docker"],
-        "matchUpdateTypes": ["major"],
-        "enabled": true,
-        "pinDigests": true
-      },
-      {
-        "matchPackagePatterns": ["node-opcua"],
-        "labels": ["node-opcua"],
-        "groupName": "node-opcua"
-      }
-    ],
-    "regexManagers": [
-      {
-       "fileMatch": ["^(LDS.)?Dockerfile$"],
-       "matchStringsStrategy": "any",
-       "matchStrings": [
-       "\\s\\s(?<package>[a-z0-9][a-z0-9-_]+)=(?<currentValue>[a-z0-9-_.]+)\\s+"
-        ],
-       "versioningTemplate": "loose",
-       "datasourceTemplate": "repology",
-       "depNameTemplate": "alpine_3_17/{{package}}"
-        }
-      ]
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^(LDS.)?Dockerfile$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": [
+        "\\s\\s(?<package>[a-z0-9][a-z0-9-_]+)=(?<currentValue>[a-z0-9-_.]+)\\s+"
+      ],
+      "versioningTemplate": "loose",
+      "datasourceTemplate": "repology",
+      "depNameTemplate": "alpine_3_17/{{package}}"
+    }
+  ]
 }
