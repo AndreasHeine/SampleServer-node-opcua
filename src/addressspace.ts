@@ -36,6 +36,7 @@ import { createbrownfieldMTLogic } from "./machines/machinetool/brownfieldmachin
 import { createLaserSystemLogic } from "./machines/LaserSystem/LaserSystem";
 import { createUGGgrindingMachineLogic } from "./machines/machinetool/UGGgrindingmachine";
 import { createMetalFormingMTLogic } from "./machines/MetalForming/MetalFormingMachine";
+import { createJobContolLogic } from "./serveraddressspace/jobcontrol";
 
 export const createAddressSpace = async (
   server: OPCUAServer,
@@ -44,6 +45,7 @@ export const createAddressSpace = async (
   addressSpace
     ? await Promise.all([
         createOwnServerAddressspaceLogic(addressSpace),
+        createJobContolLogic(addressSpace),
         createMyMachineLogic(addressSpace),
         createShowCaseMachineToolLogic(addressSpace),
         createMachineToolExampleLogic(addressSpace),
