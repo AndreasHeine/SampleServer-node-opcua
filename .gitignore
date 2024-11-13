@@ -1,5 +1,6 @@
 node_modules
 *.js
+dst
 pki
 user_pki
 discovery_pki
