@@ -32,6 +32,8 @@ import {
     DataValue
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
+import { ISA95JobOrderDataType } from './interfaces'
+import { ISA95_Method_ReturnCode } from './enums'
 
 export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<void> => {
     const machineryIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/')
@@ -78,20 +80,33 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     const JobOrderControl = jobManager.getComponentByName("JobOrderControl") as UAObject
     const WorkMaster = JobOrderControl.getComponentByName("WorkMaster") as UAVariable
 
-    const JobOrderMap = new Map<string, Variant>()
+    const JobOrderMap = new Map<string, ISA95JobOrderDataType>()
 
-    function storeJobOrder(JobOrder: any, Comment: any) {
+    function storeJobOrder(JobOrder: ISA95JobOrderDataType, Comment: LocalizedText[]) {
         // https://reference.opcfoundation.org/ISA95JOBCONTROL/v100/docs/6.3.2
-        console.log(`storeJobOrder:`, JobOrder, Comment)
+        /*
+            ISA95JobOrderDataType { 
+                jobOrderID: 'asdf',
+                description: undefined,
+                workMasterID: undefined,
+                startTime: undefined,
+                endTime: undefined,
+                priority: undefined,
+                jobOrderParameters: undefined,       
+                personnelRequirements: undefined,    
+                equipmentRequirements: undefined,    
+                physicalAssetRequirements: undefined,
+                materialRequirements: undefined      
+            }
+        */
         JobOrderMap.set(JobOrder.jobOrderID, JobOrder)
     }
 
-    function clearJobOrder(JobOrderId: any, Comment: LocalizedText) {
-        console.log(`clearJobOrder:`, JobOrderId, Comment)
+    function clearJobOrder(JobOrderId: string, Comment: LocalizedText[]) {
         JobOrderMap.delete(JobOrderId)
     }
 
-    function getJobOrderList() {
+    function getJobOrderList(): ISA95JobOrderDataType[] {
         return Array.from(JobOrderMap.values())
     }
 
@@ -125,10 +140,16 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
             storeJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
                 // statusCode?: StatusCode;
-                statusCode: StatusCodes.Good
+                statusCode: StatusCodes.Good,
                 // inputArgumentResults?: StatusCode[] | null;
                 // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
                 // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: ISA95_Method_ReturnCode.NoError,
+                        dataType: DataType.UInt64
+                    })
+                ]
             } as CallMethodResultOptions)
         } catch (error) {
             console.log(error)
