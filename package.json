@@ -47,6 +47,6 @@
     "chalk": "4.1.2",
     "dependency-cruiser": "16.6.0",
     "mocha": "10.8.2",
-    "typescript": "5.6.3"
+    "typescript": "5.7.2"
   }
 }
