@@ -40,6 +40,10 @@
     "./nodesets/Opc.Ua.LaserSystems.NodeSet2.xml",
     "./nodesets/opc.ua.isa95-jobcontrol.nodeset2.xml",
     "./nodesets/Opc.Ua.Machinery.Jobs.Nodeset2.xml",
+    "./nodesets/Opc.Ua.IRDI.NodeSet2.xml",
+    "./nodesets/Opc.Ua.PADIM.NodeSet2.xml",
+    "./nodesets/Opc.Ua.Machinery.ProcessValues.NodeSet2.xml",
+    "./nodesets/Opc.Ua.MetalForming.NodeSet2.xml",
 
     "./models/ShowCaseMachineTool.xml",
     "./models/Machinetool-Example.xml",
@@ -54,14 +58,10 @@
     "./models/umati_opc40084-9_sample_instance.xml",
     "./models/umati_opc40084-11_sample_instance.xml",
     "./models/basyskom_woodworking_instance.xml",
-    "./nodesets/Opc.Ua.IRDI.NodeSet2.xml",
-    "./nodesets/Opc.Ua.PADIM.NodeSet2.xml",
-    "./nodesets/Opc.Ua.Machinery.ProcessValues.NodeSet2.xml",
     "./models/paefs.xml",
     "./models/umati_brownfieldMT.xml",
     "./models/LaserSystem-Example.xml",
     "./models/Opc.Ua.Ugg.Intances.Umati.NodeSet2.xml",
-    "./nodesets/Opc.Ua.MetalForming.NodeSet2.xml",
     "./models/MetalForming_Example.xml"
   ],
   "serverCapabilities": {
