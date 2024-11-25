@@ -15,12 +15,21 @@
 import { 
     AddressSpace,
     coerceQualifiedName,
+    DataType,
+    EUEngineeringUnit,
     InstantiateObjectOptions,
+    LocalizedText,
+    makeEUInformation,
     setNamespaceMetaData,
+    UADataType,
     UAObject,
     UAObjectType,
+    UAVariable,
+    Variant,
+    EUInformation,
+    standardUnits
 } from 'node-opcua'
-import { ServerRolePermissionGroup } from '../permissiongroups'
+import { ServerRolePermissionGroup } from '../../permissiongroups'
 
 export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<void> => {
     const machineryIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/')
@@ -39,10 +48,39 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     const jobIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/Jobs/')
     const jobManagementType = addressSpace?.findNode(`ns=${jobIdx};i=1003`) as UAObjectType
 
-    jobManagementType.instantiate({
+    const jobManager = jobManagementType.instantiate({
         componentOf: controledMachine,
         browseName: `JobManager`,
         namespace: namespace,
         optionals: []
     } as InstantiateObjectOptions)
+
+    const ISA95WorkMasterDataType = addressSpace?.findNode(`ns=${22};i=3007`) as UADataType
+    const ISA95ParameterDataType = addressSpace?.findNode(`ns=${22};i=3003`) as UADataType
+    const jobOrderControl = jobManager.getComponentByName("JobOrderControl") as UAVariable
+    const workmaster = jobOrderControl.getComponentByName("WorkMaster") as UAVariable
+
+    const pobj = addressSpace.constructExtensionObject(ISA95ParameterDataType, {
+        ID: "P1",
+        description: [
+            new LocalizedText({locale: "de-DE", text: "Parameter1"}),
+        ],
+        value: new Variant({value: 23.5, dataType: DataType.Double}),
+        engineeringUnits: standardUnits.degree_celsius,
+        subparameters: []
+    })
+
+    const wmObj = addressSpace.constructExtensionObject(ISA95WorkMasterDataType, {
+        ID: "1234",
+        description: new LocalizedText({locale: "de-DE", text: "de:asdf"}),
+        parameters: [
+            pobj,
+            pobj
+        ]
+    })
+
+    workmaster.setValueFromSource({
+        value: wmObj,
+        dataType: DataType.ExtensionObject
+    })  
 }

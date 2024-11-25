@@ -36,7 +36,7 @@ import { createbrownfieldMTLogic } from "./machines/machinetool/brownfieldmachin
 import { createLaserSystemLogic } from "./machines/LaserSystem/LaserSystem";
 import { createUGGgrindingMachineLogic } from "./machines/machinetool/UGGgrindingmachine";
 import { createMetalFormingMTLogic } from "./machines/MetalForming/MetalFormingMachine";
-import { createJobContolLogic } from "./serveraddressspace/jobcontrol";
+import { createJobContolLogic } from "./machines/MyControledMachine/jobcontrol";
 
 export const createAddressSpace = async (
   server: OPCUAServer,
