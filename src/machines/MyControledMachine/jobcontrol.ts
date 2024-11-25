@@ -1,4 +1,4 @@
-// Copyright 2022 (c) Andreas Heine
+// Copyright 2024 (c) Andreas Heine
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -14,20 +14,22 @@
 
 import { 
     AddressSpace,
-    coerceQualifiedName,
     DataType,
-    EUEngineeringUnit,
     InstantiateObjectOptions,
     LocalizedText,
-    makeEUInformation,
     setNamespaceMetaData,
     UADataType,
     UAObject,
     UAObjectType,
     UAVariable,
     Variant,
-    EUInformation,
-    standardUnits
+    standardUnits,
+    UAMethod,
+    ISessionContext,
+    CallbackT,
+    CallMethodResultOptions,
+    StatusCodes,
+    DataValue
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
 
@@ -52,35 +54,256 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
         componentOf: controledMachine,
         browseName: `JobManager`,
         namespace: namespace,
-        optionals: []
+        optionals: [
+            // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.2.1
+            "JobOrderControl.StoreAndStart",
+            "JobOrderControl.Store",
+            "JobOrderControl.Start",
+            "JobOrderControl.Update",
+            "JobOrderControl.Stop",
+            "JobOrderControl.Cancel",
+            "JobOrderControl.Clear",
+            "JobOrderControl.RevokeStart",
+            "JobOrderControl.Pause",
+            "JobOrderControl.Abort",
+            "JobOrderControl.Resume",
+        ]
     } as InstantiateObjectOptions)
 
-    const ISA95WorkMasterDataType = addressSpace?.findNode(`ns=${22};i=3007`) as UADataType
-    const ISA95ParameterDataType = addressSpace?.findNode(`ns=${22};i=3003`) as UADataType
-    const jobOrderControl = jobManager.getComponentByName("JobOrderControl") as UAVariable
-    const workmaster = jobOrderControl.getComponentByName("WorkMaster") as UAVariable
+    const ISA95Idx = addressSpace.getNamespaceIndex("http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2/")
 
-    const pobj = addressSpace.constructExtensionObject(ISA95ParameterDataType, {
+    const ISA95WorkMasterDataType = addressSpace?.findNode(`ns=${ISA95Idx};i=3007`) as UADataType
+    const ISA95ParameterDataType = addressSpace?.findNode(`ns=${ISA95Idx};i=3003`) as UADataType
+
+    const JobOrderControl = jobManager.getComponentByName("JobOrderControl") as UAObject
+    const WorkMaster = JobOrderControl.getComponentByName("WorkMaster") as UAVariable
+
+    const JobOrderMap = new Map<string, Variant>()
+
+    function storeJobOrder(JobOrder: any, Comment: any) {
+        // https://reference.opcfoundation.org/ISA95JOBCONTROL/v100/docs/6.3.2
+        console.log(`storeJobOrder:`, JobOrder, Comment)
+        JobOrderMap.set(JobOrder.jobOrderID, JobOrder)
+    }
+
+    function clearJobOrder(JobOrderId: any, Comment: LocalizedText) {
+        console.log(`clearJobOrder:`, JobOrderId, Comment)
+        JobOrderMap.delete(JobOrderId)
+    }
+
+    function getJobOrderList() {
+        return Array.from(JobOrderMap.values())
+    }
+
+    // JobOrderList
+
+    const JobOrderList = JobOrderControl.getComponentByName("JobOrderList") as UAVariable
+    JobOrderList.bindVariable({
+        get: function(this: UAVariable): Variant {
+            return new Variant({
+                value: getJobOrderList(),
+                dataType: DataType.ExtensionObject
+            })
+        },
+    }, true)
+
+    // Methods
+
+    const StoreAndStart = JobOrderControl.getMethodByName("StoreAndStart") as UAMethod
+    StoreAndStart.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Store = JobOrderControl.getMethodByName("Store") as UAMethod
+    Store.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        try {
+            storeJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
+    })
+    const Start = JobOrderControl.getMethodByName("Start") as UAMethod
+    Start.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Update = JobOrderControl.getMethodByName("Update") as UAMethod
+    Update.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Stop = JobOrderControl.getMethodByName("Stop") as UAMethod
+    Stop.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Cancel = JobOrderControl.getMethodByName("Cancel") as UAMethod
+    Cancel.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Clear = JobOrderControl.getMethodByName("Clear") as UAMethod
+    Clear.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        try {
+            clearJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
+    })
+    const RevokeStart = JobOrderControl.getMethodByName("RevokeStart") as UAMethod
+    RevokeStart.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Pause = JobOrderControl.getMethodByName("Pause") as UAMethod
+    Pause.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Abort = JobOrderControl.getMethodByName("Abort") as UAMethod
+    Abort.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+    const Resume = JobOrderControl.getMethodByName("Resume") as UAMethod
+    Resume.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
+        callback(null, {
+            // statusCode?: StatusCode;
+            statusCode: StatusCodes.BadNotImplemented
+            // inputArgumentResults?: StatusCode[] | null;
+            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+            // outputArguments?: (VariantLike | null)[] | null;
+        } as CallMethodResultOptions)
+    })
+
+
+    // Available WorkMasters
+
+    const subpobj1 = addressSpace.constructExtensionObject(ISA95ParameterDataType, {
+        ID: "Sub1",
+        description: [
+            new LocalizedText({locale: "de-DE", text: "SubParameter1"}),
+        ],
+        value: new Variant({value: 60.1, dataType: DataType.Double}),
+        engineeringUnits: standardUnits.degree_fahrenheit,
+        subparameters: []
+    })
+
+    const pobj1 = addressSpace.constructExtensionObject(ISA95ParameterDataType, {
         ID: "P1",
         description: [
             new LocalizedText({locale: "de-DE", text: "Parameter1"}),
         ],
         value: new Variant({value: 23.5, dataType: DataType.Double}),
         engineeringUnits: standardUnits.degree_celsius,
-        subparameters: []
-    })
-
-    const wmObj = addressSpace.constructExtensionObject(ISA95WorkMasterDataType, {
-        ID: "1234",
-        description: new LocalizedText({locale: "de-DE", text: "de:asdf"}),
-        parameters: [
-            pobj,
-            pobj
+        subparameters: [
+            subpobj1
         ]
     })
 
-    workmaster.setValueFromSource({
-        value: wmObj,
+    const pobj2 = addressSpace.constructExtensionObject(ISA95ParameterDataType, {
+        ID: "P2",
+        description: [
+            new LocalizedText({locale: "de-DE", text: "Parameter2"}),
+        ],
+        value: new Variant({value: 23.5, dataType: DataType.Double}),
+        engineeringUnits: standardUnits.degree_celsius,
+        subparameters: [
+            subpobj1
+        ]
+    })
+
+    const wmObj1 = addressSpace.constructExtensionObject(ISA95WorkMasterDataType, {
+        ID: "Recipe_1",
+        description: new LocalizedText({locale: "de-DE", text: "Rezept 1"}),
+        parameters: [
+            pobj1,
+            pobj1
+        ]
+    })
+
+    const wmObj2 = addressSpace.constructExtensionObject(ISA95WorkMasterDataType, {
+        ID: "Recipe_2",
+        description: new LocalizedText({locale: "de-DE", text: "Rezept 2"}),
+        parameters: [
+            pobj2,
+            pobj2
+        ]
+    })
+
+    WorkMaster.setValueFromSource({
+        value: [
+            wmObj1,
+            wmObj2
+        ],
         dataType: DataType.ExtensionObject
     })  
 }
