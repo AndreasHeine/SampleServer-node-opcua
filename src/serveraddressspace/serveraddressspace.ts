@@ -313,6 +313,7 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                 }
 
             },
+            minimumSamplingInterval: 1000,
             eventSourceOf: showcaseAC,
         })
 
@@ -566,7 +567,8 @@ export const createOwnServerAddressspaceLogic = async (addressSpace: AddressSpac
                     setpoint = value.value
                     return StatusCodes.Good
                 }
-            }
+            },
+            minimumSamplingInterval: 1000,
         })
 
         setInterval(() => {
