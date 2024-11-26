@@ -3,15 +3,33 @@ import { DateTime, LocalizedText, NodeId } from "node-opcua";
 export interface ISA95JobOrderDataType { 
     jobOrderID: string,
     description: LocalizedText[],
-    workMasterID: any[] // ISA95WorkMasterDataType[],
+    /**
+     * ISA95WorkMasterDataType[]
+     */
+    workMasterID: any[]
     startTime: DateTime,
     endTime: DateTime,
     priority: number,
-    jobOrderParameters: any[] // ISA95ParameterDataType[],       
-    personnelRequirements: any[] // ISA95PersonnelDataType[],    
-    equipmentRequirements: any[] // ISA95EquipmentDataType[],    
-    physicalAssetRequirements: any[] // ISA95PhysicalAssetDataType[],
-    materialRequirements: any[] // ISA95MaterialDataType[]      
+    /**
+     * ISA95ParameterDataType[]
+     */
+    jobOrderParameters: any[]  
+    /**
+     * ISA95PersonnelDataType[]
+     */   
+    personnelRequirements: any[]
+    /**
+     * ISA95EquipmentDataType[]
+     */  
+    equipmentRequirements: any[]
+    /**
+     * ISA95PhysicalAssetDataType[]
+     */  
+    physicalAssetRequirements: any[]
+    /**
+     * ISA95MaterialDataType[]
+     */
+    materialRequirements: any[]
 }
 
 export interface JobItem {
