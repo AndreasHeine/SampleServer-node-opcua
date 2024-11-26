@@ -85,6 +85,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function startJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
@@ -92,6 +93,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function stopJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
@@ -99,6 +101,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function cancelJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
@@ -106,6 +109,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function revokeStartJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
@@ -113,6 +117,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function pauseJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
@@ -127,12 +132,17 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function resumeJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         return ISA95_Method_ReturnCode.NoError
     }
 
     function updateJobOrder(JobOrder: ISA95JobOrderDataType, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrder.jobOrderID) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrder.jobOrderID}'`)
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
         return ISA95_Method_ReturnCode.NoError
     }
 
@@ -154,6 +164,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
             }
         */
         if (JobOrderMap.has(JobOrder.jobOrderID)) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): JobOrderId='${JobOrder.jobOrderID}' already exist!`)
             return ISA95_Method_ReturnCode.UnableToAcceptJobOrder
         }
         JobOrderMap.set(JobOrder.jobOrderID, {
@@ -165,6 +176,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     function clearJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         if (JobOrderMap.has(JobOrderId) === false) {
+            yellow(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Unknown JobOrderId='${JobOrderId}'`)
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         JobOrderMap.delete(JobOrderId)
@@ -180,6 +192,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     let jobs: ISA95JobOrderDataType[]
 
     function updateJobOrderList() {
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}): Updating JobOrderList`)
         jobs = getJobOrderList()
     }
 
@@ -206,12 +219,12 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             ); 
         */
-        green(`JobOrderControl.StoreAndStart: sessionId='${context.session?.getSessionId()}'`)
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).StoreAndStart: sessionId='${context.session?.getSessionId()} jobOrderId='${(inputArguments[0].value as ISA95JobOrderDataType).jobOrderID}'`)
         try {
             let rc 
             rc = storeJobOrder(inputArguments[0].value, inputArguments[1].value)
             if (rc === ISA95_Method_ReturnCode.NoError) {
-                rc = startJobOrder(inputArguments[0].value, inputArguments[1].value)
+                rc = startJobOrder((inputArguments[0].value as ISA95JobOrderDataType).jobOrderID, inputArguments[1].value)
             }
             callback(null, {
                 // statusCode?: StatusCode;
@@ -248,7 +261,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             ); 
         */
-        green(`JobOrderControl.Store: sessionId='${context.session?.getSessionId()}'`)
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Store: sessionId='${context.session?.getSessionId()}' jobOrderId='${(inputArguments[0].value as ISA95JobOrderDataType).jobOrderID}'`)
         try {
             const rc = storeJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -287,7 +300,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Start: sessionId='${context.session?.getSessionId()}'`)
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Start: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = startJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -325,7 +338,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Update: sessionId='${context.session?.getSessionId()}'`)
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Update: sessionId='${context.session?.getSessionId()}' jobOrderId='${(inputArguments[0].value as ISA95JobOrderDataType).jobOrderID}'`)
         try {
             const rc = updateJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -363,7 +376,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Stop: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Stop: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = stopJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -401,7 +414,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Cancel: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Cancel: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = cancelJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -440,7 +453,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Clear: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Clear: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = clearJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -478,7 +491,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.RevokeStart: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).RevokeStart: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = revokeStartJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -516,7 +529,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Pause: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Pause: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = pauseJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -554,7 +567,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Abort: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Abort: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = abortJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -592,7 +605,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        green(`JobOrderControl.Resume: sessionId='${context.session?.getSessionId()}'`) 
+        green(`JobOrderControl(${JobOrderControl.nodeId.toString()}).Resume: sessionId='${context.session?.getSessionId()}' jobOrderId='${inputArguments[0].value}'`)
         try {
             const rc = resumeJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
