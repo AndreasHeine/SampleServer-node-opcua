@@ -34,6 +34,7 @@ import {
 import { ServerRolePermissionGroup } from '../../permissiongroups'
 import { ISA95JobOrderDataType, JobItem } from './interfaces'
 import { ISA95_Method_ReturnCode } from './enums'
+import { green, yellow } from '../../utils/log'
 
 export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<void> => {
     const machineryIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/')
@@ -82,6 +83,59 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     const JobOrderMap = new Map<string, JobItem>()
 
+    function startJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function stopJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function cancelJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function revokeStartJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function pauseJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function abortJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function resumeJobOrder(JobOrderId: string, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        if (JobOrderMap.has(JobOrderId) === false) {
+            return ISA95_Method_ReturnCode.UnknownJobOrderId
+        }
+        return ISA95_Method_ReturnCode.NoError
+    }
+
+    function updateJobOrder(JobOrder: ISA95JobOrderDataType, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
+        return ISA95_Method_ReturnCode.NoError
+    }
+
     function storeJobOrder(JobOrder: ISA95JobOrderDataType, Comment: LocalizedText[]): ISA95_Method_ReturnCode {
         // https://reference.opcfoundation.org/ISA95JOBCONTROL/v100/docs/6.3.2
         /*
@@ -105,6 +159,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
         JobOrderMap.set(JobOrder.jobOrderID, {
             jobOrder: JobOrder
         })
+        updateJobOrderList()
         return ISA95_Method_ReturnCode.NoError
     }
 
@@ -113,6 +168,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
             return ISA95_Method_ReturnCode.UnknownJobOrderId
         }
         JobOrderMap.delete(JobOrderId)
+        updateJobOrderList()
         return ISA95_Method_ReturnCode.NoError
     }
 
@@ -121,12 +177,17 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     }
 
     // JobOrderList
+    let jobs: ISA95JobOrderDataType[]
+
+    function updateJobOrderList() {
+        jobs = getJobOrderList()
+    }
 
     const JobOrderList = JobOrderControl.getComponentByName("JobOrderList") as UAVariable
     JobOrderList.bindVariable({
         get: function(this: UAVariable): Variant {
             return new Variant({
-                value: getJobOrderList(),
+                value: jobs,
                 dataType: DataType.ExtensionObject
             })
         },
@@ -145,13 +206,36 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             ); 
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.StoreAndStart: sessionId='${context.session?.getSessionId()}'`)
+        try {
+            let rc 
+            rc = storeJobOrder(inputArguments[0].value, inputArguments[1].value)
+            if (rc === ISA95_Method_ReturnCode.NoError) {
+                rc = startJobOrder(inputArguments[0].value, inputArguments[1].value)
+            }
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Store = JobOrderControl.getMethodByName("Store") as UAMethod
     Store.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -164,6 +248,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             ); 
         */
+        green(`JobOrderControl.Store: sessionId='${context.session?.getSessionId()}'`)
         try {
             const rc = storeJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -202,13 +287,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Start: sessionId='${context.session?.getSessionId()}'`)
+        try {
+            const rc = startJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Update = JobOrderControl.getMethodByName("Update") as UAMethod
     Update.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -221,13 +325,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Update: sessionId='${context.session?.getSessionId()}'`)
+        try {
+            const rc = updateJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Stop = JobOrderControl.getMethodByName("Stop") as UAMethod
     Stop.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -240,13 +363,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Stop: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = stopJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Cancel = JobOrderControl.getMethodByName("Cancel") as UAMethod
     Cancel.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -259,13 +401,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Cancel: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = cancelJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Clear = JobOrderControl.getMethodByName("Clear") as UAMethod
     Clear.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -279,6 +440,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
+        green(`JobOrderControl.Clear: sessionId='${context.session?.getSessionId()}'`) 
         try {
             const rc = clearJobOrder(inputArguments[0].value, inputArguments[1].value)
             callback(null, {
@@ -316,13 +478,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.RevokeStart: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = revokeStartJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Pause = JobOrderControl.getMethodByName("Pause") as UAMethod
     Pause.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -335,13 +516,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Pause: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = pauseJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Abort = JobOrderControl.getMethodByName("Abort") as UAMethod
     Abort.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -354,13 +554,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Abort: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = abortJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
     const Resume = JobOrderControl.getMethodByName("Resume") as UAMethod
     Resume.bindMethod(function (this: UAMethod, inputArguments: Variant[], context: ISessionContext, callback: CallbackT<CallMethodResultOptions>): void {
@@ -373,13 +592,32 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                 [out]0:UInt64 ReturnStatus
             );
         */
-        callback(null, {
-            // statusCode?: StatusCode;
-            statusCode: StatusCodes.BadNotImplemented
-            // inputArgumentResults?: StatusCode[] | null;
-            // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
-            // outputArguments?: (VariantLike | null)[] | null;
-        } as CallMethodResultOptions)
+        green(`JobOrderControl.Resume: sessionId='${context.session?.getSessionId()}'`) 
+        try {
+            const rc = resumeJobOrder(inputArguments[0].value, inputArguments[1].value)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.Good,
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+                outputArguments: [
+                    new Variant({
+                        value: rc,
+                        dataType: DataType.UInt64
+                    })
+                ]
+            } as CallMethodResultOptions)
+        } catch (error) {
+            console.log(error)
+            callback(null, {
+                // statusCode?: StatusCode;
+                statusCode: StatusCodes.BadInternalError
+                // inputArgumentResults?: StatusCode[] | null;
+                // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
+                // outputArguments?: (VariantLike | null)[] | null;
+            } as CallMethodResultOptions)
+        }
     })
 
 
