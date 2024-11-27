@@ -14,7 +14,7 @@
 
 import { OPCUAServer } from "node-opcua";
 
-import { green } from "./utils/log";
+import { green, red } from "./utils/log";
 
 import { createOwnServerAddressspaceLogic } from "./serveraddressspace/serveraddressspace";
 import { createMyMachineLogic } from "./machines/mymachine/mymachine";
@@ -69,8 +69,10 @@ export const createAddressSpace = async (
         .then(() => {
           green(" Creating AddressSpace done! ");
         })
-        .catch((error) => {
-          throw new Error(` Creating AddressSpace failed: ${error} `);
+        .catch((error: Error) => {
+          red(` Creating AddressSpace failed!`)
+          console.log(error)
+          throw error
         })
     : () => {
         throw new Error(
