@@ -29,12 +29,18 @@ import {
     CallbackT,
     CallMethodResultOptions,
     StatusCodes,
-    DataValue
+    DataValue,
+    EventNotifierFlags,
+    AddReferenceOpts,
+    ReferenceTypeIds,
+    UAEventType,
+    coerceNodeId
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
 import { ISA95JobOrderDataType, JobItem } from './interfaces'
 import { ISA95_Method_ReturnCode } from './enums'
 import { green, yellow } from '../../utils/log'
+import { randomUUID } from 'node:crypto'
 
 export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<void> => {
     const machineryIdx = addressSpace?.getNamespaceIndex('http://opcfoundation.org/UA/Machinery/')
@@ -75,10 +81,87 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
     const ISA95Idx = addressSpace.getNamespaceIndex("http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2/")
 
-    const ISA95WorkMasterDataType = addressSpace?.findNode(`ns=${ISA95Idx};i=3007`) as UADataType
-    const ISA95ParameterDataType = addressSpace?.findNode(`ns=${ISA95Idx};i=3003`) as UADataType
+    const ISA95WorkMasterDataType = addressSpace!.findNode(`ns=${ISA95Idx};i=3007`) as UADataType
+    const ISA95ParameterDataType = addressSpace!.findNode(`ns=${ISA95Idx};i=3003`) as UADataType
+    const ISA95JobOrderDataType = addressSpace!.findNode(`ns=${ISA95Idx};i=3008`) as UADataType
+    const ISA95JobResponseDataType = addressSpace!.findNode(`ns=${ISA95Idx};i=3013`) as UADataType
+    const ISA95StateDataType = addressSpace!.findNode(`ns=${ISA95Idx};i=3006`) as UADataType
 
     const JobOrderControl = jobManager.getComponentByName("JobOrderControl") as UAObject
+    const JobOrderResults = jobManager.getComponentByName("JobOrderResults") as UAObject
+
+    const ISA95JobOrderStatusEventType = addressSpace!.findNode(`ns=${ISA95Idx};i=1006`) as UAEventType
+
+    const MyControledMachineJobOrderResultStatusEventType = namespace.addEventType({
+        browseName: 'MyControledMachineJobOrderResultStatusEventType',
+        subtypeOf:  ISA95JobOrderStatusEventType,
+        isAbstract: false
+    })
+
+    ISA95JobOrderStatusEventType.addReference({
+        referenceType: `GeneratesEvent`,
+        nodeId: JobOrderResults.nodeId,
+        isForward: false,
+    } as AddReferenceOpts)
+
+    const severObject = addressSpace.findNode(coerceNodeId(`ns=0;i=2253`))!
+
+    severObject.addReference({
+        referenceType: `HasEventSource`,
+        nodeId: JobOrderResults.nodeId,
+        isForward: true,
+    } as AddReferenceOpts)   
+
+    function emitISA95JobOrderStatusEvent(JobOrderId: string): void {
+        if (JobOrderMap.has(JobOrderId) === false) return
+        const jobOrderItem = JobOrderMap.get(JobOrderId)
+        // check if job is finished!
+        JobOrderResults.raiseEvent(
+            MyControledMachineJobOrderResultStatusEventType,
+            {
+                jobOrder: new Variant({
+                    value: addressSpace.constructExtensionObject(ISA95JobOrderDataType, (jobOrderItem?.jobOrder as any)), 
+                    dataType: DataType.ExtensionObject 
+                }),
+                jobResponse: new Variant({
+                    value: addressSpace.constructExtensionObject(ISA95JobResponseDataType, {
+                        // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
+                        ID: `${randomUUID()}`,
+                        Description: "", // TODO!
+                        JobOrderID: JobOrderId,
+                        StartTime: null, // TODO!
+                        EndTime: null, // TODO!
+                        JobState: [], // ISA95StateDataType[]
+                        JobResponseData: [], // ISA95ParameterDataType[]
+                        PersonnelActuals: [], // ISA95PersonnelDataType[] 
+                        EquipmentActuals: [], // ISA95EquipmentDataType[]
+                        PhysicalAssetActuals: [], // ISA95PhysicalAssetDataType[]
+                        MaterialActuals: [], // ISA95MaterialDataType[]
+                    }), 
+                    dataType: DataType.ExtensionObject 
+                }),
+                jobState: new Variant({
+                    value: [
+                        addressSpace.constructExtensionObject(ISA95StateDataType, {
+                            // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
+                            BrowsePath: null,
+                            StateText: new LocalizedText({locale: "en-EN", text: "Running"}),
+                            StateNumber: 0 // TODO!
+                        })
+                    ], 
+                    dataType: DataType.ExtensionObject 
+                })
+            }
+        )
+    }
+
+    // TODO only Emit on Change of JobState!
+    setInterval(() => {
+        getJobOrderList().forEach((jobOrder: ISA95JobOrderDataType) => {
+            emitISA95JobOrderStatusEvent(jobOrder.jobOrderID)
+        })
+    }, 10 * 1000)
+
     const WorkMaster = JobOrderControl.getComponentByName("WorkMaster") as UAVariable
 
     const JobOrderMap = new Map<string, JobItem>()
