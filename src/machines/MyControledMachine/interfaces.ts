@@ -1,4 +1,4 @@
-import { DateTime, LocalizedText, NodeId } from "node-opcua";
+import { DateTime, LocalizedText } from "node-opcua";
 
 export interface ISA95JobOrderDataType { 
     jobOrderID: string,
@@ -30,9 +30,4 @@ export interface ISA95JobOrderDataType {
      * ISA95MaterialDataType[]
      */
     materialRequirements: any[]
-}
-
-export interface JobItem {
-    jobOrder: ISA95JobOrderDataType
-    jobInstance?: NodeId
 }
