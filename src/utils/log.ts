@@ -12,49 +12,46 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import fs from 'fs'
-import { 
-    green as g, 
-    yellow as y, 
-    red as r
-} from 'chalk'
+import fs from "fs";
+import { green as g, yellow as y, red as r } from "chalk";
 
 const logToFile = (msg: string) => {
-    let date = new Date()
-    fs.appendFile('log.txt', `${date.toISOString().slice(0, 19)}: ${msg} \r\n`, (err) => {
-        if (err) return console.log(err)
-    })
-}
+  let date = new Date();
+  fs.appendFile(
+    "log.txt",
+    `${date.toISOString().slice(0, 19)}: ${msg} \r\n`,
+    (err) => {
+      if (err) return console.log(err);
+    },
+  );
+};
 
 interface LoggerInterface {
-    green(msg:String): void
-    yellow(msg:String): void
-    red(msg:String): void
+  green(msg: String): void;
+  yellow(msg: String): void;
+  red(msg: String): void;
 }
 
 class Logger implements LoggerInterface {
+  constructor() {}
 
-    constructor () {
+  green(msg: string): void {
+    logToFile(msg);
+    console.log(" LOG: ", g(msg));
+  }
 
-    }
+  yellow(msg: string): void {
+    logToFile(msg);
+    console.log(" LOG: ", y(msg));
+  }
 
-    green(msg:string): void {
-        logToFile(msg)
-        console.log(' LOG: ', g(msg))
-    }
-
-    yellow (msg:string): void {
-        logToFile(msg)
-        console.log(' LOG: ', y(msg))
-    }
-
-    red (msg:string): void {
-        logToFile(msg)
-        console.log(' LOG: ', r(msg))
-    }
+  red(msg: string): void {
+    logToFile(msg);
+    console.log(" LOG: ", r(msg));
+  }
 }
 
-export const logger = new Logger()
-export const green = logger.green
-export const yellow = logger.yellow
-export const red = logger.red
+export const logger = new Logger();
+export const green = logger.green;
+export const yellow = logger.yellow;
+export const red = logger.red;

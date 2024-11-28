@@ -12,10 +12,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { 
-    AddressSpace,
-} from 'node-opcua'
+import { AddressSpace } from "node-opcua";
 
-export const create40077Logic = async (addressSpace: AddressSpace): Promise<void> => {
-  
-}
+export const create40077Logic = async (
+  addressSpace: AddressSpace,
+): Promise<void> => {};

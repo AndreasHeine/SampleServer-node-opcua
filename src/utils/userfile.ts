@@ -12,33 +12,38 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { writeFileSync } from 'fs'
-import { hashSync, genSaltSync } from 'bcrypt'
+import { writeFileSync } from "fs";
+import { hashSync, genSaltSync } from "bcrypt";
 
 export interface User {
-    username: string,
-    password: string,
-    roles: string,
+  username: string;
+  password: string;
+  roles: string;
 }
 
 export class UserFile {
-    private userList: User[] = []
+  private userList: User[] = [];
 
-    constructor(userList: User[] = []) {
-        this.userList = userList;
-      }
+  constructor(userList: User[] = []) {
+    this.userList = userList;
+  }
 
-    public addUser(user: User): void {
-        this.userList.push(Object.freeze({
-            username: user.username,
-            roles: user.roles,
-            password: hashSync(user.password, genSaltSync())
-        }))
-    }
+  public addUser(user: User): void {
+    this.userList.push(
+      Object.freeze({
+        username: user.username,
+        roles: user.roles,
+        password: hashSync(user.password, genSaltSync()),
+      }),
+    );
+  }
 
-    public createUserFile(path: string): void {
-        writeFileSync(path, JSON.stringify({
-            users: this.userList
-        }))
-    }
+  public createUserFile(path: string): void {
+    writeFileSync(
+      path,
+      JSON.stringify({
+        users: this.userList,
+      }),
+    );
+  }
 }

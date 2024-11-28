@@ -12,36 +12,31 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { describe, it } from 'mocha'
+import { describe, it } from "mocha";
 
-import { 
-    OPCUAServer, 
-} from 'node-opcua'
+import { OPCUAServer } from "node-opcua";
 
-import { config } from './../config'
+import { config } from "./../config";
 
-describe('following tests are for renovate dependency updates:', function () {
-    this.timeout(15000);
-    let server: OPCUAServer
-    after(function (done) {
-        if (server) {
-            server.shutdown(() => {
-                done()
-            });
-        } else {
-            done()
-        }
-    })
+describe("following tests are for renovate dependency updates:", function () {
+  this.timeout(15000);
+  let server: OPCUAServer;
+  after(function (done) {
+    if (server) {
+      server.shutdown(() => {
+        done();
+      });
+    } else {
+      done();
+    }
+  });
 
-    it('should start the OPCUAServer', (done) => { 
-        server = new OPCUAServer(config)
-        server.initialize()
-        server.start(
-            () => {
-                setTimeout(done, 10000)
-            }
-        )
-        console.log("  --> server is running for 10s...  ")
-        
-    })
-})
+  it("should start the OPCUAServer", (done) => {
+    server = new OPCUAServer(config);
+    server.initialize();
+    server.start(() => {
+      setTimeout(done, 10000);
+    });
+    console.log("  --> server is running for 10s...  ");
+  });
+});
