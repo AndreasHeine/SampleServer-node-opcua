@@ -70,9 +70,9 @@ export const createAddressSpace = async (
           green(" Creating AddressSpace done! ");
         })
         .catch((error: Error) => {
-          red(` Creating AddressSpace failed!`)
-          console.log(error)
-          throw error
+          red(` Creating AddressSpace failed!`);
+          console.log(error);
+          throw error;
         })
     : () => {
         throw new Error(

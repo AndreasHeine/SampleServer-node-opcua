@@ -12,31 +12,30 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync } from 'fs';
-import { compare } from 'bcrypt';
-import yargs from 'yargs';
-import {
-  NodeId,
-  makeRoles
-} from 'node-opcua';
-import { User } from './utils/userfile';
-import { green, red } from './utils/log';
+import { readFileSync } from "fs";
+import { compare } from "bcrypt";
+import yargs from "yargs";
+import { NodeId, makeRoles } from "node-opcua";
+import { User } from "./utils/userfile";
+import { green, red } from "./utils/log";
 
-const argv = yargs(process.argv.slice(2)).options({
-  ip: { type: 'string' },
-  port: { type: 'number' },
-  configpath: { type: 'string' },
-}).parseSync();
+const argv = yargs(process.argv.slice(2))
+  .options({
+    ip: { type: "string" },
+    port: { type: "number" },
+    configpath: { type: "string" },
+  })
+  .parseSync();
 
 const configPath: string = process.env.CONFIGPATH || argv.configpath || "";
 const userFile: string = "user.json";
 
-const userList: User[] = Object.freeze(JSON.parse(
-  readFileSync(configPath + userFile, 'utf-8')
-).users);
+const userList: User[] = Object.freeze(
+  JSON.parse(readFileSync(configPath + userFile, "utf-8")).users,
+);
 
 const getUser = (username: String, users: User[]): User | null => {
-  const user: User[] = users.filter(item => {
+  const user: User[] = users.filter((item) => {
     if (item.username === username) {
       return item;
     }
@@ -49,7 +48,11 @@ const getUser = (username: String, users: User[]): User | null => {
   return user[0];
 };
 
-export const isValidUserAsync = (username: string, password: string, callback:(err: Error | null, isAuthorized?: boolean) => void) => {
+export const isValidUserAsync = (
+  username: string,
+  password: string,
+  callback: (err: Error | null, isAuthorized?: boolean) => void,
+) => {
   const user = getUser(username, userList);
   if (user) {
     compare(password, String(user.password), (err, result) => {
@@ -62,11 +65,11 @@ export const isValidUserAsync = (username: string, password: string, callback:(e
       }
     });
   } else {
-    red(' User:unknown rejected! ');
+    red(" User:unknown rejected! ");
     callback(null, false);
   }
 };
 
 export const getUserRoles = (username: string): NodeId[] => {
-  return makeRoles(getUser(username, userList)?.roles || '');
+  return makeRoles(getUser(username, userList)?.roles || "");
 };

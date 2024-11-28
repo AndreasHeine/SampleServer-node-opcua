@@ -12,13 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { 
-    AddressSpace,
-} from 'node-opcua'
+import { AddressSpace } from "node-opcua";
 
-export const createGenericPRLogic = async (addressSpace: AddressSpace): Promise<void> => {
-
-    /*
+export const createGenericPRLogic = async (
+  addressSpace: AddressSpace,
+): Promise<void> => {
+  /*
         machinelogic here:
         bind opc ua variables to a getter/setter functions or to an js variable
         -> https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.uavariable.html#bindvariable
@@ -49,5 +48,4 @@ export const createGenericPRLogic = async (addressSpace: AddressSpace): Promise<
             timestamped_set: myVariableSetter
         }, true);
     */
-
-}
+};

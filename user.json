@@ -1,19 +1,19 @@
 {
-    "users": [
-        {
-            "username":"admin",
-            "password":"$2b$10$FJiv97xU3a7xIKQvW/VFNemJ6npESrv2iIrmltO62N5ItQTvFVu.W",
-            "roles":"Supervisor;ConfigureAdmin;SecurityAdmin"
-        },
-        {
-            "username":"operator",
-            "password":"$2b$10$BUbEWHRR5HU2g0Wmqu690.q.LgqNYfa./yOv25dubZxQX0Tj6mG7O",
-            "roles":"Operator;ConfigureAdmin"
-        },
-        {
-            "username":"guest",
-            "password":"$2b$10$rNxw5OKrvg1D8Wlm1Ar4TuE/POcimfrNqvBCxthqs/9JB6ELn3iHO",
-            "roles":"AuthenticatedUser"
-        }
-    ]
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2b$10$FJiv97xU3a7xIKQvW/VFNemJ6npESrv2iIrmltO62N5ItQTvFVu.W",
+      "roles": "Supervisor;ConfigureAdmin;SecurityAdmin"
+    },
+    {
+      "username": "operator",
+      "password": "$2b$10$BUbEWHRR5HU2g0Wmqu690.q.LgqNYfa./yOv25dubZxQX0Tj6mG7O",
+      "roles": "Operator;ConfigureAdmin"
+    },
+    {
+      "username": "guest",
+      "password": "$2b$10$rNxw5OKrvg1D8Wlm1Ar4TuE/POcimfrNqvBCxthqs/9JB6ELn3iHO",
+      "roles": "AuthenticatedUser"
+    }
+  ]
 }
