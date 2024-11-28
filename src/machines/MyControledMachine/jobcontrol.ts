@@ -40,7 +40,7 @@ import {
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
 import { ISA95JobOrderDataType } from './interfaces'
-import { ISA95_Method_ReturnCode, JobState } from './enums'
+import { ISA95_Method_ReturnCode, JobState, JobStateNumber } from './enums'
 import { green, yellow } from '../../utils/log'
 import { randomUUID } from 'node:crypto'
 import { Job } from './job'
@@ -160,11 +160,18 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                     value: addressSpace.constructExtensionObject(ISA95JobResponseDataType, {
                         // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
                         ID: `${randomUUID()}`,
-                        Description: "", // TODO!
+                        Description: coerceLocalizedText(null),
                         JobOrderID: JobOrderId,
                         StartTime: coerceDateTime(job!.startTime),
                         EndTime: coerceDateTime(job!.endTime),
-                        JobState: [], // ISA95StateDataType[]
+                        JobState: [
+                            addressSpace.constructExtensionObject(ISA95StateDataType, {
+                                // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
+                                BrowsePath: null,
+                                StateText: new LocalizedText({locale: "en-EN", text: job!.state}),
+                                StateNumber: job!.stateNumber
+                            })
+                        ], // ISA95StateDataType[]
                         JobResponseData: [], // ISA95ParameterDataType[]
                         PersonnelActuals: [], // ISA95PersonnelDataType[] 
                         EquipmentActuals: [], // ISA95EquipmentDataType[]
@@ -189,6 +196,17 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     }
 
     const WorkMaster = JobOrderControl.getComponentByName("WorkMaster") as UAVariable
+
+    const JobOrderControlCurrentState = JobOrderControl.getComponentByName("CurrentState") as UAVariable
+    JobOrderControlCurrentState.setValueFromSource({
+        value: coerceLocalizedText(JobState.Running),
+        dataType: DataType.LocalizedText
+    })
+    const JobOrderControlCurrentStateId = JobOrderControlCurrentState.getPropertyByName("Id") as UAVariable
+    JobOrderControlCurrentStateId.setValueFromSource({
+        value: coerceNodeId(`ns=${ISA95Idx};i=5037`),
+        dataType: DataType.NodeId
+    })
 
     const JobOrderMap = new Map<string, Job>()
 
@@ -855,6 +873,8 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
 
             const job = JobOrderMap.get(JobOrderId)
 
+            console.log(job)
+
             callback(null, {
                 // statusCode?: StatusCode;
                 statusCode: StatusCodes.Good,
@@ -866,21 +886,16 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                         value: addressSpace.constructExtensionObject(ISA95JobResponseDataType, {
                             // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
                             ID: `${randomUUID()}`,
-                            Description: "", // TODO!
+                            Description: coerceLocalizedText(null),
                             JobOrderID: JobOrderId,
                             StartTime: coerceDateTime(job!.startTime),
                             EndTime: coerceDateTime(job!.endTime),
                             JobState: [
-                                new Variant({
-                                    value: [
-                                        addressSpace.constructExtensionObject(ISA95StateDataType, {
-                                            // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
-                                            BrowsePath: null,
-                                            StateText: new LocalizedText({locale: "en-EN", text: job!.state}),
-                                            StateNumber: job!.stateNumber
-                                        })
-                                    ], 
-                                    dataType: DataType.ExtensionObject 
+                                addressSpace.constructExtensionObject(ISA95StateDataType, {
+                                    // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
+                                    BrowsePath: null,
+                                    StateText: new LocalizedText({locale: "en-EN", text: job!.state}),
+                                    StateNumber: job!.stateNumber
                                 })
                             ], // ISA95StateDataType[]
                             JobResponseData: [], // ISA95ParameterDataType[]
