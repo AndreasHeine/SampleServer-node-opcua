@@ -21,6 +21,8 @@ export class Job extends EventEmitter {
     state: JobState = JobState.NotAllowedToStart
     stateNumber: JobStateNumber = JobStateNumber.NotAllowedToStart
     jobOrder: ISA95JobOrderDataType
+    startTime: Date | undefined = undefined
+    endTime: Date | undefined = undefined
 
     constructor (jobOrder: ISA95JobOrderDataType) {
         super()
@@ -55,18 +57,13 @@ export class Job extends EventEmitter {
             case JobState.AllowedToStart:
                 this.state = JobState.Running
                 this.stateNumber = JobStateNumber.Running
+                this.startTime = new Date()
                 this.emit("changed", this.jobOrder)
                 return true
             case JobState.NotAllowedToStart:
                 this.state = JobState.AllowedToStart
                 this.stateNumber = JobStateNumber.AllowedToStart
                 this.emit("changed", this.jobOrder)
-                // TODO check startTime if possible jump into Running!
-                if (true) {
-                    this.state = JobState.Running
-                    this.stateNumber = JobStateNumber.Running
-                    this.emit("changed", this.jobOrder)
-                }
                 return true
             default:
                 return false
@@ -78,11 +75,13 @@ export class Job extends EventEmitter {
             case JobState.Running:
                 this.state = JobState.Ended
                 this.stateNumber = JobStateNumber.Ended
+                this.endTime = new Date()
                 this.emit("changed", this.jobOrder)
                 return true
             case JobState.Interrupted:
                 this.state = JobState.Ended
                 this.stateNumber = JobStateNumber.Ended
+                this.endTime = new Date()
                 this.emit("changed", this.jobOrder)
                 return true
             default:

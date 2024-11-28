@@ -35,7 +35,8 @@ import {
     ReferenceTypeIds,
     UAEventType,
     coerceNodeId,
-    coerceLocalizedText
+    coerceLocalizedText,
+    coerceDateTime
 } from 'node-opcua'
 import { ServerRolePermissionGroup } from '../../permissiongroups'
 import { ISA95JobOrderDataType } from './interfaces'
@@ -161,8 +162,8 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                         ID: `${randomUUID()}`,
                         Description: "", // TODO!
                         JobOrderID: JobOrderId,
-                        StartTime: null, // TODO!
-                        EndTime: null, // TODO!
+                        StartTime: coerceDateTime(job!.startTime),
+                        EndTime: coerceDateTime(job!.endTime),
                         JobState: [], // ISA95StateDataType[]
                         JobResponseData: [], // ISA95ParameterDataType[]
                         PersonnelActuals: [], // ISA95PersonnelDataType[] 
@@ -347,6 +348,29 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     function getJobOrderList(): ISA95JobOrderDataType[] {
         return Array.from(JobOrderMap.values()).map((job: Job) => { return job.jobOrder })
     }
+
+    function getJobList(): Job[] {
+        return Array.from(JobOrderMap.values()).map((job: Job) => { return job })
+    }
+
+    setInterval(() => {
+        const jobs = getJobList()
+        jobs.forEach((job) => {
+
+            switch (job.state) {
+                case JobState.AllowedToStart:
+                    job.start()
+                    break;
+                case JobState.Running:
+                    setTimeout(() => {
+                        job.stop()
+                    }, 10 * 1000)
+                    break;
+                default:
+                    break;
+            }
+        })
+    }, 1 * 1000)
 
     // JobOrderList
     let jobs: ISA95JobOrderDataType[]
@@ -844,8 +868,8 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
                             ID: `${randomUUID()}`,
                             Description: "", // TODO!
                             JobOrderID: JobOrderId,
-                            StartTime: null, // TODO!
-                            EndTime: null, // TODO!
+                            StartTime: coerceDateTime(job!.startTime),
+                            EndTime: coerceDateTime(job!.endTime),
                             JobState: [
                                 new Variant({
                                     value: [
