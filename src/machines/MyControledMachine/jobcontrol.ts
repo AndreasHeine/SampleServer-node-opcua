@@ -148,7 +148,7 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     function emitISA95JobOrderStatusEvent(JobOrderId: string): void {
         if (JobOrderMap.has(JobOrderId) === false) return
         const job = JobOrderMap.get(JobOrderId)
-        // check if job is finished!
+        green(`JobOrderControl(MyControledMachine): raise ISA95JobOrderStatusEvent for JobOrderId='${JobOrderId}' JobState='${job!.state}'`)
         JobOrderResults.raiseEvent(
             MyControledMachineJobOrderResultStatusEventType,
             {
@@ -374,7 +374,6 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
     setInterval(() => {
         const jobs = getJobList()
         jobs.forEach((job) => {
-
             switch (job.state) {
                 case JobState.AllowedToStart:
                     job.start()
@@ -872,8 +871,6 @@ export const createJobContolLogic = async (addressSpace: AddressSpace): Promise<
             }
 
             const job = JobOrderMap.get(JobOrderId)
-
-            console.log(job)
 
             callback(null, {
                 // statusCode?: StatusCode;
