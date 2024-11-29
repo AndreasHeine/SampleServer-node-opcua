@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "tsc",
     "test": "mocha dst/test/test.js",
-    "start": "tsc && node dst/server.js",
+    "start": "tsc && node dst/src/server.js",
     "dev-test": "mocha dst/src/test/test.js",
     "dev-start": "tsc && node dst/src/server.js",
     "dev-start_args": "tsc && node dst/src/server.js --ip=127.0.0.1 --port=5000",
