@@ -503,8 +503,8 @@ export const createJobContolLogic = async (
     jobs = list.map((job) => {
       return addressSpace.constructExtensionObject(
         ISA95JobOrderAndStateDataType,
-        job.getJobOrderAndState()
-      )
+        job.getJobOrderAndState(),
+      );
     });
   }
 

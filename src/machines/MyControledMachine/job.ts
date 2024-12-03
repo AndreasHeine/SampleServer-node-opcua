@@ -36,12 +36,12 @@ export class Job extends EventEmitter {
         {
           StateText: {
             text: this.state,
-            locale: "en-En"
+            locale: "en-En",
           },
-          StateNumber: this.stateNumber
-        }
-      ]
-    }
+          StateNumber: this.stateNumber,
+        },
+      ],
+    };
   }
 
   update(jobOrder: ISA95JobOrderDataType): boolean {
