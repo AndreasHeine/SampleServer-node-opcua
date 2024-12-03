@@ -29,6 +29,21 @@ export class Job extends EventEmitter {
     this.emit("changed", this.jobOrder);
   }
 
+  getJobOrderAndState() {
+    return {
+      JobOrder: this.jobOrder,
+      State: [
+        {
+          StateText: {
+            text: this.state,
+            locale: "en-En"
+          },
+          StateNumber: this.stateNumber
+        }
+      ]
+    }
+  }
+
   update(jobOrder: ISA95JobOrderDataType): boolean {
     if (
       this.state === JobState.AllowedToStart ||

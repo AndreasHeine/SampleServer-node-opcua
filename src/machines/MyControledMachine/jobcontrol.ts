@@ -29,21 +29,20 @@ import {
   CallbackT,
   CallMethodResultOptions,
   StatusCodes,
-  DataValue,
-  EventNotifierFlags,
   AddReferenceOpts,
-  ReferenceTypeIds,
   UAEventType,
   coerceNodeId,
   coerceLocalizedText,
   coerceDateTime,
+  ExtensionObject,
 } from "node-opcua";
 import { ServerRolePermissionGroup } from "../../permissiongroups";
 import { ISA95JobOrderDataType } from "./interfaces";
-import { ISA95_Method_ReturnCode, JobState, JobStateNumber } from "./enums";
+import { ISA95_Method_ReturnCode, JobState } from "./enums";
 import { green, yellow } from "../../utils/log";
 import { randomUUID } from "node:crypto";
 import { Job } from "./job";
+import assert from "node:assert";
 
 export const createJobContolLogic = async (
   addressSpace: AddressSpace,
@@ -150,6 +149,9 @@ export const createJobContolLogic = async (
   ) as UADataType;
   const ISA95StateDataType = addressSpace!.findNode(
     `ns=${ISA95Idx};i=3006`,
+  ) as UADataType;
+  const ISA95JobOrderAndStateDataType = addressSpace!.findNode(
+    `ns=${ISA95Idx};i=3015`,
   ) as UADataType;
 
   const JobOrderControl = jobManager.getComponentByName(
@@ -468,12 +470,6 @@ export const createJobContolLogic = async (
     return ISA95_Method_ReturnCode.NoError;
   }
 
-  function getJobOrderList(): ISA95JobOrderDataType[] {
-    return Array.from(JobOrderMap.values()).map((job: Job) => {
-      return job.jobOrder;
-    });
-  }
-
   function getJobList(): Job[] {
     return Array.from(JobOrderMap.values()).map((job: Job) => {
       return job;
@@ -499,11 +495,17 @@ export const createJobContolLogic = async (
   }, 1 * 1000);
 
   // JobOrderList
-  let jobs: ISA95JobOrderDataType[];
+  let jobs: ExtensionObject[];
 
   function updateJobOrderList() {
     green(`JobOrderControl(MyControledMachine): Updating JobOrderList`);
-    jobs = getJobOrderList();
+    const list = getJobList();
+    jobs = list.map((job) => {
+      return addressSpace.constructExtensionObject(
+        ISA95JobOrderAndStateDataType,
+        job.getJobOrderAndState()
+      )
+    })
   }
 
   const JobOrderList = JobOrderControl.getComponentByName(
