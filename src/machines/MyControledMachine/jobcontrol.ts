@@ -505,7 +505,7 @@ export const createJobContolLogic = async (
         ISA95JobOrderAndStateDataType,
         job.getJobOrderAndState()
       )
-    })
+    });
   }
 
   const JobOrderList = JobOrderControl.getComponentByName(

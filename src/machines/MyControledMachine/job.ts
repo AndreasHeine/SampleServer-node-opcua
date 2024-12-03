@@ -29,7 +29,7 @@ export class Job extends EventEmitter {
     this.emit("changed", this.jobOrder);
   }
 
-  getJobOrderAndState() {
+  getJobOrderAndState(): any {
     return {
       JobOrder: this.jobOrder,
       State: [
