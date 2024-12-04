@@ -186,11 +186,9 @@ export const createJobContolLogic = async (
     isForward: true,
   } as AddReferenceOpts);
 
-  function emitISA95JobOrderStatusEvent(JobOrderId: string): void {
-    if (JobOrderMap.has(JobOrderId) === false) return;
-    const job = JobOrderMap.get(JobOrderId);
+  function emitISA95JobOrderStatusEvent(job: Job): void {
     green(
-      `JobOrderControl(MyControledMachine): raise ISA95JobOrderStatusEvent for JobOrderId='${JobOrderId}' JobState='${job!.state}'`,
+      `JobOrderControl(MyControledMachine): raise ISA95JobOrderStatusEvent for JobOrderId='${job.jobOrder.jobOrderID}' JobState='${job.state}'`,
     );
     JobOrderResults.raiseEvent(
       MyControledMachineJobOrderResultStatusEventType,
@@ -198,7 +196,7 @@ export const createJobContolLogic = async (
         jobOrder: new Variant({
           value: addressSpace.constructExtensionObject(
             ISA95JobOrderDataType,
-            job!.jobOrder as any,
+            job.jobOrder as any,
           ),
           dataType: DataType.ExtensionObject,
         }),
@@ -209,18 +207,18 @@ export const createJobContolLogic = async (
               // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
               ID: `${randomUUID()}`,
               Description: coerceLocalizedText(null),
-              JobOrderID: JobOrderId,
-              StartTime: coerceDateTime(job!.startTime),
-              EndTime: coerceDateTime(job!.endTime),
+              JobOrderID: job.jobOrder.jobOrderID,
+              StartTime: coerceDateTime(job.startTime),
+              EndTime: coerceDateTime(job.endTime),
               JobState: [
                 addressSpace.constructExtensionObject(ISA95StateDataType, {
                   // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
                   BrowsePath: null,
                   StateText: new LocalizedText({
                     locale: "en-EN",
-                    text: job!.state,
+                    text: job.state,
                   }),
-                  StateNumber: job!.stateNumber,
+                  StateNumber: job.stateNumber,
                 }),
               ], // ISA95StateDataType[]
               JobResponseData: [], // ISA95ParameterDataType[]
@@ -239,7 +237,7 @@ export const createJobContolLogic = async (
               BrowsePath: null,
               StateText: new LocalizedText({
                 locale: "en-EN",
-                text: job!.state,
+                text: job.state,
               }),
               StateNumber: job!.stateNumber,
             }),
@@ -445,10 +443,14 @@ export const createJobContolLogic = async (
       );
       return ISA95_Method_ReturnCode.UnableToAcceptJobOrder;
     }
+    assert(JobOrder.jobOrderID !== "")
+    assert(JobOrder.jobOrderID !== undefined)
+    assert(JobOrder.jobOrderID !== null)
+    assert(typeof JobOrder.jobOrderID === "string")
     const job = new Job(JobOrder);
-    job.on("changed", (jobOrder) => {
+    job.on("changed", (job: Job) => {
       updateJobOrderList();
-      emitISA95JobOrderStatusEvent(jobOrder.jobOrderID);
+      emitISA95JobOrderStatusEvent(job);
     });
     JobOrderMap.set(JobOrder.jobOrderID, job);
     updateJobOrderList();
@@ -1186,12 +1188,59 @@ export const createJobContolLogic = async (
         */
     try {
       // TODO !!!
+      // const states: Variant[] = []
+      // const JobOrderStates = inputArguments[0].value // might be an array
+      // JobOrderStates.forEach((JobOrderState: any) => {
+      //   getJobList().forEach((job: Job) => {
+      //     if (job.state === JobOrderState.StateText) {
+      //       states.push(
+      //         new Variant({
+      //           value: addressSpace.constructExtensionObject(
+      //             ISA95JobResponseDataType,
+      //             {
+      //               // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
+      //               ID: `${randomUUID()}`,
+      //               Description: coerceLocalizedText(null),
+      //               JobOrderID: job.jobOrder.jobOrderID,
+      //               StartTime: coerceDateTime(job!.startTime),
+      //               EndTime: coerceDateTime(job!.endTime),
+      //               JobState: [
+      //                 addressSpace.constructExtensionObject(ISA95StateDataType, {
+      //                   // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.2
+      //                   BrowsePath: null,
+      //                   StateText: new LocalizedText({
+      //                     locale: "en-EN",
+      //                     text: job!.state,
+      //                   }),
+      //                   StateNumber: job!.stateNumber,
+      //                 }),
+      //               ], // ISA95StateDataType[]
+      //               JobResponseData: [], // ISA95ParameterDataType[]
+      //               PersonnelActuals: [], // ISA95PersonnelDataType[]
+      //               EquipmentActuals: [], // ISA95EquipmentDataType[]
+      //               PhysicalAssetActuals: [], // ISA95PhysicalAssetDataType[]
+      //               MaterialActuals: [], // ISA95MaterialDataType[]
+      //             },
+      //           ),
+      //           dataType: DataType.ExtensionObject,
+      //         }),
+      //       )
+      //     }
+      //   })
+      // })
       callback(null, {
         // statusCode?: StatusCode;
         statusCode: StatusCodes.BadNotImplemented,
         // inputArgumentResults?: StatusCode[] | null;
         // inputArgumentDiagnosticInfos?: (DiagnosticInfo | null)[] | null;
         // outputArguments?: (VariantLike | null)[] | null;
+        // outputArguments: [
+        //   states,
+        //   new Variant({
+        //     value: ISA95_Method_ReturnCode.NoError,
+        //     dataType: DataType.UInt64,
+        //   }),
+        // ]
       } as CallMethodResultOptions);
     } catch (error) {
       console.log(error);
