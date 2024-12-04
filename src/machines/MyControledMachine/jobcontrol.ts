@@ -443,10 +443,10 @@ export const createJobContolLogic = async (
       );
       return ISA95_Method_ReturnCode.UnableToAcceptJobOrder;
     }
-    assert(JobOrder.jobOrderID !== "")
-    assert(JobOrder.jobOrderID !== undefined)
-    assert(JobOrder.jobOrderID !== null)
-    assert(typeof JobOrder.jobOrderID === "string")
+    assert(JobOrder.jobOrderID !== "");
+    assert(JobOrder.jobOrderID !== undefined);
+    assert(JobOrder.jobOrderID !== null);
+    assert(typeof JobOrder.jobOrderID === "string");
     const job = new Job(JobOrder);
     job.on("changed", (job: Job) => {
       updateJobOrderList();
