@@ -13,7 +13,8 @@
     "dev-start_lds": "tsc && node dst/src/LocalDiscoveryServer/local-discovery-server.js",
     "dev-debug": "tsc && node --inspect dst/src/server.js",
     "dev-update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
-    "dev-update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg"
+    "dev-update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg",
+    "linting": "npx prettier --write src/"
   },
   "repository": {
     "type": "git",
