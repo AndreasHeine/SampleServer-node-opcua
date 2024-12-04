@@ -66,6 +66,15 @@ export const createJobContolLogic = async (
     organizedBy: machinesFolder,
   });
 
+  const machineryBuildingBlocks = namespace.addObject({
+    browseName: {
+      name: "MachineryBuildingBlocks",
+      namespaceIndex: machineryIdx,
+    },
+    typeDefinition: "FolderType",
+    componentOf: controledMachine,
+  });
+
   const machineryIdentificationType = addressSpace?.findNode(
     `ns=${machineryIdx};i=1012`,
   ) as UAObjectType;
@@ -130,6 +139,12 @@ export const createJobContolLogic = async (
       "JobOrderControl.Resume",
     ],
   } as InstantiateObjectOptions);
+
+  jobManager.addReference({
+    referenceType: "HasAddIn",
+    nodeId: machineryBuildingBlocks,
+    isForward: false,
+  });
 
   const ISA95Idx = addressSpace.getNamespaceIndex(
     "http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2/",
