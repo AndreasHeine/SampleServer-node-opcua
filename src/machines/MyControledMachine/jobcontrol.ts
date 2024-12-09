@@ -220,7 +220,7 @@ export const createJobContolLogic = async (
             ISA95JobResponseDataType,
             {
               // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
-              ID: `${randomUUID()}`,
+              JobResponseID: `${randomUUID()}`,
               Description: coerceLocalizedText(null),
               JobOrderID: job.jobOrder.jobOrderID,
               StartTime: coerceDateTime(job.startTime),
@@ -1140,7 +1140,7 @@ export const createJobContolLogic = async (
               ISA95JobResponseDataType,
               {
                 // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.3.5
-                ID: `${randomUUID()}`,
+                JobResponseID: `${randomUUID()}`,
                 Description: coerceLocalizedText(null),
                 JobOrderID: JobOrderId,
                 StartTime: coerceDateTime(job!.startTime),
