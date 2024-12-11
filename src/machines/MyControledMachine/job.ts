@@ -29,7 +29,7 @@ export class Job extends EventEmitter {
     this.changed();
   }
 
-  private changed(){
+  private changed() {
     this.emit("changed", this);
   }
 
