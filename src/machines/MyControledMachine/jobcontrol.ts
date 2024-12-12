@@ -498,12 +498,20 @@ export const createJobContolLogic = async (
     jobs.forEach((job) => {
       switch (job.state) {
         case JobState.AllowedToStart:
-          job.start();
+          if (job.isStartable()) {
+            job.start()
+          }
           break;
         case JobState.Running:
-          setTimeout(() => {
-            job.stop();
-          }, 10 * 1000);
+          if (job.jobOrder.endTime !== null) {
+            if (job.isStoppable()) {
+              job.stop()
+            }
+          } else {
+            setTimeout(() => {
+              job.stop();
+            }, 15 * 1000);
+          }
           break;
         default:
           break;

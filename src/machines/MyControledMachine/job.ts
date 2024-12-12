@@ -15,6 +15,7 @@
 import EventEmitter from "events";
 import { JobState, JobStateNumber } from "./enums";
 import { ISA95JobOrderDataType } from "./interfaces";
+import { DateTime } from "node-opcua";
 
 export class Job extends EventEmitter {
   state: JobState = JobState.NotAllowedToStart;
@@ -31,6 +32,27 @@ export class Job extends EventEmitter {
 
   private changed() {
     this.emit("changed", this);
+  }
+
+  isStartable(): boolean {
+    if (this.state !== JobState.AllowedToStart) return false
+    const planedStart: DateTime = this.jobOrder.startTime
+    if (planedStart === null) return true
+    if (planedStart.getTime() <= new Date().getTime()) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  isStoppable(): boolean {
+    const planedEnd: DateTime = this.jobOrder.endTime
+    if (planedEnd === null) return true
+    if (planedEnd.getTime() <= new Date().getTime()) {
+      return true
+    } else {
+      return false
+    }
   }
 
   getJobOrderAndState(): any {
