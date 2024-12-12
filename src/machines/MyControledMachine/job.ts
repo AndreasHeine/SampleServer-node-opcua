@@ -35,23 +35,25 @@ export class Job extends EventEmitter {
   }
 
   isStartable(): boolean {
-    if (this.state !== JobState.AllowedToStart) return false
-    const planedStart: DateTime = this.jobOrder.startTime
-    if (planedStart === null) return true
+    if (this.state !== JobState.AllowedToStart) return false;
+    const planedStart: DateTime = this.jobOrder.startTime;
+    if (planedStart === null) return true;
+    if (planedStart === undefined) return true;
     if (planedStart.getTime() <= new Date().getTime()) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   isStoppable(): boolean {
-    const planedEnd: DateTime = this.jobOrder.endTime
-    if (planedEnd === null) return true
+    const planedEnd: DateTime = this.jobOrder.endTime;
+    if (planedEnd === null) return true;
+    if (planedEnd === undefined) return true;
     if (planedEnd.getTime() <= new Date().getTime()) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 

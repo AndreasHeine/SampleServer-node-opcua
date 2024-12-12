@@ -499,18 +499,21 @@ export const createJobContolLogic = async (
       switch (job.state) {
         case JobState.AllowedToStart:
           if (job.isStartable()) {
-            job.start()
+            job.start();
           }
           break;
         case JobState.Running:
-          if (job.jobOrder.endTime !== null) {
-            if (job.isStoppable()) {
-              job.stop()
-            }
-          } else {
+          if (
+            job.jobOrder.endTime === null ||
+            job.jobOrder.endTime === undefined
+          ) {
             setTimeout(() => {
               job.stop();
             }, 15 * 1000);
+          } else {
+            if (job.isStoppable()) {
+              job.stop();
+            }
           }
           break;
         default:
