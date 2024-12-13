@@ -42,11 +42,6 @@ Set "IP" and "PORT" in env:
 
 ![image](./img/addressspace.PNG)
 
-## OPC UA Pub/Sub over MQTT
-
-MQTT-Broker: `mqtt://broker.hivemq.com:1883`  
-MQTT-Topic: `umati/#`
-
 ## License
 
 ![GitHub](https://img.shields.io/github/license/AndreasHeine/SampleServer-node-opcua)
