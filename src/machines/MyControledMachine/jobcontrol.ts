@@ -176,6 +176,12 @@ export const createJobContolLogic = async (
     "JobOrderResults",
   ) as UAObject;
 
+  const maxDownloadableJobOrders = JobOrderControl.getPropertyByName("MaxDownloadableJobOrders")
+  maxDownloadableJobOrders?.setValueFromSource({
+    value: (2**16) - 1,
+    dataType: DataType.UInt16
+  })
+
   const ISA95JobOrderStatusEventType = addressSpace!.findNode(
     `ns=${ISA95Idx};i=1006`,
   ) as UAEventType;
