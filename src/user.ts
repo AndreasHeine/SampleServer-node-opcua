@@ -12,15 +12,12 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { readFileSync } from 'fs';
-import yargs from 'yargs';
-import {
-  NodeId,
-  makeRoles
-} from 'node-opcua';
-import { User } from './utils/userfile';
-import { green, red } from './utils/log';
-import { createHash } from 'crypto';
+import { readFileSync } from "fs";
+import yargs from "yargs";
+import { NodeId, makeRoles } from "node-opcua";
+import { User } from "./utils/userfile";
+import { green, red } from "./utils/log";
+import { createHash } from "crypto";
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -58,7 +55,7 @@ export const isValidUserAsync = (
 ) => {
   const user = getUser(username, userList);
   if (user) {
-    const hash = createHash("sha512").update(password).digest("hex")
+    const hash = createHash("sha512").update(password).digest("hex");
     if (hash === user.password) {
       green(` User:'${user.username}' logged in as '${user.roles}'! `);
       callback(null, true);

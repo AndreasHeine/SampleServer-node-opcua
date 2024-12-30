@@ -10,10 +10,9 @@ RUN chown -R node:node /home/node
 
 USER node
 
-RUN npm -v
-RUN npm install
-
-RUN npm run pretest
+RUN npm -v && \
+    npm install && \
+    npm run pretest
 
 FROM node:22.9.0-alpine3.20 AS production
 

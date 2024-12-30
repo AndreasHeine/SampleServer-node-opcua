@@ -1,0 +1,4 @@
+# Contains allow test secrets
+/github/workspace/user.json:generic-api-key:5
+/github/workspace/user.json:generic-api-key:10
+/github/workspace/user.json:generic-api-key:15

@@ -12,8 +12,8 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { writeFileSync } from 'fs'
-import { createHash } from 'crypto';
+import { writeFileSync } from "fs";
+import { createHash } from "crypto";
 
 export interface User {
   username: string;
@@ -28,13 +28,15 @@ export class UserFile {
     this.userList = userList;
   }
 
-    public addUser(user: User): void {
-        this.userList.push(Object.freeze({
-            username: user.username,
-            roles: user.roles,
-            password: createHash("sha512").update(user.password).digest("hex")
-        }))
-    }
+  public addUser(user: User): void {
+    this.userList.push(
+      Object.freeze({
+        username: user.username,
+        roles: user.roles,
+        password: createHash("sha512").update(user.password).digest("hex"),
+      }),
+    );
+  }
 
   public createUserFile(path: string): void {
     writeFileSync(

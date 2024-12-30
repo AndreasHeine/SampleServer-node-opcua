@@ -1,19 +1,19 @@
 {
-    "users": [
-        {
-            "username":"admin",
-            "password":"74e65264f45665748b385eb67d7531f285cee07d729e0ca18151d2e97be1837d5974b2a3747ad3db3310f0f98cec7fa622620ebd84e28cdc9fa3cc4e91be1b14",
-            "roles":"Supervisor;ConfigureAdmin;SecurityAdmin"
-        },
-        {
-            "username":"operator",
-            "password":"038e0f02c2776458dfe506724b62bd91c35e82ee8aa2bfddc7b19bb9acc7915abad0593c78c7831f97a0d7b5a0315fea2235f27e7fbf438bd86416dde12adae7",
-            "roles":"Operator;ConfigureAdmin"
-        },
-        {
-            "username":"guest",
-            "password":"9e98a8d3ed61072c8da7b61c487d95d7612698d2259374d594e74444692c9f4e0f01e742745af8b4c80d61a7f182255e9cdb4d07f76c619e1fd7e1c49bac05ac",
-            "roles":"AuthenticatedUser"
-        }
-    ]
+  "users": [
+    {
+      "username": "admin",
+      "password": "74e65264f45665748b385eb67d7531f285cee07d729e0ca18151d2e97be1837d5974b2a3747ad3db3310f0f98cec7fa622620ebd84e28cdc9fa3cc4e91be1b14",
+      "roles": "Supervisor;ConfigureAdmin;SecurityAdmin"
+    },
+    {
+      "username": "operator",
+      "password": "038e0f02c2776458dfe506724b62bd91c35e82ee8aa2bfddc7b19bb9acc7915abad0593c78c7831f97a0d7b5a0315fea2235f27e7fbf438bd86416dde12adae7",
+      "roles": "Operator;ConfigureAdmin"
+    },
+    {
+      "username": "guest",
+      "password": "9e98a8d3ed61072c8da7b61c487d95d7612698d2259374d594e74444692c9f4e0f01e742745af8b4c80d61a7f182255e9cdb4d07f76c619e1fd7e1c49bac05ac",
+      "roles": "AuthenticatedUser"
+    }
+  ]
 }
