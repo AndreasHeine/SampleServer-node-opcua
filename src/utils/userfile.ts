@@ -1,4 +1,6 @@
-// Copyright 2021 (c) Andreas Heine
+// SPDX-License-Identifier: Apache-2.0
+//
+// Copyright (c) 2021-2024 Andreas Heine
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -13,7 +15,7 @@
 //   limitations under the License.
 
 import { writeFileSync } from "fs";
-import { hashSync, genSaltSync } from "bcrypt";
+import { sha512 } from "@noble/hashes/sha512";
 
 export interface User {
   username: string;
@@ -33,7 +35,7 @@ export class UserFile {
       Object.freeze({
         username: user.username,
         roles: user.roles,
-        password: hashSync(user.password, genSaltSync()),
+        password: Buffer.from(sha512(user.password)).toString("hex"),
       }),
     );
   }

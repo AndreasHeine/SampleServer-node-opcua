@@ -1,4 +1,6 @@
-// Copyright 2021 (c) Andreas Heine
+// SPDX-License-Identifier: Apache-2.0
+//
+// Copyright (c) 2021-2024 Andreas Heine
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -13,11 +15,11 @@
 //   limitations under the License.
 
 import { readFileSync } from "fs";
-import { compare } from "bcrypt";
 import yargs from "yargs";
 import { NodeId, makeRoles } from "node-opcua";
 import { User } from "./utils/userfile";
 import { green, red } from "./utils/log";
+import { sha512 } from "@noble/hashes/sha512";
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -55,15 +57,14 @@ export const isValidUserAsync = (
 ) => {
   const user = getUser(username, userList);
   if (user) {
-    compare(password, String(user.password), (err, result) => {
-      if (result === true) {
-        green(` User:'${user.username}' logged in as '${user.roles}'! `);
-        callback(null, true);
-      } else {
-        red(` User:'${user.username}' rejected! `);
-        callback(null, false);
-      }
-    });
+    const hash = Buffer.from(sha512(password)).toString("hex");
+    if (hash === user.password) {
+      green(` User:'${user.username}' logged in as '${user.roles}'! `);
+      callback(null, true);
+    } else {
+      red(` User:'${user.username}' rejected! `);
+      callback(null, false);
+    }
   } else {
     red(" User:unknown rejected! ");
     callback(null, false);

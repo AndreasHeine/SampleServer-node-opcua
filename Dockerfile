@@ -1,23 +1,39 @@
-FROM node:21.4.0-alpine3.17
+FROM node:22.9.0 AS builder
 
-WORKDIR /home/node/opcua-server
+RUN node -v
 
-# hadolint ignore=DL3018
-RUN apk --no-cache add \
-     openssl=3.0.15-r1 \
-     python3=3.10.15-r0 \
-     make=4.3-r1 \
-     g++=12.2.1_git20220924-r4 \
-     gcc=12.2.1_git20220924-r4
+WORKDIR /home/node
      
-COPY . /home/node/opcua-server
+COPY . /home/node
 
-RUN npm install
-
-EXPOSE 4840
-
-RUN chown -R node:node /home/node/opcua-server
+RUN chown -R node:node /home/node
 
 USER node
 
-ENTRYPOINT ["npm", "run", "start"]
+RUN npm -v && \
+    npm install && \
+    npm run pretest
+
+FROM node:22.9.0-alpine3.20 AS production
+
+USER node
+
+WORKDIR /home/node
+
+COPY --from=builder /home/node/dst/ ./dst/
+COPY --from=builder /home/node/node_modules ./node_modules
+
+COPY ./package.json /home/node
+COPY ./user.json /home/node
+COPY ./configuration.json /home/node
+COPY ./nodesets /home/node/nodesets
+COPY ./models /home/node/models
+
+COPY ./healthcheck.js /home/node/healthcheck.js
+
+HEALTHCHECK --interval=30s CMD node /home/node/healthcheck.js
+
+EXPOSE 4840
+
+ENTRYPOINT ["node", "./dst/server.js"]
+
