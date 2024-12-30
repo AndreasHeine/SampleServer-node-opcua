@@ -13,7 +13,7 @@
 //   limitations under the License.
 
 import { writeFileSync } from "fs";
-import { createHash } from "crypto";
+import { sha512 } from "@noble/hashes/sha512";
 
 export interface User {
   username: string;
@@ -33,7 +33,7 @@ export class UserFile {
       Object.freeze({
         username: user.username,
         roles: user.roles,
-        password: createHash("sha512").update(user.password).digest("hex"),
+        password: Buffer.from(sha512(user.password)).toString("hex"),
       }),
     );
   }
