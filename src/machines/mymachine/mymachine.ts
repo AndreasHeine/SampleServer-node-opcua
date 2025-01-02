@@ -29,6 +29,9 @@ import { initializeFakeDataSource, variableGetter } from "./datasource";
 export const createMyMachineLogic = async (
   addressSpace: AddressSpace,
 ): Promise<void> => {
+  const diIdx = addressSpace?.getNamespaceIndex(
+    "http://opcfoundation.org/UA/DI/",
+  );
   // Add a machine manually:
   const machineryIdx = addressSpace?.getNamespaceIndex(
     "http://opcfoundation.org/UA/Machinery/",
@@ -52,7 +55,7 @@ export const createMyMachineLogic = async (
   const myMachineIdentification = machineryIdentificationType?.instantiate({
     browseName: {
       name: "Identification",
-      namespaceIndex: machineryIdx,
+      namespaceIndex: diIdx,
     },
     namespace: namespace,
     optionals: ["Model"], // array of string

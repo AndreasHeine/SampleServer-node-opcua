@@ -49,6 +49,9 @@ import assert from "node:assert";
 export const createJobContolLogic = async (
   addressSpace: AddressSpace,
 ): Promise<void> => {
+  const diIdx = addressSpace?.getNamespaceIndex(
+    "http://opcfoundation.org/UA/DI/",
+  );
   const machineryIdx = addressSpace?.getNamespaceIndex(
     "http://opcfoundation.org/UA/Machinery/",
   );
@@ -83,7 +86,7 @@ export const createJobContolLogic = async (
   const myMachineIdentification = machineryIdentificationType?.instantiate({
     browseName: {
       name: "Identification",
-      namespaceIndex: machineryIdx,
+      namespaceIndex: diIdx,
     },
     namespace: namespace,
     optionals: [], // array of string
