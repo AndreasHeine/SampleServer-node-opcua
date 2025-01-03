@@ -35,7 +35,7 @@
     "node-opcua-pubsub-server": "^0.19.2",
     "node-opcua-server-discovery": "2.139.0",
     "yargs": "17.7.2",
-    "@noble/hashes": "1.6.1"
+    "@noble/hashes": "1.7.0"
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.2",
