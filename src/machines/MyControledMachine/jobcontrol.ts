@@ -1,4 +1,6 @@
-// Copyright 2024 (c) Andreas Heine
+// SPDX-License-Identifier: Apache-2.0
+//
+// Copyright (c) 2024 Andreas Heine
 //
 //   Licensed under the Apache License, Version 2.0 (the 'License');
 //   you may not use this file except in compliance with the License.
@@ -47,6 +49,9 @@ import assert from "node:assert";
 export const createJobContolLogic = async (
   addressSpace: AddressSpace,
 ): Promise<void> => {
+  const diIdx = addressSpace?.getNamespaceIndex(
+    "http://opcfoundation.org/UA/DI/",
+  );
   const machineryIdx = addressSpace?.getNamespaceIndex(
     "http://opcfoundation.org/UA/Machinery/",
   );
@@ -81,7 +86,7 @@ export const createJobContolLogic = async (
   const myMachineIdentification = machineryIdentificationType?.instantiate({
     browseName: {
       name: "Identification",
-      namespaceIndex: machineryIdx,
+      namespaceIndex: diIdx,
     },
     namespace: namespace,
     optionals: [], // array of string
