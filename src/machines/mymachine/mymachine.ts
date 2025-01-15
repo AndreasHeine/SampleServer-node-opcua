@@ -185,7 +185,7 @@ export const createMyMachineLogic = async (
     nodeId: monitoringObject,
     isForward: false,
   });
-  const temperaturTag = temperature.getChildByName("Tag") as UAVariable;
+  const temperaturTag = temperature.getChildByName("SignalTag") as UAVariable;
   temperaturTag?.setValueFromSource({
     dataType: DataType.String,
     value: "Temperature-Tag-123",
@@ -232,7 +232,7 @@ export const createMyMachineLogic = async (
     nodeId: monitoringObject,
     isForward: false,
   });
-  const pressureTag = pressure.getChildByName("Tag") as UAVariable;
+  const pressureTag = pressure.getChildByName("SignalTag") as UAVariable;
   pressureTag?.setValueFromSource({
     dataType: DataType.String,
     value: "Pressure-Tag-123",
