@@ -47,7 +47,7 @@
     "chai": "5.1.2",
     "chalk": "4.1.2",
     "dependency-cruiser": "16.9.0",
-    "mocha": "11.0.1",
+    "mocha": "11.1.0",
     "typescript": "5.7.3"
   }
 }
