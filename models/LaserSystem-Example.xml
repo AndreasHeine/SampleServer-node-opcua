@@ -701,7 +701,7 @@
         <Value>
             <uax:LocalizedText>
                 <uax:Locale>en</uax:Locale>
-                <uax:Text>LaserReady</uax:Text>
+                <uax:Text>LaserOn</uax:Text>
             </uax:LocalizedText>
         </Value>
     </UAVariable>
@@ -713,7 +713,7 @@
         </References>
         <Value>
             <uax:NodeId>
-                <uax:Identifier>ns=2;i=5032</uax:Identifier>
+                <uax:Identifier>ns=2;i=5035</uax:Identifier>
             </uax:NodeId>
         </Value>
     </UAVariable>
