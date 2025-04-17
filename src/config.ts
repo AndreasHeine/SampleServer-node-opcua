@@ -52,7 +52,7 @@ try {
 const packageString: string = readFileSync("package.json", "utf-8");
 const packageJsonObj = JSON.parse(packageString) || {};
 
-let config: OPCUAServerOptions = {};
+const config: OPCUAServerOptions = {};
 
 config.hostname =
   process.env.IP || argv.ip || configJsonObj.hostname || "127.0.0.1";

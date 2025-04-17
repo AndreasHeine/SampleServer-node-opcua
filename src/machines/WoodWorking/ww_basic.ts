@@ -130,15 +130,15 @@ export const createWoodWorkingBasicLogic = async (
   });
 
   // Intervall to change opc ua node-values
-  var intervallID = setInterval(function () {
+  const intervallID = setInterval(function () {
     setBasicWwValues();
   }, 2500);
 
   // Set the identification values for basic woodworking companion specification
   function setBasicWwValues() {
-    let rndmMin = 10;
-    let rndmMax = 500;
-    let rndm = getRandomArbitrary(rndmMin, rndmMax);
+    const rndmMin = 10;
+    const rndmMax = 500;
+    const rndm = getRandomArbitrary(rndmMin, rndmMax);
 
     // Set basic woodworking STATE - MACHINE - FLAGS nodes
     bsAlarmNode?.setValueFromSource({

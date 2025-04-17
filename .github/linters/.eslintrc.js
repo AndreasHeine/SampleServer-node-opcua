@@ -4,7 +4,7 @@ module.exports = {
         "eslint:recommended",
         'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
         'prettier',
-        'plugin:json/recommended'    
+        'plugin:json/recommended-legacy'    
     ],
     parserOptions: {
         ecmaVersion: 2018,
@@ -39,6 +39,14 @@ module.exports = {
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            {
+            "allowShortCircuit": true,
+             "allowTernary": true,
+             "allowTaggedTemplates": true
+            }
+        ],
         "no-constant-condition": "off",
         "import/order": [
             "error",
