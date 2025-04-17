@@ -15,9 +15,9 @@
 //   limitations under the License.
 
 import EventEmitter from "events";
+import { DateTime } from "node-opcua";
 import { JobState, JobStateNumber } from "./enums";
 import { ISA95JobOrderDataType } from "./interfaces";
-import { DateTime } from "node-opcua";
 
 export class Job extends EventEmitter {
   state: JobState = JobState.NotAllowedToStart;
