@@ -439,7 +439,7 @@ export const createOwnServerAddressspaceLogic = async (
   });
 
   setInterval(() => {
-    let randomIdx = Math.floor(Math.random() * stringStateArray.length);
+    const randomIdx = Math.floor(Math.random() * stringStateArray.length);
     if (randomIdx != 1) {
       offnormalAlarm.severity.setValueFromSource({
         value: 600,

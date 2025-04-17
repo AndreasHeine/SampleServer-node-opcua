@@ -322,20 +322,20 @@ export const createWoodWorkingFullLogic = async (
   });
 
   // Intervall to change opc ua node-values
-  var intervallID = setInterval(function () {
+  const intervallID = setInterval(function () {
     setBasicWwValues();
   }, 2500);
 
   // Set the identification values for basic woodworking companion specification
   function setBasicWwValues() {
-    let rndmMin = 10;
-    let rndmMax = 500;
-    let rndm = getRandomArbitrary(rndmMin, rndmMax);
-    let rndm1 = getRandomArbitrary(rndmMin, rndmMax);
-    let rndm2 = getRandomArbitrary(rndmMin, rndmMax);
-    let rndm3 = getRandomArbitrary(rndmMin, rndmMax);
-    let rndm4 = getRandomArbitrary(rndmMin, rndmMax);
-    let rndm5 = getRandomArbitrary(rndmMin, rndmMax);
+    const rndmMin = 10;
+    const rndmMax = 500;
+    const rndm = getRandomArbitrary(rndmMin, rndmMax);
+    const rndm1 = getRandomArbitrary(rndmMin, rndmMax);
+    const rndm2 = getRandomArbitrary(rndmMin, rndmMax);
+    const rndm3 = getRandomArbitrary(rndmMin, rndmMax);
+    const rndm4 = getRandomArbitrary(rndmMin, rndmMax);
+    const rndm5 = getRandomArbitrary(rndmMin, rndmMax);
 
     // Set full woodworking STATE - MACHINE -FLAGS nodes
     flAairPresentNode?.setValueFromSource({
