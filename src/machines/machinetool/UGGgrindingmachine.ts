@@ -93,15 +93,15 @@ export const createUGGgrindingMachineLogic = async (
   });
 
   // Intervall to change opc ua node-values
-  var intervallID = setInterval(function () {
+  const intervallID = setInterval(function () {
     setUGGgrindingmachineValues();
   }, 2500);
 
   // Set the Grinding Machine values
   function setUGGgrindingmachineValues() {
-    let rndmMin = 10;
-    let rndmMax = 500;
-    let rndm = getRandomArbitrary(rndmMin, rndmMax);
+    const rndmMin = 10;
+    const rndmMax = 500;
+    const rndm = getRandomArbitrary(rndmMin, rndmMax);
 
     // Set Stacklights on and off
     monitoringStacklightLamp1SignalOn?.setValueFromSource({

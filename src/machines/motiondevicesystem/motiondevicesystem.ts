@@ -56,8 +56,8 @@ export const createMotionDeviceSystemLogic = async (
     "http://vdma.org/OPCRoboticsTestServer/",
   );
 
-  let generateNumber = function () {
-    var value = 10 + 10 * Math.random();
+  const generateNumber = function () {
+    const value = 10 + 10 * Math.random();
     return value.toFixed(2);
   };
 
