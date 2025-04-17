@@ -68,7 +68,8 @@ export default [
       "**/*.mjs",
       "**/*.jsx",
       "**/*.tsx",
-      "**.*.mts",
+      "**/*.mts",
+      "**/*.json",
     ],
 
     ignores: ["tsconfig.json"],
@@ -81,6 +82,14 @@ export default [
       "@typescript-eslint/no-var-requires": ["off"],
       "@typescript-eslint/no-explicit-any": ["off"],
       "@typescript-eslint/explicit-module-boundary-types": ["off"],
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        {
+            "allowShortCircuit": true,
+            "allowTernary": true,
+            "allowTaggedTemplates": true
+         }
+        ],
       "no-constant-condition": ["off"],
       "no-unused-vars": ["off"],
       "no-dupe-class-members": 0,
