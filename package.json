@@ -14,7 +14,8 @@
     "dev-debug": "tsc && node --inspect dst/src/server.js",
     "dev-update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
     "dev-update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg",
-    "linting": "npx prettier --write src/"
+    "linting": "eslint -c .github/linters/eslint.config.mjs",
+    "lint-fixup": "npx prettier --write src/ && eslint -c .github/linters/eslint.config.mjs --fix"
   },
   "repository": {
     "type": "git",
@@ -38,16 +39,27 @@
     "@noble/hashes": "1.8.0"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
     "@types/bcrypt": "5.0.2",
     "@types/chai": "5.2.2",
     "@types/mocha": "10.0.10",
     "@types/node": "22.15.34",
     "@types/semver": "7.7.0",
     "@types/yargs": "17.0.33",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
     "chai": "5.2.0",
     "chalk": "4.1.2",
     "dependency-cruiser": "16.10.3",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-json": "^4.0.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
     "mocha": "11.7.1",
+    "prettier": "^3.5.3",
     "typescript": "5.8.3"
   }
 }
