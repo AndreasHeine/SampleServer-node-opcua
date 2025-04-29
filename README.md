@@ -51,6 +51,8 @@ Implemented in _SampleMachineTool_Energy_.
   - Simulated fluctuations of active voltage and current, total electric energy import.
   - Simulated fluctuations of air and water flow rates.
 
+![image](./img/mt_energy.png)
+
 ## License
 
 ![GitHub](https://img.shields.io/github/license/AndreasHeine/SampleServer-node-opcua)
