@@ -42,6 +42,16 @@ Set "IP" and "PORT" in env:
 
 ![image](./img/addressspace.PNG)
 
+## Implementation of Energy Monitoring
+
+Implemented in _SampleMachineTool_Energy_.
+
+- Used OPC UA for Machinery Part 4: Energy Management (Working Draft 0.1).
+- Implemented 3-phase electricity, compressed air and cooling water monitoring.
+  - Simulated fluctuations of active voltage and current, total electric energy import.
+  - Simulated fluctuations of air and water flow rates.
+
+
 ## License
 
 ![GitHub](https://img.shields.io/github/license/AndreasHeine/SampleServer-node-opcua)
