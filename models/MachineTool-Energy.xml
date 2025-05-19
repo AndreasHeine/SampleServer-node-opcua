@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<UANodeSet xmlns:s6="http://opcfoundation.org/UA/Machinery/Energy/Types.xsd" xmlns:s3="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s7="http://opcfoundation.org/UA/IA/Types.xsd" xmlns:s1="http://vdw.de/UA/MachineTool/Energy-Example/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/ECM/Types.xsd" xmlns:s2="http://opcfoundation.org/UA/MachineTool/Types.xsd">
+<UANodeSet xmlns:s4="http://opcfoundation.org/UA/DI/Types.xsd" xmlns:s7="http://opcfoundation.org/UA/IA/Types.xsd" xmlns:s6="http://opcfoundation.org/UA/Machinery/Energy/Types.xsd" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:s3="http://opcfoundation.org/UA/Machinery/Types.xsd" xmlns:ua="http://unifiedautomation.com/Configuration/NodeSet.xsd" xmlns:s1="http://vdw.de/UA/MachineTool/Energy-Example/Types.xsd" xmlns:s5="http://opcfoundation.org/UA/ECM/Types.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://opcfoundation.org/UA/MachineTool/Types.xsd">
     <NamespaceUris>
         <Uri>http://vdw.de/UA/MachineTool/Energy-Example/</Uri>
         <Uri>http://opcfoundation.org/UA/MachineTool/</Uri>
@@ -10,16 +10,16 @@
         <Uri>http://opcfoundation.org/UA/IA/</Uri>
     </NamespaceUris>
     <Models>
-        <Model Version="0.1.0" PublicationDate="2025-04-16T08:10:38Z" ModelUri="http://vdw.de/UA/MachineTool/Energy-Example/">
-            <RequiredModel Version="1.05.02" PublicationDate="2022-11-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/"/>
-            <RequiredModel Version="1.04.0" PublicationDate="2022-11-03T00:00:00Z" ModelUri="http://opcfoundation.org/UA/DI/"/>
-            <RequiredModel Version="1.01.2" PublicationDate="2024-02-28T00:00:00Z" ModelUri="http://opcfoundation.org/UA/IA/"/>
-            <RequiredModel Version="1.04.0" PublicationDate="2025-02-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/Machinery/"/>
-            <RequiredModel Version="2.0.0" PublicationDate="2024-01-31T00:00:00Z" ModelUri="http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2/"/>
-            <RequiredModel Version="1.0.1" PublicationDate="2024-05-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/Machinery/Jobs/"/>
-            <RequiredModel Version="1.0.0" PublicationDate="2025-02-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/ECM/"/>
-            <RequiredModel Version="1.00" PublicationDate="2025-06-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/Machinery/Energy/"/>
-            <RequiredModel Version="1.02.0" PublicationDate="2024-11-01T00:00:00Z" ModelUri="http://opcfoundation.org/UA/MachineTool/"/>
+        <Model ModelUri="http://vdw.de/UA/MachineTool/Energy-Example/" Version="0.2.0" PublicationDate="2025-05-16T08:35:06Z">
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/" Version="1.05.02" PublicationDate="2022-11-01T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/DI/" Version="1.04.0" PublicationDate="2022-11-03T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/IA/" Version="1.01.2" PublicationDate="2024-02-28T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/" Version="1.04.0" PublicationDate="2025-02-01T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2/" Version="2.0.0" PublicationDate="2024-01-31T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/Jobs/" Version="1.0.1" PublicationDate="2024-05-01T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/ECM/" Version="1.0.0" PublicationDate="2025-02-01T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/Machinery/Energy/" Version="1.00" PublicationDate="2025-06-01T00:00:00Z"/>
+            <RequiredModel ModelUri="http://opcfoundation.org/UA/MachineTool/" Version="1.02.0" PublicationDate="2024-11-01T00:00:00Z"/>
         </Model>
     </Models>
     <Aliases>
@@ -54,7 +54,7 @@
     </Aliases>
     <Extensions>
         <Extension>
-            <ua:ModelInfo Version="1.7.1" Hash="d7aewB0VAxhLLPYTH0qcIA==" Tool="UaModeler"/>
+            <ua:ModelInfo Version="1.7.1" Hash="/BzdrKQGyic6JvcovWZ0Yg==" Tool="UaModeler"/>
         </Extension>
     </Extensions>
     <UAObject NodeId="ns=1;i=5055" BrowseName="1:SampleMachineTool_Energy">
@@ -71,7 +71,7 @@
             <Reference ReferenceType="Organizes" IsForward="false">ns=3;i=1001</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5056" ParentNodeId="ns=1;i=5055" BrowseName="2:Equipment">
+    <UAObject NodeId="ns=1;i=5056" BrowseName="2:Equipment" ParentNodeId="ns=1;i=5055">
         <DisplayName>Equipment</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=12</Reference>
@@ -79,7 +79,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=5075</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5075" ParentNodeId="ns=1;i=5056" BrowseName="2:Tools">
+    <UAObject NodeId="ns=1;i=5075" BrowseName="2:Tools" ParentNodeId="ns=1;i=5056">
         <DisplayName>Tools</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=44</Reference>
@@ -87,7 +87,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=5076</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5076" ParentNodeId="ns=1;i=5075" BrowseName="1:Tool1">
+    <UAObject NodeId="ns=1;i=5076" BrowseName="1:Tool1" ParentNodeId="ns=1;i=5075">
         <DisplayName>Tool1</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=50</Reference>
@@ -97,7 +97,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=6281</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6279" DataType="UInt32" ParentNodeId="ns=1;i=5076" BrowseName="2:ControlIdentifier1">
+    <UAVariable NodeId="ns=1;i=6279" BrowseName="2:ControlIdentifier1" ParentNodeId="ns=1;i=5076" DataType="UInt32">
         <DisplayName>ControlIdentifier1</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
@@ -107,7 +107,7 @@
             <uax:UInt32>1</uax:UInt32>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6280" DataType="ToolManagement" ParentNodeId="ns=1;i=5076" BrowseName="2:ControlIdentifierInterpretation">
+    <UAVariable NodeId="ns=1;i=6280" BrowseName="2:ControlIdentifierInterpretation" ParentNodeId="ns=1;i=5076" DataType="ToolManagement">
         <DisplayName>ControlIdentifierInterpretation</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
@@ -117,7 +117,7 @@
             <uax:Int32>0</uax:Int32>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6281" DataType="Boolean" ParentNodeId="ns=1;i=5076" BrowseName="2:Locked">
+    <UAVariable NodeId="ns=1;i=6281" BrowseName="2:Locked" ParentNodeId="ns=1;i=5076" DataType="Boolean">
         <DisplayName>Locked</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
@@ -128,7 +128,7 @@
             <uax:Boolean>false</uax:Boolean>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6282" DataType="ToolLocked" ParentNodeId="ns=1;i=6281" BrowseName="2:ReasonForLocking">
+    <UAVariable NodeId="ns=1;i=6282" BrowseName="2:ReasonForLocking" ParentNodeId="ns=1;i=6281" DataType="ToolLocked">
         <DisplayName>ReasonForLocking</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -138,7 +138,7 @@
             <uax:Int32>0</uax:Int32>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5057" ParentNodeId="ns=1;i=5055" BrowseName="4:Identification">
+    <UAObject NodeId="ns=1;i=5057" BrowseName="4:Identification" ParentNodeId="ns=1;i=5055">
         <DisplayName>Identification</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=11</Reference>
@@ -154,7 +154,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6288</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6283" DataType="String" ParentNodeId="ns=1;i=5057" BrowseName="4:DeviceClass">
+    <UAVariable NodeId="ns=1;i=6283" BrowseName="4:DeviceClass" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>DeviceClass</DisplayName>
         <Description Locale="en">Indicates in which domain or for what purpose the MachineryItem is used.</Description>
         <References>
@@ -165,7 +165,7 @@
             <uax:String>Machining centre (other)</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6284" DataType="String" AccessLevel="3" ParentNodeId="ns=1;i=5057" BrowseName="3:Location">
+    <UAVariable NodeId="ns=1;i=6284" AccessLevel="3" BrowseName="3:Location" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>Location</DisplayName>
         <Description Locale="en">To be used by end users to store the location of the machine in a scheme specific to the end user. Servers shall support at least 60 Unicode characters for the clients writing this value, this means clients can expect to be able to write strings with a length of 60 Unicode characters into that field.</Description>
         <References>
@@ -176,7 +176,7 @@
             <uax:String>Virtual 1 1/N 49.871215 E 8.654204</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6138" DataType="LocalizedText" ParentNodeId="ns=1;i=5057" BrowseName="4:Manufacturer">
+    <UAVariable NodeId="ns=1;i=6138" BrowseName="4:Manufacturer" ParentNodeId="ns=1;i=5057" DataType="LocalizedText">
         <DisplayName>Manufacturer</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -189,7 +189,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6285" DataType="LocalizedText" ParentNodeId="ns=1;i=5057" BrowseName="4:Model">
+    <UAVariable NodeId="ns=1;i=6285" BrowseName="4:Model" ParentNodeId="ns=1;i=5057" DataType="LocalizedText">
         <DisplayName>Model</DisplayName>
         <Description Locale="en">A human-readable, localized name of the model of the MachineryItem.</Description>
         <References>
@@ -203,7 +203,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6286" DataType="String" ParentNodeId="ns=1;i=5057" BrowseName="4:ProductCode">
+    <UAVariable NodeId="ns=1;i=6286" BrowseName="4:ProductCode" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>ProductCode</DisplayName>
         <Description Locale="en">A machine-readable string of the model of the MachineryItem, that might include options like the hardware configuration of the model. This information might be provided by the ERP system of the vendor. For example, it can be used as order information.</Description>
         <References>
@@ -214,7 +214,7 @@
             <uax:String>0815</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6139" DataType="String" ParentNodeId="ns=1;i=5057" BrowseName="4:ProductInstanceUri">
+    <UAVariable NodeId="ns=1;i=6139" BrowseName="4:ProductInstanceUri" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>ProductInstanceUri</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -224,7 +224,7 @@
             <uax:String>http://umati.org/UA/instances/2025-0815-4711</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6140" DataType="String" ParentNodeId="ns=1;i=5057" BrowseName="4:SerialNumber">
+    <UAVariable NodeId="ns=1;i=6140" BrowseName="4:SerialNumber" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>SerialNumber</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -234,7 +234,7 @@
             <uax:String>2025-0815-4711</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6287" DataType="String" ParentNodeId="ns=1;i=5057" BrowseName="4:SoftwareRevision">
+    <UAVariable NodeId="ns=1;i=6287" BrowseName="4:SoftwareRevision" ParentNodeId="ns=1;i=5057" DataType="String">
         <DisplayName>SoftwareRevision</DisplayName>
         <Description Locale="en">A string representation of the revision level of a MachineryItem. In most cases, MachineryItems consist of several software components. In that case, information about the software components might be provided as additional information in the address space, including individual revision information. In that case, this property is either not provided or provides an overall software revision level. The value might change during the life-cycle of a MachineryItem.</Description>
         <References>
@@ -245,7 +245,7 @@
             <uax:String>v0.1.0</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6288" DataType="UInt16" ParentNodeId="ns=1;i=5057" BrowseName="3:YearOfConstruction">
+    <UAVariable NodeId="ns=1;i=6288" BrowseName="3:YearOfConstruction" ParentNodeId="ns=1;i=5057" DataType="UInt16">
         <DisplayName>YearOfConstruction</DisplayName>
         <Description Locale="en">The year (Gregorian calendar) in which the manufacturing process of the MachineryItem has been completed. It shall be a four-digit number and never change during the life-cycle of a MachineryItem.</Description>
         <References>
@@ -256,7 +256,7 @@
             <uax:UInt16>2025</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5081" ParentNodeId="ns=1;i=5055" BrowseName="3:MachineryBuildingBlocks">
+    <UAObject NodeId="ns=1;i=5081" BrowseName="3:MachineryBuildingBlocks" ParentNodeId="ns=1;i=5055">
         <DisplayName>MachineryBuildingBlocks</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
@@ -266,7 +266,7 @@
             <Reference ReferenceType="HasAddIn">ns=1;i=5079</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5077" ParentNodeId="ns=1;i=5059" BrowseName="3:MachineryItemState">
+    <UAObject NodeId="ns=1;i=5077" BrowseName="3:MachineryItemState" ParentNodeId="ns=1;i=5059">
         <DisplayName>MachineryItemState</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1002</Reference>
@@ -275,7 +275,7 @@
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5081</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6329" DataType="LocalizedText" ParentNodeId="ns=1;i=5077" BrowseName="CurrentState">
+    <UAVariable NodeId="ns=1;i=6329" BrowseName="CurrentState" ParentNodeId="ns=1;i=5077" DataType="LocalizedText">
         <DisplayName>CurrentState</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
@@ -290,7 +290,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6330" DataType="NodeId" ParentNodeId="ns=1;i=6329" BrowseName="Id">
+    <UAVariable NodeId="ns=1;i=6330" BrowseName="Id" ParentNodeId="ns=1;i=6329" DataType="NodeId">
         <DisplayName>Id</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -302,7 +302,7 @@
             </uax:NodeId>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6353" DataType="UInt32" ParentNodeId="ns=1;i=6329" BrowseName="Number">
+    <UAVariable NodeId="ns=1;i=6353" BrowseName="Number" ParentNodeId="ns=1;i=6329" DataType="UInt32">
         <DisplayName>Number</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -312,7 +312,7 @@
             <uax:UInt32>3</uax:UInt32>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5078" ParentNodeId="ns=1;i=5059" BrowseName="3:MachineryOperationMode">
+    <UAObject NodeId="ns=1;i=5078" BrowseName="3:MachineryOperationMode" ParentNodeId="ns=1;i=5059">
         <DisplayName>MachineryOperationMode</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=1003</Reference>
@@ -321,7 +321,7 @@
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5081</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6331" DataType="LocalizedText" ParentNodeId="ns=1;i=5078" BrowseName="CurrentState">
+    <UAVariable NodeId="ns=1;i=6331" BrowseName="CurrentState" ParentNodeId="ns=1;i=5078" DataType="LocalizedText">
         <DisplayName>CurrentState</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
@@ -336,7 +336,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6332" DataType="NodeId" ParentNodeId="ns=1;i=6331" BrowseName="Id">
+    <UAVariable NodeId="ns=1;i=6332" BrowseName="Id" ParentNodeId="ns=1;i=6331" DataType="NodeId">
         <DisplayName>Id</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -348,7 +348,7 @@
             </uax:NodeId>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6360" DataType="UInt32" ParentNodeId="ns=1;i=6331" BrowseName="Number">
+    <UAVariable NodeId="ns=1;i=6360" BrowseName="Number" ParentNodeId="ns=1;i=6331" DataType="UInt32">
         <DisplayName>Number</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -358,7 +358,7 @@
             <uax:UInt32>3</uax:UInt32>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5079" ParentNodeId="ns=1;i=5059" BrowseName="4:OperationCounters">
+    <UAObject NodeId="ns=1;i=5079" BrowseName="4:OperationCounters" ParentNodeId="ns=1;i=5059">
         <DisplayName>OperationCounters</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=3;i=1009</Reference>
@@ -367,7 +367,7 @@
             <Reference ReferenceType="HasAddIn" IsForward="false">ns=1;i=5081</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6333" DataType="Duration" AccessLevel="3" ParentNodeId="ns=1;i=5079" BrowseName="4:PowerOnDuration">
+    <UAVariable NodeId="ns=1;i=6333" AccessLevel="3" BrowseName="4:PowerOnDuration" ParentNodeId="ns=1;i=5079" DataType="Duration">
         <DisplayName>PowerOnDuration</DisplayName>
         <Description>PowerOnDuration is the duration the MachineryItem has been powered. The main purpose is to determine the time in which degradation of the MachineryItem occurred. The details, when the time is counted, is implementation-specific. Companion specifications might define specific rules. Typically, when the MachineryItem has supply voltage and the main CPU is running, the time is counted. This may include any kind of sleep mode, but may not include pure Wake on LAN. This value shall only increase during the lifetime of the MachineryItem and shall not be reset when it is restarted. The PowerOnDuration is provided as Duration, i.e., in milliseconds or even fractions of a millisecond. However, the Server is not expected to update the value in such a high frequency, but maybe once a minute or once an hour, depending on the application.</Description>
         <References>
@@ -378,103 +378,16 @@
             <uax:Double>1.696e+10</uax:Double>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5058" ParentNodeId="ns=1;i=5055" BrowseName="2:Monitoring">
+    <UAObject NodeId="ns=1;i=5058" BrowseName="2:Monitoring" ParentNodeId="ns=1;i=5055">
         <DisplayName>Monitoring</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=14</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5055</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5065</Reference>
             <Reference ReferenceType="HasComponent">ns=1;i=5059</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5059" ParentNodeId="ns=1;i=5058" BrowseName="2:MachineTool">
-        <DisplayName>MachineTool</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=2;i=26</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5058</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=6289</Reference>
-            <Reference ReferenceType="HasAddIn">ns=1;i=5077</Reference>
-            <Reference ReferenceType="HasAddIn">ns=1;i=5078</Reference>
-            <Reference ReferenceType="HasAddIn">ns=1;i=5079</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=6141</Reference>
-        </References>
-    </UAObject>
-    <UAVariable NodeId="ns=1;i=6289" DataType="Double" ParentNodeId="ns=1;i=5059" BrowseName="2:FeedOverride">
-        <DisplayName>FeedOverride</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5059</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6324</Reference>
-            <Reference ReferenceType="HasProperty">ns=1;i=6327</Reference>
-        </References>
-        <Value>
-            <uax:Double>95</uax:Double>
-        </Value>
-    </UAVariable>
-    <UAVariable NodeId="ns=1;i=6324" DataType="EUInformation" ParentNodeId="ns=1;i=6289" BrowseName="EngineeringUnits">
-        <DisplayName>EngineeringUnits</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6289</Reference>
-        </References>
-        <Value>
-            <uax:ExtensionObject>
-                <uax:TypeId>
-                    <uax:Identifier>i=888</uax:Identifier>
-                </uax:TypeId>
-                <uax:Body>
-                    <uax:EUInformation>
-                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
-                        <uax:UnitId>20529</uax:UnitId>
-                        <uax:DisplayName>
-                            <uax:Text>%</uax:Text>
-                        </uax:DisplayName>
-                        <uax:Description>
-                            <uax:Text>percent</uax:Text>
-                        </uax:Description>
-                    </uax:EUInformation>
-                </uax:Body>
-            </uax:ExtensionObject>
-        </Value>
-    </UAVariable>
-    <UAVariable NodeId="ns=1;i=6327" DataType="Range" ParentNodeId="ns=1;i=6289" BrowseName="EURange">
-        <DisplayName>EURange</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
-            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6289</Reference>
-        </References>
-        <Value>
-            <uax:ExtensionObject>
-                <uax:TypeId>
-                    <uax:Identifier>i=885</uax:Identifier>
-                </uax:TypeId>
-                <uax:Body>
-                    <uax:Range>
-                        <uax:Low>0</uax:Low>
-                        <uax:High>120</uax:High>
-                    </uax:Range>
-                </uax:Body>
-            </uax:ExtensionObject>
-        </Value>
-    </UAVariable>
-    <UAVariable NodeId="ns=1;i=6141" DataType="MachineOperationMode" ParentNodeId="ns=1;i=5059" BrowseName="2:OperationMode">
-        <DisplayName>OperationMode</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5059</Reference>
-        </References>
-        <Value>
-            <uax:Int32>1</uax:Int32>
-        </Value>
-    </UAVariable>
-    <UAObject NodeId="ns=1;i=5067" BrowseName="1:Monitoring">
-        <DisplayName>Monitoring</DisplayName>
-        <References>
-            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1014</Reference>
-            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5055</Reference>
-            <Reference ReferenceType="HasComponent">ns=1;i=5065</Reference>
-        </References>
-    </UAObject>
-    <UAObject NodeId="ns=1;i=5065" ParentNodeId="ns=1;i=5067" BrowseName="3:Consumption">
+    <UAObject NodeId="ns=1;i=5065" BrowseName="3:Consumption" ParentNodeId="ns=1;i=5067">
         <DisplayName>Consumption</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
@@ -482,6 +395,7 @@
             <Reference ReferenceType="Organizes">ns=1;i=5052</Reference>
             <Reference ReferenceType="Organizes">ns=1;i=5072</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5067</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5058</Reference>
         </References>
     </UAObject>
     <UAObject NodeId="ns=1;i=5066" BrowseName="1:ChilledWater">
@@ -504,7 +418,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=6256</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6264" DataType="String" AccessLevel="3" ParentNodeId="ns=1;i=5074" BrowseName="5:ApplicationTag">
+    <UAVariable NodeId="ns=1;i=6264" AccessLevel="3" BrowseName="5:ApplicationTag" ParentNodeId="ns=1;i=5074" DataType="String">
         <DisplayName>ApplicationTag</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -514,7 +428,7 @@
             <uax:String>Cooling water</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6290" DataType="Float" AccessLevel="3" BrowseName="5:Pressure">
+    <UAVariable NodeId="ns=1;i=6290" AccessLevel="3" BrowseName="5:Pressure" DataType="Float">
         <DisplayName>Pressure</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -529,7 +443,7 @@
             <uax:Float>300000</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6291" DataType="UInt32" ParentNodeId="ns=1;i=6290" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6291" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6290" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -538,28 +452,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6293</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6292" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6291" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6292" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6291" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6291</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6293" DataType="LocalizedText" ParentNodeId="ns=1;i=6291" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6293" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6291" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6291</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6294" DataType="NodeId" ParentNodeId="ns=1;i=6290" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6294" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6290" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6290</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6322" DataType="EUInformation" ParentNodeId="ns=1;i=6290" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6322" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6290" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -585,7 +499,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6334" DataType="UInt16" ParentNodeId="ns=1;i=6290" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6334" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6290" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -595,7 +509,7 @@
             <uax:UInt16>28683</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6295" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6290" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6295" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6290" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -604,7 +518,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6297</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6296" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6295" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6296" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6295" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -937,14 +851,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6297" DataType="LocalizedText" ParentNodeId="ns=1;i=6295" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6297" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6295" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6295</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6306" DataType="Float" AccessLevel="3" BrowseName="5:Temperature">
+    <UAVariable NodeId="ns=1;i=6306" AccessLevel="3" BrowseName="5:Temperature" DataType="Float">
         <DisplayName>Temperature</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -959,7 +873,7 @@
             <uax:Float>288</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6307" DataType="UInt32" ParentNodeId="ns=1;i=6306" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6307" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6306" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -968,28 +882,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6309</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6308" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6307" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6308" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6307" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6307</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6309" DataType="LocalizedText" ParentNodeId="ns=1;i=6307" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6309" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6307" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6307</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6310" DataType="NodeId" ParentNodeId="ns=1;i=6306" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6310" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6306" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6306</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6323" DataType="EUInformation" ParentNodeId="ns=1;i=6306" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6323" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6306" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1015,7 +929,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6335" DataType="UInt16" ParentNodeId="ns=1;i=6306" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6335" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6306" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1025,7 +939,7 @@
             <uax:UInt16>28684</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6311" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6306" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6311" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6306" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -1034,7 +948,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6313</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6312" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6311" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6312" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6311" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1367,14 +1281,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6313" DataType="LocalizedText" ParentNodeId="ns=1;i=6311" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6313" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6311" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6311</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6256" DataType="Float" AccessLevel="3" ParentNodeId="ns=1;i=5074" BrowseName="5:VolumeFlowRate">
+    <UAVariable NodeId="ns=1;i=6256" AccessLevel="3" BrowseName="5:VolumeFlowRate" ParentNodeId="ns=1;i=5074" DataType="Float">
         <DisplayName>VolumeFlowRate</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -1389,7 +1303,7 @@
             <uax:Float>1.2</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6257" DataType="UInt32" ParentNodeId="ns=1;i=6256" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6257" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6256" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -1398,28 +1312,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6259</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6258" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6257" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6258" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6257" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6257</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6259" DataType="LocalizedText" ParentNodeId="ns=1;i=6257" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6259" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6257" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6257</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6260" DataType="NodeId" ParentNodeId="ns=1;i=6256" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6260" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6256" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6256</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6265" DataType="EUInformation" ParentNodeId="ns=1;i=6256" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6265" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6256" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1445,7 +1359,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6336" DataType="UInt16" ParentNodeId="ns=1;i=6256" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6336" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6256" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1455,7 +1369,7 @@
             <uax:UInt16>2100</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6261" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6256" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6261" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6256" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -1464,7 +1378,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6263</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6262" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6261" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6262" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6261" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1797,7 +1711,7 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6263" DataType="LocalizedText" ParentNodeId="ns=1;i=6261" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6263" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6261" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1827,7 +1741,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=6266</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6245" DataType="String" AccessLevel="3" ParentNodeId="ns=1;i=5064" BrowseName="5:ApplicationTag">
+    <UAVariable NodeId="ns=1;i=6245" AccessLevel="3" BrowseName="5:ApplicationTag" ParentNodeId="ns=1;i=5064" DataType="String">
         <DisplayName>ApplicationTag</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1837,7 +1751,7 @@
             <uax:String>Compressed air</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6246" DataType="Double" AccessLevel="3" BrowseName="5:NeEnergyExportHp">
+    <UAVariable NodeId="ns=1;i=6246" AccessLevel="3" BrowseName="5:NeEnergyExportHp" DataType="Double">
         <DisplayName>NeEnergyExportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -1852,7 +1766,7 @@
             <uax:Double>0</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6247" DataType="UInt32" ParentNodeId="ns=1;i=6246" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6247" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6246" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -1861,28 +1775,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6249</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6248" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6247" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6248" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6247" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6247</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6249" DataType="LocalizedText" ParentNodeId="ns=1;i=6247" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6249" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6247" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6247</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6250" DataType="NodeId" ParentNodeId="ns=1;i=6246" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6250" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6246" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6246</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6254" DataType="EUInformation" ParentNodeId="ns=1;i=6246" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6254" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6246" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1908,7 +1822,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6278" DataType="UInt16" ParentNodeId="ns=1;i=6246" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6278" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6246" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -1918,7 +1832,7 @@
             <uax:UInt16>2005</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6251" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6246" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6251" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6246" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -1927,7 +1841,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6253</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6252" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6251" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6252" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6251" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2260,14 +2174,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6253" DataType="LocalizedText" ParentNodeId="ns=1;i=6251" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6253" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6251" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6251</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6237" DataType="Double" AccessLevel="3" ParentNodeId="ns=1;i=5064" BrowseName="5:NeEnergyImportHp">
+    <UAVariable NodeId="ns=1;i=6237" AccessLevel="3" BrowseName="5:NeEnergyImportHp" ParentNodeId="ns=1;i=5064" DataType="Double">
         <DisplayName>NeEnergyImportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -2282,7 +2196,7 @@
             <uax:Double>15000</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6238" DataType="UInt32" ParentNodeId="ns=1;i=6237" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6238" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6237" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -2291,28 +2205,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6240</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6239" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6238" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6239" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6238" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6238</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6240" DataType="LocalizedText" ParentNodeId="ns=1;i=6238" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6240" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6238" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6238</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6241" DataType="NodeId" ParentNodeId="ns=1;i=6237" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6241" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6237" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6237</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6255" DataType="EUInformation" ParentNodeId="ns=1;i=6237" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6255" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6237" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2338,7 +2252,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6277" DataType="UInt16" ParentNodeId="ns=1;i=6237" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6277" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6237" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2348,7 +2262,7 @@
             <uax:UInt16>2002</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6242" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6237" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6242" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6237" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -2357,7 +2271,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6244</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6243" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6242" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6243" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6242" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2690,14 +2604,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6244" DataType="LocalizedText" ParentNodeId="ns=1;i=6242" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6244" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6242" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6242</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6298" DataType="Float" AccessLevel="3" BrowseName="5:Pressure">
+    <UAVariable NodeId="ns=1;i=6298" AccessLevel="3" BrowseName="5:Pressure" DataType="Float">
         <DisplayName>Pressure</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -2712,7 +2626,7 @@
             <uax:Float>400000</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6299" DataType="UInt32" ParentNodeId="ns=1;i=6298" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6299" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6298" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -2721,28 +2635,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6301</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6300" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6299" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6300" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6299" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6299</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6301" DataType="LocalizedText" ParentNodeId="ns=1;i=6299" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6301" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6299" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6299</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6302" DataType="NodeId" ParentNodeId="ns=1;i=6298" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6302" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6298" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6298</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6325" DataType="EUInformation" ParentNodeId="ns=1;i=6298" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6325" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6298" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2768,7 +2682,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6276" DataType="UInt16" ParentNodeId="ns=1;i=6298" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6276" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6298" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -2778,7 +2692,7 @@
             <uax:UInt16>28683</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6303" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6298" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6303" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6298" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -2787,7 +2701,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6305</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6304" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6303" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6304" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6303" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3120,14 +3034,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6305" DataType="LocalizedText" ParentNodeId="ns=1;i=6303" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6305" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6303" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6303</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6314" DataType="Float" AccessLevel="3" BrowseName="5:Temperature">
+    <UAVariable NodeId="ns=1;i=6314" AccessLevel="3" BrowseName="5:Temperature" DataType="Float">
         <DisplayName>Temperature</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -3142,7 +3056,7 @@
             <uax:Float>293</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6315" DataType="UInt32" ParentNodeId="ns=1;i=6314" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6315" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6314" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -3151,28 +3065,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6317</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6316" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6315" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6316" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6315" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6315</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6317" DataType="LocalizedText" ParentNodeId="ns=1;i=6315" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6317" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6315" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6315</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6318" DataType="NodeId" ParentNodeId="ns=1;i=6314" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6318" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6314" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6314</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6326" DataType="EUInformation" ParentNodeId="ns=1;i=6314" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6326" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6314" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3198,7 +3112,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6275" DataType="UInt16" ParentNodeId="ns=1;i=6314" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6275" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6314" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3208,7 +3122,7 @@
             <uax:UInt16>28684</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6319" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6314" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6319" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6314" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -3217,7 +3131,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6321</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6320" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6319" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6320" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6319" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3550,14 +3464,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6321" DataType="LocalizedText" ParentNodeId="ns=1;i=6319" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6321" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6319" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6319</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6266" DataType="Float" AccessLevel="3" BrowseName="5:VolumeFlowRate">
+    <UAVariable NodeId="ns=1;i=6266" AccessLevel="3" BrowseName="5:VolumeFlowRate" DataType="Float">
         <DisplayName>VolumeFlowRate</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -3572,7 +3486,7 @@
             <uax:Float>1.5</uax:Float>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6267" DataType="UInt32" ParentNodeId="ns=1;i=6266" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6267" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6266" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -3581,28 +3495,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6269</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6268" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6267" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6268" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6267" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6267</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6269" DataType="LocalizedText" ParentNodeId="ns=1;i=6267" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6269" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6267" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6267</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6270" DataType="NodeId" ParentNodeId="ns=1;i=6266" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6270" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6266" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6266</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6328" DataType="EUInformation" ParentNodeId="ns=1;i=6266" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6328" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6266" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3628,7 +3542,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6274" DataType="UInt16" ParentNodeId="ns=1;i=6266" BrowseName="5:MeasurementID">
+    <UAVariable NodeId="ns=1;i=6274" BrowseName="5:MeasurementID" ParentNodeId="ns=1;i=6266" DataType="UInt16">
         <DisplayName>MeasurementID</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3638,7 +3552,7 @@
             <uax:UInt16>2100</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6271" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6266" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6271" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6266" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -3647,7 +3561,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6273</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6272" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6271" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6272" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6271" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -3980,7 +3894,7 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6273" DataType="LocalizedText" ParentNodeId="ns=1;i=6271" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6273" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6271" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4014,7 +3928,7 @@
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5072</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6172" DataType="Double" AccessLevel="3" BrowseName="5:AcActiveEnergyTotalExportHp">
+    <UAVariable NodeId="ns=1;i=6172" AccessLevel="3" BrowseName="5:AcActiveEnergyTotalExportHp" DataType="Double">
         <DisplayName>AcActiveEnergyTotalExportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -4028,7 +3942,7 @@
             <uax:Double>0</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6173" DataType="UInt32" ParentNodeId="ns=1;i=6172" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6173" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6172" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4037,28 +3951,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6175</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6174" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6173" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6174" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6173" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6173</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6175" DataType="LocalizedText" ParentNodeId="ns=1;i=6173" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6175" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6173" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6173</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6176" DataType="NodeId" ParentNodeId="ns=1;i=6172" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6176" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6172" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6172</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6228" DataType="EUInformation" ParentNodeId="ns=1;i=6172" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6228" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6172" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4084,7 +3998,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6177" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6172" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6177" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6172" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4093,7 +4007,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6179</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6178" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6177" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6178" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6177" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4426,14 +4340,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6179" DataType="LocalizedText" ParentNodeId="ns=1;i=6177" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6179" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6177" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6177</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6164" DataType="Double" AccessLevel="3" BrowseName="5:AcActiveEnergyTotalImportHp">
+    <UAVariable NodeId="ns=1;i=6164" AccessLevel="3" BrowseName="5:AcActiveEnergyTotalImportHp" DataType="Double">
         <DisplayName>AcActiveEnergyTotalImportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -4447,7 +4361,7 @@
             <uax:Double>4600</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6165" DataType="UInt32" ParentNodeId="ns=1;i=6164" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6165" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6164" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4456,28 +4370,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6167</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6166" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6165" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6166" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6165" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6165</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6167" DataType="LocalizedText" ParentNodeId="ns=1;i=6165" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6167" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6165" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6165</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6168" DataType="NodeId" ParentNodeId="ns=1;i=6164" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6168" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6164" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6164</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6229" DataType="EUInformation" ParentNodeId="ns=1;i=6164" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6229" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6164" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4503,7 +4417,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6169" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6164" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6169" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6164" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4512,7 +4426,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6171</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6170" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6169" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6170" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6169" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4845,14 +4759,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6171" DataType="LocalizedText" ParentNodeId="ns=1;i=6169" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6171" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6169" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6169</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6147" DataType="AcPeDataType" AccessLevel="3" ParentNodeId="ns=1;i=5053" BrowseName="5:AcActivePowerPe">
+    <UAVariable NodeId="ns=1;i=6147" AccessLevel="3" BrowseName="5:AcActivePowerPe" ParentNodeId="ns=1;i=5053" DataType="AcPeDataType">
         <DisplayName>AcActivePowerPe</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -4877,7 +4791,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6148" DataType="UInt32" ParentNodeId="ns=1;i=6147" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6148" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6147" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4886,28 +4800,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6150</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6149" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6148" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6149" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6148" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6148</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6150" DataType="LocalizedText" ParentNodeId="ns=1;i=6148" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6150" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6148" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6148</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6151" DataType="NodeId" ParentNodeId="ns=1;i=6147" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6151" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6147" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6147</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6236" DataType="EUInformation" ParentNodeId="ns=1;i=6147" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6236" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6147" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -4933,7 +4847,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6152" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6147" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6152" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6147" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -4942,7 +4856,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6154</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6153" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6152" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6153" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6152" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -5275,14 +5189,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6154" DataType="LocalizedText" ParentNodeId="ns=1;i=6152" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6154" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6152" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6152</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6212" DataType="AcPeDataType" AccessLevel="3" BrowseName="5:AcCurrentPe">
+    <UAVariable NodeId="ns=1;i=6212" AccessLevel="3" BrowseName="5:AcCurrentPe" DataType="AcPeDataType">
         <DisplayName>AcCurrentPe</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -5307,7 +5221,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6213" DataType="UInt32" ParentNodeId="ns=1;i=6212" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6213" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6212" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -5316,28 +5230,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6215</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6214" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6213" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6214" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6213" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6213</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6215" DataType="LocalizedText" ParentNodeId="ns=1;i=6213" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6215" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6213" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6213</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6216" DataType="NodeId" ParentNodeId="ns=1;i=6212" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6216" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6212" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6212</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6230" DataType="EUInformation" ParentNodeId="ns=1;i=6212" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6230" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6212" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -5363,7 +5277,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6217" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6212" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6217" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6212" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -5372,7 +5286,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6219</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6218" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6217" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6218" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6217" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -5705,14 +5619,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6219" DataType="LocalizedText" ParentNodeId="ns=1;i=6217" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6219" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6217" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6217</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6220" DataType="AcPeDataType" AccessLevel="3" BrowseName="5:AcPowerFactorPe">
+    <UAVariable NodeId="ns=1;i=6220" AccessLevel="3" BrowseName="5:AcPowerFactorPe" DataType="AcPeDataType">
         <DisplayName>AcPowerFactorPe</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -5736,7 +5650,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6221" DataType="UInt32" ParentNodeId="ns=1;i=6220" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6221" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6220" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -5745,28 +5659,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6223</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6222" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6221" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6222" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6221" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6221</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6223" DataType="LocalizedText" ParentNodeId="ns=1;i=6221" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6223" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6221" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6221</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6224" DataType="NodeId" ParentNodeId="ns=1;i=6220" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6224" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6220" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6220</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6225" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6220" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6225" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6220" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -5775,7 +5689,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6227</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6226" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6225" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6226" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6225" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -6108,14 +6022,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6227" DataType="LocalizedText" ParentNodeId="ns=1;i=6225" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6227" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6225" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6225</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6188" DataType="Double" AccessLevel="3" BrowseName="5:AcReactiveEnergyTotalExportHp">
+    <UAVariable NodeId="ns=1;i=6188" AccessLevel="3" BrowseName="5:AcReactiveEnergyTotalExportHp" DataType="Double">
         <DisplayName>AcReactiveEnergyTotalExportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -6129,7 +6043,7 @@
             <uax:Double>0</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6189" DataType="UInt32" ParentNodeId="ns=1;i=6188" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6189" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6188" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -6138,28 +6052,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6191</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6190" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6189" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6190" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6189" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6189</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6191" DataType="LocalizedText" ParentNodeId="ns=1;i=6189" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6191" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6189" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6189</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6192" DataType="NodeId" ParentNodeId="ns=1;i=6188" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6192" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6188" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6188</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6231" DataType="EUInformation" ParentNodeId="ns=1;i=6188" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6231" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6188" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -6185,7 +6099,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6193" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6188" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6193" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6188" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -6194,7 +6108,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6195</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6194" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6193" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6194" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6193" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -6527,14 +6441,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6195" DataType="LocalizedText" ParentNodeId="ns=1;i=6193" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6195" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6193" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6193</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6180" DataType="Double" AccessLevel="3" BrowseName="5:AcReactiveEnergyTotalImportHp">
+    <UAVariable NodeId="ns=1;i=6180" AccessLevel="3" BrowseName="5:AcReactiveEnergyTotalImportHp" DataType="Double">
         <DisplayName>AcReactiveEnergyTotalImportHp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -6548,7 +6462,7 @@
             <uax:Double>9200</uax:Double>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6181" DataType="UInt32" ParentNodeId="ns=1;i=6180" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6181" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6180" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -6557,28 +6471,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6183</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6182" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6181" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6182" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6181" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6181</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6183" DataType="LocalizedText" ParentNodeId="ns=1;i=6181" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6183" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6181" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6181</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6184" DataType="NodeId" ParentNodeId="ns=1;i=6180" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6184" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6180" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6180</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6232" DataType="EUInformation" ParentNodeId="ns=1;i=6180" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6232" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6180" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -6604,7 +6518,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6185" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6180" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6185" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6180" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -6613,7 +6527,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6187</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6186" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6185" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6186" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6185" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -6946,14 +6860,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6187" DataType="LocalizedText" ParentNodeId="ns=1;i=6185" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6187" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6185" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6185</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6131" DataType="AcPeDataType" AccessLevel="3" BrowseName="5:AcReactivePowerPe">
+    <UAVariable NodeId="ns=1;i=6131" AccessLevel="3" BrowseName="5:AcReactivePowerPe" DataType="AcPeDataType">
         <DisplayName>AcReactivePowerPe</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -6978,7 +6892,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6132" DataType="UInt32" ParentNodeId="ns=1;i=6131" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6132" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6131" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -6987,28 +6901,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6134</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6133" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6132" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6133" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6132" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6132</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6134" DataType="LocalizedText" ParentNodeId="ns=1;i=6132" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6134" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6132" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6132</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6135" DataType="NodeId" ParentNodeId="ns=1;i=6131" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6135" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6131" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6131</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6233" DataType="EUInformation" ParentNodeId="ns=1;i=6131" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6233" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6131" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -7034,7 +6948,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6136" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6131" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6136" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6131" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -7043,7 +6957,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6163</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6137" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6136" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6137" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6136" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -7376,14 +7290,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6163" DataType="LocalizedText" ParentNodeId="ns=1;i=6136" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6163" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6136" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6136</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6196" DataType="AcPeDataType" AccessLevel="3" BrowseName="5:AcVoltagePe">
+    <UAVariable NodeId="ns=1;i=6196" AccessLevel="3" BrowseName="5:AcVoltagePe" DataType="AcPeDataType">
         <DisplayName>AcVoltagePe</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -7408,7 +7322,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6197" DataType="UInt32" ParentNodeId="ns=1;i=6196" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6197" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6196" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -7417,28 +7331,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6199</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6198" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6197" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6198" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6197" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6197</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6199" DataType="LocalizedText" ParentNodeId="ns=1;i=6197" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6199" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6197" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6197</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6200" DataType="NodeId" ParentNodeId="ns=1;i=6196" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6200" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6196" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6196</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6234" DataType="EUInformation" ParentNodeId="ns=1;i=6196" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6234" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6196" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -7464,7 +7378,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6201" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6196" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6201" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6196" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -7473,7 +7387,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6203</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6202" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6201" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6202" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6201" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -7806,14 +7720,14 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6203" DataType="LocalizedText" ParentNodeId="ns=1;i=6201" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6203" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6201" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6201</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6204" DataType="AcPpDataType" AccessLevel="3" BrowseName="5:AcVoltagePp">
+    <UAVariable NodeId="ns=1;i=6204" AccessLevel="3" BrowseName="5:AcVoltagePp" DataType="AcPpDataType">
         <DisplayName>AcVoltagePp</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=5;i=2002</Reference>
@@ -7838,7 +7752,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6205" DataType="UInt32" ParentNodeId="ns=1;i=6204" BrowseName="5:AccuracyClass">
+    <UAVariable NodeId="ns=1;i=6205" BrowseName="5:AccuracyClass" ParentNodeId="ns=1;i=6204" DataType="UInt32">
         <DisplayName>AccuracyClass</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -7847,28 +7761,28 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6207</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6206" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6205" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6206" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6205" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6205</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6207" DataType="LocalizedText" ParentNodeId="ns=1;i=6205" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6207" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6205" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6205</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6208" DataType="NodeId" ParentNodeId="ns=1;i=6204" BrowseName="5:AccuracyDomain">
+    <UAVariable NodeId="ns=1;i=6208" BrowseName="5:AccuracyDomain" ParentNodeId="ns=1;i=6204" DataType="NodeId">
         <DisplayName>AccuracyDomain</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6204</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6235" DataType="EUInformation" ParentNodeId="ns=1;i=6204" BrowseName="EngineeringUnits">
+    <UAVariable NodeId="ns=1;i=6235" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6204" DataType="EUInformation">
         <DisplayName>EngineeringUnits</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -7894,7 +7808,7 @@
             </uax:ExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6209" DataType="UInt32" AccessLevel="3" ParentNodeId="ns=1;i=6204" BrowseName="5:Resource">
+    <UAVariable NodeId="ns=1;i=6209" AccessLevel="3" BrowseName="5:Resource" ParentNodeId="ns=1;i=6204" DataType="UInt32">
         <DisplayName>Resource</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11238</Reference>
@@ -7903,7 +7817,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6211</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6210" DataType="EnumValueType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=6209" BrowseName="EnumValues">
+    <UAVariable NodeId="ns=1;i=6210" ValueRank="1" BrowseName="EnumValues" ParentNodeId="ns=1;i=6209" DataType="EnumValueType" ArrayDimensions="0">
         <DisplayName>EnumValues</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8236,28 +8150,116 @@
             </uax:ListOfExtensionObject>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6211" DataType="LocalizedText" ParentNodeId="ns=1;i=6209" BrowseName="ValueAsText">
+    <UAVariable NodeId="ns=1;i=6211" BrowseName="ValueAsText" ParentNodeId="ns=1;i=6209" DataType="LocalizedText">
         <DisplayName>ValueAsText</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6209</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6155" DataType="String" AccessLevel="3" ParentNodeId="ns=1;i=5053" BrowseName="5:ApplicationTag">
+    <UAVariable NodeId="ns=1;i=6155" AccessLevel="3" BrowseName="5:ApplicationTag" ParentNodeId="ns=1;i=5053" DataType="String">
         <DisplayName>ApplicationTag</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5053</Reference>
         </References>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5060" ParentNodeId="ns=1;i=5055" BrowseName="2:Notification">
+    <UAObject NodeId="ns=1;i=5059" BrowseName="2:MachineTool" ParentNodeId="ns=1;i=5058">
+        <DisplayName>MachineTool</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=2;i=26</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5058</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6289</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5077</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5078</Reference>
+            <Reference ReferenceType="HasAddIn">ns=1;i=5079</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=6141</Reference>
+        </References>
+    </UAObject>
+    <UAVariable NodeId="ns=1;i=6289" BrowseName="2:FeedOverride" ParentNodeId="ns=1;i=5059" DataType="Double">
+        <DisplayName>FeedOverride</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=17570</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5059</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6324</Reference>
+            <Reference ReferenceType="HasProperty">ns=1;i=6327</Reference>
+        </References>
+        <Value>
+            <uax:Double>95</uax:Double>
+        </Value>
+    </UAVariable>
+    <UAVariable NodeId="ns=1;i=6324" BrowseName="EngineeringUnits" ParentNodeId="ns=1;i=6289" DataType="EUInformation">
+        <DisplayName>EngineeringUnits</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6289</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=888</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:EUInformation>
+                        <uax:NamespaceUri>http://www.opcfoundation.org/UA/units/un/cefact</uax:NamespaceUri>
+                        <uax:UnitId>20529</uax:UnitId>
+                        <uax:DisplayName>
+                            <uax:Text>%</uax:Text>
+                        </uax:DisplayName>
+                        <uax:Description>
+                            <uax:Text>percent</uax:Text>
+                        </uax:Description>
+                    </uax:EUInformation>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable NodeId="ns=1;i=6327" BrowseName="EURange" ParentNodeId="ns=1;i=6289" DataType="Range">
+        <DisplayName>EURange</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+            <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=6289</Reference>
+        </References>
+        <Value>
+            <uax:ExtensionObject>
+                <uax:TypeId>
+                    <uax:Identifier>i=885</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                    <uax:Range>
+                        <uax:Low>0</uax:Low>
+                        <uax:High>120</uax:High>
+                    </uax:Range>
+                </uax:Body>
+            </uax:ExtensionObject>
+        </Value>
+    </UAVariable>
+    <UAVariable NodeId="ns=1;i=6141" BrowseName="2:OperationMode" ParentNodeId="ns=1;i=5059" DataType="MachineOperationMode">
+        <DisplayName>OperationMode</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5059</Reference>
+        </References>
+        <Value>
+            <uax:Int32>1</uax:Int32>
+        </Value>
+    </UAVariable>
+    <UAObject NodeId="ns=1;i=5067" BrowseName="1:Monitoring">
+        <DisplayName>Monitoring</DisplayName>
+        <References>
+            <Reference ReferenceType="HasTypeDefinition">ns=3;i=1014</Reference>
+            <Reference ReferenceType="Organizes" IsForward="false">ns=1;i=5055</Reference>
+            <Reference ReferenceType="HasComponent">ns=1;i=5065</Reference>
+        </References>
+    </UAObject>
+    <UAObject NodeId="ns=1;i=5060" BrowseName="2:Notification" ParentNodeId="ns=1;i=5055">
         <DisplayName>Notification</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=7</Reference>
             <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=5055</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5061" ParentNodeId="ns=1;i=5055" BrowseName="2:Production">
+    <UAObject NodeId="ns=1;i=5061" BrowseName="2:Production" ParentNodeId="ns=1;i=5055">
         <DisplayName>Production</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=21</Reference>
@@ -8265,7 +8267,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=5062</Reference>
         </References>
     </UAObject>
-    <UAObject NodeId="ns=1;i=5062" ParentNodeId="ns=1;i=5061" BrowseName="2:ActiveProgram">
+    <UAObject NodeId="ns=1;i=5062" BrowseName="2:ActiveProgram" ParentNodeId="ns=1;i=5061">
         <DisplayName>ActiveProgram</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=32</Reference>
@@ -8275,7 +8277,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=5063</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6142" DataType="String" ParentNodeId="ns=1;i=5062" BrowseName="2:Name">
+    <UAVariable NodeId="ns=1;i=6142" BrowseName="2:Name" ParentNodeId="ns=1;i=5062" DataType="String">
         <DisplayName>Name</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8285,7 +8287,7 @@
             <uax:String>Program1.nc</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6143" DataType="UInt16" ParentNodeId="ns=1;i=5062" BrowseName="NumberInList">
+    <UAVariable NodeId="ns=1;i=6143" BrowseName="NumberInList" ParentNodeId="ns=1;i=5062" DataType="UInt16">
         <DisplayName>NumberInList</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8295,7 +8297,7 @@
             <uax:UInt16>0</uax:UInt16>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5063" ParentNodeId="ns=1;i=5062" BrowseName="2:State">
+    <UAObject NodeId="ns=1;i=5063" BrowseName="2:State" ParentNodeId="ns=1;i=5062">
         <DisplayName>State</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">ns=2;i=15</Reference>
@@ -8303,7 +8305,7 @@
             <Reference ReferenceType="HasComponent">ns=1;i=6144</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6144" DataType="LocalizedText" ParentNodeId="ns=1;i=5063" BrowseName="CurrentState">
+    <UAVariable NodeId="ns=1;i=6144" BrowseName="CurrentState" ParentNodeId="ns=1;i=5063" DataType="LocalizedText">
         <DisplayName>CurrentState</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=2760</Reference>
@@ -8318,7 +8320,7 @@
             </uax:LocalizedText>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6145" DataType="NodeId" ParentNodeId="ns=1;i=6144" BrowseName="Id">
+    <UAVariable NodeId="ns=1;i=6145" BrowseName="Id" ParentNodeId="ns=1;i=6144" DataType="NodeId">
         <DisplayName>Id</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8330,7 +8332,7 @@
             </uax:NodeId>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6146" DataType="UInt32" ParentNodeId="ns=1;i=6144" BrowseName="Number">
+    <UAVariable NodeId="ns=1;i=6146" BrowseName="Number" ParentNodeId="ns=1;i=6144" DataType="UInt32">
         <DisplayName>Number</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8340,7 +8342,7 @@
             <uax:UInt32>1</uax:UInt32>
         </Value>
     </UAVariable>
-    <UAObject NodeId="ns=1;i=5001" SymbolicName="http___vdw_de_UA_MachineTool_Energy_Example_" BrowseName="1:http://vdw.de/UA/MachineTool/Energy-Example/">
+    <UAObject NodeId="ns=1;i=5001" BrowseName="1:http://vdw.de/UA/MachineTool/Energy-Example/" SymbolicName="http___vdw_de_UA_MachineTool_Energy_Example_">
         <DisplayName>http://vdw.de/UA/MachineTool/Energy-Example/</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=11616</Reference>
@@ -8355,7 +8357,7 @@
             <Reference ReferenceType="HasProperty">ns=1;i=6007</Reference>
         </References>
     </UAObject>
-    <UAVariable NodeId="ns=1;i=6017" DataType="AccessRestrictionType" ParentNodeId="ns=1;i=5001" BrowseName="DefaultAccessRestrictions">
+    <UAVariable NodeId="ns=1;i=6017" BrowseName="DefaultAccessRestrictions" ParentNodeId="ns=1;i=5001" DataType="AccessRestrictionType">
         <DisplayName>DefaultAccessRestrictions</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8366,7 +8368,7 @@
             <RolePermission Permissions="1">i=15644</RolePermission>
         </RolePermissions>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6001" DataType="Boolean" ParentNodeId="ns=1;i=5001" BrowseName="IsNamespaceSubset">
+    <UAVariable NodeId="ns=1;i=6001" BrowseName="IsNamespaceSubset" ParentNodeId="ns=1;i=5001" DataType="Boolean">
         <DisplayName>IsNamespaceSubset</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8376,17 +8378,17 @@
             <uax:Boolean>false</uax:Boolean>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6002" DataType="DateTime" ParentNodeId="ns=1;i=5001" BrowseName="NamespacePublicationDate">
+    <UAVariable NodeId="ns=1;i=6002" BrowseName="NamespacePublicationDate" ParentNodeId="ns=1;i=5001" DataType="DateTime">
         <DisplayName>NamespacePublicationDate</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
         </References>
         <Value>
-            <uax:DateTime>2025-04-16T08:10:38Z</uax:DateTime>
+            <uax:DateTime>2025-05-16T08:35:06Z</uax:DateTime>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6003" DataType="String" ParentNodeId="ns=1;i=5001" BrowseName="NamespaceUri">
+    <UAVariable NodeId="ns=1;i=6003" BrowseName="NamespaceUri" ParentNodeId="ns=1;i=5001" DataType="String">
         <DisplayName>NamespaceUri</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
@@ -8396,31 +8398,31 @@
             <uax:String>http://vdw.de/UA/MachineTool/Energy-Example/</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6004" DataType="String" ParentNodeId="ns=1;i=5001" BrowseName="NamespaceVersion">
+    <UAVariable NodeId="ns=1;i=6004" BrowseName="NamespaceVersion" ParentNodeId="ns=1;i=5001" DataType="String">
         <DisplayName>NamespaceVersion</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
         </References>
         <Value>
-            <uax:String>0.1.0</uax:String>
+            <uax:String>0.2.0</uax:String>
         </Value>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6005" DataType="IdType" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=5001" BrowseName="StaticNodeIdTypes">
+    <UAVariable NodeId="ns=1;i=6005" ValueRank="1" BrowseName="StaticNodeIdTypes" ParentNodeId="ns=1;i=5001" DataType="IdType" ArrayDimensions="0">
         <DisplayName>StaticNodeIdTypes</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6006" DataType="NumericRange" ArrayDimensions="0" ValueRank="1" ParentNodeId="ns=1;i=5001" BrowseName="StaticNumericNodeIdRange">
+    <UAVariable NodeId="ns=1;i=6006" ValueRank="1" BrowseName="StaticNumericNodeIdRange" ParentNodeId="ns=1;i=5001" DataType="NumericRange" ArrayDimensions="0">
         <DisplayName>StaticNumericNodeIdRange</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5001</Reference>
         </References>
     </UAVariable>
-    <UAVariable NodeId="ns=1;i=6007" DataType="String" ParentNodeId="ns=1;i=5001" BrowseName="StaticStringNodeIdPattern">
+    <UAVariable NodeId="ns=1;i=6007" BrowseName="StaticStringNodeIdPattern" ParentNodeId="ns=1;i=5001" DataType="String">
         <DisplayName>StaticStringNodeIdPattern</DisplayName>
         <References>
             <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
