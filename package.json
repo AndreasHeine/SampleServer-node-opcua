@@ -34,7 +34,7 @@
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
     "node-opcua-server-discovery": "2.156.0",
-    "yargs": "17.7.2",
+    "yargs": "18.0.0",
     "@noble/hashes": "1.8.0"
   },
   "devDependencies": {
