@@ -1,37 +1,23 @@
 {
-  "extends": [
-    "config:recommended"
-  ],
-  "labels": [
-    "dependencies"
-  ],
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
       "enabled": true,
       "pinDigests": true
     },
     {
-      "labels": [
-        "node-opcua"
-      ],
+      "labels": ["node-opcua"],
       "groupName": "node-opcua",
-      "matchPackageNames": [
-        "/node-opcua/"
-      ]
+      "matchPackageNames": ["/node-opcua/"]
     }
   ],
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^(LDS.)?Dockerfile$/"
-      ],
+      "managerFilePatterns": ["/^(LDS.)?Dockerfile$/"],
       "matchStringsStrategy": "any",
       "matchStrings": [
         "\\s\\s(?<package>[a-z0-9][a-z0-9-_]+)=(?<currentValue>[a-z0-9-_.]+)\\s+"
