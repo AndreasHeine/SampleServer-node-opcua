@@ -39,6 +39,14 @@ module.exports = {
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            {
+            "allowShortCircuit": true,
+             "allowTernary": true,
+             "allowTaggedTemplates": true
+            }
+        ],
         "no-constant-condition": "off",
         "import/order": [
             "error",
