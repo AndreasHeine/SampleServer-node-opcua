@@ -16,7 +16,7 @@ docker run \
 	-e VALIDATE_JAVASCRIPT_STANDARD=false \
 	-e VALIDATE_TYPESCRIPT_STANDARD=false \
 	-e VALIDATE_XML=false \
-    -e TYPESCRIPT_ES_CONFIG_FILE=../../../tmp/lint/.github/linters/.eslintrc.js \
+	-e TYPESCRIPT_ES_CONFIG_FILE=../../../tmp/lint/.github/linters/.eslintrc.js \
 	-e JAVASCRIPT_ES_CONFIG_FILE=../../../tmp/lint/.github/linters/.eslintrc.js \
-    -e RUN_LOCAL=true \
+	-e RUN_LOCAL=true \
 	-v "$REPO_DIR:/tmp/lint" -it --rm ghcr.io/super-linter/super-linter:latest

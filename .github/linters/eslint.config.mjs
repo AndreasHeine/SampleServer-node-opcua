@@ -24,7 +24,7 @@ const compat = new FlatCompat({
 });
 
 export default [
-  globalIgnores(["tsconfig.json"]),
+  globalIgnores(["tsconfig.json", ".github/linters/.jscpd.json"]),
   ...fixupConfigRules(compat.extends("eslint:recommended")),
 
   includeIgnoreFile(gitignorePath),
@@ -72,8 +72,6 @@ export default [
       "**/*.json",
     ],
 
-    ignores: ["tsconfig.json"],
-
     rules: {
       "@typescript-eslint/camelcase": ["off"],
       "@typescript-eslint/no-unused-vars": ["off"],
@@ -85,11 +83,11 @@ export default [
       "@typescript-eslint/no-unused-expressions": [
         "error",
         {
-            "allowShortCircuit": true,
-            "allowTernary": true,
-            "allowTaggedTemplates": true
-         }
-        ],
+          allowShortCircuit: true,
+          allowTernary: true,
+          allowTaggedTemplates: true,
+        },
+      ],
       "no-constant-condition": ["off"],
       "no-unused-vars": ["off"],
       "no-dupe-class-members": 0,

@@ -1,6 +1,6 @@
-{
+﻿{
   "threshold": 13,
   "reporters": ["consoleFull"],
-  "ignore": ["**/__snapshots__/**", "**/*.xml"],
+  "ignore": ["**/__snapshots__/**", "**/*.xml", "**/UA-Nodeset**/**"],
   "absolute": true
 }
