@@ -1,8 +1,3 @@
-import {
-  fixupConfigRules,
-  fixupPluginRules,
-  includeIgnoreFile,
-} from "@eslint/compat";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import json from "eslint-plugin-json";
 import globals from "globals";
@@ -25,12 +20,6 @@ const compat = new FlatCompat({
 
 export default [
   globalIgnores(["tsconfig.json", ".github/linters/.jscpd.json"]),
-  ...fixupConfigRules(compat.extends("eslint:recommended")),
-
-  includeIgnoreFile(gitignorePath),
-  {
-    // your overrides
-  },
 
   json.configs.recommended,
   js.configs.recommended,
@@ -38,7 +27,7 @@ export default [
   {
     plugins: {
       "@typescript-eslint": typescriptEslint,
-      json: json,
+      json: json
     },
 
     languageOptions: {
