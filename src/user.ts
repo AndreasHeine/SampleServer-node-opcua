@@ -17,7 +17,7 @@
 import { readFileSync } from "fs";
 import yargs from "yargs";
 import { NodeId, makeRoles } from "node-opcua";
-import { sha512 } from "@noble/hashes/sha512";
+import { sha512 } from "@noble/hashes/sha2.js";
 import { User } from "./utils/userfile";
 import { green, red } from "./utils/log";
 
@@ -57,7 +57,9 @@ export const isValidUserAsync = (
 ) => {
   const user = getUser(username, userList);
   if (user) {
-    const hash = Buffer.from(sha512(password)).toString("hex");
+    const hash = Buffer.from(
+      sha512(new TextEncoder().encode(password)),
+    ).toString("hex");
     if (hash === user.password) {
       green(` User:'${user.username}' logged in as '${user.roles}'! `);
       callback(null, true);
