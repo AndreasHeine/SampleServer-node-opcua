@@ -197,7 +197,7 @@
             <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=5005</Reference>
         </References>
         <Value>
-            <uax:String>Virtual 1 1/N 49.871215 E 8.654204</uax:String>
+            <uax:String>EMO 6 A18/Virtual 1 1/N 49.871215 E 8.654204</uax:String>
         </Value>
     </UAVariable>
     <UAVariable NodeId="ns=1;i=6001" BrowseName="4:Manufacturer" ParentNodeId="ns=1;i=5005" DataType="LocalizedText">
