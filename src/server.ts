@@ -27,6 +27,9 @@ import { constructMqttJsonPubSubConfiguration } from "./pubsub";
 import { green, yellow, red } from "./utils/log";
 import { config } from "./config";
 import { createAddressSpace } from "./addressspace";
+import { createUserFile } from "./utils/createUserFile";
+
+createUserFile();
 
 const server = new OPCUAServer(config)
   .on("serverRegistered", () => {
