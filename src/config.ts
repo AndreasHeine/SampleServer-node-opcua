@@ -15,8 +15,7 @@
 //   limitations under the License.
 
 import { readFileSync } from "fs";
-// import yargs from "yargs";
-const yargs = require("yargs");
+import yargs from "yargs";
 import {
   MessageSecurityMode,
   SecurityPolicy,
