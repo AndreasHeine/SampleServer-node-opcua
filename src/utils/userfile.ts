@@ -36,8 +36,9 @@ export class UserFile {
         username: user.username,
         roles: user.roles,
         password: Buffer.from(
-          sha2.sha512(new TextEncoder().encode(user.password))).toString("hex")
-        }),
+          sha2.sha512(new TextEncoder().encode(user.password)),
+        ).toString("hex"),
+      }),
     );
   }
 
