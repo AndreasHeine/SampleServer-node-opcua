@@ -89,19 +89,19 @@ export const createMachineToolEnergyLogic = async (
     const p = p1 + p2 + p3;
     const e = p * 0.000278; // Wh
     const newV = {
-      L1: v1,
-      L2: v2,
-      L3: v3,
+      L1: v1.toFixed(1),
+      L2: v2.toFixed(1),
+      L3: v3.toFixed(1),
     };
     const newC = {
-      L1: c1,
-      L2: c2,
-      L3: c3,
+      L1: c1.toFixed(3),
+      L2: c2.toFixed(3),
+      L3: c3.toFixed(3),
     };
     const newP = {
-      L1: p1,
-      L2: p2,
-      L3: p3,
+      L1: p1.toFixed(0),
+      L2: p2.toFixed(0),
+      L3: p3.toFixed(0),
     };
     const voltage = addressSpace?.findNode(`ns=${idx};i=6196`) as UAVariable;
     voltage?.setValueFromSource({
@@ -123,7 +123,7 @@ export const createMachineToolEnergyLogic = async (
     ) as UAVariable;
     const oldE = energyImport.readValue().value.value;
     energyImport?.setValueFromSource({
-      value: oldE + e,
+      value: parseFloat((oldE + e).toFixed(1)),
       dataType: DataType.Double,
     });
   }, 1000);
@@ -132,7 +132,7 @@ export const createMachineToolEnergyLogic = async (
   setInterval(() => {
     const waterFlow = addressSpace?.findNode(`ns=${idx};i=6256`) as UAVariable;
     waterFlow?.setValueFromSource({
-      value: getRandomInRange(1.1, 1.3),
+      value: getRandomInRange(1.1, 1.3).toFixed(3),
       dataType: DataType.Float,
     });
   }, 1000);
@@ -141,7 +141,7 @@ export const createMachineToolEnergyLogic = async (
   setInterval(() => {
     const airFlow = addressSpace?.findNode(`ns=${idx};i=6266`) as UAVariable;
     airFlow?.setValueFromSource({
-      value: getRandomInRange(1.4, 1.6),
+      value: getRandomInRange(1.4, 1.6).toFixed(3),
       dataType: DataType.Float,
     });
   }, 1000);
