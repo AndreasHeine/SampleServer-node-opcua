@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import { writeFileSync } from "fs";
-import { sha512 } from "@noble/hashes/sha512";
+const sha2 = require("@noble/hashes/sha2.js");
 
 export interface User {
   username: string;
@@ -35,7 +35,9 @@ export class UserFile {
       Object.freeze({
         username: user.username,
         roles: user.roles,
-        password: Buffer.from(sha512(user.password)).toString("hex"),
+        password: Buffer.from(
+          sha2.sha512(new TextEncoder().encode(user.password)),
+        ).toString("hex"),
       }),
     );
   }
