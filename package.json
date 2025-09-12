@@ -14,7 +14,8 @@
     "dev-debug": "tsc && node --inspect dst/src/server.js",
     "dev-update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
     "dev-update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg",
-    "linting": "npx prettier --write src/"
+    "linting": "eslint -c .github/linters/eslint.config.mjs",
+    "lint-fixup": "npx prettier --write src/ && eslint -c .github/linters/eslint.config.mjs --fix"
   },
   "repository": {
     "type": "git",
@@ -30,24 +31,35 @@
     "chalk": "4.1.2",
     "node-opcua": "2.156.0",
     "node-opcua-file-transfer": "2.156.0",
-    "node-opcua-pki": "5.3.0",
+    "node-opcua-pki": "5.5.0",
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
     "node-opcua-server-discovery": "2.156.0",
-    "yargs": "17.7.2",
+    "yargs": "18.0.0",
     "@noble/hashes": "1.8.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "5.0.2",
+    "@eslint/compat": "^1.2.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
+    "@types/bcrypt": "6.0.0",
     "@types/chai": "5.2.2",
     "@types/mocha": "10.0.10",
-    "@types/node": "22.15.31",
-    "@types/semver": "7.7.0",
+    "@types/node": "22.18.1",
+    "@types/semver": "7.7.1",
     "@types/yargs": "17.0.33",
-    "chai": "5.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "chai": "6.0.1",
     "chalk": "4.1.2",
-    "dependency-cruiser": "16.10.2",
-    "mocha": "11.6.0",
-    "typescript": "5.8.3"
+    "dependency-cruiser": "17.0.1",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-json": "^4.0.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "mocha": "11.7.2",
+    "prettier": "^3.5.3",
+    "typescript": "5.9.2"
   }
 }

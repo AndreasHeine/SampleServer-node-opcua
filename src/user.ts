@@ -17,9 +17,9 @@
 import { readFileSync } from "fs";
 import yargs from "yargs";
 import { NodeId, makeRoles } from "node-opcua";
+import { sha512 } from "@noble/hashes/sha512";
 import { User } from "./utils/userfile";
 import { green, red } from "./utils/log";
-import { sha512 } from "@noble/hashes/sha512";
 
 const argv = yargs(process.argv.slice(2))
   .options({
@@ -36,7 +36,7 @@ const userList: User[] = Object.freeze(
   JSON.parse(readFileSync(configPath + userFile, "utf-8")).users,
 );
 
-const getUser = (username: String, users: User[]): User | null => {
+const getUser = (username: string, users: User[]): User | null => {
   const user: User[] = users.filter((item) => {
     if (item.username === username) {
       return item;

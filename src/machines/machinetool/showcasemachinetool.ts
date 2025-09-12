@@ -28,7 +28,7 @@ export const createShowCaseMachineToolLogic = async (
   addressSpace: AddressSpace,
 ): Promise<void> => {
   const idx = addressSpace?.getNamespaceIndex(
-    "http://example.com/ShowcaseMachineTool/",
+    "http://umati.org/UA/ShowCaseMachineTool/",
   );
   const iaIdx = addressSpace?.getNamespaceIndex(
     "http://opcfoundation.org/UA/IA/",
@@ -38,7 +38,7 @@ export const createShowCaseMachineToolLogic = async (
   );
 
   const activeProgramName = addressSpace?.findNode(
-    `ns=${idx};i=55186`,
+    `ns=${idx};i=6005`,
   ) as UAVariable;
   activeProgramName?.setValueFromSource({
     value: "Program_1",
@@ -46,7 +46,7 @@ export const createShowCaseMachineToolLogic = async (
   });
 
   const activeProgramNumberInList = addressSpace?.findNode(
-    `ns=${idx};i=55185`,
+    `ns=${idx};i=6006`,
   ) as UAVariable;
   activeProgramNumberInList?.setValueFromSource({
     value: 1,
@@ -54,7 +54,7 @@ export const createShowCaseMachineToolLogic = async (
   });
 
   const productionActiveProgramStateCurrentState = addressSpace?.findNode(
-    `ns=${idx};i=55188`,
+    `ns=${idx};i=6007`,
   ) as UAVariable;
   productionActiveProgramStateCurrentState?.setValueFromSource({
     value: coerceLocalizedText("Running"),
@@ -63,9 +63,9 @@ export const createShowCaseMachineToolLogic = async (
 
   // changes CurrentState each 10000 msec from Running to Ended
   setInterval(() => {
-    const state = addressSpace?.findNode(`ns=${idx};i=55188`) as UAVariable;
+    const state = addressSpace?.findNode(`ns=${idx};i=6007`) as UAVariable;
     const stateNumber = addressSpace?.findNode(
-      `ns=${idx};i=55190`,
+      `ns=${idx};i=6009`,
     ) as UAVariable;
     if (state?.readValue().value.value.text === "Running") {
       state?.setValueFromSource({
@@ -73,8 +73,8 @@ export const createShowCaseMachineToolLogic = async (
         dataType: DataType.LocalizedText,
       });
       stateNumber.setValueFromSource({
-        value: coerceNodeId(2),
-        dataType: DataType.NodeId,
+        value: 2,
+        dataType: DataType.UInt32,
       });
     } else {
       state?.setValueFromSource({
@@ -82,17 +82,17 @@ export const createShowCaseMachineToolLogic = async (
         dataType: DataType.LocalizedText,
       });
       stateNumber.setValueFromSource({
-        value: coerceNodeId(1),
-        dataType: DataType.NodeId,
+        value: 1,
+        dataType: DataType.UInt32,
       });
     }
   }, 10000);
 
-  // changes MachineryItemState each 10000 msec from Executing to NotExecuting
+  // changes MachineryItemState.CurrentState each 10000 msec from Executing to NotExecuting
   setInterval(() => {
-    const state = addressSpace?.findNode(`ns=${idx};i=6011`) as UAVariable;
+    const state = addressSpace?.findNode(`ns=${idx};i=6010`) as UAVariable;
     const stateNumber = addressSpace?.findNode(
-      `ns=${idx};i=6012`,
+      `ns=${idx};i=6014`,
     ) as UAVariable;
     if (state?.readValue().value.value.text === "Executing") {
       state?.setValueFromSource({
@@ -100,8 +100,8 @@ export const createShowCaseMachineToolLogic = async (
         dataType: DataType.LocalizedText,
       });
       stateNumber.setValueFromSource({
-        value: coerceNodeId(2),
-        dataType: DataType.NodeId,
+        value: 2,
+        dataType: DataType.UInt32,
       });
     } else {
       state?.setValueFromSource({
@@ -109,8 +109,8 @@ export const createShowCaseMachineToolLogic = async (
         dataType: DataType.LocalizedText,
       });
       stateNumber.setValueFromSource({
-        value: coerceNodeId(1),
-        dataType: DataType.NodeId,
+        value: 3,
+        dataType: DataType.UInt32,
       });
     }
   }, 10000);
@@ -123,7 +123,7 @@ export const createShowCaseMachineToolLogic = async (
       override = 50;
     }
     const feedOverride = addressSpace?.findNode(
-      `ns=${idx};i=55229`,
+      `ns=${idx};i=6038`,
     ) as UAVariable;
     feedOverride.setValueFromSource({
       value: override,
@@ -132,7 +132,7 @@ export const createShowCaseMachineToolLogic = async (
   }, 1000);
 
   const spindleOverride = addressSpace?.findNode(
-    `ns=${idx};i=55238`,
+    `ns=${idx};i=6044`,
   ) as UAVariable;
   spindleOverride?.setValueFromSource({
     value: 100,
@@ -148,7 +148,7 @@ export const createShowCaseMachineToolLogic = async (
     },
   );
   const spindleOverrideRange = addressSpace?.findNode(
-    `ns=${idx};i=55240`,
+    `ns=${idx};i=6046`,
   ) as UAVariable;
   spindleOverrideRange?.setValueFromSource({
     value: spindleEURange,
@@ -156,9 +156,9 @@ export const createShowCaseMachineToolLogic = async (
   });
 
   // writing a enum
-  const channel1 = addressSpace?.findNode(`ns=${idx};i=55233`) as UAVariable;
+  const channel1 = addressSpace?.findNode(`ns=${idx};i=6036`) as UAVariable;
   channel1.setValueFromSource({
-    value: 1,
+    value: 0,
     dataType: DataType.Int32,
   });
 };

@@ -1,15 +1,19 @@
-FROM node:21.4.0-alpine3.17
+FROM node:22.19.0-alpine3.22
 # hadolint ignore=DL3018
 RUN apk --no-cache add \
-    openssl=3.0.15-r1
+    openssl=3.5.2-r0
 
-WORKDIR /home/node/discovery
+WORKDIR /home/node/
 
-COPY . /home/node/discovery
+COPY . /home/node/
+
+RUN chown -R node:node /home/node/
+
+USER node
 
 RUN npm install
 
 EXPOSE 4840/tcp
 EXPOSE 5353/udp 
 
-ENTRYPOINT ["npm", "run", "start_lds"]
+ENTRYPOINT ["npm", "run", "dev-start_lds"]

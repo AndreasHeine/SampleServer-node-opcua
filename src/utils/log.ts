@@ -18,7 +18,7 @@ import fs from "fs";
 import { green as g, yellow as y, red as r } from "chalk";
 
 const logToFile = (msg: string) => {
-  let date = new Date();
+  const date = new Date();
   fs.appendFile(
     "log.txt",
     `${date.toISOString().slice(0, 19)}: ${msg} \r\n`,
@@ -29,9 +29,9 @@ const logToFile = (msg: string) => {
 };
 
 interface LoggerInterface {
-  green(msg: String): void;
-  yellow(msg: String): void;
-  red(msg: String): void;
+  green(msg: string): void;
+  yellow(msg: string): void;
+  red(msg: string): void;
 }
 
 class Logger implements LoggerInterface {
