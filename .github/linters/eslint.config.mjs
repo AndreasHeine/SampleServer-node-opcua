@@ -27,7 +27,7 @@ export default [
   {
     plugins: {
       "@typescript-eslint": typescriptEslint,
-      json: json
+      json: json,
     },
 
     languageOptions: {

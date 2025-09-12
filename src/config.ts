@@ -100,8 +100,9 @@ config.buildInfo.productName =
 config.buildInfo.manufacturerName =
   configJsonObj.buildInfo?.manufacturerName || "SampleServer-manufacturerName";
 config.buildInfo.buildNumber = configJsonObj.buildInfo?.buildNumber || "v1.0.0";
-config.buildInfo.buildDate =
-  new Date(String(configJsonObj.buildInfo?.buildDate));
+config.buildInfo.buildDate = new Date(
+  String(configJsonObj.buildInfo?.buildDate),
+);
 config.buildInfo.softwareVersion = `node-opcua: ${packageJsonObj.dependencies["node-opcua"]}`;
 
 // ServerInfo
