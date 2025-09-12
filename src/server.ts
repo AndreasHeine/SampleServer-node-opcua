@@ -63,8 +63,7 @@ const shutDown = (): void => {
   const reason = coerceLocalizedText("Shutdown by administrator");
   reason ? (server.engine.serverStatus.shutdownReason = reason) : null;
   server.shutdown(10000, () => {
-    yellow(" shutting down completed ");
-    yellow(" done ");
+    yellow(" shutting down completed \n done");
     process.exit(0);
   });
 };
