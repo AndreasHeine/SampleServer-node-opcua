@@ -61,7 +61,9 @@ const shutDown = (): void => {
   yellow(" Received server interruption from user ");
   yellow(" shutting down ...");
   const reason = coerceLocalizedText("Shutdown by administrator");
-  reason ? (server.engine.serverStatus.shutdownReason = reason) : null;
+  if (reason) {
+    server.engine.serverStatus.shutdownReason = reason;
+  }
   server.shutdown(10000, () => {
     yellow(" shutting down completed \n done");
     process.exit(0);
