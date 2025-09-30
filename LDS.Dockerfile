@@ -1,7 +1,7 @@
 FROM node:22.19.0-alpine3.22
 # hadolint ignore=DL3018
 RUN apk --no-cache add \
-    openssl=3.5.2-r0
+    openssl=3.5.4-r0
 
 WORKDIR /home/node/
 
