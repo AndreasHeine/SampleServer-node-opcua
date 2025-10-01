@@ -60,6 +60,6 @@
     "globals": "^16.0.0",
     "mocha": "11.7.2",
     "prettier": "^3.5.3",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   }
 }
