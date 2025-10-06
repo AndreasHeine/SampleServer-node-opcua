@@ -16,9 +16,8 @@
 
 import {
   OPCUADiscoveryServer,
-  OPCUAServerEndPoint,
-  ServerSecureChannelLayer,
   OPCUACertificateManager,
+  RegisteredServer,
 } from "node-opcua";
 import { OPCUADiscoveryServerOptions } from "node-opcua-server-discovery";
 
@@ -43,41 +42,19 @@ import { green, yellow, red } from "./../utils/log";
       },
     };
     const lds = new OPCUADiscoveryServer(config)
-      .on(
-        "newChannel",
-        (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
-          green(
-            ` DiscoveryServer: newChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `,
-          );
-        },
-      )
-      .on(
-        "closeChannel",
-        (channel: ServerSecureChannelLayer, endpoint: OPCUAServerEndPoint) => {
-          green(
-            ` DiscoveryServer: closeChannel! ChannelId:${channel.channelId} - ${channel.remoteAddress}:${channel.remotePort} `,
-          );
-        },
-      )
-      .on(
-        "connectionRefused",
-        (socketData: any, endpoint: OPCUAServerEndPoint) => {
-          red(` DiscoveryServer: connectionRefused! \n ${endpoint.serverInfo}`);
-        },
-      )
-      .on(
-        "openSecureChannelFailure",
-        (socketData: any, channelData: any, endpoint: OPCUAServerEndPoint) => {
-          red(
-            ` DiscoveryServer: openSecureChannelFailure! \n ${channelData} \n ${endpoint.serverInfo}`,
-          );
-        },
-      )
-      .on("error", (e) => {
-        red(` DiscoveryServer: ${e} `);
+      .on("onRegisterServer", (server, firstTime) => {
+        green(
+          ` DiscoveryServer: onRegisterServer! ${(server as RegisteredServer).serverUri} - ${server.serverNames?.map(
+            (n) => n.text,
+          )} - firstTime = ${firstTime}`,
+        );
       })
-      .on("debug", (e) => {
-        yellow(` DiscoveryServer: ${e} `);
+      .on("onUnregisterServer", (server, forced) => {
+        yellow(
+          ` DiscoveryServer: onUnregisterServer! ${(server as RegisteredServer).serverUri} - ${server.serverNames?.map(
+            (n) => n.text,
+          )} - forced = ${forced}`,
+        );
       });
     yellow(" DiscoveryServer: starting server... ");
     await lds.start();
