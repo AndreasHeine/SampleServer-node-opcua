@@ -1,4 +1,4 @@
-FROM node:24.11.0-alpine3.22 AS builder
+FROM node:24.11.1-alpine3.22 AS builder
 
 RUN node -v
 
@@ -14,7 +14,7 @@ RUN npm -v && \
     npm install && \
     npm run pretest
 
-FROM node:24.11.0-alpine3.22 AS production
+FROM node:24.11.1-alpine3.22 AS production
 
 WORKDIR /home/node
 
