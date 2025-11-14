@@ -39,7 +39,7 @@
     "@noble/hashes": "2.0.1"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.8",
+    "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.24.0",
     "@types/bcrypt": "6.0.0",
