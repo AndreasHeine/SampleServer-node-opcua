@@ -38,7 +38,7 @@ export const createUGGgrindingMachineLogic = async (
     "http://opcfoundation.org/UA/MachineTool/",
   );
 
-  // Set intial state of MachineryOperationMode
+  // Set initial state of MachineryOperationMode
   const monitoringMachineToolMachineryOperationModeCurrentState =
     addressSpace?.findNode(
       `ns=${idx};s=MyMachine.Monitoring.MachineTool.MachineryOperationMode.CurrentState`,
@@ -92,7 +92,7 @@ export const createUGGgrindingMachineLogic = async (
     value: true,
   });
 
-  // Intervall to change opc ua node-values
+  // Interval to change opc ua node-values
   const intervallID = setInterval(function () {
     setUGGgrindingmachineValues();
   }, 2500);
@@ -122,7 +122,7 @@ export const createUGGgrindingMachineLogic = async (
       return Math.random() * (max - min) + min;
     }
 
-    // Set intial state of ActiveProgramState
+    // Set initial state of ActiveProgramState
     const productionActiveProgramStateCurrentState = addressSpace?.findNode(
       `ns=${idx};s=MyMachine.Production.ActiveProgram.State.CurrentState`,
     ) as UAVariable;
