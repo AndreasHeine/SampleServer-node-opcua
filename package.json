@@ -29,12 +29,12 @@
   "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
   "dependencies": {
     "chalk": "4.1.2",
-    "node-opcua": "2.161.0",
-    "node-opcua-file-transfer": "2.161.0",
+    "node-opcua": "2.162.0",
+    "node-opcua-file-transfer": "2.162.0",
     "node-opcua-pki": "5.7.0",
     "node-opcua-pubsub-expander": "^0.19.2",
     "node-opcua-pubsub-server": "^0.19.2",
-    "node-opcua-server-discovery": "2.161.0",
+    "node-opcua-server-discovery": "2.162.0",
     "yargs": "18.0.0",
     "@noble/hashes": "2.0.1"
   },
