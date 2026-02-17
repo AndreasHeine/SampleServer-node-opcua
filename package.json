@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "pretest": "tsc",
+    "clean": "rimraf dst",
+    "pretest": "npm run clean && tsc",
     "test": "mocha dst/test/test.js",
     "start": "tsc && node dst/server.js",
     "dev-test": "mocha dst/test/test.js",
