@@ -10,7 +10,7 @@
     "dev-test": "mocha dst/test/test.js",
     "dev-start": "tsc && node dst/server.js",
     "dev-start_args": "tsc && node dst/server.js --ip=127.0.0.1 --port=5000",
-    "dev-start_lds": "tsc && node dst/src/LocalDiscoveryServer/local-discovery-server.js",
+    "dev-start_lds": "tsc && node dst/LocalDiscoveryServer/local-discovery-server.js",
     "dev-debug": "tsc && node --inspect dst/server.js",
     "dev-update:node-opcua": "npx rimraf node_modules && npx -y npm-check-updates -u -f \"node-opcua*\" && npm install",
     "dev-update:dependencygraph": "depcruise --no-config --include-only ^src --output-type dot src | dot -T svg > dependencygraph.svg",
