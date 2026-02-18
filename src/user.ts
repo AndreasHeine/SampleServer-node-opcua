@@ -37,17 +37,7 @@ const userList: User[] = Object.freeze(
 );
 
 const getUser = (username: string, users: User[]): User | null => {
-  const user: User[] = users.filter((item) => {
-    if (item.username === username) {
-      return item;
-    }
-    return null;
-  });
-  if (user.length > 1) {
-    red(` Found ${user.length} Users with the Name ${username} `);
-    return null;
-  }
-  return user[0];
+  return users.find((item) => item.username === username) ?? null;
 };
 
 export const isValidUserAsync = (
