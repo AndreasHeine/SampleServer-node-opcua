@@ -42,7 +42,7 @@
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.24.0",
+    "@eslint/js": "^10.0.0",
     "@types/bcrypt": "6.0.0",
     "@types/chai": "5.2.3",
     "@types/mocha": "10.0.10",
@@ -53,7 +53,7 @@
     "chai": "6.2.2",
     "chalk": "4.1.2",
     "dependency-cruiser": "17.3.8",
-    "eslint": "^9.24.0",
+    "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-json": "^4.0.1",
