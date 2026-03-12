@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       # yamllint disable-line
-      image: ghcr.io/super-linter/super-linter@sha256:5f36f6ff08fa41b4f4baf0f92dfb00081c1825a098908d344ddc8024084fde33 # v8.5.0
+      image: ghcr.io/super-linter/super-linter@sha256:19fbece91d9a24f2576485f09ac2966d99ece658f97449a906ba67fc30c9b323 # v8.5.0
     env:
       RUN_LOCAL: true
       VALIDATE_ALL_CODEBASE: false
