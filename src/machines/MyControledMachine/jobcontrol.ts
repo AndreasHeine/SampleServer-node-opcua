@@ -127,7 +127,7 @@ export const createJobContolLogic = async (
 
   const jobManager = jobManagementType.instantiate({
     componentOf: controledMachine,
-    browseName: `JobManager`,
+    browseName: `${jobIdx}:JobManagement`,
     namespace: namespace,
     optionals: [
       // https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/6.2.1
