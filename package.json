@@ -37,7 +37,7 @@
     "node-opcua-pubsub-server": "^0.19.2",
     "node-opcua-server-discovery": "2.168.0",
     "yargs": "18.0.0",
-    "@noble/hashes": "2.0.1"
+    "@noble/hashes": "2.2.0"
   },
   "devDependencies": {
     "@eslint/compat": "2.0.5",
