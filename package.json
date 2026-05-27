@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "8.59.4",
     "chai": "6.2.2",
     "chalk": "4.1.2",
-    "dependency-cruiser": "17.4.0",
+    "dependency-cruiser": "17.4.2",
     "eslint": "9.39.4",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
