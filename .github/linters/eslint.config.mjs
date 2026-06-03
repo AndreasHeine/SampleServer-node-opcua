@@ -35,6 +35,7 @@ export default [
         ...globals.browser,
         ...globals.jest,
         ...globals.node,
+        ...globals.mocha,
         window: true,
         process: true,
         module: true,

@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rimraf dst",
     "pretest": "npm run clean && tsc",
-    "test": "mocha dst/test/test.js",
+    "test": "mocha dst/src/test/test.js",
     "start": "tsc && node dst/server.js",
-    "dev-test": "mocha dst/test/test.js",
+    "dev-test": "mocha dst/src/test/test.js",
     "dev-start": "tsc && node dst/server.js",
     "dev-start_args": "tsc && node dst/server.js --ip=127.0.0.1 --port=5000",
     "dev-start_lds": "tsc && node dst/LocalDiscoveryServer/local-discovery-server.js",
