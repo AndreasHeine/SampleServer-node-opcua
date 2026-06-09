@@ -14,8 +14,6 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-import { describe, it, after } from "mocha";
-
 import { OPCUAServer } from "node-opcua";
 
 import { config } from "./../config";
