@@ -36,4 +36,4 @@ HEALTHCHECK --interval=30s CMD node /home/node/healthcheck.js
 
 EXPOSE 4840
 
-ENTRYPOINT ["node", "./dst/server.js"]
+ENTRYPOINT ["node", "./dst/src/server.js"]
