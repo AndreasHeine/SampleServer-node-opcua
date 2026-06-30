@@ -15,7 +15,7 @@
 //   limitations under the License.
 
 import fs from "fs";
-import { green as g, yellow as y, red as r } from "chalk";
+import chalk from "chalk";
 
 const logToFile = (msg: string) => {
   const date = new Date();
@@ -39,17 +39,17 @@ class Logger implements LoggerInterface {
 
   green(msg: string): void {
     logToFile(msg);
-    console.log(" LOG: ", g(msg));
+    console.log(" LOG: ", chalk.green(msg));
   }
 
   yellow(msg: string): void {
     logToFile(msg);
-    console.log(" LOG: ", y(msg));
+    console.log(" LOG: ", chalk.yellow(msg));
   }
 
   red(msg: string): void {
     logToFile(msg);
-    console.log(" LOG: ", r(msg));
+    console.log(" LOG: ", chalk.red(msg));
   }
 }
 
