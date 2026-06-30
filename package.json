@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/AndreasHeine/SampleServer-node-opcua#readme",
   "dependencies": {
-    "chalk": "4.1.2",
+    "chalk": "5.6.2",
     "node-opcua": "2.173.1",
     "node-opcua-file-transfer": "2.173.1",
     "node-opcua-pki": "6.18.0",
@@ -51,7 +51,7 @@
     "@types/yargs": "17.0.35",
     "@typescript-eslint/eslint-plugin": "8.62.1",
     "chai": "6.2.2",
-    "chalk": "4.1.2",
+    "chalk": "5.6.2",
     "dependency-cruiser": "18.0.0",
     "eslint": "9.39.4",
     "eslint-config-prettier": "10.1.8",
