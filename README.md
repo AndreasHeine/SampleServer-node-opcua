@@ -14,7 +14,7 @@ API Docs: [2.32.0](https://node-opcua.github.io/api_doc/2.32.0/index.html)
 - `download and unpack`
 - `open folder in VS Code (or in terminal)`
 - `npm install`
-- `npm run start`
+- `npm run dev-start`
 
 ## Example Users
 
