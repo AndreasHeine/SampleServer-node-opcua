@@ -47,7 +47,7 @@
     "@types/chai": "5.2.3",
     "@types/mocha": "10.0.10",
     "@types/node": "25.9.5",
-    "@types/semver": "7.7.1",
+    "@types/semver": "7.8.0",
     "@types/yargs": "17.0.35",
     "@typescript-eslint/eslint-plugin": "8.65.0",
     "chai": "6.2.2",
