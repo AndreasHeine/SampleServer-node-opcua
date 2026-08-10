@@ -49,7 +49,7 @@
     "@types/node": "25.9.5",
     "@types/semver": "7.8.0",
     "@types/yargs": "17.0.35",
-    "@typescript-eslint/eslint-plugin": "8.66.0",
+    "@typescript-eslint/eslint-plugin": "8.67.0",
     "chai": "6.2.2",
     "chalk": "6.0.0",
     "dependency-cruiser": "18.1.1",
