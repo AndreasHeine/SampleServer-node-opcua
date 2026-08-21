@@ -15,16 +15,71 @@
 //   limitations under the License.
 
 import {
-  coerceLocalizedText,
   coerceNodeId,
   DataType,
   UAVariable,
   AddressSpace,
-  NodeId,
-  NodeIdType,
   LocalizedText,
 } from "node-opcua";
-import { red } from "../../utils/log";
+import model from "./power_model.json";
+
+interface PowerState {
+  mean: number;
+  stddev: number;
+}
+
+interface PowerModel {
+  unit: string;
+  sampleIntervalSeconds: number;
+  states: PowerState[];
+  startProbabilities: number[];
+  transitionMatrix: number[][];
+}
+
+// Simulates machine power using an HMM-derived set of operating states.
+// Power levels and state transitions follow the statistical model learned from real measurements.
+// Model parameters are read from power_model.json.
+class PowerSimulator {
+  private state: number;
+
+  constructor(
+    private readonly model: PowerModel,
+    private readonly random: () => number = Math.random,
+  ) {
+    this.state = this.choose(model.startProbabilities);
+  }
+
+  public tick(): number {
+    const state = this.model.states[this.state];
+    const power = Math.max(0, state.mean + state.stddev * this.normalRandom());
+    this.state = this.choose(this.model.transitionMatrix[this.state]);
+    return power;
+  }
+
+  public getState(): number {
+    return this.state;
+  }
+
+  private choose(probabilities: number[]): number {
+    const r = this.random();
+    let cumulative = 0;
+    for (let i = 0; i < probabilities.length; i++) {
+      cumulative += probabilities[i];
+      if (r < cumulative) {
+        return i;
+      }
+    }
+    return probabilities.length - 1;
+  }
+
+  private normalRandom(): number {
+    let u = 0;
+    let v = 0;
+    while (u === 0) u = this.random();
+    while (v === 0) v = this.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+}
 
 export const createMachineToolEnergyLogic = async (
   addressSpace: AddressSpace,
@@ -38,6 +93,94 @@ export const createMachineToolEnergyLogic = async (
   const mtoolIdx = addressSpace?.getNamespaceIndex(
     "http://opcfoundation.org/UA/MachineTool/",
   );
+
+  const simulator = new PowerSimulator(model);
+
+  let powerKw = simulator.tick();
+
+  setInterval(() => {
+    powerKw = simulator.tick();
+  }, model.sampleIntervalSeconds * 1000);
+
+  setInterval(() => {
+    const totalPowerW = powerKw * 1000;
+
+    // Random phase voltages in V.
+    const v1 = getRandomInRange(225, 235);
+    const v2 = getRandomInRange(225, 235);
+    const v3 = getRandomInRange(225, 235);
+
+    // Small phase imbalance.
+    const w1 = getRandomInRange(0.95, 1.05);
+    const w2 = getRandomInRange(0.95, 1.05);
+    const w3 = getRandomInRange(0.95, 1.05);
+
+    const weightSum = w1 + w2 + w3;
+
+    // Phase powers in W.
+    const p1 = (totalPowerW * w1) / weightSum;
+    const p2 = (totalPowerW * w2) / weightSum;
+    const p3 = (totalPowerW * w3) / weightSum;
+
+    // Phase currents in A.
+    const c1 = p1 / v1;
+    const c2 = p2 / v2;
+    const c3 = p3 / v3;
+
+    // Energy consumed during this one-second interval.
+    // W × seconds / 3600 = Wh
+    const e = totalPowerW / 3600;
+
+    const newV = {
+      L1: v1.toFixed(1),
+      L2: v2.toFixed(1),
+      L3: v3.toFixed(1),
+    };
+
+    const newC = {
+      L1: c1.toFixed(3),
+      L2: c2.toFixed(3),
+      L3: c3.toFixed(3),
+    };
+
+    const newP = {
+      L1: p1.toFixed(0),
+      L2: p2.toFixed(0),
+      L3: p3.toFixed(0),
+    };
+
+    const voltage = addressSpace?.findNode(`ns=${idx};i=6196`) as UAVariable;
+
+    voltage?.setValueFromSource({
+      value: newV,
+      dataType: DataType.ExtensionObject,
+    });
+
+    const current = addressSpace?.findNode(`ns=${idx};i=6212`) as UAVariable;
+
+    current?.setValueFromSource({
+      value: newC,
+      dataType: DataType.ExtensionObject,
+    });
+
+    const power = addressSpace?.findNode(`ns=${idx};i=6147`) as UAVariable;
+
+    power?.setValueFromSource({
+      value: newP,
+      dataType: DataType.ExtensionObject,
+    });
+
+    const energyImport = addressSpace?.findNode(
+      `ns=${idx};i=6164`,
+    ) as UAVariable;
+
+    const oldE = energyImport.readValue().value.value;
+
+    energyImport?.setValueFromSource({
+      value: parseFloat((oldE + e).toFixed(3)),
+      dataType: DataType.Double,
+    });
+  }, 1000);
 
   // changes CurrentState each 10000 msec from Running to Interrupted
   setInterval(() => {
@@ -74,59 +217,6 @@ export const createMachineToolEnergyLogic = async (
       });
     }
   }, 10000);
-
-  // Simulate voltage and current fluctuiations every 1 sec.
-  setInterval(() => {
-    const v1 = getRandomInRange(225, 235);
-    const v2 = getRandomInRange(225, 235);
-    const v3 = getRandomInRange(225, 235);
-    const c1 = getRandomInRange(1.9, 2.1);
-    const c2 = getRandomInRange(1.9, 2.1);
-    const c3 = getRandomInRange(1.9, 2.1);
-    const p1 = v1 * c1;
-    const p2 = v2 * c2;
-    const p3 = v3 * c3;
-    const p = p1 + p2 + p3;
-    const e = p * 0.000278; // Wh
-    const newV = {
-      L1: v1.toFixed(1),
-      L2: v2.toFixed(1),
-      L3: v3.toFixed(1),
-    };
-    const newC = {
-      L1: c1.toFixed(3),
-      L2: c2.toFixed(3),
-      L3: c3.toFixed(3),
-    };
-    const newP = {
-      L1: p1.toFixed(0),
-      L2: p2.toFixed(0),
-      L3: p3.toFixed(0),
-    };
-    const voltage = addressSpace?.findNode(`ns=${idx};i=6196`) as UAVariable;
-    voltage?.setValueFromSource({
-      value: newV,
-      dataType: DataType.ExtensionObject,
-    });
-    const current = addressSpace?.findNode(`ns=${idx};i=6212`) as UAVariable;
-    current?.setValueFromSource({
-      value: newC,
-      dataType: DataType.ExtensionObject,
-    });
-    const power = addressSpace?.findNode(`ns=${idx};i=6147`) as UAVariable;
-    power?.setValueFromSource({
-      value: newP,
-      dataType: DataType.ExtensionObject,
-    });
-    const energyImport = addressSpace?.findNode(
-      `ns=${idx};i=6164`,
-    ) as UAVariable;
-    const oldE = energyImport.readValue().value.value;
-    energyImport?.setValueFromSource({
-      value: parseFloat((oldE + e).toFixed(1)),
-      dataType: DataType.Double,
-    });
-  }, 1000);
 
   // Simulate water flow fluctuiation every 1 sec.
   setInterval(() => {
