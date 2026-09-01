@@ -69,7 +69,7 @@ jobs:
 
       # Setup QEMU for Cross-Platform builds
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4.2.0
+        uses: docker/setup-qemu-action@v4.3.0
 
       # Setup BuildX
       - name: Set up Docker Buildx
