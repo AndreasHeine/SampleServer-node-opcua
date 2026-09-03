@@ -40,7 +40,7 @@
     "@noble/hashes": "2.4.0"
   },
   "devDependencies": {
-    "@eslint/compat": "2.1.0",
+    "@eslint/compat": "2.1.1",
     "@eslint/eslintrc": "3.3.6",
     "@eslint/js": "9.39.5",
     "@types/bcrypt": "6.0.0",
