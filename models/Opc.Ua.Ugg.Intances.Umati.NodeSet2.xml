@@ -171,7 +171,7 @@
             <Reference IsForward="false" ReferenceType="HasProperty">ns=1;s=MyMachine.Identification</Reference>
         </References>
         <Value>
-            <uax:String>GRIND 9 C51/UGG Digital Lab Bern, CH/N46.56528, E26.506400</uax:String>
+            <uax:String>JIMTOF 8 E8009/UGG Digital Lab Bern, CH/N46.56528, E26.506400</uax:String>
         </Value>
     </UAVariable>
     <UAVariable DataType="LocalizedText" NodeId="ns=1;s=MyMachine.Identification.Manufacturer" BrowseName="4:Manufacturer" ParentNodeId="ns=1;s=MyMachine.Identification">
