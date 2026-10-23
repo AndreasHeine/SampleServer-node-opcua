@@ -6,9 +6,9 @@ WORKDIR /home/node
      
 COPY . /home/node
 
-RUN chown -R node:node /home/node
+RUN chown -R 1000:1000 /home/node
 
-USER node
+USER 1000
 
 RUN npm -v && \
     npm install && \
@@ -28,11 +28,11 @@ COPY ./nodesets /home/node/nodesets
 COPY ./models /home/node/models
 COPY ./healthcheck.js /home/node/healthcheck.js
 
-RUN chown -R node:node /home/node
+RUN chown -R 1000:1000 /home/node
 
-USER node
+USER 1000
 
-HEALTHCHECK --interval=30s CMD node /home/node/healthcheck.js
+HEALTHCHECK --interval=30s CMD ["node", "/home/node/healthcheck.js"]
 
 EXPOSE 4840
 
